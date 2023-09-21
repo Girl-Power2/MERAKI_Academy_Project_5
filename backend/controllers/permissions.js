@@ -23,6 +23,27 @@ const createNewPermission = (req, res) => {
       });
   };
 
+  const getAllPermissions =(req, res)=>{
+    const query = `SELECT * FROM permissions `;
+    pool
+      .query(query)
+      .then((result) => {
+        res.status(201).json({
+          success: true,
+          message: `All Permission`,
+          result: result.rows,
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          success: false,
+          message: `Server error`,
+          err: err,
+        });
+      });
+  }
+
   module.exports={
-    createNewPermission
+    createNewPermission ,
+    getAllPermissions
   }
