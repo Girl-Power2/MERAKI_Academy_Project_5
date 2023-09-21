@@ -12,4 +12,5 @@ role_permissionsRouter.post(
 );
 role_permissionsRouter.get("/",authentication,RolePermission.GetALLRolePermission)
 console.log("to commit ")
+
 module.exports = role_permissionsRouter;

@@ -10,13 +10,22 @@ permission VARCHAR(255) NOT NULL,
 PRIMARY KEY (permission_id)
 );
 
+<<<<<<< HEAD
 CREATE TABLE role_permissions(
+=======
+create table role_permissions(
+>>>>>>> 133db2e (sql,client changes)
 role_permission_id SERIAL NOT NULL,
 role_id INT,
 permission_id INT,
-FOREIGN KEY (role_id) REFERENCES roles(role_id),
-FOREIGN KEY (permission_id) REFERENCES permissions(permission_id),
+FOREIGN KEY (role_id) REFERENCES roles(role_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
+FOREIGN KEY (permission_id) REFERENCES permissions(permission_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
 PRIMARY KEY (role_permission_id)
+
 );
 
 CREATE TABLE users(
@@ -31,8 +40,11 @@ CREATE TABLE users(
   role_id INT,
   gender VARCHAR (100) ,
   is_deleted SMALLINT DEFAULT 0,
-  FOREIGN KEY (role_id) REFERENCES roles(role_id),
-  PRIMARY KEY (user_id)
+  FOREIGN KEY (role_id) REFERENCES roles(role_id)
+   ON UPDATE CASCADE
+ ON DELETE CASCADE,
+  PRIMARY KEY (user_id),
+ 
 );
 
 CREATE TABLE providers(
@@ -47,8 +59,12 @@ city VARCHAR(255) ,
 gender  VARCHAR(255) NOT NULL,
 category_id INT NOT NULL ,
 role_id INT ,
-FOREIGN KEY (role_id) REFERENCES roles(role_id),
-FOREIGN KEY (category_id) REFERENCES categories(category_id),
+FOREIGN KEY (role_id) REFERENCES roles(role_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
+FOREIGN KEY (category_id) REFERENCES categories(category_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
  controllers-and-routes-v01
 );
@@ -61,8 +77,9 @@ service_id SERIAL PRIMARY KEY NOT NULL ,
 service VARCHAR(1000) NOT NULL ,
 price_per_hour VARCHAR(255),
 provider_id INT,
-FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
-
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+ON UPDATE CASCADE
+      ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 );
 
@@ -73,12 +90,16 @@ FOREIGN KEY (service_id) REFERENCES services(service_id),
 provider_id INT NOT NULL,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
 user_id INT NOT NULL ,
-FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
 created_at TIMESTAMP DEFAULT NOW(),
 is_deleted  SMALLINT DEFAULT 0,
 status VARCHAR DEFAULT 'pending',
 schedule_id INT,
 FOREIGN KEY (schedule_id) REFERENCES schedules(schedule_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE
 );
 
 CREATE TABLE provider_info(
@@ -87,14 +108,19 @@ img TEXT,
 bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
 is_deleted SMALLINT DEFAULT 0
+
 );
 
 CREATE TABLE provider_notes(
 provider_note_id SERIAL PRIMARY KEY NOT NULL ,
 user_id INT NOT NULL,
-FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
 provider_id INT,
-FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
 visitied_on TIMESTAMP DEFAULT NOW (),
 
 note TEXT NOT NULL,
@@ -105,8 +131,14 @@ is_deleted SMALLINT DEFAULT 0
 CREATE TABLE medical_history(
 medical_history_id SERIAL PRIMARY KEY NOT NULL,
 user_id INT,
+<<<<<<< HEAD
 FOREIGN KEY (user_id) REFERENCES users(user_id),
 
+=======
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
+>>>>>>> 133db2e (sql,client changes)
 history TEXT,
 medications TEXT,
 chronic_diseases  TEXT,
@@ -116,17 +148,38 @@ is_deleted SMALLINT DEFAULT 0
 
 CREATE TABLE categories(
 category_id SERIAL PRIMARY KEY NOT NULL ,
-category VARCHAR(255),
-is_deleted SMALLINT DEFAULT 0
+category VARCHAR(255) UNIQUE,
+is_deleted SMALLINT DEFAULT 0,
+ON UPDATE CASCADE
+      ON DELETE CASCADE,
 );
 
 CREATE TABLE schedules(
 schedule_id SERIAL PRIMARY KEY NOT NULL ,
 date DATE ,
 provider_id INT,
-FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+ON UPDATE CASCADE
+      ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0,
 user_id INT,
-FOREIGN KEY (user_id) REFERENCES users(user_id),
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON UPDATE CASCADE
+      ON DELETE CASCADE,
 booked BOOLEAN DEFAULT false
-)
+
+);
+create table reviews(
+review_id SERIAL PRIMARY KEY NOT NULL,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+provider_id INT,
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+created_at TIMESTAMP DEFAULT NOW(),
+is_deleted SMALLINT DEFAULT  0
+
+);
