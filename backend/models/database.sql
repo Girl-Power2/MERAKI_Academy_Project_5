@@ -10,7 +10,7 @@ permission VARCHAR(255) NOT NULL,
 PRIMARY KEY (permission_id)
 );
 
-3-create table role_permissions(
+CREATE TABLE role_permissions(
 role_permission_id SERIAL NOT NULL,
 role_id INT,
 permission_id INT,
@@ -34,7 +34,7 @@ CREATE TABLE users(
   FOREIGN KEY (role_id) REFERENCES roles(role_id),
   PRIMARY KEY (user_id)
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 CREATE TABLE providers(
 provider_id SERIAL PRIMARY KEY NOT NULL,
 fName VARCHAR(255) NOT NULL,
@@ -50,8 +50,11 @@ role_id INT ,
 FOREIGN KEY (role_id) REFERENCES roles(role_id),
 FOREIGN KEY (category_id) REFERENCES categories(category_id),
 is_deleted SMALLINT DEFAULT 0
+ controllers-and-routes-v01
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
 CREATE TABLE services(
 
 service_id SERIAL PRIMARY KEY NOT NULL ,
@@ -62,7 +65,7 @@ FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
 
 is_deleted SMALLINT DEFAULT 0
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 CREATE TABLE orders(
 order_id SERIAL PRIMARY KEY NOT NULL ,
 service_id INT NOT NULL ,
@@ -77,7 +80,7 @@ status VARCHAR DEFAULT 'pending',
 schedule_id INT,
 FOREIGN KEY (schedule_id) REFERENCES schedules(schedule_id)
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 CREATE TABLE provider_info(
 provider_id SERIAL PRIMARY KEY NOT NULL,
 img TEXT,
@@ -85,7 +88,7 @@ bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
 is_deleted SMALLINT DEFAULT 0
 );
--------------------
+
 CREATE TABLE provider_notes(
 provider_note_id SERIAL PRIMARY KEY NOT NULL ,
 user_id INT NOT NULL,
@@ -93,26 +96,30 @@ FOREIGN KEY (user_id) REFERENCES users(user_id),
 provider_id INT,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
 visitied_on TIMESTAMP DEFAULT NOW (),
+
 note TEXT NOT NULL,
+
 is_deleted SMALLINT DEFAULT 0
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 CREATE TABLE medical_history(
 medical_history_id SERIAL PRIMARY KEY NOT NULL,
 user_id INT,
 FOREIGN KEY (user_id) REFERENCES users(user_id),
+
 history TEXT,
 medications TEXT,
 chronic_diseases  TEXT,
+
 is_deleted SMALLINT DEFAULT 0
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 CREATE TABLE categories(
 category_id SERIAL PRIMARY KEY NOT NULL ,
 category VARCHAR(255),
 is_deleted SMALLINT DEFAULT 0
 );
->>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 CREATE TABLE schedules(
 schedule_id SERIAL PRIMARY KEY NOT NULL ,
 date DATE ,
