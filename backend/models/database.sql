@@ -1,129 +1,126 @@
-1-create tables roles{
+CREATE TABLE roles (
+  role_id SERIAL NOT NULL,
+  role VARCHAR(255) NOT NULL,
+  PRIMARY KEY (role_id)
+);
 
-role_id SERIAL PRIMARY KEY
+CREATE TABLE permissions (
+permission_id SERIAL NOT NULL,
+permission VARCHAR(255) NOT NULL,
+PRIMARY KEY (permission_id)
+);
 
-role VARCHAR(255)
+3-create table role_permissions(
+role_permission_id SERIAL NOT NULL,
+role_id INT,
+permission_id INT,
+FOREIGN KEY (role_id) REFERENCES roles(id),
+FOREIGN KEY (permission_id) REFERENCES permissions(id),
+PRIMARY KEY (role_permission_id)
+);
 
-}
-2-create table permissions{
-permission_id SERIAL PRIMARY KEY
-
-permission VARCHAR(255)
-}
-
-3-create table role_permissions{
-
-table_id SERIAL PRIMARY KEY
-
-role_id int
-FOREIGN KEY REF (roles)
-permission_id int
-FOREIGN KEY REF (permissions)
-}
-
-1-create table users{
-
-user_id SERIAL PRIMARY KEY
-fName VARCHAR(255)
-lName VARCHAR(255)
-birthdate DATE
-email VARCHAR(255)
-password VARCHAR(255)
-phoneNumber VARCHAR(100)
-city VARCHAR(255)
-gender VARCHAR(255)
-role_id INT
-FOREIGN KEY REF( roles )
-is_deleted DEFAULT 0
-}
+CREATE TABLE users(
+  user_id SERIAL NOT NULL,
+  firstName VARCHAR(255) NOT NULL,
+  lastName VARCHAR(255) NOT NULL,
+  birthDate DATE NOT NULL,
+  city VARCHAR(255),
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  phoneNumber VARCHAR(100) NOT NULL,
+  role_id INT,
+  gender VARCHAR (100) ,
+  is_deleted SMALLINT DEFAULT 0,
+  FOREIGN KEY (role_id) REFERENCES roles(role_id),
+  PRIMARY KEY (user_id)
+);
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
-2-create table providers{
-
-provider_id SERIAL PRIMARY KEY
-fName VARCHAR(255)
-lName VARCHAR(255)
-birthDAte DATE
-email VARCHAR(255)
-password VARCHAR(255)
-phoneNumber VARCHAR(100)
-city VARCHAR(255)
-gender  VARCHAR(255)
-role_id INT
-FOREIGN KEY REF( roles )
-category_id INT
-FOREIGN KEY REF( categories )
+CREATE TABLE providers(
+provider_id SERIAL PRIMARY KEY NOT NULL,
+fName VARCHAR(255) NOT NULL,
+lName VARCHAR(255) NOT NULL,
+birthDAte DATE ,
+email VARCHAR(255) UNIQUE NOT NULL,
+password VARCHAR(255) NOT NULL ,
+phoneNumber VARCHAR(100) NOT NULL,
+city VARCHAR(255) ,
+gender  VARCHAR(255) NOT NULL,
+category_id INT NOT NULL ,
+role_id INT ,
+FOREIGN KEY (role_id) REFERENCES roles(role_id),
+FOREIGN KEY (category_id) REFERENCES categories(category_id),
 is_deleted DEFAULT 0
-}
+)
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>
-3-create table services{
+CREATE TABLE services(
 
-service_id SERIAL PRIMARY KEY
-service VARCHAR(255)
-price-per-hour VARCHAR(255)
-is_deleted DEFAULT 0
-}
->>>>>>>>>>>>>>>>>>>>>>>>>>>>
-4-create table orders{
-
-order_id SERIAL PRIMARY KEY
-service _id INT
-FOREIGN KEY REF( services )
+service_id SERIAL PRIMARY KEY NOT NULL ,
+service VARCHAR(1000) NOT NULL ,
+price-per-hour VARCHAR(255),
 provider_id INT
-FOREIGN KEY REF( providers )
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
+
+is_deleted DEFAULT 0
+);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE TABLE orders(
+order_id SERIAL PRIMARY KEY NOT NULL ,
+service_id INT NOT NULL ,
+FOREIGN KEY (service_id) REFERENCES services(service_id),
+provider_id INT NOT NULL,
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
+user_id INT NOT NULL ,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+created_at TIMESTAMP DEFAULT NOW(),
+is_deleted DEFAULT 0,
+status DEFAULT "pending",
+schedule_id INT,
+FOREIGN KEY (schedule_id) REFERENCES schedules(schedule_id),
+);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE TABLE provider_info(
+provider_id SERIAL PRIMARY KEY NOT NULL,
+img TEXT,
+bio MEDIUMTEXT NOT NULL,
+qualifications MEDIUMTEXT NOT NULL,
+is_deleted DEFAULT 0
+);
+-------------------
+CREATE TABLE provider_notes(
+provider_note_id SERIAL PRIMARY KEY NOT NULL ,
+user_id INT NOT NULL,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+provider_id INT,
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
+visitied_on TIMESTAMP DEFAULT NOW (),
+note MEDIUMTEXT NOT NULL,
+is_deleted DEFAULT 0
+);
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+CREATE TABLE medical_history(
+medical_history_id SERIAL PRIMARY KEY NOT NULL,
 user_id INT
-FOREIGN KEY REF( users)
-created_at TIMESTAMP DEFAULT NOW()
+FOREIGN KEY (user_id) REFERENCES users(user_id),
+history MEDIUMTEXT,
+medications MEDIUMTEXT,
+chronic_diseases  MEDIUMTEXT,
+,
 is_deleted DEFAULT 0
-status DEFAULT “pending”
-schedule_id INT
-FOREIGN KEY REF( schedule )
-}
+);
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
-5-create table provider_info{
-
-provider_id SERIAL PRIMARY KEY
-img TEXT
-bio MEDIUMTEXT
-qualifications MEDIUMTEXT
-service_id INT
-FOREIGN KEY REF( services)
+CREATE TABLE categories(
+category_id SERIAL PRIMARY KEY NOT NULL ,
+category VARCHAR(255),
 is_deleted DEFAULT 0
-}
+);
 >>>>>>>>>>>>>>>>>>>>>>>>>>>
-6-create table provider_notes{
-providerNote_id SERIAL PRIMARY KEY
-user_id
-FOREIGN KEY REF( users)
-provider_id
-FOREIGN KEY REF( providers)
-visitied_on TIMESTAMP DEFAULT NOW ()
-note MEDUIMTEXT
-is_deleted DEFAULT 0
-}
->>>>>>>>>>>>>>>>>>>>>>>>>>>
-7-create table medical_history{
-medical_history_id SERIAL PRIMARY KEY
-user_id
-FOREIGN KEY REF( users)
-history MEDUIM TEXT
-medications MEDUIM TEXT
-chronic_diseases MEDUIMTEXT
-is_deleted DEFAULT 0
-}
->>>>>>>>>>>>>>>>>>>>>>>>>>>
-7-create table categories{
-category_id SERIAL PRIMARY KEY
-
-category VARCHAR(255)
-is_deleted DEFAULT 0
-}
->>>>>>>>>>>>>>>>>>>>>>>>>>>
-7-create table schedule{
-
-schedule_id SERIAL PRIMARY KEY
-
-date DATE 
-provider_id INT
-is_deleted DEFAULT 0
+CREATE TABLE schedules(
+schedule_id SERIAL PRIMARY KEY NOT NULL ,
+date DATE ,
+provider_id INT,
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id),
+is_deleted DEFAULT 0,
+user_id INT,
+FOREIGN KEY (user_id) REFERENCES users(user_id),
 booked DEFAULT false
-}
+)
