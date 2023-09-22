@@ -13,6 +13,7 @@ const role_permissionsRouter=require("./routes/role_permissions")
 const rolesRouter =require("./routes/roles");
 const permissionsRouter = require("./routes/permissions");
 const usersRouter = require("./routes/users");
+const categoriesRouter=require("./routes/categories")
 
 const app = express();
 
@@ -26,6 +27,8 @@ app.use("/role_permissions",role_permissionsRouter)
 app.use("/roles" ,rolesRouter)
 app.use("/permissions" ,permissionsRouter)
 app.use("/users" ,usersRouter)
+app.use("/categories",categoriesRouter)
+
 
 
 
