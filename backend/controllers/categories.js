@@ -15,7 +15,7 @@ categories.createNewCategory = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Category created successfully",
-      result: result.rows[0],
+      data: result.rows[0],
     });
   }).catch((err) => {
     res.status(500).json({
@@ -41,13 +41,13 @@ categories.UpdateCategorybyId = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Category updated successfully",
-      result: result.rows,
+      data: result.rows,
     });
   }).catch((err) => {
     res.status(500).json({
       success: false,
       message: "Server error",
-      err: err,
+      err: err.message,
     });
   });
 };
@@ -65,14 +65,35 @@ categories.DeleteCategorybyId = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Category deleted successfully",
-      result: result.rows,
+      data: result.rows,
     });
   }).catch((err) => {
     res.status(500).json({
       success: false,
       message: "Server error",
-      err: err,
+      err: err.message,
     });
   });
 };
+//=========== get all categories==============
+categories.getAllCategories = async (req, res) => {
+  const query = `SELECT * FROM categories `;
+  try {
+    const response = await client.query(query);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        message: "All Categories",
+        data: response.rows,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      err: err.message,
+    });
+  }
+};
+
 module.exports = { categories };

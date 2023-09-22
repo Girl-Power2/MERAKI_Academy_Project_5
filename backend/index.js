@@ -14,7 +14,7 @@ const rolesRouter =require("./routes/roles");
 const permissionsRouter = require("./routes/permissions");
 const usersRouter = require("./routes/users");
 const categoriesRouter=require("./routes/categories")
-
+const providerRouter=require("./routes/providers")
 const app = express();
 
 //built-in middleware
@@ -28,6 +28,7 @@ app.use("/roles" ,rolesRouter)
 app.use("/permissions" ,permissionsRouter)
 app.use("/users" ,usersRouter)
 app.use("/categories",categoriesRouter)
+app.use("/providers",providerRouter)
 
 
 
