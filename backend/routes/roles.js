@@ -4,7 +4,7 @@ const express = require("express");
 const {
   createNewRole ,
 getAllRoles}=require("../controllers/roles");
-const { get } = require("mongoose");
+
 
   const rolesRouter = express.Router();
 

@@ -25,7 +25,7 @@ const createNewRole = (req, res) => {
 };
 
 const getAllRoles = (req,res)=>{
-    const query = `SELECTE * FROM roles `;
+    const query = `SELECT * FROM roles `;
     pool.query(query).then((result)=>{
         res.status(201).json({
             success: true,
