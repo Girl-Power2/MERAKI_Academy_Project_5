@@ -1,4 +1,4 @@
-const client=require ("../models/db")
+const pool=require ("../models/db")
 const RolePermission={}
 // ==================ADD NEW ROLE_PERMISSION===================
 RolePermission.createNewRolePermission = (req, res) => {
