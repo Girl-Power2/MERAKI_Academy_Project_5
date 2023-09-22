@@ -97,9 +97,11 @@ const login = (req, res) => {
           "The email doesn’t exist or the password you’ve entered is incorrect",
         err,
       });
+
     });
 };
 module.exports = {
   register,
   login,
 };
+
