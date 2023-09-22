@@ -77,6 +77,28 @@ providers_functions.getProviderById = async (req, res) => {
     });
   }
 };
+
+// ===============delete provider by id================
+providers_functions.deleteProviderById = async (req, res) => {
+  const id = req.params.id;
+  const values = [id];
+  const query = `UPDATE providers SET is_deleted=1 WHERE provider_id=$1 AND is_deleted=0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
 // ===============get provider by  category_id================
 providers_functions.getProviderByCategoryId = async (req, res) => {
   const id = req.params.id;
@@ -124,25 +146,47 @@ providers_functions.getProviderByName = async (req, res) => {
 
 // ===============get provider by gender================
 providers_functions.getProviderByGender = async (req, res) => {
-    const gender = req.query;
+  const gender = req.query;
 
-    const values = [gender];
-    const query = `SELECT * FROM  providers WHERE gender=$1 AND is_deleted=0`;
-    try {
-      const response = await client.query(query, values);
-      if (response.rowCount) {
-        res.status(200).json({
-          status: true,
-          data: response.rows,
-        });
-      }
-    } catch (error) {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        error: error.message,
+  const values = [gender];
+  const query = `SELECT * FROM  providers WHERE gender=$1 AND is_deleted=0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
       });
     }
-  };
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
+
+// ===============get  all providers================
+providers_functions.GetALLProviders = (req, res) => {
+  const query = `SELECT * FROM providers;`;
+
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: ` ALL providers `,
+        data: result.rows,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: `Server error`,
+        err: err.message,
+      });
+    });
+};
 
 module.exports = { providers_functions };
