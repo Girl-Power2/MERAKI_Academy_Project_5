@@ -15,7 +15,7 @@ const register = async (req, res) => {
     role_id,
   } = req.body;
   const encryptedPassword = await bcrypt.hash(password, 10);
-
+console.log(encryptedPassword);
   const query = `INSERT INTO users  (firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;
 
   const value = [
@@ -31,7 +31,7 @@ const register = async (req, res) => {
   ];
 
   pool.query(query, value).then((result) => {
-   then((result) => {
+    console.log(result.rows);
       res.status(200).json({
         success: true,
         message: "Account created successfully",
@@ -45,7 +45,7 @@ const register = async (req, res) => {
         err,
       });
     });
-  })}
+  }
 
 
   const login = (req, res) => {
@@ -71,6 +71,7 @@ const register = async (req, res) => {
               const options = { expiresIn: "1d" };
               const secret = process.env.SECRET;
               const token = jwt.sign(payload, secret, options);
+              console.log(token);
               if (token) {
                 return res.status(200).json({
                   token,
@@ -101,3 +102,7 @@ const register = async (req, res) => {
   };
   module.exports = {
     register,login}
+
+
+    //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImNpdHkiOiJ6YXJxYWEiLCJyb2xlIjoxLCJpYXQiOjE2OTU0MTU4OTMsImV4cCI6MTY5NTUwMjI5M30.8aC7nxPv2uY_g7dCmM9snD-Ms4p6_DcmVbh6cINvCc4
+    
