@@ -56,4 +56,93 @@ providers_functions.CreateNewProvider = async (req, res) => {
   }
 };
 
+// ===============get provider by id================
+providers_functions.getProviderById = async (req, res) => {
+  const id = req.params.id;
+  const values = [id];
+  const query = `SELECT * FROM  providers WHERE provider_id=$1 AND is_deleted=0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
+// ===============get provider by  category_id================
+providers_functions.getProviderByCategoryId = async (req, res) => {
+  const id = req.params.id;
+  const values = [id];
+  const query = `SELECT * FROM  providers WHERE provider_id=$1 AND is_deleted=0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
+
+// ===============get provider by name================
+providers_functions.getProviderByName = async (req, res) => {
+  const fName = req.query;
+  const lName = req.query;
+  const values = [fName, lName];
+  const query = `SELECT * FROM  providers WHERE fName=$1 OR lName=$2 AND is_deleted=0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
+
+// ===============get provider by gender================
+providers_functions.getProviderByGender = async (req, res) => {
+    const gender = req.query;
+
+    const values = [gender];
+    const query = `SELECT * FROM  providers WHERE gender=$1 AND is_deleted=0`;
+    try {
+      const response = await client.query(query, values);
+      if (response.rowCount) {
+        res.status(200).json({
+          status: true,
+          data: response.rows,
+        });
+      }
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        error: error.message,
+      });
+    }
+  };
+
 module.exports = { providers_functions };
