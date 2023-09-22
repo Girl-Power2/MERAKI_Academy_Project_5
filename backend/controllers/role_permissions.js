@@ -13,14 +13,14 @@ RolePermission.createNewRolePermission = (req, res) => {
         res.status(201).json({
           success: true,
           message: ` Role Permission created successfully`,
-          result: result.rows,
+          data: result.rows,
         });
       })
       .catch((err) => {
         res.status(500).json({
           success: false,
           message: `Server error`,
-          err: err,
+          err: err.message,
         });
       });
   };
@@ -35,17 +35,39 @@ RolePermission.createNewRolePermission = (req, res) => {
         res.status(201).json({
           success: true,
           message: ` ALL Role Permissions `,
-          result: result.rows,
+          data: result.rows,
         });
       })
       .catch((err) => {
         res.status(500).json({
           success: false,
           message: `Server error`,
-          err: err,
+          err: err.message,
         });
       });
   };
 
+// ================== Delete Role Permission By Id===================
+RolePermission.DeleteRolePermissionById=async(req,res)=>{
+  const id=req.params.id
+const values=[id]
+const query=`DELETE FROM role_permissions WHERE role_permission_id =$1 RETURNING *`
+try {
+  const response=await client.query(query,values)
+  if(response.rowCount){
+    res.status(200).json({
+      status:true,
+      message:"ROLE_PERMISSION deleted",
+      data:response.rows
+    })
+  }
+} catch (error) {
+  res.status(500).json({
+    success: false,
+    message: `Server error`,
+    err: err.message,
+  });
+}
+}
 
   module.exports = {RolePermission}
