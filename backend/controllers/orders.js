@@ -16,7 +16,7 @@ pool.query(query,value).then((result)=>{
     })
 }).catch((err)=>{
     res.status(500).json({
-        success :true,
+        success :false,
         message:"server error",
         error:err.message
     })
@@ -24,7 +24,100 @@ pool.query(query,value).then((result)=>{
 }
 
 
+const getAllOrders =(req,res)=>{
+    const query =`SELECT * FROM orders`
+
+    pool.query(query).then((result)=>{
+        res.status(201).json({
+            success :true,
+            message:"all order",
+            result:result.rows 
+        })
+    }).catch((err)=>{
+        res.status(500).json({
+            success :false,
+            message:"server error",
+            error:err.message
+        })
+    })
+}
+
+const getOrderById =(req,res)=>{
+    const id = req.params.id
+    const query =`SELECT * FROM orders WHERE order_id=${id}`
+    pool.query(query).then((result)=>{
+        res.status(201).json({
+            success :true,
+            message:`order_id = ${id} `,
+            result:result.rows  
+        })
+    }).catch((err)=>{
+        res.status(500).json({
+            success :false,
+            message:"server error",
+            error:err.message
+        })
+    })
+}
+
+const getOrderByUserId =(req,res)=>{
+    const id =req.params.id
+    const query =`SELECT * FROM orders WHERE user_id=${id}`
+    pool.query(query).then((result)=>{
+        res.status(201).json({
+            success :true,
+            message:`user_id = ${id} `,
+            result:result.rows  
+        })
+    }).catch((err)=>{
+        res.status(500).json({
+            success :false,
+            message:"server error",
+            error:err.message
+        })
+    })
+}
+
+const getOrderByProviderId =(req,res)=>{
+    const id =req.params.id
+    const query =`SELECT * FROM orders WHERE provider_id=${id}`
+    pool.query(query).then((result)=>{
+        res.status(201).json({
+            success :true,
+            message:`provider_id = ${id} `,
+            result:result.rows  
+        })
+    }).catch((err)=>{
+        res.status(500).json({
+            success :false,
+            message:"server error",
+            error:err.message
+        })
+    })
+}
+
+const updateOrederById =(req,res)=>{
+    const id =req.params.id
+    const query =`UPDATE orders
+    SET is_deleted = 1
+    WHERE order_id=${id};`
+
+    pool.query(query).then((result)=>{
+        res.status(201).json({
+            success :true,
+            message:`order was deleted `,
+            result:result.rows  
+        })
+    }).catch((err)=>{
+        res.status(500).json({
+            success :false,
+            message:"server error",
+            error:err.message
+        })
+    })
+}
+
 
 module.exports={
-    creatNewOrder
+    creatNewOrder,getAllOrders,getOrderById,getOrderByUserId,getOrderByProviderId,updateOrederById
 }
