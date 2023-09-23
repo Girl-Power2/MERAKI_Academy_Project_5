@@ -78,14 +78,14 @@ categories.DeleteCategorybyId = async (req, res) => {
 };
 //=========== get all categories==============
 categories.getAllCategories = async (req, res) => {
-  const query = `SELECT * FROM categories `;
+  const query = `SELECT * FROM categories WHERE is_deleted=0 `;
   try {
     const response = await client.query(query);
     if (response.rowCount) {
       res.status(200).json({
         status: true,
         message: "All Categories",
-        data: response.rows,
+        data: response.rows
       });
     }
   } catch (error) {
