@@ -3,6 +3,7 @@ const providers_functions = {};
 const bcrypt = require("bcrypt");
 //=============== CREATE NEW PROVIDER ================
 providers_functions.CreateNewProvider = async (req, res) => {
+
   const {
     fName,
     lName,
@@ -14,8 +15,10 @@ providers_functions.CreateNewProvider = async (req, res) => {
     phoneNumber,
     category_id,
   } = req.body;
+
   const role_id = 3;
   const Hashed_password = await bcrypt.hash(password, 7);
+
 
   const values = [
     fName,

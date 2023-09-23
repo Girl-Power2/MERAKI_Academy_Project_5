@@ -5,16 +5,16 @@ const connectionString = process.env.DB_URL;
 const pool = new Pool({
   connectionString,
 });
-client
+pool
   .connect()
   .then(() => {
-    console.log("connected on " + client.database);
+    console.log("connected on " + pool.database);
   })
   .catch((error) => {
     console.error("client didn't connect", error.message, error.stack);
   });
 
-// module.exports = pool;
+module.exports = pool;
 // const client = new Client({
 //   host: "localhost",
 //   user: "postgres",
@@ -48,4 +48,4 @@ client
 //   .catch((error) => {
 //     console.error("client didn't connect", error.message, error.stack);
 //   });
-module.exports = client;
+// module.exports = client;
