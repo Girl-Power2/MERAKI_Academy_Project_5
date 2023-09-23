@@ -4,20 +4,16 @@ const authorization = require("../middlewares/authorization");
 const { categories } = require("../controllers/categories");
 const categoriesRouter = express.Router();
 categoriesRouter.post(
-  "/",
-  authentication,
-  authorization("CREATE_CATEGORY", categories.createNewCategory)
+  "/", categories.createNewCategory
 );
 
 categoriesRouter.put(
   "/update/:id",
-  authentication,
-  authorization("UPDATE_CATEGORY", categories.UpdateCategorybyId)
+categories.UpdateCategorybyId
 );
 categoriesRouter.delete(
   "/delete/:id",
-  authentication,
-  authorization("DELETE_CATEGORY", categories.DeleteCategorybyId)
+ categories.DeleteCategorybyId
 );
 categoriesRouter.get("/", authentication, categories.getAllCategories);
 
