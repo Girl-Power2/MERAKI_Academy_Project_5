@@ -4,9 +4,7 @@ const authorization = require("../middlewares/authorization");
 const { categories } = require("../controllers/categories");
 const categoriesRouter = express.Router();
 categoriesRouter.post(
-  "/",
-  authentication,
-  authorization("CREATE_CATEGORY", categories.createNewCategory)
+  "/",categories.createNewCategory
 );
 
 categoriesRouter.put(

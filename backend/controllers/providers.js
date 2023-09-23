@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 //=============== CREATE NEW PROVIDER ================
 providers_functions.CreateNewProvider = async (req, res) => {
-  const Hashed_password = await bcrypt.hash(password, 7);
+
   const {
     fName,
     lName,
@@ -16,7 +16,8 @@ providers_functions.CreateNewProvider = async (req, res) => {
     phoneNumber,
     category_id,
   } = req.body;
-  const role_id = 3;
+  const role_id =1;
+  const Hashed_password = await bcrypt.hash(password, 7);
   const values = [
     fName,
     lName,
@@ -38,7 +39,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
   city,
   phoneNumber,
   role_id,
-  category_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;
+  category_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

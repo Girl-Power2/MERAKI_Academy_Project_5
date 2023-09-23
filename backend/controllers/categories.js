@@ -3,25 +3,26 @@ const categories = {};
 //===========Create new category==============
 categories.createNewCategory = async (req, res) => {
   const { category } = req.body;
-  admin_id = req.token.userId;
-  const values = [category, admin_id];
-  const query = `INSERT INTO categories (category) VALUES ($1,$2) RETURNING *;`;
+  // admin_id = req.token.userId;
+  const values = [category];
+  const query = `INSERT INTO categories (category) VALUES ($1) RETURNING *;`;
   try {
     const result = await client.query(query, values);
     if (!result.rowCount) {
+      
     }
   } catch (error) {}
   ((result) => {
     res.status(200).json({
       success: true,
       message: "Category created successfully",
-      data: result.rows[0],
+      data: result.rows,
     });
   }).catch((err) => {
     res.status(500).json({
       success: false,
       message: "Server error",
-      err: err,
+      err: err.message,
     });
   });
 };

@@ -1,12 +1,17 @@
 const express = require("express")
 const { creatNewOrder, getAllOrders, getOrderById, getOrderByUserId, getOrderByProviderId, updateOrederById } = require("../controllers/orders")
 
-const orderRouter =express.Router()
+const authentication =require("../middlewares/authentication")
+const authorization =require("../middlewares/authorization")
 
-orderRouter.post("/",creatNewOrder)
-orderRouter.get("/",getAllOrders)
-orderRouter.get("/:id",getOrderById)
-orderRouter.get("/user/:id",getOrderByUserId)
-orderRouter.get("/provider/:id",getOrderByProviderId)
-orderRouter.put("/:id",updateOrederById)
+
+
+
+const orderRouter =express.Router()
+orderRouter.post("/",authentication,authorization("CREAT_ORDER"),creatNewOrder)
+orderRouter.get("/",authentication,getAllOrders)
+orderRouter.get("/:id",authentication,getOrderById)
+orderRouter.get("/user/:id",authentication,getOrderByUserId)
+orderRouter.get("/provider/:id",authentication,getOrderByProviderId)
+orderRouter.put("/:id",authentication,authorization("UPDEATE_ORDER"),updateOrederById)
 module.exports =orderRouter
