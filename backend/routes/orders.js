@@ -8,10 +8,10 @@ const authorization =require("../middlewares/authorization")
 
 
 const orderRouter =express.Router()
-orderRouter.post("/",authentication,authorization("CREAT_ORDER"),creatNewOrder)
+orderRouter.post("/",authentication,authorization("CREATE_CATEGORY"),creatNewOrder)
 orderRouter.get("/",authentication,getAllOrders)
 orderRouter.get("/:id",authentication,getOrderById)
 orderRouter.get("/user/:id",authentication,getOrderByUserId)
 orderRouter.get("/provider/:id",authentication,getOrderByProviderId)
-orderRouter.put("/:id",authentication,authorization("UPDEATE_ORDER"),updateOrederById)
+orderRouter.put("/:id",authentication,authorization("CREATE_CATEGORY"),updateOrederById)
 module.exports =orderRouter

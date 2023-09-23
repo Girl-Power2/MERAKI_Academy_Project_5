@@ -48,6 +48,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
       res.status(201).json({
         success: true,
         message: "Provider account created successfully",
+        response:response.rows
       });
     }
   } catch (error) {

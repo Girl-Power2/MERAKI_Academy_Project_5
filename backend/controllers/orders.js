@@ -2,10 +2,10 @@ const { query } = require("express");
 const pool = require("../models/db");
 
 const creatNewOrder = (req, res) => {
-  const { service_id, provider_id, user_id, schedule_id } = req.body;
+  const { service_id, provider_id, user_id,schedule_id } = req.body;
 
-  const query = `INSERT INTO users  (service_id, provider_id,user_id,schedule_id) VALUES ($1,$2,$3,$4) RETURNING *`;
-  const value = [service_id, provider_id, user_id, schedule_id];
+  const query = `INSERT INTO orders  (service_id, provider_id,user_id,schedule_id) VALUES ($1,$2,$3,$4) RETURNING *`;
+  const value = [service_id, provider_id, user_id,schedule_id];
 
   pool
     .query(query, value)
@@ -26,14 +26,15 @@ const creatNewOrder = (req, res) => {
 };
 
 const getAllOrders = (req, res) => {
-  const query = `SELECT * FROM orders`;
+  const id = req.token.userId
+  const query = `SELECT * FROM orders WHERE user_id=${id}`;
 
   pool
     .query(query)
     .then((result) => {
       res.status(201).json({
         success: true,
-        message: "all order",
+        message: `all order for user_id=${id}`,
         result: result.rows,
       });
     })
@@ -68,18 +69,20 @@ const getOrderById = (req, res) => {
 };
 
 const getOrderByUserId = (req, res) => {
-  const id = req.params.id;
-  const query = `SELECT * FROM orders WHERE user_id=${id}`;
+  const id =req.params.id
+  const user_id = req.token.userId;
+  const query = `SELECT * FROM orders WHERE user_id=${user_id} AND order_id=${id}`;
   pool
     .query(query)
     .then((result) => {
       res.status(201).json({
         success: true,
-        message: `user_id = ${id} `,
+        message: `user_id = ${user_id} `,
         result: result.rows,
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         success: false,
         message: "server error",
@@ -113,7 +116,7 @@ const updateOrederById = (req, res) => {
   const id = req.params.id;
   const query = `UPDATE orders
     SET is_deleted = 1
-    WHERE order_id=${id};`;
+    WHERE order_id=${id} RETURNING *;`;
 
   pool
     .query(query)
