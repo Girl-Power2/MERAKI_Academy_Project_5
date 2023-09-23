@@ -2,6 +2,7 @@
 // const { Pool } = require("pg");
 const { Client } = require("pg");
 const connectionString = process.env.DB_URL;
+
 // const pool = new Pool({
 //   connectionString,
 // });
@@ -14,7 +15,20 @@ const connectionString = process.env.DB_URL;
 //     console.error("client didn't connect", error.message, error.stack);
 //   });
 
-// module.exports = pool;
+const pool = new Pool({
+  connectionString,
+});
+pool
+  .connect()
+  .then(() => {
+    console.log("connected on " + pool.database);
+  })
+  .catch((error) => {
+    console.error("client didn't connect", error.message, error.stack);
+  });
+
+
+module.exports = pool;
 // const client = new Client({
 //   host: "localhost",
 //   user: "postgres",
@@ -32,7 +46,7 @@ const connectionString = process.env.DB_URL;
 //     console.log(err);
 //   });
 
-// module.exports = pool;
+
 const client = new Client({
   host: "localhost",
   user: "postgres",
@@ -49,3 +63,5 @@ client
     console.error("client didn't connect", error.message, error.stack);
   });
 module.exports = client;
+
+

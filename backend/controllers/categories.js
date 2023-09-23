@@ -2,12 +2,15 @@ const client = require("../models/db");
 const categories = {};
 //===========Create new category==============
 categories.createNewCategory = async (req, res) => {
+
   const category = req.body.category
+
   // admin_id = req.token.userId;
   const values = [category];
   const query = `INSERT INTO categories (category) VALUES ($1) RETURNING *;`;
   try {
     const result = await client.query(query, values);
+
     if (result.rowCount) {
         res.status(200).json({
           success: true,
@@ -21,6 +24,7 @@ categories.createNewCategory = async (req, res) => {
       success: false,
       message: "Server error",
       err: err.message
+
     });
   };
 };
