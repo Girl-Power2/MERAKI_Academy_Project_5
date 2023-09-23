@@ -60,7 +60,7 @@ CREATE TABLE providers(
 provider_id SERIAL PRIMARY KEY NOT NULL,
 fName VARCHAR(255) NOT NULL,
 lName VARCHAR(255) NOT NULL,
-birthDAte DATE ,
+birthDAte DATE NOT NULL,
 email VARCHAR(255) UNIQUE NOT NULL,
 password VARCHAR(255) NOT NULL ,
 phoneNumber VARCHAR(100) NOT NULL,
@@ -92,18 +92,18 @@ is_deleted SMALLINT DEFAULT 0
 
 CREATE TABLE schedules(
 schedule_id SERIAL PRIMARY KEY NOT NULL ,
-date DATE ,
+time_from TIME DEFAULT '008:00:00'NOT NULL,
+time_to TIME NOT NULL,
 provider_id INT,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0,
-user_id INT,
+user_id INT, --to be removed
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
 booked BOOLEAN DEFAULT false
-
 );
 
 create table reviews(
