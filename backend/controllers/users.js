@@ -82,6 +82,7 @@ const login = (req, res) => {
               throw Error;
             }
           } else {
+         
             res.status(403).json({
               success: false,
               message: `The email doesn’t exist or the password you’ve entered is incorrect`,
@@ -91,6 +92,65 @@ const login = (req, res) => {
       } else throw Error;
     })
     .catch((err) => {
+      console.log(err);
+      res.status(403).json({
+        success: false,
+        message:
+          "The email doesn’t exist or the password you’ve entered is incorrect",
+        err,
+      });
+
+    });
+};
+
+
+
+
+// provider login
+const Provider_login = (req, res) => {
+  const password = req.body.password;
+  const email = req.body.email;
+  const query = `SELECT * FROM providers WHERE email = $1`;
+  const data = [email.toLowerCase()];
+  client
+    .query(query, data)
+    .then((result) => {
+      console.log(result.rows[0].user_id);
+      if (result.rows.length) {
+        bcrypt.compare(password, result.rows[0].password, (err, response) => {
+          if (err) res.json(err);
+          if (response) {
+            const payload = {
+              userId: result.rows[0].provider_id,
+              city: result.rows[0].city,
+              role: result.rows[0].role_id,
+            };
+            console.log(payload);
+            const options = { expiresIn: "1d" };
+            const secret = process.env.SECRET;
+            const token = jwt.sign(payload, secret, options);
+            if (token) {
+              return res.status(200).json({
+                token,
+                success: true,
+                message: `Valid login credentials`,
+                userId: result.rows[0].provider_id,
+              });
+            } else {
+              throw Error;
+            }
+          } else {
+         
+            res.status(403).json({
+              success: false,
+              message: `The email doesn’t exist or the password you’ve entered is incorrect`,
+            });
+          }
+        });
+      } else throw Error;
+    })
+    .catch((err) => {
+      console.log(err);
       res.status(403).json({
         success: false,
         message:
@@ -103,5 +163,6 @@ const login = (req, res) => {
 module.exports = {
   register,
   login,
+  Provider_login
 };
 
