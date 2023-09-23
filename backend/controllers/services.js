@@ -3,9 +3,9 @@ const services = {};
 
 // =========create new service===========
 services.createNewService = async (req, res) => {
-  const { service, price } = req.body;
+  const { service, price_per_hour } = req.body;
   const provider_id = req.token.userId;
-  const values = [service.toLowerCase(), price, provider_id];
+  const values = [service.toLowerCase(), price_per_hour, provider_id];
   const query = `INSERT INTO services (service,price_per_hour,provider_id) VALUES ($1,$2,$3) RETURNING *`;
   try {
     const response = await client.query(query, values);

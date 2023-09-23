@@ -1,10 +1,10 @@
-const { get } = require("mongoose");
+
 const pool = require("../models/db");
 
 const addHistory = (req, res) => {
   const { history, medications, chronic_diseases } = req.body;
   const user_id = req.token.userId;
-  const query = `INSERT INTO users  (history,medications,chronic_diseases,user_id) VALUES ($1,$2,$3,$4) RETURNING *`;
+  const query = `INSERT INTO medical_history  (history,medications,chronic_diseases,user_id) VALUES ($1,$2,$3,$4) RETURNING *`;
   const value = [history, medications, chronic_diseases, user_id];
 
   pool
@@ -72,10 +72,10 @@ const getHistoryById = (req, res) => {
 const updateHistoryById = (req, res) => {
   const id = req.params.id;
   const user_id = req.token.userId;
-  const { history, medications, chronic_diseases } = req.body;
+  let { history, medications, chronic_diseases } = req.body;
   const query = `UPDATE medical_history
     SET history=COALESCE($1,history), medications=COALESCE($2,medications), chronic_diseases=COALESCE($3,chronic_diseases)
-    WHERE medical_history_id=${id} AND user_id=${user_id} ;`;
+    WHERE medical_history_id=${id} AND user_id=${user_id} RETURNING *;`;
   const value = [
     history || null,
     medications || null,
@@ -84,7 +84,8 @@ const updateHistoryById = (req, res) => {
   pool
     .query(query, value)
     .then((result) => {
-      if (result.rows.length !== 0) {
+      console.log(result);
+      if (result.rowCount) {
         res.status(201).json({
           success: true,
           message: `medical_history with user_id=${user_id} and medical_history_id=${id}`,
@@ -95,6 +96,7 @@ const updateHistoryById = (req, res) => {
       }
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         success: false,
         message: "server error",
@@ -133,3 +135,7 @@ module.exports = {
   updateHistoryById,
 deleteHistoryById
 };
+
+
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImNpdHkiOiJ6YXJxYWEiLCJyb2xlIjoxLCJpYXQiOjE2OTU1MDcxMzEsImV4cCI6MTY5NTU5MzUzMX0.CNjyvu20CoXCQpdLQ6RiLAJ5oRzr1lYp7vbrWq3JgNo
