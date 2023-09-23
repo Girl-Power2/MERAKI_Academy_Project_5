@@ -7,7 +7,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
   const {
     fName,
     lName,
-    birthDAte,
+    birthDate,
     gender,
     email,
     password,
@@ -23,7 +23,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
   const values = [
     fName,
     lName,
-    birthDAte,
+    birthDate,
     gender,
     email,
     Hashed_password,
@@ -34,7 +34,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
   ];
   const query = `INSERT INTO providers  (fName,
   lName,
-  birthDAte,
+  birthDate,
   gender,
   email,
   password,
@@ -121,9 +121,9 @@ providers_functions.deleteProviderById = async (req, res) => {
 };
 // ===============get provider by  category_id================
 providers_functions.getProviderByCategoryId = async (req, res) => {
-  const id = req.params.id;
+  const id = req.params.category;
   const values = [id];
-  const query = `SELECT * FROM  providers WHERE provider_id=$1 AND is_deleted=0`;
+  const query = `SELECT * FROM  providers WHERE category_id=$1 AND is_deleted=0`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -148,10 +148,11 @@ providers_functions.getProviderByCategoryId = async (req, res) => {
 
 // ===============get provider by name================
 providers_functions.getProviderByName = async (req, res) => {
-  const { fName } = req.query.toLowerCase();
-  const { lName } = req.query.toLowerCase();
-  const values = [fName, lName];
-  const query = `SELECT * FROM  providers WHERE fName LOWER=$1 OR lName LOWER=$2 AND is_deleted=0`;
+  const { fName } = req.query;
+  const { lName } = req.query;
+  const values = [fName.toLowerCase() + "%", lName.toLowerCase() + "%"];
+  // (fName LIKE '%' || $1 || '%')
+  const query = `SELECT * FROM  providers WHERE fName LIKE $1 AND lName LIKE $2 ;`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

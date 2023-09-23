@@ -1,4 +1,4 @@
-const { response } = require("express");
+// const { response } = require("express");
 const client = require("../models/db");
 
 const createNewRole = (req, res) => {
