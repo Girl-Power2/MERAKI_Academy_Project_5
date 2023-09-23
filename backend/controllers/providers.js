@@ -1,6 +1,5 @@
 const client = require("../models/db");
 const providers_functions = {};
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 //=============== CREATE NEW PROVIDER ================
 providers_functions.CreateNewProvider = async (req, res) => {
