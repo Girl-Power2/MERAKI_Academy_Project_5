@@ -6,19 +6,17 @@ require("./models/db");
 //routers
 
 const role_permissionsRouter = require("./routes/role_permissions");
-
 const rolesRouter = require("./routes/roles");
 const permissionsRouter = require("./routes/permissions");
 const usersRouter = require("./routes/users");
-
 const categoriesRouter = require("./routes/categories");
 const orderRouter = require("./routes/orders");
-
 const providerRouter = require("./routes/providers");
-
 const serviceRouter = require("./routes/services");
-
 const historyRouter=require("./routes/history")
+const scheduleRouter=require("./routes/schedule")
+
+
 
 const app = express();
 
@@ -32,11 +30,11 @@ app.use("/roles", rolesRouter);
 app.use("/permissions", permissionsRouter);
 app.use("/users", usersRouter);
 app.use("/categories", categoriesRouter);
-
 app.use("/orders", orderRouter);
 app.use("/providers", providerRouter);
 app.use("/services", serviceRouter);
 app.use("/history",historyRouter)
+app.use("/schedules",scheduleRouter)
 // const PORT = 5000;
 
 
