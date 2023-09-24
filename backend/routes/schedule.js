@@ -1,0 +1,29 @@
+const express=require("express")
+const scheduleRouter=express.Router()
+const authentication=require("../middlewares/authentication")
+const authorization=require("../middlewares/authorization")
+const {schedule}=require("../controllers/schedule")
+scheduleRouter.post("/",schedule.createNewSchedule)
+scheduleRouter.put("/updateChosen/:id",schedule.UpdateChosen)
+scheduleRouter.put("/updateBooked/:id",schedule.UpdateBooked)
+scheduleRouter.put("/Booked/:id",schedule.UpdateIs_deletedIfBooked)
+scheduleRouter.get("/NotBooked/",schedule.getNotDeleted)
+scheduleRouter.get("/ByProvider/",schedule.getByProviderId)
+scheduleRouter.get("/CountBookedByProvider/",schedule.getBookedCountByProviderId)
+scheduleRouter.delete("/ByProvider/",schedule.deleteByProviderId)
+scheduleRouter.get("/all",schedule.getAllSchedules)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+module.exports=scheduleRouter
