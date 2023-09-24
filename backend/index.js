@@ -13,13 +13,10 @@ const categoriesRouter = require("./routes/categories");
 const orderRouter = require("./routes/orders");
 const providerRouter = require("./routes/providers");
 const serviceRouter = require("./routes/services");
-
-
-
 const reviewsRouter = require("./routes/reviews");
-
 const historyRouter=require("./routes/history")
-const scheduleRouter=require("./routes/schedule")
+const scheduleRouter=require("./routes/schedule");
+const infoRouter = require("./routes/provider_info");
 
 
 
@@ -41,6 +38,7 @@ app.use("/providers", providerRouter);
 app.use("/services", serviceRouter);
 app.use("/history",historyRouter)
 app.use("/schedules",scheduleRouter)
+app.use("/provider_info",infoRouter)
 // const PORT = 5000;
 
 

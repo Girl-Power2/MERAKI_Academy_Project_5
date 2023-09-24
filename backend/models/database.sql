@@ -153,10 +153,14 @@ ON DELETE CASCADE
 );
 
 CREATE TABLE provider_info(
-provider_id SERIAL PRIMARY KEY NOT NULL,
+provider_info_id SERIAL PRIMARY KEY NOT NULL,
 img TEXT,
 bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
+provider_id INT NOT NULL,
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 );
 
