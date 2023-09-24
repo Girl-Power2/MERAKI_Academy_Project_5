@@ -106,6 +106,7 @@ ON UPDATE CASCADE
 ON DELETE CASCADE,
 booked BOOLEAN DEFAULT false
 chosen BOOLEAN DEFAULT false
+is_viewed SMALLINT DEFAULT 1
 );
 
 create table reviews(
@@ -119,6 +120,7 @@ FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
 created_at TIMESTAMP DEFAULT NOW(),
+review TEXT,
 is_deleted SMALLINT DEFAULT  0
 
 );
@@ -152,10 +154,14 @@ ON DELETE CASCADE
 );
 
 CREATE TABLE provider_info(
-provider_id SERIAL PRIMARY KEY NOT NULL,
+provider_info_id SERIAL PRIMARY KEY NOT NULL,
 img TEXT,
 bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
+provider_id INT NOT NULL,
+FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 );
 
