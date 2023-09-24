@@ -91,7 +91,7 @@ services.getServiceByPriceAsc = async (req, res) => {
 services.getServiceByName = async (req, res) => {
   const { name } = req.query;
   const values = ["%" + name + "%"];
-  const query = `SELECT * FROM services WHERE service LIKE $1;`;
+  const query = `SELECT * FROM services WHERE service ILIKE $1;`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

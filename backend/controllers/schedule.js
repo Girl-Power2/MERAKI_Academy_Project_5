@@ -6,7 +6,7 @@ const schedule = {};
 schedule.createNewSchedule = async (req, res) => {
   const { provider_id, time_from, time_to } = req.body;
   const values = [provider_id, time_from, time_to];
-  const query = `INSERT INTO schedules (provider_id,time_from,time_to) VALUES ($1,$2,$3) RETURNING *`;
+  const query = `INSERT INTO schedules (provider_id,time_from,time_to) VALUES ($1,$2,$3) RETURNING *;`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -18,6 +18,7 @@ schedule.createNewSchedule = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       status: false,
       message: "Server Error",
@@ -30,7 +31,7 @@ schedule.createNewSchedule = async (req, res) => {
 schedule.UpdateChosen = async (req, res) => {
   const { id } = req.params;
   const values = [id];
-  const query = `UPDATE schedules SET chosen= NOT chosen WHERE schedule_id=$1 AND is_deleted=0 RETURNING *`;
+  const query = `UPDATE schedules SET chosen= NOT chosen ,is_viewed=0 WHERE schedule_id=$1 AND is_viewed=1 RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -47,6 +48,8 @@ schedule.UpdateChosen = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       status: false,
       message: "Server Error",
@@ -58,7 +61,7 @@ schedule.UpdateChosen = async (req, res) => {
 schedule.UpdateBooked = async (req, res) => {
   const { id } = req.params;
   const values = [id];
-  const query = `UPDATE schedules SET booked= NOT booked WHERE schedule_id=$1 AND is_deleted=0 RETURNING *`;
+  const query = `UPDATE schedules SET booked= NOT booked, is_viewed=0 WHERE schedule_id=$1 AND is_viewed=1 RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -74,6 +77,8 @@ schedule.UpdateBooked = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       status: false,
       message: "Server Error",
@@ -81,15 +86,16 @@ schedule.UpdateBooked = async (req, res) => {
     });
   }
 };
-// =====================update is deleted based on chosen=============
-schedule.UpdateIs_deletedIfBooked = async (req, res) => {
+
+
+// =====================update is deleted based on chosen & booked =============
+schedule.UpdateIs_viewedIfBooked = async (req, res) => {
   const { id } = req.params;
   const values = [id];
-  const query = `UPDATE schedules SET is_deleted=1  WHERE schedule_id=$1 AND booked=true AND chosen=true RETURNING *`;
+  const query = `UPDATE schedules SET is_viewed=1  WHERE schedule_id=$1 AND booked=true AND chosen=true RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
-      console.log(response);
       res.status(201).json({
         status: true,
         message: `Appointment booked successfully`,
@@ -115,13 +121,12 @@ schedule.UpdateIs_deletedIfBooked = async (req, res) => {
     });
   }
 };
-// =====================update is deleted based on booked=============
 
 // =====================get schedule by is_deleted=============
 schedule.getNotDeleted = async (req, res) => {
   const { provider_id } = req.query;
   const values = [provider_id];
-  const query = `SELECT * FROM schedules WHERE is_deleted=0 AND provider_id=$1`;
+  const query = `SELECT * FROM schedules WHERE is_viewed=0 AND provider_id=$1`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -154,7 +159,7 @@ schedule.getByProviderId = async (req, res) => {
     if (response.rowCount) {
       res.status(200).json({
         status: true,
-        message: "All appointments for the provider",
+        message: "All available appointments for the provider",
         data: response.rows,
       });
     } else {
@@ -164,6 +169,7 @@ schedule.getByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
+
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -175,10 +181,9 @@ schedule.getByProviderId = async (req, res) => {
 schedule.getBookedCountByProviderId = async (req, res) => {
   const { provider_id } = req.query;
   const values = [provider_id];
-  // SELECT COUNT(booked) AS booked from schedules WHERE booked=true AND provider_id=$1
   const query = `
-    SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.is_deleted,schedules.booked,schedules.chosen,COUNT(booked) AS bookedCount FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE booked=true AND schedules.provider_id=$1
-    group by providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.is_deleted,schedules.booked,schedules.chosen ;
+    SELECT providers.fName,providers.lName,providers.provider_id ,COUNT(schedules.schedule_id) AS bookedCount FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE booked=true AND schedules.provider_id=$1
+    group by providers.fName,providers.lName,providers.provider_id ;
     `;
   try {
     const response = await client.query(query, values);
@@ -195,6 +200,7 @@ schedule.getBookedCountByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
+
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -223,6 +229,7 @@ schedule.deleteByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
+
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -243,6 +250,7 @@ schedule.getAllSchedules = async (req, res) => {
       });
     }
   } catch (error) {
+
     res.status(500).json({
       status: false,
       message: " Server Error",
