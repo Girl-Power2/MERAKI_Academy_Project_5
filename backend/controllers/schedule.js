@@ -96,7 +96,6 @@ schedule.UpdateIs_viewedIfBooked = async (req, res) => {
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
-      console.log(response);
       res.status(201).json({
         status: true,
         message: `Appointment booked successfully`,
@@ -115,7 +114,6 @@ schedule.UpdateIs_viewedIfBooked = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       status: false,
       message: "Server Error",
@@ -144,7 +142,6 @@ schedule.getNotDeleted = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -172,7 +169,6 @@ schedule.getByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
       status: false,
@@ -204,7 +200,6 @@ schedule.getBookedCountByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
       status: false,
@@ -234,7 +229,6 @@ schedule.deleteByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
       status: false,
@@ -256,7 +250,6 @@ schedule.getAllSchedules = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
       status: false,
