@@ -9,6 +9,7 @@ serviceRouter.get("/byName",services.getServiceByName)
 serviceRouter.get("/price_DESC",services.getServiceByPriceDes)
 serviceRouter.get("/price_ASC",services.getServiceByPriceAsc)
 serviceRouter.get("/all",services.GetALLServices)
+serviceRouter.put("/:id",services.UpdateService)
 
 
 
