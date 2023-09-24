@@ -112,7 +112,7 @@ const getOrderByProviderId = (req, res) => {
     });
 };
 
-const updateOrederById = (req, res) => {
+const deleteOrederById = (req, res) => {
   const id = req.params.id;
   const query = `UPDATE orders
     SET is_deleted = 1
@@ -142,5 +142,5 @@ module.exports = {
   getOrderById,
   getOrderByUserId,
   getOrderByProviderId,
-  updateOrederById,
+  deleteOrederById,
 };

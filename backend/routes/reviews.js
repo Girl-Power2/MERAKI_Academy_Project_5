@@ -18,9 +18,9 @@ reviewsRouter.post(
   addNewReviews
 );
 reviewsRouter.get("/", authentication, getAllReview);
-reviewsRouter.get("/provider", authentication, getReviewByProviderId);
+reviewsRouter.get("/provider/:id", authentication, getReviewByProviderId);
 reviewsRouter.put(
-  "/:id",
+  "/user/:id",
   authentication,
   authorization("CREATE_CATEGORY"),
   updateReviewByUserId

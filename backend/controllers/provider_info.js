@@ -71,8 +71,33 @@ const updateInfoById = (req, res) => {
   });
 };
 
+
+const deleteInfoByProviderId=(req, res)=>{
+  const id =req.params.id
+  const query=`UPDATE provider_info
+  SET is_deleted = 1
+  WHERE provider_id=${id} RETURNING *;`
+  pool.query(query).then((result)=>{
+    res.status(201).json({
+      success: true,
+        message: `Information Deleted Successfully For Provider=${provider_id}`,
+        result: result.rows,
+    })
+  }).catch((err)=>{
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: err.message,
+    });
+  })
+}
+
+
+
+
 module.exports = {
   addInfo,
   getInfoByProviderId,
-  updateInfoById
+  updateInfoById,
+  deleteInfoByProviderId
 };
