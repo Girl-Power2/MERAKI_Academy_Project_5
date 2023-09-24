@@ -118,6 +118,7 @@ provider_id INT,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
+review TEXT,
 created_at TIMESTAMP DEFAULT NOW(),
 is_deleted SMALLINT DEFAULT  0
 

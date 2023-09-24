@@ -13,6 +13,11 @@ const categoriesRouter = require("./routes/categories");
 const orderRouter = require("./routes/orders");
 const providerRouter = require("./routes/providers");
 const serviceRouter = require("./routes/services");
+
+
+
+const reviewsRouter = require("./routes/reviews");
+
 const historyRouter=require("./routes/history")
 const scheduleRouter=require("./routes/schedule")
 
@@ -30,6 +35,7 @@ app.use("/roles", rolesRouter);
 app.use("/permissions", permissionsRouter);
 app.use("/users", usersRouter);
 app.use("/categories", categoriesRouter);
+app.use("/reviews" ,reviewsRouter)
 app.use("/orders", orderRouter);
 app.use("/providers", providerRouter);
 app.use("/services", serviceRouter);
