@@ -135,4 +135,35 @@ services.GetALLServices = (req, res) => {
       });
     });
 };
+// 
+services.UpdateService=async(req,res)=>{
+  const provider_id = req.token.providerId;
+  const { service,price_per_hour } = req.body;
+  const id = req.params.id;
+  const values = [service || null,price_per_hour || null,provider_id,id];
+  const query = `UPDATE services SET service=COALESCE($1,service) ,price_per_hour=COALESCE($2,price_per_hour) WHERE serrvice_id=$4 AND provider_id=$3 RETURNING *;`;
+  try {
+    const result = await client.query(query, values);
+    if (result.rowCount) {
+      res.status(200).json({
+        success: true,
+        message: "Service updated successfully",
+        data: result.rows,
+      });
+    }
+    else{
+      res.status(404).json({
+          status:false,
+          message:`Service not found `,
+          error:error.message
+      })
+    }
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      err: err.message,
+    });
+  }
+  };
 module.exports = { services };
