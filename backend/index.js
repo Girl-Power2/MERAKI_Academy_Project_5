@@ -18,7 +18,8 @@ const providerRouter = require("./routes/providers");
 
 const serviceRouter = require("./routes/services");
 
-const historyRouter=require("./routes/history")
+const historyRouter=require("./routes/history");
+const reviewsRouter = require("./routes/reviews");
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.use("/roles", rolesRouter);
 app.use("/permissions", permissionsRouter);
 app.use("/users", usersRouter);
 app.use("/categories", categoriesRouter);
-
+app.use("/reviews" ,reviewsRouter)
 app.use("/orders", orderRouter);
 app.use("/providers", providerRouter);
 app.use("/services", serviceRouter);
