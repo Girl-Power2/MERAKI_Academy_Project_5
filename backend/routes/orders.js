@@ -6,6 +6,9 @@ const {
   getOrderByUserId,
   getOrderByProviderId,
   deleteOrederById,
+  updateOrederById,
+  getAllOrderDone,
+  getAllOrderPending,
 } = require("../controllers/orders");
 
 const authentication = require("../middlewares/authentication");
@@ -28,4 +31,13 @@ orderRouter.delete(
   authorization("CREATE_CATEGORY"),
   deleteOrederById
 );
+
+orderRouter.put(
+  "/:id",
+  authentication,
+  authorization("CREATE_CATEGORY"),
+  updateOrederById
+);
+orderRouter.get("/done",authentication,getAllOrderDone)
+orderRouter.get("/pending",authentication,getAllOrderPending)
 module.exports = orderRouter;

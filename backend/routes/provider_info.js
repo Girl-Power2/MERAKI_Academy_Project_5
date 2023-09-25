@@ -11,17 +11,17 @@ const {
   deleteInfoByProviderId,
 } = require("../controllers/provider_info");
 
-infoRouter.post("/", authentication, authorization("CREATE_CATEGORY"), addInfo);
+infoRouter.post("/", authentication,addInfo);
 infoRouter.get("/:id", authentication, getInfoByProviderId);
 infoRouter.put(
   "/:id",
   authentication,
-  authorization("CREAE_CATEGORY"),
+  authorization("ADD_SERVICES"),
   updateInfoById
 );
 infoRouter.delete(
   "/:id",
   authentication,
-  authorization("CREATE_CATEGORY", deleteInfoByProviderId)
-);
+  authorization("ADD_SERVICES"), deleteInfoByProviderId)
+
 module.exports = infoRouter;

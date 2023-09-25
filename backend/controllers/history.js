@@ -27,7 +27,8 @@ const addHistory = (req, res) => {
 
 const getHistoryByUserId = (req, res) => {
   const user_id = req.token.userId;
-  const query = `SELECT * FROM medical_history WHERE user_id=${user_id}`;
+  const query = `SELECT * FROM medical_history INNER JOIN users
+  ON medical_history.user_id = users.user_id WHERE medical_history.user_id=${user_id}`;
 
   pool
     .query(query)
@@ -49,14 +50,15 @@ const getHistoryByUserId = (req, res) => {
 
 const getHistoryById = (req, res) => {
   const id = req.params.id;
-  const user_id = req.token.userId;
-  const query = `SELECT * FROM medical_history WHERE user_id=${user_id} AND medical_history_id=${id}`;
+  // const user_id = req.token.userId;
+  const query = `SELECT * FROM medical_history INNER JOIN users
+  ON medical_history.user_id = users.user_id WHERE medical_history.user_id=${id} `;
   pool
     .query(query)
     .then((result) => {
       res.status(201).json({
         success: true,
-        message: `medical_history with user_id=${user_id} and medical_history_id=${id}`,
+        message: `medical_history with user_id=${id}`,
         result: result.rows,
       });
     })

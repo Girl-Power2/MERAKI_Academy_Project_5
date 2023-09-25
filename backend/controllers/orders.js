@@ -27,7 +27,8 @@ const creatNewOrder = (req, res) => {
 
 const getAllOrders = (req, res) => {
   const id = req.token.userId
-  const query = `SELECT * FROM orders WHERE user_id=${id}`;
+  const query = `SELECT * FROM orders  INNER JOIN users
+  ON orders.user_id = users.user_id WHERE orders.user_id=${id}`;
 
   pool
     .query(query)
@@ -49,7 +50,8 @@ const getAllOrders = (req, res) => {
 
 const getOrderById = (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM orders WHERE order_id=${id}`;
+  const query = `SELECT * FROM orders INNER JOIN users
+  ON orders.user_id = users.user_id WHERE orders.order_id=${id}`;
   pool
     .query(query)
     .then((result) => {
@@ -71,7 +73,8 @@ const getOrderById = (req, res) => {
 const getOrderByUserId = (req, res) => {
   const id =req.params.id
   const user_id = req.token.userId;
-  const query = `SELECT * FROM orders WHERE user_id=${user_id} AND order_id=${id}`;
+  const query = `SELECT * FROM orders INNER JOIN users
+  ON orders.user_id = users.user_id INNER JOIN providers ON orders.provider_id = providers.provider_id WHERE orders.user_id=${user_id} AND orders.order_id=${id}`;
   pool
     .query(query)
     .then((result) => {
@@ -93,13 +96,86 @@ const getOrderByUserId = (req, res) => {
 
 const getOrderByProviderId = (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM orders WHERE provider_id=${id}`;
+  const query = `SELECT * FROM orders INNER JOIN users
+  ON orders.user_id = users.user_id WHERE provider_id=${id}`;
   pool
     .query(query)
     .then((result) => {
       res.status(201).json({
         success: true,
         message: `provider_id = ${id} `,
+        result: result.rows,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        error: err.message,
+      });
+    });
+};
+
+const getAllOrderDone= (req, res) => {
+
+  const query = `SELECT * FROM orders INNER JOIN users
+  ON orders.user_id = users.user_id WHERE orders.status='Done'`;
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `All Previus Orders  `,
+        result: result.rows,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        error: err.message,
+      });
+    });
+};
+
+const getAllOrderPending= (req, res) => {
+
+  const query = `SELECT * FROM orders INNER JOIN users
+  ON orders.user_id = users.user_id WHERE orders.status='pending'`;
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `All Orders `,
+        result: result.rows,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        error: err.message,
+      });
+    });
+};
+
+
+
+
+
+const updateOrederById = (req, res) => {
+  const id = req.params.id;
+  const query = `UPDATE orders
+    SET status = 'Done'
+    WHERE order_id=${id} RETURNING *;`;
+
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `order was updated `,
         result: result.rows,
       });
     })
@@ -143,4 +219,7 @@ module.exports = {
   getOrderByUserId,
   getOrderByProviderId,
   deleteOrederById,
+  updateOrederById,
+  getAllOrderDone,
+  getAllOrderPending
 };
