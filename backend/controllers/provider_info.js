@@ -2,7 +2,7 @@ const pool = require("../models/db");
 
 const addInfo = (req, res) => {
   const { img, bio, qualifications } = req.body;
-  const provider_id = req.token.userId;
+  const provider_id = req.token.providerId;
   const query = `INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ($1,$2,$3,$4) RETURNING *`;
   const value = [img, bio, qualifications, provider_id];
   pool
@@ -49,7 +49,7 @@ const getInfoByProviderId = (req, res) => {
 
 const updateInfoById = (req, res) => {
   const id = req.params.id;
-  const provider_id = req.token.userId;
+  const provider_id = req.token.providerId;
   const { img, bio, qualifications } = req.body;
   const query = `UPDATE provider_info
     SET img=COALESCE($1,img), bio=COALESCE($2,bio), qualifications=COALESCE($3,qualifications)
