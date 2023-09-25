@@ -121,7 +121,7 @@ const Provider_login = (req, res) => {
           if (err) res.json(err);
           if (response) {
             const payload = {
-              userId: result.rows[0].provider_id,
+              providerId: result.rows[0].provider_id,
               city: result.rows[0].city,
               role: result.rows[0].role_id,
             };
@@ -135,7 +135,7 @@ const Provider_login = (req, res) => {
                 token,
                 success: true,
                 message: `Valid login credentials`,
-                userId: result.rows[0].provider_id,
+                providerId: result.rows[0].provider_id,
               });
             } else {
               throw Error;
