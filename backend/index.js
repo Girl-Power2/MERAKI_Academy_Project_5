@@ -41,7 +41,8 @@ app.use("/schedules",scheduleRouter)
 app.use("/provider_info",infoRouter)
 // const PORT = 5000;
 
-
+// Handles any other endpoints [unassigned - endpoints]
+app.use("*", (req, res) => res.status(404).json("NO content at this path"));
 
 
 
