@@ -25,9 +25,9 @@ const addInfo = (req, res) => {
 
 const getInfoByProviderId = (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM provider-info INNER JOIN providers
+  const query = `SELECT * FROM provider_info INNER JOIN providers
     ON provider_info.provider_id = providers.provider_id
-    WHERE provider_id=${id}`;
+    WHERE provider_info.provider_id=${id}`;
 
   pool
     .query(query)
@@ -74,16 +74,18 @@ const updateInfoById = (req, res) => {
 
 const deleteInfoByProviderId=(req, res)=>{
   const id =req.params.id
+  const provider_id =req.token.userId
   const query=`UPDATE provider_info
   SET is_deleted = 1
-  WHERE provider_id=${id} RETURNING *;`
+  WHERE provider_info_id=${id} AND provider_id=${provider_id} RETURNING *;`
   pool.query(query).then((result)=>{
     res.status(201).json({
       success: true,
-        message: `Information Deleted Successfully For Provider=${provider_id}`,
+        message: `Information Deleted Successfully For Provider_info=${provider_id}`,
         result: result.rows,
     })
   }).catch((err)=>{
+    console.log(err);
     res.status(500).json({
       success: false,
       message: "Server Error",
@@ -101,3 +103,6 @@ module.exports = {
   updateInfoById,
   deleteInfoByProviderId
 };
+
+
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImNpdHkiOiJhbW1hbiIsInJvbGUiOjMsImlhdCI6MTY5NTY0MDQ1MiwiZXhwIjoxNjk1NzI2ODUyfQ.RS3FeteJEm9lXV_yea4JJugc-WX2dBtPjU9zyJLI13w
