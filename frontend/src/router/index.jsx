@@ -6,6 +6,8 @@ import LoginProvder from "../pages/login_provider/LoginProvier";
 import LoginUser from "../pages/login_user/LoginUser";
 import RegisterUser from "../pages/register_users/RegisterUser";
 import Register from "../pages/Register/Register";
+import About from "../pages/AboutUs/About";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -14,28 +16,33 @@ export const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+        children: [
+          {
+            path: "/aboutUs",
+            element: <About />,
+          },
+        ],
       },
+
+      {
+        path: "/aboutUs",
+        element: <About />,
+      },
+
       {
         path: "/register",
         element: <Register />,
-
-        
       },
 
-      
-      
       {
         path: "/provider",
         element: <RegisterProvider />,
       },
       {
         path: "/user",
-        element: <RegisterUser/>,
+        element: <RegisterUser />,
       },
       { path: "/login", element: <LoginUser /> },
-
     ],
-
   },
- 
 ]);

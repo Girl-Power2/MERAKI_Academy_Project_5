@@ -1,0 +1,13 @@
+.homeCard{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin:5rem;
+    gap:5px;
+
+
+}
+@media (max-width: 700px) {
+    .homeCard {
+        grid-template-rows: 1fr 1fr 1fr;
+      }
+    }
