@@ -115,7 +115,7 @@ const Provider_login = (req, res) => {
   client
     .query(query, data)
     .then((result) => {
-      console.log(result.rows[0].user_id);
+      // console.log(result.rows[0].user_id);
       if (result.rows.length) {
         bcrypt.compare(password, result.rows[0].password, (err, response) => {
           if (err) res.json(err);

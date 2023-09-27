@@ -1,4 +1,5 @@
 // import React from 'react'
+
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -9,11 +10,13 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+
 function transform(value) {
   return value <= 1 && value !== 0 ? `${value * 100}%` : value;
 }
 
 const bull = (
+
   <Box
     component="span"
     sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
@@ -51,6 +54,7 @@ export default function Register() {
         
       >
       <CardContent>
+
           <CardMedia
             component="img"
             height="194"
@@ -63,15 +67,10 @@ export default function Register() {
           </Typography>
         </CardContent>
         <CardActions>
+
           <NavLink to="/provider">Join Us</NavLink>
-          {/* <Button
-            size="large"
-            onClick={() => {
-              navigate("provider");
-            }}
-          >
-            Join Us
-          </Button> */}
+         
+
         </CardActions>
         
       </Card>
@@ -112,22 +111,24 @@ export default function Register() {
           </Typography>
         </CardContent>
         <CardActions>
+
           <NavLink to="user">Join Us</NavLink>
-          <Button
-            size="large"
-            onClick={() => {
-              navigate("/user");
-            }}
-          >
-            Register Now
-          </Button>
+         
+
         </CardActions>
         
       </Card>
       
-     
 
-      {/* <Outlet /> */}
+      
+      
+      
+      
+       </>
+    );
+  }
+
+
     </>
   );
 }

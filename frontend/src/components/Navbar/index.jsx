@@ -21,7 +21,9 @@ const Navbar = () => {
   const [showBasic, setShowBasic] = useState(false);
   return (
     <div>
+
       <MDBNavbar expand="md" light bgColor="" aria-current="true">
+
         <MDBContainer fluid>
           <MDBNavbarBrand href="#">
             <img
