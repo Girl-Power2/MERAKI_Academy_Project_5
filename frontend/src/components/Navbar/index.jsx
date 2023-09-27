@@ -21,11 +21,11 @@ const Navbar = () => {
   const [showBasic, setShowBasic] = useState(false);
   return (
     <div>
-      <MDBNavbar expand="xxl" light bgColor="" aria-current="true">
+      <MDBNavbar expand="md" light bgColor="" aria-current="true">
         <MDBContainer fluid>
           <MDBNavbarBrand href="#">
             <img
-              src="./assets\logo.jpg"
+              src="./assets/logo.jpg"
               height="70"
               width="90"
               alt=""
@@ -67,11 +67,11 @@ const Navbar = () => {
                     Join Us
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    <MDBDropdownItem link>
-                      <NavLink to="register">Register</NavLink>
+                    <MDBDropdownItem >
+                      <NavLink to="/register">Register</NavLink>
                     </MDBDropdownItem>
-                    <MDBDropdownItem link>
-                      <NavLink to="login">Login</NavLink>
+                    <MDBDropdownItem >
+                      <NavLink to="/login">Login</NavLink>
                     </MDBDropdownItem>
                   </MDBDropdownMenu>
                 </MDBDropdown>
