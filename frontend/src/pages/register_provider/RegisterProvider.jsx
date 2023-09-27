@@ -55,13 +55,13 @@ export default function RegisterProvider() {
     birthDate: "",
     city: "",
     role_id: 3,
-    category_id: 0,
-    gender:"female"
+    category_id: 7,
+    gender: "female",
   });
   const [msg, setMsg] = useState("");
-
+  const [category, setCategory] = useState([]);
   const handleChange = (e) => {
-    setData({...data,category_id:e.target.value} );
+    setData({ ...data, category_id: e.target.value });
   };
   const result = useLoaderData;
   // const handleSubmit = (event) => {
@@ -73,18 +73,32 @@ export default function RegisterProvider() {
   //   });
   // };
 
+  const getCategory = () => {
+    axios
+      .get("http://localhost:5000/categories/")
+      .then((result) => {
+        console.log(result.data);
+        setCategory(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getCategory();
+  }, []);
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-        <Grid
+        {/* <Grid
           item
           xs={false}
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              "url(./)",
+            backgroundImage: "https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v=1515074624&width=1024",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -93,24 +107,20 @@ export default function RegisterProvider() {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-        />
-         {/* <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage:
-              "url(./Lifesavers - One on One.png)",
-            backgroundRepeat: "no-repeat",
-            // backgroundColor: (t) =>
-            //   t.palette.mode === "light"
-            //     ? t.palette.grey[50]
-            //     : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
         /> */}
+       <Grid
+  item
+  xs={false}
+  sm={4}
+  md={7}
+  sx={{
+    backgroundImage: 'url(https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v=1515074624&width=1024)',     backgroundRepeat: 'no-repeat',
+    backgroundColor: (t) =>
+      t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  }}
+/>
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <Box
             sx={{
@@ -141,10 +151,9 @@ export default function RegisterProvider() {
                 label="First Name"
                 name="First Name"
                 autoFocus
-                onChange={(e)=>{
-                
-setData({...data,fName:e.target.value})
-               }}
+                onChange={(e) => {
+                  setData({ ...data, fName: e.target.value });
+                }}
               />
               <TextField
                 margin="normal"
@@ -154,10 +163,9 @@ setData({...data,fName:e.target.value})
                 label="Last Name"
                 name="Last Name"
                 autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,lName:e.target.value})
-                                 }}
+                onChange={(e) => {
+                  setData({ ...data, lName: e.target.value });
+                }}
               />
               <TextField
                 margin="normal"
@@ -167,10 +175,9 @@ setData({...data,fName:e.target.value})
                 label="City"
                 name="City"
                 autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,city:e.target.value})
-                                 }}
+                onChange={(e) => {
+                  setData({ ...data, city: e.target.value });
+                }}
               />
               <TextField
                 margin="normal"
@@ -180,10 +187,9 @@ setData({...data,fName:e.target.value})
                 label="Birth Date 1995-5-25 "
                 name="Birth Date"
                 autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,birthDate:e.target.value})
-                                 }}
+                onChange={(e) => {
+                  setData({ ...data, birthDate: e.target.value });
+                }}
               />
               <TextField
                 margin="normal"
@@ -193,10 +199,9 @@ setData({...data,fName:e.target.value})
                 label="Phone Number"
                 name="Phone Number"
                 autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,phoneNumber:e.target.value})
-                                 }}
+                onChange={(e) => {
+                  setData({ ...data, phoneNumber: e.target.value });
+                }}
               />
               <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
@@ -206,33 +211,30 @@ setData({...data,fName:e.target.value})
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                   value={data.category_id}
+                    value={data.category_id}
                     label="Category"
                     name="Category"
-                    onChange={(e)=>{
-                setData((prev)=>{
-                  {category_id:e.target.value}
-                })
-                   
-                                 }}
+                    onChange={(e) => {
+                      setData((prev)=>
+                      {return { ...prev, category_id:parseInt( e.target.value) }
+                    })}}
                   >
+                    {category &&
+                      category.map((categ, i) => {
+                        return (
+                          
+                            
+                            <MenuItem key={i} value={categ.category_id}>
+                              {categ.category}
+                            </MenuItem>
+                         
+                        );
+                      })}
 
-                    <MenuItem value={1} >General Medicine</MenuItem>
-                    <MenuItem value={2}>Nursing</MenuItem>
-                    <MenuItem value={3}>Physiotherapy</MenuItem>
-                    <MenuItem value={4}>Occupational Therapy</MenuItem>
-                    <MenuItem value={5}>Speech Therapy</MenuItem>
-                    <MenuItem value={6}>Babysitting</MenuItem>
-
-
+                   
                   </Select>
                 </FormControl>
-                              </Box>
-
-
-
-             
-
+              </Box>
 
               <TextField
                 margin="normal"
@@ -243,10 +245,9 @@ setData({...data,fName:e.target.value})
                 name="email"
                 autoComplete="email"
                 autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,email:e.target.value})
-                                }}
+                onChange={(e) => {
+                  setData({ ...data, email: e.target.value });
+                }}
               />
               <TextField
                 margin="normal"
@@ -257,36 +258,30 @@ setData({...data,fName:e.target.value})
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                onChange={(e)=>{
-                
-                  setData({...data,password:e.target.value})
-                                }}
+                onChange={(e) => {
+                  setData({ ...data, password: e.target.value });
+                  console.log(data);
+                }}
               />
-                               <Box sx={{ minWidth: 120 }}>
+              <Box sx={{ minWidth: 120 }}>
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Gender
-                  </InputLabel>
+                  <InputLabel id="demo-simple-select-label">Gender</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                   value={data.gender}
+                    value={data.gender}
                     label="Gender"
                     name="Gender"
-                    onChange={(e)=>{
-                
-                      setData({...data,gender:e.target.value})
-                                 console.log(data);    }}
+                    onChange={(e) => {
+                      setData({ ...data, gender: e.target.value });
+                      console.log(data);
+                    }}
                   >
-
-                    <MenuItem value="male" >Male</MenuItem>
+                    <MenuItem value="male">Male</MenuItem>
                     <MenuItem value="female">Female</MenuItem>
-                    
-
-
                   </Select>
                 </FormControl>
-                              </Box>
+              </Box>
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
@@ -296,46 +291,44 @@ setData({...data,fName:e.target.value})
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
-                onClick={()=>{
-                  axios.post("http://localhost:5000/providers/",{fName:data.fName,
-                  lName:data.lName,
-                  birthDate:data.birthDate,
-                  gender:data.gender,
-                  email:data.email,
-                  password:data.password,
-                  city:data.city,
-                  phoneNumber:data.phoneNumber,
-                  role_id:data.role_id,
-                  category_id:data.category_id})
-                  .then((result) => {
-                    console.log(result.data);
-                    setMsg({
-                      success: true,
-                      msg: result.data?.message,
+                onClick={() => {
+                  axios
+                    .post("http://localhost:5000/providers/", {
+                      fName: data.fName,
+                      lName: data.lName,
+                      birthDate: data.birthDate,
+                      gender: data.gender,
+                      email: data.email,
+                      password: data.password,
+                      city: data.city,
+                      phoneNumber: data.phoneNumber,
+                      role_id: data.role_id,
+                      category_id: data.category_id,
+                    })
+                    .then((result) => {
+                      console.log(result.data);
+                      setMsg({
+                        success: true,
+                        msg: result.data?.message,
+                      });
+                    })
+                    .catch((error) => {
+                      console.log(error);
+                      // setMsg(error.response.data.message);
+                      setMsg({
+                        success: false,
+                        msg: error?.response?.data.message,
+                      });
                     });
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                    // setMsg(error.response.data.message);
-                    setMsg({
-                      success: false,
-                      msg: error?.response?.data.message,
-                    });
-                  });
                 }}
               >
                 Register
               </Button>
               <p className={`${msg.success ? "pass" : "fail"}`}>{msg.msg}</p>
               <p className={`${msg.success ? "pass" : "fail"}`}>
-            {msg.success && (
-              <span>
-                {msg.msg}
-              </span>
-            )}
-          </p>
+                {msg.success && <span>{msg.msg}</span>}
+              </p>
               <Grid container>
-    
                 <Grid item>
                   <Link href="#" variant="body2">
                     {"Have an account? Login"}

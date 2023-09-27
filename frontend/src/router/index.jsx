@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
       },
 
       
-      },
+      
       {
         path: "/provider",
         element: <RegisterProvider />,
