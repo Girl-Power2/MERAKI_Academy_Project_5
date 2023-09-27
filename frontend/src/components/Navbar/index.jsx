@@ -25,9 +25,9 @@ const Navbar = () => {
         <MDBContainer fluid>
           <MDBNavbarBrand href="#">
             <img
-              src="https://scontent.famm11-1.fna.fbcdn.net/v/t39.30808-6/282161491_102079489189457_679108067387004716_n.png?stp=dst-png_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=52f669&_nc_ohc=zEm817ld6EEAX_nb-cF&_nc_ht=scontent.famm11-1.fna&oh=00_AfBRUxv3m9oW4q0bEnwJELp1XJAmaHw1XH1cZsej1uie6w&oe=65182ED6"
-              height="50"
-              width="150"
+              src="./assets\logo.jpg"
+              height="70"
+              width="90"
               alt=""
               loading="lazy"
             />

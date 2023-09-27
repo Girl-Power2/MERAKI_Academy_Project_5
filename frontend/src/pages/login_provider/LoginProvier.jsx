@@ -64,7 +64,7 @@ const history =useNavigate()
 
             <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg' onClick={()=>{
               axios.post(`http://localhost:5000/users/loginProvider/`,{email,password}).then((result)=>{
-                setMessage({success:true,message:"login successfully"});
+                setMessage({success:true,message:"logged in successfully"});
         console.log(result.data);
         dispatch(setLogin(result.data.token))
         dispatch(setProviderId(result.data.providerId))
@@ -88,7 +88,7 @@ const history =useNavigate()
             )}
           </p>
             <p className='ms-5'>Don't have an account? <a href="#!" class="link-info" onClick={()=>{
-              history("/register")
+              history("/register/provider")
             }}>Register here</a></p>
 
           </div>
