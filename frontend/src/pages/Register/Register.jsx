@@ -28,7 +28,7 @@ const bull = (
 export default function Register() {
   const navigate = useNavigate();
   return (
-    <div className="card">
+    <div className="cards">
       <Card
         sx={{
           width: 'auto',
