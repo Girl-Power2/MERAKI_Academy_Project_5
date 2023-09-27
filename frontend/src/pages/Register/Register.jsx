@@ -9,7 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import "./style.css"
 
 function transform(value) {
   return value <= 1 && value !== 0 ? `${value * 100}%` : value;
@@ -28,7 +28,7 @@ const bull = (
 export default function Register() {
   const navigate = useNavigate();
   return (
-    <>
+    <div className="card">
       <Card
         sx={{
           width: 'auto',
@@ -112,7 +112,7 @@ export default function Register() {
         </CardContent>
         <CardActions>
 
-          <NavLink to="user">Join Us</NavLink>
+          <NavLink to="/user">Register Now</NavLink>
          
 
         </CardActions>
@@ -124,11 +124,10 @@ export default function Register() {
       
       
       
-       </>
+       </div>
     );
   }
 
 
-    </>
-  );
-}
+    
+ 
