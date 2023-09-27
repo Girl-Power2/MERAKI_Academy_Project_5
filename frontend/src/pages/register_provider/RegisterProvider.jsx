@@ -84,7 +84,7 @@ export default function RegisterProvider() {
           md={7}
           sx={{
             backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
+              "url(./)",
             backgroundRepeat: "no-repeat",
             backgroundColor: (t) =>
               t.palette.mode === "light"
@@ -210,9 +210,11 @@ setData({...data,fName:e.target.value})
                     label="Category"
                     name="Category"
                     onChange={(e)=>{
-                
-                      setData({...data,category_id:e.target.value})
-                                 console.log(data);    }}
+                setData((prev)=>{
+                  {category_id:e.target.value}
+                })
+                   
+                                 }}
                   >
 
                     <MenuItem value={1} >General Medicine</MenuItem>
