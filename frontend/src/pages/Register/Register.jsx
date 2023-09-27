@@ -1,5 +1,5 @@
 // import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet ,useNavigate } from 'react-router-dom'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -28,6 +28,7 @@ const bull = (
   );
   
   export default function Register() {
+    const history = useNavigate()
     return (
         <>
       <Card sx={{ width: 1/3, ml: 20 ,mt:'5rem',boxShadow: 10,borderRadius: 2, border: 1 }}>
@@ -44,8 +45,12 @@ const bull = (
        
         </CardContent>
         <CardActions>
-        <NavLink to="register/provider">Join Us</NavLink>
-          {/* <Button size="large">Join Us</Button> */}
+        {/* <NavLink to="register/provider" onClick={()=>{
+          history("register/provider")
+        }}>Join Us</NavLink> */}
+          <Button size="large" onClick={()=>{
+          history("/register/provider")
+        }}>Join Us</Button>
         </CardActions>
         
       </Card>
@@ -63,7 +68,9 @@ const bull = (
        
         </CardContent>
         <CardActions>
-        <NavLink to="register/user">Register Now</NavLink>
+        <NavLink to="register/user" onClick={()=>{
+          history("register/user")
+        }}>Register Now</NavLink>
           {/* <Button size="large">Join Us</Button> */}
         </CardActions>
         
@@ -72,7 +79,7 @@ const bull = (
       
       
       
-      <Outlet/>
+      
        </>
     );
   }

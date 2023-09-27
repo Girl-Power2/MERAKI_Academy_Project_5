@@ -18,18 +18,18 @@ export const router = createBrowserRouter([
       {
         path: "register",
         element: <Register />,
-        children: [
-          {
-            path: "register/provider",
-            element: <RegisterProvider />,
-          },
-          {
-            path: "register/user",
-            element: <RegisterUser/>,
-          },
-        ],
+        
       },
-      { path: "login", element: <LoginUser /> },
     ],
+
   },
+  {
+    path: "register/provider",
+    element: <RegisterProvider />,
+  },
+  {
+    path: "register/user",
+    element: <RegisterUser />,
+  },
+  { path: "login", element: <LoginUser /> },
 ]);
