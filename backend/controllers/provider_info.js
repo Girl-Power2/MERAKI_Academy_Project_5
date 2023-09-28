@@ -47,6 +47,34 @@ const getInfoByProviderId = (req, res) => {
     });
 };
 
+const getInfoByCategory = (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT categories.category ,providers.lname ,providers.fname, providers.provider_id , provider_info.img FROM provider_info INNER JOIN providers
+  ON provider_info.provider_id = providers.provider_id  INNER JOIN categories ON providers.category_id =categories.category_id
+WHERE providers.category_id=${id} `;
+
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `Information For Category=${id}`,
+        result: result.rows,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        error: err.message,
+      });
+    });
+};
+
+
+
+
+
 const updateInfoById = (req, res) => {
   const id = req.params.id;
   const provider_id = req.token.providerId;
@@ -101,7 +129,8 @@ module.exports = {
   addInfo,
   getInfoByProviderId,
   updateInfoById,
-  deleteInfoByProviderId
+  deleteInfoByProviderId,
+  getInfoByCategory
 };
 
 
