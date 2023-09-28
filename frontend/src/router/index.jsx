@@ -8,6 +8,8 @@ import RegisterUser from "../pages/register_users/RegisterUser";
 import Register from "../pages/Register/Register";
 import About from "../pages/AboutUs/About";
 import Login from "../pages/login/Login";
+import Categories from "../components/categories/Categories";
+import Provider from "../components/providers/Provider";
 
 export const router = createBrowserRouter([
   {
@@ -46,7 +48,11 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/loginUser", element: <LoginUser /> },
       { path: "/loginProvider", element: <LoginProvder /> },
-
+      {
+        path: "/category",
+        element: <Categories />,
+      },
+      { path: "/provider/:id", element: <Provider /> },
     ],
   },
 ]);
