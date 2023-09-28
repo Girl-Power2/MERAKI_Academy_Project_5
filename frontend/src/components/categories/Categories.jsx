@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./style.css"
 import { MDBSpinner } from 'mdb-react-ui-kit';
+
 const Categories = () => {
   const [category, setCategory] = useState([]);
   const history =useNavigate()
@@ -39,6 +40,7 @@ if(category.length == 0){
           </div>
         );
       })}
+      
     </div>
   );
 };
