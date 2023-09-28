@@ -9,6 +9,7 @@ const {
   getInfoByProviderId,
   updateInfoById,
   deleteInfoByProviderId,
+  getInfoByCategory,
 } = require("../controllers/provider_info");
 
 infoRouter.post("/", authentication,addInfo);
@@ -23,5 +24,7 @@ infoRouter.delete(
   "/:id",
   authentication,
   authorization("ADD_SERVICES"), deleteInfoByProviderId)
+
+infoRouter.get("/category/:id",authentication,getInfoByCategory)
 
 module.exports = infoRouter;
