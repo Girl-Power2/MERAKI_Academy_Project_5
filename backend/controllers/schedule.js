@@ -87,7 +87,6 @@ schedule.UpdateBooked = async (req, res) => {
   }
 };
 
-
 // =====================update is deleted based on chosen & booked =============
 schedule.UpdateIs_viewedIfBooked = async (req, res) => {
   const { id } = req.params;
@@ -169,7 +168,6 @@ schedule.getByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -200,7 +198,6 @@ schedule.getBookedCountByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -229,7 +226,6 @@ schedule.deleteByProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-
     res.status(500).json({
       status: false,
       message: " Server Error",
@@ -250,7 +246,6 @@ schedule.getAllSchedules = async (req, res) => {
       });
     }
   } catch (error) {
-
     res.status(500).json({
       status: false,
       message: " Server Error",

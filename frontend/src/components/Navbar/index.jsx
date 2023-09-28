@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   MDBContainer,
   MDBNavbar,
@@ -25,15 +26,16 @@ const Navbar = () => {
       <MDBNavbar expand="md" light bgColor="" aria-current="true">
 
         <MDBContainer fluid>
-          <MDBNavbarBrand href="#">
-            <img
+        <NavLink to="/"> <img
               src="./assets/logo.jpg"
               height="70"
               width="90"
               alt=""
               loading="lazy"
-            />
-          </MDBNavbarBrand>
+            /></NavLink>
+          {/* <MDBNavbarBrand href="#">
+            
+          </MDBNavbarBrand> */}
 
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
@@ -47,20 +49,16 @@ const Navbar = () => {
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
               <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="#">
                   <NavLink to="/"> Home</NavLink>
-                </MDBNavbarLink>
               </MDBNavbarItem>
 
               <MDBNavbarItem>
-                <MDBNavbarLink href="#">
+               
                   <NavLink to="/aboutUs">About Us</NavLink>
-                </MDBNavbarLink>
+            
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink href="#">
                   <NavLink to="profile">Profile</NavLink>
-                </MDBNavbarLink>
               </MDBNavbarItem>
 
               <MDBNavbarItem>

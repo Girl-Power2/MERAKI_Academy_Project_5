@@ -27,7 +27,7 @@ const client = new Client({
   user: "postgres",
   password: "0000",
   port: "5432",
-  database: "cureApp_5",
+  database: "cureapp_5",
 });
 client
   .connect()
