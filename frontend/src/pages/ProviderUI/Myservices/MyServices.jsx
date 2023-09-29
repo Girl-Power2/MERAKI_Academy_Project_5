@@ -12,32 +12,35 @@ const MyServices = () => {
        }
     })
     const [services, setServices] = useState([]);
-
+const getservices=()=>{
+    const provider_id=providerId
+    // console.log(provider_id);
+  axios
+    .get(`http://localhost:5000/services/byId/${provider_id}`,  {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    .then((result) => {
+      // console.log(result.data);
+      // dispatchEvent(setServices(result.data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
     // const history =useNavigate()
     useEffect(() => {
-        const id=providerId
-      axios
-        .get(`http://localhost:5000/byId/${id}`,  {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-        .then((result) => {
-          console.log(result.data);
-          setServices(result.data.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+        getservices()
     }, []);
   
 
   
-  
+  console.log(services);
     return (
         <>
 {services? <div className="collection">
-        {services.map((service, i) => {
+        {services?.map((service, i) => {
           return (
             <div key={i} className="container">
               
