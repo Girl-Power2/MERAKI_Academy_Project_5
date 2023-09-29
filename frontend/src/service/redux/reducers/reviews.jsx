@@ -10,7 +10,7 @@ export const reveiwSlice =createSlice({
             state.reviews = action.payload;
           },
           addReview: (state, action) => {
-            state.reviews.push(action.payload);
+           state.reviews.push(action.payload);
           },
           updateReview: (state, action) => {
            state.reviews= state.reviews.forEach((review) => {
@@ -22,7 +22,7 @@ export const reveiwSlice =createSlice({
           },
           deleteReviewById: (state, action) => {
             state.reviews=state.reviews.filter((review) => {
-            return review.review_id !== action.payload.review_id;
+            return review.is_deleted !== action.payload.review_id;
             }
             
             );

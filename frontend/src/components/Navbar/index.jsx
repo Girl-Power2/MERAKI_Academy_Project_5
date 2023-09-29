@@ -58,7 +58,7 @@ const Navbar = () => {
           </MDBNavbarToggler>
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-              {!isLoggedIn && (
+              {!token && (
                 <>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/">
@@ -90,7 +90,7 @@ const Navbar = () => {
                     </MDBDropdown>
                   </MDBNavbarItem>
                 </>
-              )}
+             )}
               {/* ====================IF NOT LOGGED IN======================  */}
 
               {/* ====================IF LOGGED IN======================  */}
@@ -105,6 +105,47 @@ const Navbar = () => {
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/services">
                       <NavLink to="profile">My Profile</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink
+                      active
+                      aria-current="page"
+                      href="/"
+                      onClick={() => {
+                        setLogout();
+                      }}
+                    >
+                      <NavLink
+                        to="/"
+                        onClick={() => {
+                          dispatch(
+                            setLogout({ isLoggedIn, providerId, userId, token })
+                          );
+                        }}
+                      >
+                        Logout
+                      </NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                </>
+              )}
+
+                {token && userId && (
+                <>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="/category">
+                      <NavLink to="category">Category</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="">
+                      <NavLink to="">My Profile</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="">
+                      <NavLink to="">My Orders</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
