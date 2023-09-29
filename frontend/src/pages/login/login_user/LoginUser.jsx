@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./app.css";
 import axios from "axios";
-import { setLogin, setUserId } from "../../service/redux/reducers/auth"
+import { setLogin, setUserId } from "../../../service/redux/reducers/auth"
 
 import {
   MDBBtn,

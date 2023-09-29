@@ -2,7 +2,7 @@ import axios from "axios";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin, setProviderId,setRole } from "../../service/redux/reducers/auth";
+import { setLogin, setProviderId,setRole } from "../../../service/redux/reducers/auth";
 import {
   MDBBtn,
   MDBContainer,
@@ -11,9 +11,9 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
-import "../login_provider/app.css";
+import "./app.css";
 
-const LoginProvder = () => {
+const LoginProvider = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const [email, setEmail] = useState("");
@@ -149,4 +149,4 @@ const LoginProvder = () => {
   );
 };
 
-export default LoginProvder;
+export default LoginProvider;

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { NavLink, Outlet } from 'react-router-dom';
-import Navbar from "../../components/Navbar/index"
+import Navbar from "../../../components/Navbar/index"
 
 
 

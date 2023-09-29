@@ -102,7 +102,7 @@ const Info = () => {
       </div>
       <div className="input_container">
         {/* ============================start of first modal==================================================*/}
-{/* 
+
         <label>
           1.
           <Button variant="primary" onClick={handleShow}>
@@ -166,7 +166,7 @@ const Info = () => {
               </Button>
             </Modal.Footer>
           </div>
-        </Modal> */}
+        </Modal>
 
         {/* ============================end of first modal==================================================*/}
 
