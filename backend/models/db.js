@@ -8,15 +8,46 @@ const connectionString = process.env.DB_URL;
 
 const pool = new Pool({
   connectionString,
+
+// const pool = new Pool({
+//   connectionString,
+// });
+// pool
+//   .connect()
+//   .then((res) => {
+//     console.log("connected on " + res.database);
+//   })
+//   .catch((error) => {
+//     console.error("client didn't connect", error.message, error.stack);
+//   });
+// module.exports = pool;
+
+
+
+
+
+
+
+
+
+
+const client = new Client({
+  host: "localhost",
+  user: "postgres",
+  password: "0000",
+  port: "5432",
+  database: "cureapp_5",
+
 });
-pool
+client
   .connect()
-  .then((res) => {
-    console.log("connected on " + res.database);
+  .then(() => {
+    console.log("connected on " + client.database);
   })
   .catch((error) => {
     console.error("client didn't connect", error.message, error.stack);
   });
+module.exports = client;
 
 
 module.exports = pool;
@@ -42,5 +73,6 @@ module.exports = pool;
 //     console.error("client didn't connect", error.message, error.stack);
 //   });
 // module.exports = client;
+
 
 
