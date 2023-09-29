@@ -1,23 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
  
 
-export const info=createSlice({
-  name:"info",
+export const services=createSlice({
+  name:"services",
 initialState:{
-    bio:"",
-    qualifications:"",
-    image:""
+    service:"",
+    price_per_hour:"",
 },
 reducers:{
-setBio:(state,action)=>{
-  state.bio=action.payload
+setService:(state,action)=>{
+  state.service=action.payload
 },
-setQualifications:(state,action)=>{
-  state.qualifications=action.payload
+setPrice_per_hour:(state,action)=>{
+  state.price_per_hour=action.payload
 },
-setImage:(state,action)=>{
-  state.image=action.payload
-},
+
 }
 })
 
@@ -26,6 +23,6 @@ setImage:(state,action)=>{
 
 
 
-export const { setBio, setQualifications, setImage } =
-  info.actions;
-export default info.reducer;
+export const { setService,setPrice_per_hour} =
+services.actions;
+export default services.reducer;

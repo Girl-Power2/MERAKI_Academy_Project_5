@@ -7,7 +7,8 @@ import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import "./style.css";
 import { setQualifications,setBio,setImage } from "../../../service/redux/reducers/provider_info";
-import Login from "../../login/Login";
+import { setService,setPrice_per_hour } from '../../../service/redux/reducers/services';
+
 const Info = () => {
   // ============================common states=================================
   const handleClose = () => setShow(false);
@@ -26,6 +27,11 @@ const Info = () => {
 }
 
   );
+  const{service,price_per_hour}=useSelector((state)=>{
+    return{service:state.services.service,
+    price_per_hour:state.services.price_per_hour}
+    
+  })
   // ============================common states=================================
 
   // ======================first modal states and functions================
@@ -75,16 +81,14 @@ const Info = () => {
 
   // ======================second modal states and functions================
 
-  const [service, setService] = useState("");
 
-  const [price, setPrice] = useState("");
   const insert_service = () => {
     axios
       .post(
         `http://localhost:5000/services`,
         {
           service: service || "",
-          price_per_hour: price || "",
+          price_per_hour: price_per_hour || "",
           provider_id: providerId,
         },
         {
@@ -112,7 +116,7 @@ const Info = () => {
       <div className="input_container">
         {/* ============================start of first modal==================================================*/}
 
-        <label>
+        {/* <label>
           1.
           <Button variant="primary" onClick={handleShow}>
             Insert info
@@ -178,12 +182,12 @@ const Info = () => {
               </Button>
             </Modal.Footer>
           </div>
-        </Modal>
+        </Modal> */}
 
         {/* ============================end of first modal==================================================*/}
 
  {/* ============================start of second modal==================================================} */}
-{/* 
+
         <label>
           2.
           <Button variant="primary" onClick={handleShow}>
@@ -199,7 +203,8 @@ const Info = () => {
               aria-describedby="basic-addon1"
               autoFocus
               onChange={(e) => {
-                setService(e.target.value);
+                dispatch(setService(e.target.value))
+                
               }}
             />
 
@@ -210,7 +215,8 @@ const Info = () => {
                 aria-label="price"
                 autoFocus
                 onChange={(e) => {
-                  setPrice(e.target.value);
+                  dispatch(setPrice_per_hour(e.target.value))
+                  
                 }}
               />
               <InputGroup.Text>JOD</InputGroup.Text>
@@ -229,7 +235,7 @@ const Info = () => {
               }}
             />
           </div>
-        </Modal> */}
+        </Modal>
         {/* ============================end of second modal==================================================*/}
       </div>
     </>
