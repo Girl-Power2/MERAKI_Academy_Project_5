@@ -53,7 +53,7 @@ const getReviewByProviderId = (req, res) => {
     INNER JOIN providers
     ON reviews.provider_id = providers.provider_id 
     INNER JOIN users
-    ON reviews.user_id = users.user_id WHERE reviews.provider_id=${id};`;
+    ON reviews.user_id = users.user_id WHERE reviews.provider_id=${id} AND reviews.is_deleted=0 ;`;
 
   pool
     .query(query)
