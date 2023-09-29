@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   MDBContainer,
   MDBNavbar,
@@ -17,14 +17,25 @@ import {
   MDBDropdownItem,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { setLogout } from "../../service/redux/reducers/auth";
 // import RegisterProvider from "../../pages/register_provider/RegisterProvider"
 const Navbar = () => {
-  const { isLoggedIn, role } = useSelector((state) => {
-    return { isLoggedIn: state.auth.isLoggedIn, role: state.auth.role };
-  });
+  const dispatch = useDispatch();
+  const { isLoggedIn, role, token, userId, providerId } = useSelector(
+    (state) => {
+      return {
+        isLoggedIn: state.auth.isLoggedIn,
+        role: state.auth.role,
+        token: state.auth.token,
+        userId: state.auth.userId,
+        providerId: state.auth.providerId,
+      };
+    }
+  );
   const [showBasic, setShowBasic] = useState(false);
   return (
     <div>
+      {/* ====================IF NOT LOGGED IN======================  */}
       <MDBNavbar expand="md" light bgColor="" aria-current="true">
         <MDBContainer fluid>
           <NavLink to="/">
@@ -37,10 +48,6 @@ const Navbar = () => {
               loading="lazy"
             />
           </NavLink>
-          {/* <MDBNavbarBrand href="#">
-            
-          </MDBNavbarBrand> */}
-
           <MDBNavbarToggler
             aria-controls="navbarSupportedContent"
             aria-expanded="false"
@@ -49,46 +56,84 @@ const Navbar = () => {
           >
             <MDBIcon icon="bars" fas />
           </MDBNavbarToggler>
-
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-              <MDBNavbarItem>
-                <NavLink to="/"> Home</NavLink>
-              </MDBNavbarItem>
+              {!isLoggedIn && (
+                <>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="/">
+                      <NavLink to=""> Home</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="/aboutUs">
+                      <NavLink to="/aboutUs">About Us</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBDropdown>
+                      <MDBDropdownToggle
+                        tag="a"
+                        className="nav-link"
+                        role="button"
+                      >
+                        Join Us
+                      </MDBDropdownToggle>
+                      <MDBDropdownMenu>
+                        <MDBDropdownItem>
+                          <NavLink to="/register">Register</NavLink>
+                        </MDBDropdownItem>
+                        <MDBDropdownItem>
+                          <NavLink to="/login">Login</NavLink>
+                        </MDBDropdownItem>
+                      </MDBDropdownMenu>
+                    </MDBDropdown>
+                  </MDBNavbarItem>
+                </>
+              )}
+              {/* ====================IF NOT LOGGED IN======================  */}
 
-              <MDBNavbarItem>
-                <NavLink to="/aboutUs">About Us</NavLink>
-              </MDBNavbarItem>
+              {/* ====================IF LOGGED IN======================  */}
 
               {isLoggedIn && role === 3 && (
                 <>
                   <MDBNavbarItem>
-                    <NavLink to="services">My services</NavLink>
+                    <MDBNavbarLink active aria-current="page" href="/services">
+                      <NavLink to="services">My services</NavLink>
+                    </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <NavLink to="profile">My Profile</NavLink>
+                    <MDBNavbarLink active aria-current="page" href="/services">
+                      <NavLink to="profile">My Profile</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink
+                      active
+                      aria-current="page"
+                      href="/"
+                      onClick={() => {
+                        setLogout();
+                      }}
+                    >
+                      <NavLink
+                        to="/"
+                        onClick={() => {
+                          dispatch(
+                            setLogout({ isLoggedIn, providerId, userId, token })
+                          );
+                        }}
+                      >
+                        Logout
+                      </NavLink>
+                    </MDBNavbarLink>
                   </MDBNavbarItem>
                 </>
               )}
 
-              <MDBNavbarItem>
-                <MDBDropdown>
-                  <MDBDropdownToggle tag="a" className="nav-link" role="button">
-                    Join Us
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu>
-                    <MDBDropdownItem>
-                      <NavLink to="/register">Register</NavLink>
-                    </MDBDropdownItem>
-                    <MDBDropdownItem>
-                      <NavLink to="/login">Login</NavLink>
-                    </MDBDropdownItem>
-                  </MDBDropdownMenu>
-                </MDBDropdown>
-              </MDBNavbarItem>
-
               {/* <MDBNavbarItem>
-            <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
+            <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'
+            >
               Disabled
             </MDBNavbarLink>
           </MDBNavbarItem> */}
@@ -101,7 +146,9 @@ const Navbar = () => {
                 placeholder="Type query"
                 aria-label="Search"
               />
-              <MDBBtn color="primary">Search</MDBBtn>
+              <MDBBtn disabled="true" color="primary">
+                Search
+              </MDBBtn>
             </form>
           </MDBCollapse>
         </MDBContainer>
