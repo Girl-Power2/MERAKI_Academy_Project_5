@@ -11,11 +11,14 @@ import Login from "../pages/login/Login"
 
 import Info from "../pages/ProviderUI/provider_info/Info";
 
-
 import Categories from "../components/categories/Categories";
 import Provider from "../components/providers/Provider";
 import Information_UserSide from "../components/information/Information_UserSide";
+
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
+
+import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
+
 
 export const router = createBrowserRouter([
   {
@@ -55,22 +58,26 @@ export const router = createBrowserRouter([
       { path: "/loginUser", element: <LoginUser /> },
       { path: "/loginProvider", element: <LoginProvider /> },
       {
-
         path: "/info",
         element: <Info />,
+
    
   },
   {path:"/services",
 element:<MyServices/>},
 
-        {path: "/category",
-        element: <Categories />,
-      },
+      
+      { path: "/category", element: <Categories /> },
       { path: "/provider/:id", element: <Provider /> },
-      {path:"/provider_Information/:id" ,element:<Information_UserSide/>}
-
+      {
+        path: "/provider_Information/:id",
+        element: <Information_UserSide />,
+        
+      },
+      {
+        path:"/reveiws/:id",
+        element:<Feadback_reviwes/>
+      }
     ],
   },
-
-  
 ]);
