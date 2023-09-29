@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   MDBContainer,
   MDBNavbar,
@@ -19,20 +19,24 @@ import {
 } from "mdb-react-ui-kit";
 // import RegisterProvider from "../../pages/register_provider/RegisterProvider"
 const Navbar = () => {
+  const { isLoggedIn, role } = useSelector((state) => {
+    return { isLoggedIn: state.auth.isLoggedIn, role: state.auth.role };
+  });
   const [showBasic, setShowBasic] = useState(false);
   return (
     <div>
-
       <MDBNavbar expand="md" light bgColor="" aria-current="true">
-
         <MDBContainer fluid>
-        <NavLink to="/"> <img
+          <NavLink to="/">
+            {" "}
+            <img
               src="./assets/logo.jpg"
               height="70"
               width="90"
               alt=""
               loading="lazy"
-            /></NavLink>
+            />
+          </NavLink>
           {/* <MDBNavbarBrand href="#">
             
           </MDBNavbarBrand> */}
@@ -49,17 +53,23 @@ const Navbar = () => {
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
               <MDBNavbarItem>
-                  <NavLink to="/"> Home</NavLink>
+                <NavLink to="/"> Home</NavLink>
               </MDBNavbarItem>
 
               <MDBNavbarItem>
-               
-                  <NavLink to="/aboutUs">About Us</NavLink>
-            
+                <NavLink to="/aboutUs">About Us</NavLink>
               </MDBNavbarItem>
-              <MDBNavbarItem>
-                  <NavLink to="profile">Profile</NavLink>
-              </MDBNavbarItem>
+
+              {isLoggedIn && role === 3 && (
+                <>
+                  <MDBNavbarItem>
+                    <NavLink to="services">My services</NavLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <NavLink to="profile">My Profile</NavLink>
+                  </MDBNavbarItem>
+                </>
+              )}
 
               <MDBNavbarItem>
                 <MDBDropdown>
@@ -67,10 +77,10 @@ const Navbar = () => {
                     Join Us
                   </MDBDropdownToggle>
                   <MDBDropdownMenu>
-                    <MDBDropdownItem >
+                    <MDBDropdownItem>
                       <NavLink to="/register">Register</NavLink>
                     </MDBDropdownItem>
-                    <MDBDropdownItem >
+                    <MDBDropdownItem>
                       <NavLink to="/login">Login</NavLink>
                     </MDBDropdownItem>
                   </MDBDropdownMenu>
@@ -97,7 +107,6 @@ const Navbar = () => {
         </MDBContainer>
       </MDBNavbar>
     </div>
-    
   );
 };
 

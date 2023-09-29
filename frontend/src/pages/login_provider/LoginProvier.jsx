@@ -2,7 +2,7 @@ import axios from "axios";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setLogin, setProviderId } from "../../service/redux/reducers/auth";
+import { setLogin, setProviderId,setRole } from "../../service/redux/reducers/auth";
 import {
   MDBBtn,
   MDBContainer,
@@ -37,7 +37,7 @@ const LoginProvder = () => {
                 style={{ color: "#709085" }}
               />
               <span className="h1 fw-bold mb-0">
-                {" "}
+           
                 <img
                   src="https://scontent.famm11-1.fna.fbcdn.net/v/t39.30808-6/282161491_102079489189457_679108067387004716_n.png?stp=dst-png_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=52f669&_nc_ohc=zEm817ld6EEAX_nb-cF&_nc_ht=scontent.famm11-1.fna&oh=00_AfBRUxv3m9oW4q0bEnwJELp1XJAmaHw1XH1cZsej1uie6w&oe=65182ED6"
                   height="75"
@@ -95,6 +95,8 @@ const LoginProvder = () => {
                       console.log(result.data);
                       dispatch(setLogin(result.data.token));
                       dispatch(setProviderId(result.data.providerId));
+                      dispatch(setRole(result.data.role));
+
                     
                       {isLoggedIn&& history("/info")};
                       // console.log(isLoggedIn);
