@@ -5,8 +5,9 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import "./style.css"
 const Info = () => {
-//   console.log("info");
+
   const [bio, setBio] = useState("");
   const [qualifications, setQualifications] = useState("");
   const [image, setImage] = useState("");
@@ -52,8 +53,10 @@ const Info = () => {
       };
     return (
       <>
-      <div>INfo</div>
-        <InputGroup>
+      <div className="input_container">
+      <div className="welcome">Welcome to our team . Please fill your information and add your services as the first step of building your account</div>
+        <div className="inputs">
+        <InputGroup >
 <InputGroup.Text
   
 >
@@ -75,18 +78,13 @@ const Info = () => {
     setQualifications(e.target.value);
   }} />
 </InputGroup>
-
-<label className="insert">
-Insert your image
-<input
-  type="file"
-  className="insert"
-  onChange={(e) => {
-    // console.log(e.target.value);
-    setImage(e.target.files[0]);
-  }}
-/>
-</label>
+<Form.Group controlId="formFile" className="mb-3">
+        <Form.Label>Insert your image</Form.Label>
+        <Form.Control type="file" 
+          onChange={(e) => {
+            setImage(e.target.files[0]);
+          }} />
+      </Form.Group>
 <Button
 as="input"
 type="submit"
@@ -100,6 +98,7 @@ onClick={() => {
         insert_info();
     }}}
 /> 
+</div></div>
       </>
     );
   };
