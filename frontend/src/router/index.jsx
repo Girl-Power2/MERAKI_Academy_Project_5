@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
    
   },
 
-        path: "/category",
+        {path: "/category",
         element: <Categories />,
       },
       { path: "/provider/:id", element: <Provider /> },
