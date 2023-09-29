@@ -2,26 +2,41 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import ModalFooter from 'react-bootstrap/ModalFooter'
 import axios from "axios";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import "./style.css";
+import { setQualifications,setBio,setImage } from "../../../service/redux/reducers/provider_info";
+import { setService,setPrice_per_hour } from '../../../service/redux/reducers/services';
+
 const Info = () => {
   // ============================common states=================================
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+  const dispatch=useDispatch()
   const [msg, setMsg] = useState("");
   const [show, setShow] = useState(false);
-  const { providerId, token } = useSelector((state) => state.auth);
+  const { providerId, token,bio,qualifications,image } = useSelector((state) => {
+  return {
+    providerId:state.auth.providerId,
+    token:state.auth.token,
+    bio:state.info.bio,
+    qualifications:state.info.qualifications,
+    image:state.info.image,
+  }
+}
+
+  );
+  const{service,price_per_hour}=useSelector((state)=>{
+    return{service:state.services.service,
+    price_per_hour:state.services.price_per_hour}
+    
+  })
   // ============================common states=================================
 
   // ======================first modal states and functions================
 
-  const [bio, setBio] = useState("");
-  const [qualifications, setQualifications] = useState("");
-  const [image, setImage] = useState("");
+
   const [url, setUrl] = useState("");
 
   const insert_info = (urlFile) => {
@@ -66,16 +81,14 @@ const Info = () => {
 
   // ======================second modal states and functions================
 
-  const [service, setService] = useState("");
 
-  const [price, setPrice] = useState("");
   const insert_service = () => {
     axios
       .post(
         `http://localhost:5000/services`,
         {
           service: service || "",
-          price_per_hour: price || "",
+          price_per_hour: price_per_hour || "",
           provider_id: providerId,
         },
         {
@@ -102,8 +115,8 @@ const Info = () => {
       </div>
       <div className="input_container">
         {/* ============================start of first modal==================================================*/}
-{/* 
-        <label>
+
+        {/* <label>
           1.
           <Button variant="primary" onClick={handleShow}>
             Insert info
@@ -120,7 +133,8 @@ const Info = () => {
                 aria-label="Bio"
                 autoFocus
                 onChange={(e) => {
-                  setBio(e.target.value);
+                  dispatch(setBio(e.target.value))
+                  ;
                 }}
               />
             </InputGroup>
@@ -132,7 +146,8 @@ const Info = () => {
                 aria-label="Qualifications"
                 autoFocus
                 onChange={(e) => {
-                  setQualifications(e.target.value);
+                  dispatch(setQualifications(e.target.value))
+                  ;
                 }}
               />
             </InputGroup>
@@ -141,7 +156,8 @@ const Info = () => {
               <Form.Control
                 type="file"
                 onChange={(e) => {
-                  setImage(e.target.files[0]);
+                  dispatch(setImage(e.target.files[0]))
+                  ;
                 }}
               />
             </Form.Group>
@@ -152,7 +168,7 @@ const Info = () => {
                 type="submit"
                 value="Submit"
                 onClick={() => {
-                  console.log("msg:", msg);
+               console.log(image);
                   if (image) {
                     uploadImage();
                   } else {
@@ -187,7 +203,8 @@ const Info = () => {
               aria-describedby="basic-addon1"
               autoFocus
               onChange={(e) => {
-                setService(e.target.value);
+                dispatch(setService(e.target.value))
+                
               }}
             />
 
@@ -198,7 +215,8 @@ const Info = () => {
                 aria-label="price"
                 autoFocus
                 onChange={(e) => {
-                  setPrice(e.target.value);
+                  dispatch(setPrice_per_hour(e.target.value))
+                  
                 }}
               />
               <InputGroup.Text>JOD</InputGroup.Text>
