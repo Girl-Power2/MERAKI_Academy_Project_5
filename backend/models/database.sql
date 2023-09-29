@@ -1,7 +1,7 @@
 DROP DATABASE cureApp_5;
-CREATE DATABASE cureApp_5;
+CREATE DATABASE cureapp_5;
 
-\c cureApp_5;
+\c cureapp_5;
 
 
 CREATE TABLE roles (
@@ -75,6 +75,10 @@ ON UPDATE CASCADE
 FOREIGN KEY (category_id) REFERENCES categories(category_id)
 ON UPDATE CASCADE
  ON DELETE CASCADE,
+-- info_id Int,
+-- FOREIGN KEY (info_id) REFERENCES provider_info(provider_info_id)
+-- ON UPDATE CASCADE
+--  ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 
 );
@@ -104,8 +108,8 @@ user_id INT, --to be removed
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
-booked BOOLEAN DEFAULT false
-chosen BOOLEAN DEFAULT false
+booked BOOLEAN DEFAULT false,
+chosen BOOLEAN DEFAULT false,
 is_viewed SMALLINT DEFAULT 1
 );
 
@@ -121,7 +125,6 @@ ON UPDATE CASCADE
 ON DELETE CASCADE,
 review TEXT,
 created_at TIMESTAMP DEFAULT NOW(),
-review TEXT,
 is_deleted SMALLINT DEFAULT  0
 
 );
@@ -195,12 +198,12 @@ is_deleted SMALLINT DEFAULT 0
 );
 
 
-CREATE TABLE categories(
-category_id SERIAL PRIMARY KEY NOT NULL ,
-category VARCHAR(255) UNIQUE,
-is_deleted SMALLINT DEFAULT 0
+-- CREATE TABLE categories(
+-- category_id SERIAL PRIMARY KEY NOT NULL ,
+-- category VARCHAR(255) UNIQUE,
+-- is_deleted SMALLINT DEFAULT 0
 
-);
+-- );
 
 
 
