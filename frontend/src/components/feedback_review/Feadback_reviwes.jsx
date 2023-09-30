@@ -6,7 +6,7 @@ import {
   setReview,
   addReview,
   updateReview,
-  deleteReviewById
+  deleteReviewById,
 } from "../../service/redux/reducers/reviews";
 import {
   MDBBtn,
@@ -29,7 +29,7 @@ const Feadback_reviwes = () => {
   const [post, setPost] = useState("");
   const history = useNavigate();
   const { update, setUpdate } = useState("");
-  const [data ,setData]=useState(false)
+  const [data, setData] = useState(false);
   const { token, userId } = useSelector((state) => {
     // console.log(reviews);
     return {
@@ -53,7 +53,7 @@ const Feadback_reviwes = () => {
       })
       .then((result) => {
         console.log(result.data);
-setData(true)
+        setData(true);
         dispatch(setReview(result.data.result));
       })
       .catch((err) => {
@@ -138,16 +138,16 @@ setData(true)
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol>
-                  <MDBTypography tag="h5">Reviews</MDBTypography>
+                    <MDBTypography tag="h5">Reviews</MDBTypography>
                   </MDBCol>
 
                   {reviews.map((comment, i) => {
                     return (
                       <div key={i}>
                         <MDBCol sm="3">
-                        <MDBTypography tag="h5">{comment.firstname} {comment.lastname}</MDBTypography>
-                            {" "}
-                          
+                          <MDBTypography tag="h5">
+                            {comment.firstname} {comment.lastname}
+                          </MDBTypography>{" "}
                         </MDBCol>
 
                         <MDBCol sm="6">
@@ -159,8 +159,6 @@ setData(true)
                           <MDBCardText className="text-muted">
                             review :{comment.review}
                           </MDBCardText>
-
-                          
                         </MDBCol>
                         <MDBCol sm="6">
                           <MDBCardText className="text-muted">
@@ -173,18 +171,28 @@ setData(true)
                             <MDBBtn
                               color="danger"
                               onClick={() => {
-                                axios.delete(
-                                  `http://localhost:5000/reviews/${comment.review_id}`,{
-                                    headers: {
-                                      Authorization: `Bearer ${token}`,
-                                    },
-                                  }
-                                ).then((result)=>{
-                                  console.log(dispatch(deleteReviewById(result.data.result)));
-                                   dispatch(deleteReviewById(result.data.result))
-                                }).catch((err)=>{
-                                  console.log(err);
-                                })
+                                axios
+                                  .delete(
+                                    `http://localhost:5000/reviews/${comment.review_id}`,
+                                    {
+                                      headers: {
+                                        Authorization: `Bearer ${token}`,
+                                      },
+                                    }
+                                  )
+                                  .then((result) => {
+                                    console.log(
+                                      dispatch(
+                                        deleteReviewById(result.data.result)
+                                      )
+                                    );
+                                    dispatch(
+                                      deleteReviewById(result.data.result)
+                                    );
+                                  })
+                                  .catch((err) => {
+                                    console.log(err);
+                                  });
                               }}
                             >
                               {" "}
@@ -241,6 +249,14 @@ setData(true)
             </MDBCard>
           </MDBCol>
         </MDBRow>
+        <MDBBtn
+          color="danger"
+          onClick={() => {
+            history(-1);
+          }}
+        >
+          Back
+        </MDBBtn>
       </section>
     </div>
   );

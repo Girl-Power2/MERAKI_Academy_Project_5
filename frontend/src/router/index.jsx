@@ -18,6 +18,7 @@ import Information_UserSide from "../components/information/Information_UserSide
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
 
 import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
+import UserProfile from "../components/UserProfile/UserProfile";
 
 
 export const router = createBrowserRouter([
@@ -77,6 +78,10 @@ element:<MyServices/>},
       {
         path:"/reveiws/:id",
         element:<Feadback_reviwes/>
+      },
+      {
+        path:"/myProfile",
+        element:<UserProfile/>
       }
     ],
   },
