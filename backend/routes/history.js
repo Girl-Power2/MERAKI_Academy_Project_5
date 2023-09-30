@@ -17,7 +17,7 @@ historyRouter.post(
   authorization("CREATE_CATEGORY"),
   addHistory
 );
-historyRouter.get("/users", authentication, getHistoryByUserId);
+historyRouter.get("/users", authentication,authorization("CREATE_CATEGORY"), getHistoryByUserId);
 historyRouter.get(
   "/:id",
   authentication,
