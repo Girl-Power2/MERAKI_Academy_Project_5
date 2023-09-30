@@ -133,14 +133,24 @@ const Navbar = () => {
 
                 {token && userId && (
                 <>
+                <MDBNavbarItem>
+                <MDBNavbarLink active aria-current="page" href="/">
+                  <NavLink to=""> Home</NavLink>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink active aria-current="page" href="/aboutUs">
+                  <NavLink to="/aboutUs">About Us</NavLink>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/category">
                       <NavLink to="category">Category</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="">
-                      <NavLink to="">My Profile</NavLink>
+                    <MDBNavbarLink active aria-current="page" href="/myProfile">
+                      <NavLink to="/myProfile">My Profile</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>

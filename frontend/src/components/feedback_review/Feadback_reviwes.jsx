@@ -6,7 +6,7 @@ import {
   setReview,
   addReview,
   updateReview,
-  deleteReviewById
+  deleteReviewById,
 } from "../../service/redux/reducers/reviews";
 import {
   MDBBtn,
@@ -28,8 +28,8 @@ const Feadback_reviwes = () => {
   const [toggle, setToggle] = useState(false);
   const [post, setPost] = useState("");
   const history = useNavigate();
-  const { update, setUpdate } = useState("");
-  const [data ,setData]=useState(false)
+  const [update, setUpdate]= useState("");
+  const [data, setData] = useState(false);
   const { token, userId } = useSelector((state) => {
     // console.log(reviews);
     return {
@@ -52,14 +52,14 @@ const Feadback_reviwes = () => {
         },
       })
       .then((result) => {
-        console.log(result.data);
-setData(true)
+        
+        setData(true);
         dispatch(setReview(result.data.result));
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [reviews]);
 
   if (!data) {
     return (
@@ -138,16 +138,18 @@ setData(true)
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol>
-                  <MDBTypography tag="h5">Reviews</MDBTypography>
+                    <MDBTypography tag="h5">Reviews</MDBTypography>
                   </MDBCol>
 
-                  {reviews.map((comment, i) => {
+                  {reviews&&reviews.map((comment, i) => {
+                    console.log(comment.firstname)
                     return (
                       <div key={i}>
                         <MDBCol sm="3">
-                        <MDBTypography tag="h5">{comment.firstname} {comment.lastname}</MDBTypography>
-                            {" "}
-                          
+                          <MDBTypography tag="h5">
+                            
+                            {comment.firstname} {comment.lastname}
+                          </MDBTypography>{" "}
                         </MDBCol>
 
                         <MDBCol sm="6">
@@ -159,8 +161,6 @@ setData(true)
                           <MDBCardText className="text-muted">
                             review :{comment.review}
                           </MDBCardText>
-
-                          
                         </MDBCol>
                         <MDBCol sm="6">
                           <MDBCardText className="text-muted">
@@ -173,32 +173,9 @@ setData(true)
                             <MDBBtn
                               color="danger"
                               onClick={() => {
-                                axios.delete(
-                                  `http://localhost:5000/reviews/${comment.review_id}`,{
-                                    headers: {
-                                      Authorization: `Bearer ${token}`,
-                                    },
-                                  }
-                                ).then((result)=>{
-                                  console.log(dispatch(deleteReviewById(result.data.result)));
-                                   dispatch(deleteReviewById(result.data.result))
-                                }).catch((err)=>{
-                                  console.log(err);
-                                })
-                              }}
-                            >
-                              {" "}
-                              X
-                            </MDBBtn>
-                            <MDBBtn
-                              color="success"
-                              onClick={() => {
-                                setToggle(!toggle);
-
                                 axios
-                                  .put(
-                                    `http://localhost:5000/reviews/user/${comment.review_id}`,
-                                    { review: update, user_id: userId },
+                                  .delete(
+                                    `http://localhost:5000/reviews/${comment.review_id}`,
                                     {
                                       headers: {
                                         Authorization: `Bearer ${token}`,
@@ -206,7 +183,41 @@ setData(true)
                                     }
                                   )
                                   .then((result) => {
-                                    dispatch(updateReview(result.data.result));
+                                    console.log(
+                                      dispatch(
+                                        deleteReviewById(result.data.result)
+                                      )
+                                    );
+                                    dispatch(
+                                      deleteReviewById(comment.review_id)
+                                    );
+                                  })
+                                  .catch((err) => {
+                                    console.log(err);
+                                  });
+                              }}
+                            >
+                              {" "}
+                              X
+                            </MDBBtn>
+                            {toggle?  <MDBBtn
+                              color="success"
+                              onClick={() => {
+                                setToggle(!toggle);
+
+                                axios
+                                  .put(
+                                    `http://localhost:5000/reviews/user/${comment.review_id}`,
+                                    { review: update },
+                                    {
+                                      headers: {
+                                        Authorization: `Bearer ${token}`,
+                                      },
+                                    }
+                                  )
+                                  .then((result) => {
+                                    console.log(result.data.result);
+                                    dispatch(updateReview( { review: update, review_id: comment.review_id }));
                                   })
                                   .catch((err) => {
                                     console.log(err);
@@ -214,7 +225,17 @@ setData(true)
                               }}
                             >
                               Update Review
-                            </MDBBtn>
+                            </MDBBtn> :<MDBBtn
+                            color="success"
+                            onClick={() => {
+                              setToggle(!toggle);
+
+                              
+                            }}
+                          >
+                            Update Review
+                          </MDBBtn> }
+                            
                           </div>
                         ) : (
                           <></>
@@ -241,6 +262,14 @@ setData(true)
             </MDBCard>
           </MDBCol>
         </MDBRow>
+        <MDBBtn
+          color="danger"
+          onClick={() => {
+            history(-1);
+          }}
+        >
+          Back
+        </MDBBtn>
       </section>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams ,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
 import { Outlet } from "react-router-dom";
@@ -20,7 +20,7 @@ import {
 
 export default function Information_UserSide() {
   const [info, setInfo] = useState([]);
-  const history =useNavigate()
+  const history = useNavigate();
   const { token } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -68,9 +68,9 @@ export default function Information_UserSide() {
                         width={250}
                         fluid
                       />
-                      <hr/>
+                      <hr />
                       <p className="text-muted mb-1">
-                      Name :  {data.fname} {data.lname}
+                        Name : {data.fname} {data.lname}
                       </p>
                       <p className="text-muted mb-4">City : {data.city}</p>
                       <div className="d-flex justify-content-center mb-2">
@@ -86,19 +86,32 @@ export default function Information_UserSide() {
                         <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                           <MDBIcon fas icon="globe fa-lg text-warning" />
                           <MDBCardText>{data.email}</MDBCardText>
-                          
                         </MDBListGroupItem>
                       </MDBListGroup>
                     </MDBCardBody>
-                    
                   </MDBCard>
                   <br />
-                  <MDBBtn onClick={()=>{
-                   history(`/reveiws/${data.provider_id}`)
-                  }}>Reveiws</MDBBtn>
-                  <MDBBtn outline className="ms-1">Message</MDBBtn>
+                  <MDBBtn
+                    onClick={() => {
+                      history(`/reveiws/${data.provider_id}`);
+                    }}
+                  >
+                    Reveiws
+                  </MDBBtn>
+                  <MDBBtn outline className="ms-1">
+                    Message
+                  </MDBBtn>
+                  <MDBBtn
+                    color="danger"
+                    className="ms-1"
+                    onClick={() => {
+                      history(-1);
+                    }}
+                  >
+                    Back
+                  </MDBBtn>
                 </MDBCol>
-               
+
                 <MDBCol lg="8">
                   <MDBCard className="mb-4">
                     <MDBCardBody>
@@ -193,17 +206,12 @@ export default function Information_UserSide() {
                       </MDBRow>
                     </MDBCardBody>
                   </MDBCard>
-
-               
                 </MDBCol>
               </MDBRow>
             </section>
-             
           </div>
-        
         );
-      })} 
-    
+      })}
     </div>
   );
 }
