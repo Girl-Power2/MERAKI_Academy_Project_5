@@ -8,8 +8,10 @@ import {
   MDBRow,
   MDBCol,
   MDBBtn,
+  MDBCardImage
  
 } from 'mdb-react-ui-kit';
+import "./style.css"
 const Login = () => {
   return (
     <div>
@@ -17,12 +19,11 @@ const Login = () => {
       <MDBCol sm='6'>
         <MDBCard>
           <MDBCardBody style={{ backgroundColor: "#eee" }}>
-          <img
-      src='https://homecira.com/wp-content/uploads/elementor/thumbs/home-nursering-puky1xzt99kynvwg2pge12ejrdr67ndqfuz6fniyz8.png'
-     height={300} 
-     width={400}
+          <MDBCardImage className='cardImg h-75 w-100'
+      src='https://st2.depositphotos.com/30046358/48533/v/450/depositphotos_485337076-stock-illustration-planning-child-stay-hospital-vector.jpg'
+   
     />
-            <MDBCardTitle>ARE YOU Seeker ? </MDBCardTitle>
+            <MDBCardTitle>Seeking a service ? </MDBCardTitle>
             {/* <MDBCardText>
               With supporting text below as a natural lead-in to additional content.
             </MDBCardText> */}
@@ -33,11 +34,12 @@ const Login = () => {
       <MDBCol sm='6'>
         <MDBCard>
           <MDBCardBody style={{ backgroundColor: "#eee" }}>
-          <img
+            
+          <MDBCardImage className='cardImg'
       src='https://media.istockphoto.com/id/697882726/vector/avatars-characters-doctors-and-nurses-set-medical-people-icons-of-faces-on-a-blue-background.jpg?s=170667a&w=0&k=20&c=EeJl70YYHML6F91QnnmyvhHWJw2NJVmybzdCFLdae50='
-     height={300} 
-     width={400}
+     
     />
+    
             <MDBCardTitle>ARE YOU A PROVIDER ?</MDBCardTitle>
             {/* <MDBCardText>
               With supporting text below as a natural lead-in to additional content.
