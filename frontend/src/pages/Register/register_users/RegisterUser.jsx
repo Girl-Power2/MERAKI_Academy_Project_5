@@ -240,7 +240,7 @@ setData({...data,fName:e.target.value})
                     onChange={(e)=>{
                 
                       setData({...data,gender:e.target.value})
-                                 console.log(data);    }}
+                                    }}
                   >
 
                     <MenuItem value="male" >Male</MenuItem>

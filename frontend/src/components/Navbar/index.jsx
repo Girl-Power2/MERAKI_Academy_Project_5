@@ -58,7 +58,7 @@ const Navbar = () => {
           </MDBNavbarToggler>
           <MDBCollapse navbar show={showBasic}>
             <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-              {!token && (
+              {!isLoggedIn && (
                 <>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/">
