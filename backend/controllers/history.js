@@ -28,7 +28,7 @@ const addHistory = (req, res) => {
 const getHistoryByUserId = (req, res) => {
   const user_id = req.token.userId;
   const query = `SELECT * FROM medical_history INNER JOIN users
-  ON medical_history.user_id = users.user_id WHERE medical_history.user_id=${user_id}`;
+  ON medical_history.user_id = users.user_id WHERE medical_history.user_id=${user_id} AND medical_history.is_deleted=0 `;
 
   pool
     .query(query)

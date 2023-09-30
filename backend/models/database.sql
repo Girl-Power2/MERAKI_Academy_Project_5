@@ -79,7 +79,7 @@ ON UPDATE CASCADE
 -- FOREIGN KEY (info_id) REFERENCES provider_info(provider_info_id)
 -- ON UPDATE CASCADE
 --  ON DELETE CASCADE,
-is_deleted SMALLINT DEFAULT 0
+is_deleted SMALLINT DEFAULT 0;
 
 );
 

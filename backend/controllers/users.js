@@ -103,7 +103,32 @@ const login = (req, res) => {
     });
 };
 
-
+//===================get user by id ======================//
+const getUserById = async (req, res) => {
+  const id = req.token.userId;
+  const values = [id];
+  const query = `SELECT * FROM  users WHERE user_id=$1 AND is_deleted=0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    } else {
+      res.status(404).json({
+        status: false,
+        message: "User not found",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
 
 
 // provider login
@@ -166,6 +191,7 @@ const Provider_login = (req, res) => {
 module.exports = {
   register,
   login,
-  Provider_login
+  Provider_login ,
+  getUserById
 };
 
