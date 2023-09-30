@@ -28,7 +28,7 @@ const Feadback_reviwes = () => {
   const [toggle, setToggle] = useState(false);
   const [post, setPost] = useState("");
   const history = useNavigate();
-  const { update, setUpdate } = useState("");
+  const [update, setUpdate]= useState("");
   const [data, setData] = useState(false);
   const { token, userId } = useSelector((state) => {
     // console.log(reviews);
@@ -52,14 +52,14 @@ const Feadback_reviwes = () => {
         },
       })
       .then((result) => {
-        console.log(result.data);
+        
         setData(true);
         dispatch(setReview(result.data.result));
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [reviews]);
 
   if (!data) {
     return (
@@ -141,11 +141,13 @@ const Feadback_reviwes = () => {
                     <MDBTypography tag="h5">Reviews</MDBTypography>
                   </MDBCol>
 
-                  {reviews.map((comment, i) => {
+                  {reviews&&reviews.map((comment, i) => {
+                    console.log(comment.firstname)
                     return (
                       <div key={i}>
                         <MDBCol sm="3">
                           <MDBTypography tag="h5">
+                            
                             {comment.firstname} {comment.lastname}
                           </MDBTypography>{" "}
                         </MDBCol>
@@ -187,7 +189,7 @@ const Feadback_reviwes = () => {
                                       )
                                     );
                                     dispatch(
-                                      deleteReviewById(result.data.result)
+                                      deleteReviewById(comment.review_id)
                                     );
                                   })
                                   .catch((err) => {
@@ -198,7 +200,7 @@ const Feadback_reviwes = () => {
                               {" "}
                               X
                             </MDBBtn>
-                            <MDBBtn
+                            {toggle?  <MDBBtn
                               color="success"
                               onClick={() => {
                                 setToggle(!toggle);
@@ -206,7 +208,7 @@ const Feadback_reviwes = () => {
                                 axios
                                   .put(
                                     `http://localhost:5000/reviews/user/${comment.review_id}`,
-                                    { review: update, user_id: userId },
+                                    { review: update },
                                     {
                                       headers: {
                                         Authorization: `Bearer ${token}`,
@@ -214,7 +216,8 @@ const Feadback_reviwes = () => {
                                     }
                                   )
                                   .then((result) => {
-                                    dispatch(updateReview(result.data.result));
+                                    console.log(result.data.result);
+                                    dispatch(updateReview( { review: update, review_id: comment.review_id }));
                                   })
                                   .catch((err) => {
                                     console.log(err);
@@ -222,7 +225,17 @@ const Feadback_reviwes = () => {
                               }}
                             >
                               Update Review
-                            </MDBBtn>
+                            </MDBBtn> :<MDBBtn
+                            color="success"
+                            onClick={() => {
+                              setToggle(!toggle);
+
+                              
+                            }}
+                          >
+                            Update Review
+                          </MDBBtn> }
+                            
                           </div>
                         ) : (
                           <></>

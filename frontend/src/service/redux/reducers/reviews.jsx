@@ -13,7 +13,8 @@ export const reveiwSlice =createSlice({
            state.reviews.push(action.payload);
           },
           updateReview: (state, action) => {
-           state.reviews= state.reviews.forEach((review) => {
+           state.reviews= state.reviews.map((review ,i) => {
+            console.log(action.payload);
               if (review.review_id == action.payload.review_id) {
                return review.review = action.payload.review;
                
@@ -22,10 +23,11 @@ export const reveiwSlice =createSlice({
           },
           deleteReviewById: (state, action) => {
             state.reviews=state.reviews.filter((review) => {
-            return review.is_deleted !== action.payload.review_id;
+            return review.review_id !== action.payload;
             }
             
             );
+           
           },
     }
 })
