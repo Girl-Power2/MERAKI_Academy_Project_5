@@ -17,15 +17,16 @@ export const authSlice = createSlice({
     },
     setUserId: (state, action) => {
       state.userId = action.payload;
-      localStorage.setItem("userId ", action.payload);
+      localStorage.setItem("userId", action.payload);
     },
     setProviderId: (state, action) => {
       state.providerId = action.payload;
-      localStorage.setItem("providerId ", action.payload);
+      localStorage.setItem("providerId", action.payload);
     },
     setRole: (state, action) => {
+      console.log(action.payload);
       state.role = action.payload;
-      localStorage.setItem("role ", action.payload);
+      localStorage.setItem("role", action.payload);
     },
     setLogout: (state, action) => {
       state.token = null;

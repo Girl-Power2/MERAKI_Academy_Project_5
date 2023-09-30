@@ -9,23 +9,25 @@ import Form from "react-bootstrap/Form";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setService,
-  setPrice_per_hour,
+  updateService,
+  addService,
 } from "../../../service/redux/reducers/services";
 const MyServices = () => {
   // ====================states==============================
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState("");
+  const [serviceNew, setServiceNew] = useState("");
+  const [price, setPrice] = useState("");
+
   const { providerId, token } = useSelector((state) => {
     return {
       providerId: state.auth.providerId,
       token: state.auth.token,
     };
   });
-  const { Price_per_hour, service } = useSelector((state) => {
+  const { service } = useSelector((state) => {
     return {
       service: state.services.service,
-
-      Price_per_hour: state.services.Price_per_hour,
     };
   });
   // ====================states==============================
@@ -35,16 +37,16 @@ const MyServices = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const getservices = () => {
-    console.log(providerId);
+    // console.log(providerId);
     axios
       .get(`http://localhost:5000/services/byId/${providerId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(async (result) => {
-        console.log(result.data);
-        await dispatch(setService(result.data.data));
+      .then((result) => {
+        // console.log(result.data);
+        dispatch(setService(result.data.data));
       })
       .catch((err) => {
         console.log(err.message);
@@ -53,18 +55,30 @@ const MyServices = () => {
   useEffect(() => {
     getservices();
   }, []);
-  const update_service=()=>{
-    axios.put(`http://localhost:5000/services/${ser.service_id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }},).then((result)=>{
+  const update_service = (id) => {
+    console.log(id);
+    axios
+      .put(
+        `http://localhost:5000/services/${id}`,
+        { service: serviceNew, price_per_hour: price },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
         console.log(result.data);
-        setMsg({success:true,
-        msg:result.data.message})
-      }).catch((error)=>{
-        console.log(err.data.message);
+        // setMsg({success:true,
+        // msg:result.data.message})
+        dispatch(
+          updateService({ service: serviceNew, price_per_hour: price, id: id })
+        );
       })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // ====================functions==============================
 
@@ -75,6 +89,7 @@ const MyServices = () => {
           return (
             <>
               <div key={i} className="service">
+                <h3>{ser.service_id}</h3>
                 <h5>{ser.service}</h5>
                 <h5>{ser.price_per_hour} JD</h5>
                 <Button variant="primary" onClick={handleShow}>
@@ -91,7 +106,7 @@ const MyServices = () => {
                           aria-label="Service update"
                           autoFocus
                           onChange={(e) => {
-                            dispatch(setService(e.target.value));
+                            setServiceNew(e.target.value);
                           }}
                         />
                       </InputGroup>
@@ -102,7 +117,7 @@ const MyServices = () => {
                           aria-label="Price_per_hour"
                           autoFocus
                           onChange={(e) => {
-                            dispatch(setPrice_per_hour(e.target.value));
+                            setPrice(e.target.value);
                           }}
                         />
                       </InputGroup>
@@ -113,7 +128,7 @@ const MyServices = () => {
                         type="submit"
                         value="Submit"
                         onClick={() => {
-                          update_service();
+                          update_service(ser.service_id);
                         }}
                       />
                       {msg && (

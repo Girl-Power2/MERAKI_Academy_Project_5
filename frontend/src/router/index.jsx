@@ -9,8 +9,8 @@ import Register from "../pages/Register/Register";
 import About from "../pages/AboutUs/About";
 import Login from "../pages/login/Login"
 
-import Info from "../pages/ProviderUI/provider_info/Info";
-
+// import Info from "../components/provider_info/Info";
+// import Service from "../components/provider_info/service";
 import Categories from "../components/categories/Categories";
 import Provider from "../components/providers/Provider";
 import Information_UserSide from "../components/information/Information_UserSide";
@@ -18,7 +18,12 @@ import Information_UserSide from "../components/information/Information_UserSide
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
 
 import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
+
+import Schedule from "../pages/ProviderUI/mySchedule/Schedule";
+import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
+
 import UserProfile from "../components/UserProfile/UserProfile";
+
 
 
 export const router = createBrowserRouter([
@@ -58,12 +63,17 @@ export const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/loginUser", element: <LoginUser /> },
       { path: "/loginProvider", element: <LoginProvider /> },
-      {
-        path: "/info",
-        element: <Info />,
+      ,{path:"/providerMain",
+    element:<ProviderMain/>,
+    },
+//       {
+//         path: "/info",
+//         element: <Info />,
 
    
-  },
+//   },
+//   {path:"/service",
+// element:<Service/>},
   {path:"/services",
 element:<MyServices/>},
 
@@ -79,10 +89,15 @@ element:<MyServices/>},
         path:"/reveiws/:id",
         element:<Feadback_reviwes/>
       },
+
+      {path:"/schedule",
+    element:<Schedule/>}
+
       {
         path:"/myProfile",
         element:<UserProfile/>
       }
+
     ],
   },
 ]);

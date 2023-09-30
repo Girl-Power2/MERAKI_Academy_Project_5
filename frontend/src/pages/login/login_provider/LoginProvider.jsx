@@ -98,7 +98,7 @@ const LoginProvider = () => {
                       dispatch(setRole(result.data.role));
 
                     
-                      {isLoggedIn&& history("/info")};
+                       history("/providerMain");
                       // console.log(isLoggedIn);
                     })
                     .catch((err) => {
