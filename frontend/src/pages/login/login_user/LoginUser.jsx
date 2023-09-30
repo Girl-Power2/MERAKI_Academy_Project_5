@@ -40,21 +40,22 @@ const LoginUser = () => {
    
 //  });
   return (
-    <div> <MDBContainer className="my-5">
+    <div>
+       {/* <MDBContainer className="my-5"> */}
 
-    <MDBCard>
+    <MDBCard >
       <MDBRow className='g-0'>
 
         <MDBCol md='6'>
-          <MDBCardImage src='.\img\Lifesavers - One on One.png' alt="login form" className='rounded-start w-100'/>
+          <MDBCardImage  style={{ backgroundColor: "#eee" }} src='.\img\Lifesavers - One on One.png' alt="login form" className='rounded-start w-100'/>
         </MDBCol>
 
         <MDBCol md='6'>
-          <MDBCardBody className='d-flex flex-column'>
-
+          <MDBCardBody className='d-flex flex-column' >
+          
             <div className='d-flex flex-row mt-2'>
               {/* <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/> */}
-              <span className="h1 fw-bold mb-0"><img
+              <span className="h1 fw-bold mb-0" ><img 
               src="https://scontent.famm11-1.fna.fbcdn.net/v/t39.30808-6/282161491_102079489189457_679108067387004716_n.png?stp=dst-png_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=52f669&_nc_ohc=zEm817ld6EEAX_nb-cF&_nc_ht=scontent.famm11-1.fna&oh=00_AfBRUxv3m9oW4q0bEnwJELp1XJAmaHw1XH1cZsej1uie6w&oe=65182ED6"
               height="50"
               width="150"
@@ -81,7 +82,7 @@ const LoginUser = () => {
         dispatch(setUserId(result.data.userId))
         localStorage.setItem("token", result.data.token);
         localStorage.setItem("userId", result.data.userId);
-        
+        history("/category")
               }).catch((err)=>{
                 if (err.response && err.response.data) {
                   return setMessage({success:false,message:err.response.data.message});
@@ -111,7 +112,8 @@ const LoginUser = () => {
       </MDBRow>
     </MDBCard>
 
-  </MDBContainer></div>
+  {/* </MDBContainer> */}
+  </div>
   )
 }
 

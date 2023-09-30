@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useSelector ,useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { setReview ,addReview } from "../../service/redux/reducers/reviews";
+import {
+  setReview,
+  addReview,
+  updateReview,
+  deleteReviewById
+} from "../../service/redux/reducers/reviews";
 import {
   MDBBtn,
   MDBCard,
@@ -19,16 +24,23 @@ import {
 } from "mdb-react-ui-kit";
 
 const Feadback_reviwes = () => {
-  const [reveiws, setReveiws] = useState([]);
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const [toggle, setToggle] = useState(false);
   const [post, setPost] = useState("");
   const history = useNavigate();
+  const { update, setUpdate } = useState("");
+  const [data ,setData]=useState(false)
   const { token, userId } = useSelector((state) => {
     // console.log(reviews);
     return {
       token: state.auth.token,
       userId: state.auth.userId,
       // reviews:state.reveiws.reviews
+    };
+  });
+  const { reviews } = useSelector((state) => {
+    return {
+      reviews: state.reviews.reviews,
     };
   });
   const { id } = useParams();
@@ -41,16 +53,15 @@ const Feadback_reviwes = () => {
       })
       .then((result) => {
         console.log(result.data);
-        setReveiws(result.data.result);
-        
-        // dispatch(setReview(result.data.result))
+setData(true)
+        dispatch(setReview(result.data.result));
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  if (reveiws.length==0) {
+  if (!data) {
     return (
       <MDBSpinner color="danger">
         <span className="visually-hidden">Loading...</span>
@@ -75,15 +86,7 @@ const Feadback_reviwes = () => {
 
                   <div className="w-100">
                     <MDBTypography tag="h5">Add Your Opinion </MDBTypography>
-                    {/* <div>
-                      <a >
-                        <MDBIcon far icon="star text-danger me-1" />
-                        <MDBIcon far icon="star text-danger me-1" />
-                        <MDBIcon far icon="star text-danger me-1" />
-                        <MDBIcon far icon="star text-danger me-1" />
-                        <MDBIcon far icon="star text-danger me-1" />
-                      </a>
-                    </div> */}
+
                     <MDBTextArea
                       label="What is your view?"
                       rows={4}
@@ -97,21 +100,28 @@ const Feadback_reviwes = () => {
                       <MDBBtn
                         color="danger"
                         onClick={() => {
-                          axios.post(
-                            `http://localhost:5000/reviews/`,
-                            { review: post, user_id: userId, provider_id: id },
-                            {
-                              headers: {
-                                Authorization: `Bearer ${token}`,
+                          axios
+                            .post(
+                              `http://localhost:5000/reviews/`,
+                              {
+                                review: post,
+                                user_id: userId,
+                                provider_id: id,
                               },
-                            }
-                          ).then((result)=>{
-                            console.log(result.data.result);
-                            // setReveiws([...reveiws , result.data.result])
-                          //  dispatch(addReview(result.data.result))
-                          }).catch((err)=>{
-                            console.log(err);
-                          })
+                              {
+                                headers: {
+                                  Authorization: `Bearer ${token}`,
+                                },
+                              }
+                            )
+                            .then((result) => {
+                              console.log(result.data.result);
+                              // setReveiws([...reveiws , result.data.result])
+                              dispatch(addReview(result.data.result));
+                            })
+                            .catch((err) => {
+                              console.log(err);
+                            });
                         }}
                       >
                         Add <MDBIcon fas icon="long-arrow-alt-right ms-1" />
@@ -124,20 +134,20 @@ const Feadback_reviwes = () => {
           </MDBCol>
 
           <MDBCol sm="6">
-            <MDBCard className="mb-4">
+            <MDBCard className="mb-1 position-relative">
               <MDBCardBody>
                 <MDBRow>
                   <MDBCol>
-                  <MDBCardText>Reviews </MDBCardText>  
+                  <MDBTypography tag="h5">Reviews</MDBTypography>
                   </MDBCol>
 
-                  {reveiws.map((comment, i) => {
+                  {reviews.map((comment, i) => {
                     return (
                       <div key={i}>
                         <MDBCol sm="3">
-                          <MDBCardText>
-                            {comment.firstname} {comment.lastname}{" "}
-                          </MDBCardText>
+                        <MDBTypography tag="h5">{comment.firstname} {comment.lastname}</MDBTypography>
+                            {" "}
+                          
                         </MDBCol>
 
                         <MDBCol sm="6">
@@ -149,24 +159,80 @@ const Feadback_reviwes = () => {
                           <MDBCardText className="text-muted">
                             review :{comment.review}
                           </MDBCardText>
-                     
 
+                          
                         </MDBCol>
                         <MDBCol sm="6">
                           <MDBCardText className="text-muted">
-                            Time :{comment.created_at}
+                            Created_at :{comment.created_at}
                           </MDBCardText>
                         </MDBCol>
-                        
-                       
-                         <MDBTextArea
-                      label="What is your view?"
-                      rows={4}
-                     
-                    /> 
-                     <MDBBtn color="success">Update Review</MDBBtn>
+
+                        {comment.user_id == userId ? (
+                          <div>
+                            <MDBBtn
+                              color="danger"
+                              onClick={() => {
+                                axios.delete(
+                                  `http://localhost:5000/reviews/${comment.review_id}`,{
+                                    headers: {
+                                      Authorization: `Bearer ${token}`,
+                                    },
+                                  }
+                                ).then((result)=>{
+                                  console.log(dispatch(deleteReviewById(result.data.result)));
+                                   dispatch(deleteReviewById(result.data.result))
+                                }).catch((err)=>{
+                                  console.log(err);
+                                })
+                              }}
+                            >
+                              {" "}
+                              X
+                            </MDBBtn>
+                            <MDBBtn
+                              color="success"
+                              onClick={() => {
+                                setToggle(!toggle);
+
+                                axios
+                                  .put(
+                                    `http://localhost:5000/reviews/user/${comment.review_id}`,
+                                    { review: update, user_id: userId },
+                                    {
+                                      headers: {
+                                        Authorization: `Bearer ${token}`,
+                                      },
+                                    }
+                                  )
+                                  .then((result) => {
+                                    dispatch(updateReview(result.data.result));
+                                  })
+                                  .catch((err) => {
+                                    console.log(err);
+                                  });
+                              }}
+                            >
+                              Update Review
+                            </MDBBtn>
+                          </div>
+                        ) : (
+                          <></>
+                        )}
+                        {toggle ? (
+                          <form>
+                            <MDBTextArea
+                              label="Update your view?"
+                              rows={4}
+                              onChange={(e) => {
+                                setUpdate(e.target.value);
+                              }}
+                            />
+                          </form>
+                        ) : (
+                          <></>
+                        )}
                         <hr />
-                        
                       </div>
                     );
                   })}
