@@ -91,7 +91,7 @@ element:<MyServices/>},
       },
 
       {path:"/schedule",
-    element:<Schedule/>}
+    element:<Schedule/>},
 
       {
         path:"/myProfile",

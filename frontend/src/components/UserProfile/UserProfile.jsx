@@ -20,6 +20,7 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
+  MDBSpinner
 } from "mdb-react-ui-kit";
 
 import "./style.css";
@@ -29,6 +30,7 @@ import {
   updateHistory,
   deleteHistoryById,
 } from "../../service/redux/reducers/history";
+import UserHistory from "./UserHistory";
 
 const UserProfile = () => {
   const [profile, setProfile] = useState([]);
@@ -65,6 +67,13 @@ const [medications ,setMedications]=useState("")
         console.log(err);
       });
   }, []);
+  if (profile.length == 0) {
+    return (
+      <MDBSpinner color="danger">
+        <span className="visually-hidden">Loading...</span>
+      </MDBSpinner>
+    );
+  }
   return (
     <div>
       <div className="gradient-custom-2" style={{ backgroundColor: "#9de2ff" }}>
@@ -124,38 +133,8 @@ const [medications ,setMedications]=useState("")
                           </MDBCardText>
                         </div>
                       </div>
-
-                      <div className="mb-5">
-                        <p className="lead fw-normal mb-1">History</p>
-
-                        <div
-                          className="p-4"
-                          style={{ backgroundColor: "#f8f9fa" }}
-                        >
-                          <MDBCardText className="font-italic mb-1">
-                            History: {data.history}
-                          </MDBCardText>
-                          <MDBCardText className="font-italic mb-1"></MDBCardText>
-                          <hr />
-                          <MDBCardText className="font-italic mb-1">
-                            Chronic_Diseases : {data.chronic_diseases}
-                          </MDBCardText>
-                          <MDBCardText className="font-italic mb-1"></MDBCardText>
-                          <hr />
-                          <MDBCardText className="font-italic mb-0">
-                            Medications : {data.medications}
-                          </MDBCardText>
-                          <MDBCardText className="font-italic mb-0"></MDBCardText>
-                        </div>
-                        <MDBBtn
-                          outline
-                          color="dark"
-                          className="ms-1"
-                          style={{ height: "36px", overflow: "visible" }}
-                        >
-                          Edit History
-                        </MDBBtn>
-                        <>
+                      <UserHistory/>
+                      <>
                           <MDBBtn onClick={toggleShow}>Add History</MDBBtn>
                           <MDBModal
                             show={basicModal}
@@ -165,7 +144,7 @@ const [medications ,setMedications]=useState("")
                             <MDBModalDialog>
                               <MDBModalContent>
                                 <MDBModalHeader>
-                                  <MDBModalTitle>Modal title</MDBModalTitle>
+                                  <MDBModalTitle>Add History</MDBModalTitle>
                                   <MDBBtn
                                     className="btn-close"
                                     color="none"
@@ -211,13 +190,17 @@ const [medications ,setMedications]=useState("")
                                     Close
                                   </MDBBtn>
                                   <MDBBtn onClick={()=>{
+                                    
                                     axios.post(`http://localhost:5000/history/`,{history:histories ,medications,chronic_diseases},{
                                         headers: {
                                           Authorization: `Bearer ${token}`,
                                         },
                                       }).then((result)=>{
                                         console.log(result.data);
+                                        toggleShow
                                         dispatch(addHistory(result.data.result))
+                                        
+                                       
                                       }).catch((err)=>{
                                         console.log(err);
                                       })
@@ -227,15 +210,8 @@ const [medications ,setMedications]=useState("")
                             </MDBModalDialog>
                           </MDBModal>
                         </>
-                        <MDBBtn
-                          outline
-                          color="dark"
-                          className="ms-1"
-                          style={{ height: "36px", overflow: "visible" }}
-                        >
-                          Delete History
-                        </MDBBtn>
-                      </div>
+                        
+                    
                     </MDBCardBody>
                   </div>
                 );
