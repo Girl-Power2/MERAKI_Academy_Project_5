@@ -75,10 +75,10 @@ ON UPDATE CASCADE
 FOREIGN KEY (category_id) REFERENCES categories(category_id)
 ON UPDATE CASCADE
  ON DELETE CASCADE,
--- info_id Int,
--- FOREIGN KEY (info_id) REFERENCES provider_info(provider_info_id)
--- ON UPDATE CASCADE
---  ON DELETE CASCADE,
+schedule_id Int,
+FOREIGN KEY (schedule_id) REFERENCES schedules(schedule_id)
+ON UPDATE CASCADE
+ ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0;
 
 );
@@ -104,10 +104,6 @@ FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0,
-user_id INT, --to be removed
-FOREIGN KEY (user_id) REFERENCES users(user_id)
-ON UPDATE CASCADE
-ON DELETE CASCADE,
 booked BOOLEAN DEFAULT false,
 chosen BOOLEAN DEFAULT false,
 is_viewed SMALLINT DEFAULT 1
@@ -164,9 +160,7 @@ bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
 provider_id INT NOT NULL,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
-
 ON UPDATE CASCADE
-
 ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 );
