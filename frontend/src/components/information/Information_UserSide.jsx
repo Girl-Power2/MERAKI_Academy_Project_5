@@ -126,17 +126,7 @@ export default function Information_UserSide() {
                         </MDBCol>
                       </MDBRow>
                       <hr />
-                      <MDBRow>
-                        <MDBCol sm="3">
-                          <MDBCardText>Email</MDBCardText>
-                        </MDBCol>
-                        <MDBCol sm="9">
-                          <MDBCardText className="text-muted">
-                            {data.email}
-                          </MDBCardText>
-                        </MDBCol>
-                      </MDBRow>
-                      <hr />
+                     
                       <MDBRow>
                         <MDBCol sm="3">
                           <MDBCardText>Phone</MDBCardText>
@@ -156,17 +146,6 @@ export default function Information_UserSide() {
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
                             {data.bio}
-                          </MDBCardText>
-                        </MDBCol>
-                      </MDBRow>
-                      <hr />
-                      <MDBRow>
-                        <MDBCol sm="3">
-                          <MDBCardText>Address</MDBCardText>
-                        </MDBCol>
-                        <MDBCol sm="9">
-                          <MDBCardText className="text-muted">
-                            {data.city}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>
