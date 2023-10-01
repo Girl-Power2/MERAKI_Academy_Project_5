@@ -4,7 +4,7 @@ const schedule = {};
 
 // =====================CREAT NEW SCHEDULE==================
 schedule.createNewSchedule = async (req, res) => {
-  const { provider_id, time_from, time_to } = req.body;
+  const { provider_id, time_from, time_to} = req.body;
   const values = [provider_id, time_from, time_to];
   const query = `INSERT INTO schedules (provider_id,time_from,time_to) VALUES ($1,$2,$3) RETURNING *;`;
   try {

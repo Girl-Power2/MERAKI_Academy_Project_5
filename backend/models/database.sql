@@ -108,8 +108,9 @@ user_id INT, --to be removed
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
+Date DATE ,
 booked BOOLEAN DEFAULT false,
-chosen BOOLEAN DEFAULT false,
+chosen BOOLEAN DEFAULT true,
 is_viewed SMALLINT DEFAULT 1
 );
 
