@@ -1,29 +1,24 @@
-import {createSlice} from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
-
-export const schedule=createSlice({
-    name:"schedule",
-    initialState:{
-       schedule:[]
+export const schedule = createSlice({
+  name: "schedule",
+  initialState: {
+    schedule: [],
+  },
+  reducers: {
+    setSchedule: (state, action) => {
+      state.schedule = action.payload;
     },
-    reducers:{
-        setSchedule:(state,action)=>{
-            state.schedule=action.payload
-        }
-    }
-    })
+    addSchedule: (state, action) => {
+      state.schedule.push(action.payload);
+    },
+    deleteSchedule: (state, action) => {
+      state.schedule = state.schedule.filter((sched) => {
+        return sched.provider_id !== action.payload;
+      });
+    },
+  },
+});
 
-
-
-
-
-
-
-
-
-
-
-
-export const {setSchedule } =
-schedule.actions;
+export const { setSchedule, addSchedule, deleteSchedule } = schedule.actions;
 export default schedule.reducer;

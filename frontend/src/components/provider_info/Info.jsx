@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import "./style.css";
-import { setQualifications,setBio,setImage } from "../../service/redux/reducers/provider_info";
+import { setInfo } from "../../service/redux/reducers/provider_info";
 
 const Info = () => {
   // ============================common states=================================
@@ -15,19 +15,21 @@ const Info = () => {
   const dispatch=useDispatch()
   const [msg, setMsg] = useState("");
   const [show, setShow] = useState(false);
+  const[img,setImg]=useState("")
+  const[bio,setBio]=useState("")
+  const[qua,setQua]=useState("")
 
 
-  const { providerId, token,bio,qualifications,image } = useSelector((state) => {
+  const { providerId, token } = useSelector((state) => {
   return {
     providerId:state.auth.providerId,
     token:state.auth.token,
-    bio:state.info.bio,
-    qualifications:state.info.qualifications,
-    image:state.info.image,
+ 
   }
 }
 
   );
+  
 
   // ============================common states=================================
 
@@ -42,7 +44,7 @@ const Info = () => {
         `http://localhost:5000/provider_info`,
         {
           bio: bio || "",
-          qualifications: qualifications || "",
+          qualifications: qua || "",
           img: urlFile || "",
           provider_id: providerId,
         },
@@ -53,7 +55,12 @@ const Info = () => {
         }
       )
       .then((result) => {
-        console.log(result);
+        dispatch(setInfo( {
+         bio ,
+        qua ,
+       urlFile, 
+       providerId,
+        },))
         setMsg({ success: true, msg: result.data.message });
       })
       .catch((err) => {
@@ -62,13 +69,13 @@ const Info = () => {
   };
   const uploadImage = () => {
     const data = new FormData();
-    data.append("file", image);
+    data.append("file", img);
     data.append("upload_preset", "g9fkkaot");
     data.append("cloud_name", "drzcyo3sv");
     axios
       .post("https:api.cloudinary.com/v1_1/drzcyo3sv/image/upload", data)
       .then((res) => {
-        // console.log(data);
+       console.log("url:",res.data.url);
         insert_info(res.data.url);
         setUrl(res.data.url);
       })
@@ -108,7 +115,7 @@ const Info = () => {
                 aria-label="Bio"
                 autoFocus
                 onChange={(e) => {
-                  dispatch(setBio(e.target.value))
+                  setBio(e.target.value)
                   ;
                 }}
               />
@@ -121,7 +128,7 @@ const Info = () => {
                 aria-label="Qualifications"
                 autoFocus
                 onChange={(e) => {
-                  dispatch(setQualifications(e.target.value))
+                  setQua(e.target.value)
                   ;
                 }}
               />
@@ -131,8 +138,9 @@ const Info = () => {
               <Form.Control
                 type="file"
                 onChange={(e) => {
-                  dispatch(setImage(e.target.files[0]))
-                  ;
+                  console.log(e.target.files[0]);
+                setImg(e.target.files[0])
+                  
                 }}
               />
             </Form.Group>
@@ -143,8 +151,8 @@ const Info = () => {
                 type="submit"
                 value="Submit"
                 onClick={() => {
-               console.log(image);
-                  if (image) {
+               console.log(img);
+                  if (img) {
                     uploadImage();
                   } else {
                     insert_info();

@@ -95,7 +95,7 @@ const Navbar = () => {
 
               {/* ====================IF LOGGED IN======================  */}
 
-              {isLoggedIn && role === 3 && (
+              {isLoggedIn && providerId && (
                 <>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/services">

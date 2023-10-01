@@ -46,6 +46,12 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function RegisterProvider() {
+  const{schedule}=useSelector((state)=>{
+    return{
+       schedule:state.schedule.schedule
+    }
+   
+  })
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -304,6 +310,7 @@ export default function RegisterProvider() {
                       phoneNumber: data.phoneNumber,
                       role_id: data.role_id,
                       category_id: data.category_id,
+                     
                     })
                     .then((result) => {
                       console.log(result.data);
