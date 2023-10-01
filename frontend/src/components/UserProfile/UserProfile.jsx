@@ -197,8 +197,8 @@ const [medications ,setMedications]=useState("")
                                         },
                                       }).then((result)=>{
                                         console.log(result.data);
-                                        toggleShow
-                                        dispatch(addHistory(result.data.result))
+                                        toggleShow()
+                                        dispatch(addHistory({history:histories ,medications,chronic_diseases}))
                                         
                                        
                                       }).catch((err)=>{
