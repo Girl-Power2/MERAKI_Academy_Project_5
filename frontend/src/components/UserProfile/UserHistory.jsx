@@ -75,7 +75,7 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
 
                         <div
                           className="p-4"
-                          style={{ backgroundColor: "#f8f9fa" }}
+                          style={{ backgroundColor: "#DCDCDC" }}
                         >
                           <MDBCardText className="font-italic mb-1">
                             History: {data.history}
@@ -147,10 +147,7 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
                 }).then((result)=>{
                     console.log(result.data);
                     toggleShow()
-                    dispatch(updateHistory({
-                      history :newHistories,medications:newMedications,
-                chronic_diseases:newChronic_diseases,id:data.medical_history_id
-                    }))
+                    dispatch(updateHistory(result.data.result[0]))
                 }).catch((err)=>{
                     console.log(err);
                 })
