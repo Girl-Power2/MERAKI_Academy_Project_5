@@ -27,7 +27,7 @@ services.createNewService = async (req, res) => {
 services.getServiceByProviderId = async (req, res) => {
   const provider_id = req.params.id;
   const values = [provider_id];
-  const query = `SELECT providers.fName,providers.lName ,services.service, services.price_per_hour,services.service_id FROM services INNER JOIN providers ON services.provider_id=providers.provider_id WHERE services.provider_id=$1 AND providers.is_deleted=0 `;
+  const query = `SELECT providers.fName,providers.lName ,services.service, services.price_per_hour,services.service_id FROM services INNER JOIN providers ON services.provider_id=providers.provider_id WHERE services.provider_id=$1 AND providers.is_deleted=0  AND services.is_deleted=0 `;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -135,12 +135,12 @@ services.GetALLServices = (req, res) => {
       });
     });
 };
-// 
-services.UpdateService=async(req,res)=>{
+//
+services.UpdateService = async (req, res) => {
   const provider_id = req.token.providerId;
-  const { service,price_per_hour } = req.body;
+  const { service, price_per_hour } = req.body;
   const id = req.params.id;
-  const values = [service || null,price_per_hour || null,provider_id,id];
+  const values = [service || null, price_per_hour || null, provider_id, id];
   const query = `UPDATE services SET service=COALESCE($1,service) ,price_per_hour=COALESCE($2,price_per_hour) WHERE service_id=$4 AND provider_id=$3 RETURNING *;`;
   try {
     const result = await client.query(query, values);
@@ -150,13 +150,12 @@ services.UpdateService=async(req,res)=>{
         message: "Service updated successfully",
         data: result.rows,
       });
-    }
-    else{
+    } else {
       res.status(404).json({
-          status:false,
-          message:`Service not found `,
-          error:error.message
-      })
+        status: false,
+        message: `Service not found `,
+        error: error.message,
+      });
     }
   } catch (err) {
     res.status(500).json({
@@ -165,26 +164,28 @@ services.UpdateService=async(req,res)=>{
       err: err.message,
     });
   }
-  };
-  services. deleteServiceById =(req,res)=>{
-    const id = req.params.id;
-    const provider_id = req.token.providerId;
-    values=[id,provider_id]
-    const query =`UPDATE services
+};
+services.deleteServiceById = (req, res) => {
+  const id = req.params.id;
+  const provider_id = req.token.providerId;
+  values = [id, provider_id];
+  const query = `UPDATE services
     SET is_deleted = 1
-    WHERE service_id=$1 AND provider_id=$2;`
-    client.query(query,values).then((result)=>{
-        res.status(201).json({
-            success: true,
-            message: `Service deleted successfully`,
-            
-          });
-    }).catch((err)=>{
-        res.status(500).json({
-            success: false,
-            message: "server error",
-            err: err.message,
-          });
+    WHERE service_id=$1 AND provider_id=$2;`;
+  client
+    .query(query, values)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `Service deleted successfully`,
+      });
     })
-} 
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        err: err.message,
+      });
+    });
+};
 module.exports = { services };

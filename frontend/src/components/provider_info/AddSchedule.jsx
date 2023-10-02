@@ -10,9 +10,9 @@ import { setSchedule } from "../../service/redux/reducers/schedule";
 import React from "react";
 import { Link } from "react-router-dom";
 
-    const today=new Date()
-//    today.setDate(today.getDate())
-    console.log("today:",today);
+  //   const today=new Date()
+  //  today.setDate(today.getDate())
+  //   console.log("today:",today);
 //===============================================================================//
 
 
@@ -36,6 +36,7 @@ const AddSchedule = () => {
   const [timeTo, setTimeTo] = useState("24:00");
   const[msg,setMsg]=useState("")
   const [date, setDate] = useState('');
+  const [today, setToday] = useState("")
 
   const [show, setShow] = useState(false);
 
@@ -45,13 +46,14 @@ const AddSchedule = () => {
   const { providerId, token } = useSelector((state) => {
     return {
       providerId: state.auth.providerId,
-      role: state.auth.role,
       token: state.auth.token,
     };
   });
-
+  
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    setToday(new Date().toISOString().split('T')[0])
+    setShow(true)};
   const dispatch = useDispatch();
 
   const setSchedules = () => {
@@ -93,15 +95,11 @@ const AddSchedule = () => {
           <label>
             Date:
             <input type="date"
+            min={today}
             onChange={(e)=>{
                 console.log(e.target.value);
-if(e.target.value==today){
-    console.log("ok");
-    setDate(e.target.value)
-}
-else{
-    setMsg({success:false,msg:"please enter a valid date"})
-}
+                setDate(e.target.value)
+
             }}
             ></input>
           </label>
@@ -110,9 +108,13 @@ else{
             <input
               type="time"
               min="08:00"
-              max="11:00"
+              max="23:00"
+              step="3600"
+              value="08:00"
               name="time_from"
               required
+              pattern="[0-9]{2}:[0-9]{2}"
+
               onChange={(e) => {
                 setTimeFrom(e.target.value);
               }}
@@ -123,8 +125,13 @@ else{
             <input
               type="time"
               min="09:00"
-              max="12:00"
-              name="time_from"
+              max="00"
+              step="3600"
+              name="time_to"
+              value="09:00"
+              pattern="[0-9]{2}:[0-9]{2}"
+
+              required
               onChange={(e) => {
                 setTimeTo(e.target.value);
               }}

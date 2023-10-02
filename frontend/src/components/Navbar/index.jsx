@@ -97,19 +97,21 @@ const Navbar = () => {
 
               {isLoggedIn && providerId && (
                 <>
+                
                   <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="/services">
+                      <NavLink to="/My_profile">My Profile</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem> 
+                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/services">
                       <NavLink to="/services">My services</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/services">
-                      <NavLink to="profile">My Profile</NavLink>
-                    </MDBNavbarLink>
-                  </MDBNavbarItem>
-                  <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/services">
                       <NavLink to="/mySchedule">My Schedule</NavLink>
+
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>

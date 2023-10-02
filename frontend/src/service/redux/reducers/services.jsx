@@ -24,13 +24,14 @@ export const services = createSlice({
       });
       
     },
-  },
-  deleteService:(state,action)=>{
+     deleteService:(state,action)=>{
     state.service = state.service.filter((ser) => {
-      return ser.service_id !== action.payload.id;
+      return ser.service_id !== action.payload;
     });
 
   }
+  },
+ 
 });
 
 export const { setService, updateService,addService,deleteService } = services.actions;
