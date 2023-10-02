@@ -107,7 +107,7 @@ const login = (req, res) => {
 const getUserById = async (req, res) => {
   const id = req.token.userId;
   const values = [id];
-  const query = `SELECT * FROM  users WHERE user_id=$1 AND is_deleted=0`;
+  const query = `SELECT *,AGE(birthdate)as age FROM  users WHERE user_id=$1 AND is_deleted=0`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
