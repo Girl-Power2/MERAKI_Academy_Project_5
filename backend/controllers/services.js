@@ -5,7 +5,7 @@ const services = {};
 services.createNewService = async (req, res) => {
   const { service, price_per_hour } = req.body;
   const provider_id = req.token.providerId;
-  const values = [service.toLowerCase(), price_per_hour, provider_id];
+  const values = [service, price_per_hour, provider_id];
   const query = `INSERT INTO services (service,price_per_hour,provider_id) VALUES ($1,$2,$3) RETURNING *`;
   try {
     const response = await client.query(query, values);
@@ -166,4 +166,25 @@ services.UpdateService=async(req,res)=>{
     });
   }
   };
+  services. deleteServiceById =(req,res)=>{
+    const id = req.params.id;
+    const provider_id = req.token.providerId;
+    values=[id,provider_id]
+    const query =`UPDATE services
+    SET is_deleted = 1
+    WHERE service_id=$1 AND provider_id=$2;`
+    client.query(query,values).then((result)=>{
+        res.status(201).json({
+            success: true,
+            message: `Service deleted successfully`,
+            
+          });
+    }).catch((err)=>{
+        res.status(500).json({
+            success: false,
+            message: "server error",
+            err: err.message,
+          });
+    })
+} 
 module.exports = { services };

@@ -1,61 +1,74 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
+import {addSchedule,deleteSchedule} from "../../../service/redux/reducers/schedule"
 import"./style.css"
 const Schedule = () => {
-  const { providerId,isLoggedIn,role } = useSelector((state) => {
+const dispatch=useDispatch()
+  const {schedule}=useSelector((state)=>{
+    return {schedule:state.schedule.schedule}
+  })
+  const { providerId,isLoggedIn,role,token } = useSelector((state) => {
     return {
       providerId: state.auth.providerId,
       isLoggedIn:state.auth.isLoggedIn,
-      role:state.auth.role
+      role:state.auth.role,
+token:state.auth.token
     };
   });
 
-  const [schedules, setSchedules] = useState("");
   const [msg, setMsg] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
+  const [timeFrom,setTimeFrom] = useState('24:00');
+  const [timeTo,setTimeTo] = useState('24:00');
 
-  const getProviderSchedule = () => {
-    // console.log(providerId);
+  const addSchedule = () => {
     axios
-      .get(`http://localhost:5000/schedules/ByProvider/?provider_id=${providerId}`)
+      .post(`http://localhost:5000/schedules/`,{time_from:timeFrom,time_to:timeTo},{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((result) => {
-        setSchedules(result.data.data);
+        console.log(result.data);
+        dispatch(addSchedule({time_from:timeFrom,time_to:timeTo,provider_id:providerId}));
         setMsg(result.data.message);
-        setFname(result.data.data[0].fname);
-        setLname(result.data.data[0].lname);
+      
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    console.log("loggedIn",isLoggedIn);
-    console.log("role",role);
-    getProviderSchedule();
-  }, []);
+  // useEffect(() => {
+  //   console.log("loggedIn",isLoggedIn);
+  //   console.log("role",role);
+  //   addSchedule();
+  // }, []);
 
   return (
     <>
-      <div className="container">
-        <p>
-          {msg} {fname} {lname}
-        </p>
-        {schedules &&
-          schedules.map((s, i) => {
-            return (
-              <>
-                <div key={i} className="times">
-                  <span>From:</span> <p>{s.time_from}</p>
-                  <span>To:</span>
-                  <p> {s.time_to}</p>
-                  <button>Choose</button>
-                </div>
-              </>
-            );
-          })}
-      </div>
+     <div>
+      <p>Please enter your available times to work</p>
+      <label>From:
+      <input type="time" min="08:00" max="11:00" name="time_from" required
+      onChange={(e)=>{
+        console.log(e.target.value);
+        setTimeFrom(e.target.value)
+      }}
+      /></label>
+      <label>To:
+      <input type="time" min="09:00" max="12:00" name="time_from"
+        onChange={(e)=>{
+          console.log(e.target.value);
+          setTimeTo(e.target.value)
+        }}
+      /></label>
+      <button
+      onClick={()=>{
+        addSchedule()
+      }}
+      
+      >Choose</button>
+     </div>
     </>
   );
 };

@@ -15,7 +15,6 @@ export const services = createSlice({
     },
     updateService: (state, action) => {
       state.service = state.service.map((ser,i) => {
-      console.log("fromslice:",ser);
 
         if (ser.service_id === action.payload.id) {
           ser.service = action.payload.service;
@@ -26,7 +25,13 @@ export const services = createSlice({
       
     },
   },
+  deleteService:(state,action)=>{
+    state.service = state.service.filter((ser) => {
+      return ser.service_id !== action.payload.id;
+    });
+
+  }
 });
 
-export const { setService, updateService,addService } = services.actions;
+export const { setService, updateService,addService,deleteService } = services.actions;
 export default services.reducer;

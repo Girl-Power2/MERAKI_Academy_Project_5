@@ -1,4 +1,4 @@
-DROP DATABASE cureApp_5;
+DROP DATABASE cureapp_5;
 CREATE DATABASE cureapp_5;
 
 \c cureapp_5;
@@ -61,7 +61,7 @@ CREATE TABLE providers(
 provider_id SERIAL PRIMARY KEY NOT NULL,
 fName VARCHAR(255) NOT NULL,
 lName VARCHAR(255) NOT NULL,
-birthDAte DATE NOT NULL,
+birthDate DATE NOT NULL,
 email VARCHAR(255) UNIQUE NOT NULL,
 password VARCHAR(255) NOT NULL ,
 phoneNumber VARCHAR(100) NOT NULL,
@@ -75,11 +75,11 @@ ON UPDATE CASCADE
 FOREIGN KEY (category_id) REFERENCES categories(category_id)
 ON UPDATE CASCADE
  ON DELETE CASCADE,
-schedule_id Int,
-FOREIGN KEY (schedule_id) REFERENCES schedules(schedule_id)
-ON UPDATE CASCADE
- ON DELETE CASCADE,
-is_deleted SMALLINT DEFAULT 0;
+-- info_id Int,
+-- FOREIGN KEY (info_id) REFERENCES provider_info(provider_info_id)
+-- ON UPDATE CASCADE
+--  ON DELETE CASCADE,
+is_deleted SMALLINT DEFAULT 0
 
 );
 
@@ -97,20 +97,22 @@ is_deleted SMALLINT DEFAULT 0
 
 CREATE TABLE schedules(
 schedule_id SERIAL PRIMARY KEY NOT NULL ,
-time_from TIME DEFAULT '008:00:00'NOT NULL,
+time_from TIME NOT NULL,
 time_to TIME NOT NULL,
+DATE date ,
 provider_id INT,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0,
 
-
 user_id INT, --to be removed
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
+
 Date DATE ,
+
 
 booked BOOLEAN DEFAULT false,
 chosen BOOLEAN DEFAULT true,
@@ -168,7 +170,9 @@ bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
 provider_id INT NOT NULL,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
+
 ON UPDATE CASCADE
+
 ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 );
@@ -199,6 +203,21 @@ chronic_diseases  TEXT,
 is_deleted SMALLINT DEFAULT 0
 );
 
+INSERT INTO roles (role) VALUES ('Admin'),('User'),('Provider'); 
+INSERT INTO permissions (permission) VALUES (''),(''),(''); 
+INSERT INTO role_permissions (role_id,permission_id) VALUES ('',''),('',''),('',''); 
+ INSERT INTO categories (category,img) VALUES ('General Medicine','img'),('Nursing',''),('Physiotherapy',''),('Occupational Therapy',''),('Speech Therapy',''),('Baby Sitting','');
+INSERT INTO providers  (fName,
+  lName,
+  birthDate,
+  gender,
+  email,
+  password,
+  city,
+  phoneNumber,
+  role_id,
+  category_id) VALUES('Hala','Omar','1997-7-27','female','halaprovider@gmail.com','123456','amman','0798967357','3','3'),('Bahaa','Baraa','1990-5-5','male','bahaaprovider@gmail.com','123456','amman','0798965234','4','3') ;
+INSERT INTO users (firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id) VALUES ('Duha','Jehad','2000-7-7','amman','duhauser@gmail.com','123456','0785221564','female','2')
 
 -- CREATE TABLE categories(
 -- category_id SERIAL PRIMARY KEY NOT NULL ,
