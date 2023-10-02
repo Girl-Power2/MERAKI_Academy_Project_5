@@ -66,14 +66,7 @@ export const router = createBrowserRouter([
       ,{path:"/providerMain",
     element:<ProviderMain/>,
     },
-//       {
-//         path: "/info",
-//         element: <Info />,
 
-   
-//   },
-//   {path:"/service",
-// element:<Service/>},
   {path:"/services",
 element:<MyServices/>},
 
@@ -90,7 +83,7 @@ element:<MyServices/>},
         element:<Feadback_reviwes/>
       },
 
-      {path:"/schedule",
+      {path:"/myschedule",
     element:<Schedule/>},
 
       {

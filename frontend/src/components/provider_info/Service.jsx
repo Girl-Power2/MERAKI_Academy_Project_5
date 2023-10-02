@@ -58,14 +58,14 @@ const Service = () => {
     <div>
 
  {/* ============================start of second modal==================================================} */}
-
+<div className="step"> 
  <label>
           2.
           <Button variant="primary" onClick={handleShow}>
             Add services
           </Button>
         </label>
-
+</div>
         <Modal show={show} onHide={handleClose}>
           <div className="inputs" >
             <Form.Control

@@ -3,15 +3,14 @@ import axios from "axios";
 import {useDispatch, useSelector } from "react-redux";
 import {addSchedule,deleteSchedule} from "../../../service/redux/reducers/schedule"
 import"./style.css"
-const Schedule = () => {
+const MySchedule = () => {
 const dispatch=useDispatch()
   const {schedule}=useSelector((state)=>{
     return {schedule:state.schedule.schedule}
   })
-  const { providerId,isLoggedIn,role,token } = useSelector((state) => {
+  const { providerId,token } = useSelector((state) => {
     return {
       providerId: state.auth.providerId,
-      isLoggedIn:state.auth.isLoggedIn,
       role:state.auth.role,
 token:state.auth.token
     };
@@ -73,4 +72,4 @@ token:state.auth.token
   );
 };
 
-export default Schedule;
+export default MySchedule;
