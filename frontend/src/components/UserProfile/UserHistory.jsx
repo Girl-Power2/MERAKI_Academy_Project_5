@@ -38,6 +38,7 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
     const [basicModal, setBasicModal] = useState(false);
   const [newHistories ,setNewHistories] = useState("")
   const[newChronic_diseases ,setNewChronic_diseases] =useState("")
+  
   const [newMedications ,setNewMedications]=useState("")
     const toggleShow = () => setBasicModal(!basicModal);
     const dispatch = useDispatch();
@@ -59,11 +60,12 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
             },
         }).then((result)=>{
             console.log(result.data);
+           
             dispatch(setHistory(result.data.result))
         }).catch((err)=>{
             console.log(err);
         })
-    },[])
+    },[history.length])
     return (
       <div>
           <div className="mb-5">
@@ -106,6 +108,7 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
             <MDBModalBody> <MDBInput
                                     id="form4Example1"
                                     wrapperClass="mb-4"
+                                    valueDefault={data.history}
                                     label="history"
                                     onChange={(e)=>{
                                         setNewHistories(e.target.value)
@@ -113,7 +116,7 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
                                   />
                                   <MDBInput
                                     type="text"
-                                
+                                    valueDefault={data.chronic_diseases}
                                     wrapperClass="mb-4"
                                     label="chronic_diseases" 
                                     onChange={(e)=>{
@@ -124,6 +127,7 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
                                     wrapperClass="mb-4"
                                     textarea
                                    rows={6}
+                                   valueDefault={data.medications}
                                     label=" Medications"
                                     onChange={(e)=>{
                                         setNewMedications(e.target.value)
@@ -142,8 +146,11 @@ import RegisterUser from "../../pages/Register/register_users/RegisterUser";
                     },
                 }).then((result)=>{
                     console.log(result.data);
-                    dispatch(updateHistory({history :newHistories,medications:newMedications,
-                        chronic_diseases:newChronic_diseases ,id :data.medical_history_id}))
+                    toggleShow()
+                    dispatch(updateHistory({
+                      history :newHistories,medications:newMedications,
+                chronic_diseases:newChronic_diseases,id:data.medical_history_id
+                    }))
                 }).catch((err)=>{
                     console.log(err);
                 })

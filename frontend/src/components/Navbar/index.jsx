@@ -154,8 +154,8 @@ const Navbar = () => {
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="">
-                      <NavLink to="">My Orders</NavLink>
+                    <MDBNavbarLink active aria-current="page" href="/orders">
+                      <NavLink to="/orders">My Orders</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>

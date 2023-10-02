@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
-import { Outlet } from "react-router-dom";
+
 import "./style.css";
 import {
   MDBCol,
@@ -16,11 +16,23 @@ import {
   MDBIcon,
   MDBListGroup,
   MDBListGroupItem,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+
+ 
 } from "mdb-react-ui-kit";
+import ProviderSesvice from "./ProviderSesvice";
 
 export default function Information_UserSide() {
   const [info, setInfo] = useState([]);
   const history = useNavigate();
+  const [centredModal, setCentredModal] = useState(false);
+   const toggleShow = () => setCentredModal(!centredModal);
   const { token } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -98,9 +110,33 @@ export default function Information_UserSide() {
                   >
                     Reveiws
                   </MDBBtn>
-                  <MDBBtn outline className="ms-1">
-                    Message
-                  </MDBBtn>
+                  
+      <>
+      <MDBBtn className="ms-1" onClick={toggleShow}>Make Order ?</MDBBtn>
+
+      <MDBModal tabIndex='-1' show={centredModal} setShow={setCentredModal}>
+        <MDBModalDialog centered>
+          <MDBModalContent>
+            <MDBModalHeader>
+              <MDBModalTitle>Modal title</MDBModalTitle>
+              <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
+            </MDBModalHeader>
+            <MDBModalBody>
+              <p>
+                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+                egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+              </p>
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color='secondary' onClick={toggleShow}>
+                Close
+              </MDBBtn>
+              <MDBBtn>Save changes</MDBBtn>
+            </MDBModalFooter>
+          </MDBModalContent>
+        </MDBModalDialog>
+      </MDBModal>
+    </>
                   <MDBBtn
                     color="danger"
                     className="ms-1"
@@ -184,7 +220,9 @@ export default function Information_UserSide() {
                         </MDBCol>
                       </MDBRow>
                     </MDBCardBody>
+                    
                   </MDBCard>
+                  <ProviderSesvice/>
                 </MDBCol>
               </MDBRow>
             </section>
