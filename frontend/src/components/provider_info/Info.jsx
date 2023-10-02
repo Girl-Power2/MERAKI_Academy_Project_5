@@ -55,6 +55,7 @@ const Info = () => {
         }
       )
       .then((result) => {
+        console.log(result);
         dispatch(setInfo( {
          bio ,
         qua ,

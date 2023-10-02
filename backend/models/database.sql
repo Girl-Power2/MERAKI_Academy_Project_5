@@ -165,7 +165,7 @@ ON DELETE CASCADE
 
 CREATE TABLE provider_info(
 provider_info_id SERIAL PRIMARY KEY NOT NULL,
-img TEXT,
+img TEXT DEFAULT 'http://res.cloudinary.com/drzcyo3sv/image/upload/v1696194434/tlkwzcr0pyidz3g2125d.png',
 bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
 provider_id INT NOT NULL,

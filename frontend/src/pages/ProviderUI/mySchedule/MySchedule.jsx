@@ -55,7 +55,16 @@ token:state.auth.token
       }}
       /></label>
       <label>To:
-      <input type="time" min="09:00" max="12:00" name="time_from"
+      <input
+              type="time"
+              min="08:00"
+              max="23:00"
+              step="3600"
+              value="08:00"
+              name="time_from"
+              required
+              pattern="[0-9]{2}:[0-9]{2}"
+
         onChange={(e)=>{
           console.log(e.target.value);
           setTimeTo(e.target.value)

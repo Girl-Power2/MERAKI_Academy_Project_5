@@ -60,7 +60,7 @@ const MyServices = () => {
   };
   useEffect(() => {
     getservices();
-  }, [service]);
+  }, []);
   const update_service = (id) => {
     console.log(id);
     axios
@@ -195,7 +195,8 @@ const MyServices = () => {
                           Authorization: `Bearer ${token}`,
                         },
                       }).then((result)=>{
-dispatch(deleteService({id:ser.service_id}))
+                        console.log(result);
+dispatch(deleteService(ser.service_id))
                       }).catch((err)=>{
                         console.log(err);
                       })
