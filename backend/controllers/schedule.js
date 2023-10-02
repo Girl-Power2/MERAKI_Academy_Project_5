@@ -4,9 +4,15 @@ const schedule = {};
 
 // =====================CREAT NEW SCHEDULE==================
 schedule.createNewSchedule = async (req, res) => {
+
+  const { time_from, time_to } = req.body;
+  const values = [time_from, time_to];
+  const query = `INSERT INTO schedules (time_from,time_to) VALUES ($1,$2) RETURNING *;`;
+
   const { provider_id, time_from, time_to} = req.body;
   const values = [provider_id, time_from, time_to];
   const query = `INSERT INTO schedules (provider_id,time_from,time_to) VALUES ($1,$2,$3) RETURNING *;`;
+
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -31,7 +37,7 @@ schedule.createNewSchedule = async (req, res) => {
 schedule.UpdateChosen = async (req, res) => {
   const { id } = req.params;
   const values = [id];
-  const query = `UPDATE schedules SET chosen= NOT chosen ,is_viewed=0 WHERE schedule_id=$1 AND is_viewed=1 RETURNING *`;
+  const query = `UPDATE schedules SET chosen= NOT chosen ,is_viewed=0 WHERE provider_id=$1 AND is_viewed=1 RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

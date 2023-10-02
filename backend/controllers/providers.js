@@ -14,6 +14,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
     city,
     phoneNumber,
     category_id,
+    schedule_id
   } = req.body;
 
   const role_id = 3;
@@ -31,6 +32,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
     phoneNumber,
     role_id,
     category_id,
+    schedule_id
   ];
   const query = `INSERT INTO providers  (fName,
   lName,
@@ -41,7 +43,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
   city,
   phoneNumber,
   role_id,
-  category_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`;
+  category_id,schedule_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
