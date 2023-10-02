@@ -109,7 +109,7 @@ const Navbar = () => {
                   </MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/services">
-                      <NavLink to="/myschedule">My Schedule</NavLink>
+                      <NavLink to="/mySchedule">My Schedule</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>

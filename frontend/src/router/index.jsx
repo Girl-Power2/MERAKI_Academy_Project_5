@@ -18,8 +18,8 @@ import Information_UserSide from "../components/information/Information_UserSide
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
 
 import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
+import MySchedule from "../pages/ProviderUI/mySchedule/MySchedule"
 
-import Schedule from "../pages/ProviderUI/mySchedule/Schedule";
 import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
 
 import UserProfile from "../components/UserProfile/UserProfile";
@@ -83,8 +83,8 @@ element:<MyServices/>},
         element:<Feadback_reviwes/>
       },
 
-      {path:"/myschedule",
-    element:<Schedule/>},
+      {path:"/mySchedule",
+    element:<MySchedule/>},
 
       {
         path:"/myProfile",
