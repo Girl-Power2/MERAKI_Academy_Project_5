@@ -27,6 +27,7 @@ import {
  
 } from "mdb-react-ui-kit";
 import ProviderSesvice from "./ProviderSesvice";
+import MakeOrder from "./MakeOrder";
 
 export default function Information_UserSide() {
   const [info, setInfo] = useState([]);
@@ -118,13 +119,12 @@ export default function Information_UserSide() {
         <MDBModalDialog centered>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle>Modal title</MDBModalTitle>
+              <MDBModalTitle>Orders</MDBModalTitle>
               <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
               <p>
-                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
-                egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                <MakeOrder/>
               </p>
             </MDBModalBody>
             <MDBModalFooter>

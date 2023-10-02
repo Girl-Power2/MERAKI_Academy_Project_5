@@ -1,8 +1,8 @@
 .homeCard{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin:5rem;
-    gap:5px;
+    margin:2rem 1rem;
+    /* gap:2px; */
 
 
 }

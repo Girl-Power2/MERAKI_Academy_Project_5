@@ -2,8 +2,8 @@ const { query } = require("express");
 const pool = require("../models/db");
 
 const creatNewOrder = (req, res) => {
-  const { service_id, provider_id, user_id,schedule_id } = req.body;
-
+  const { service_id, provider_id,schedule_id } = req.body;
+const user_id = req.token.userId
   const query = `INSERT INTO orders  (service_id, provider_id,user_id,schedule_id) VALUES ($1,$2,$3,$4) RETURNING *`;
   const value = [service_id, provider_id, user_id,schedule_id];
 

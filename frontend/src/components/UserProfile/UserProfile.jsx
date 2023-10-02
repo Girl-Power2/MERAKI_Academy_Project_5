@@ -35,6 +35,7 @@ import UserHistory from "./UserHistory";
 const UserProfile = () => {
   const [profile, setProfile] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [today ,setToday]=useState()
   const [basicModal, setBasicModal] = useState(false);
 const [histories ,setHistories] = useState("")
 const[chronic_diseases ,setChronic_diseases] =useState("")
@@ -60,7 +61,7 @@ const [medications ,setMedications]=useState("")
       })
       .then((result) => {
         console.log(result.data);
-
+        setToday(result.data.data[0].birthdate.toString().split('T')[0])
         setProfile(result.data.data);
       })
       .catch((err) => {
@@ -77,8 +78,8 @@ const [medications ,setMedications]=useState("")
   return (
     <div>
       <div className="gradient-custom-2" style={{ backgroundColor: "#9de2ff" }}>
-        <MDBRow className="justify-content-center align-items-center h-100">
-          <MDBCol lg="9" xl="7">
+        <MDBRow className="justify-content-left align-items-center h-100">
+          <MDBCol lg="9" xl="9">
             <MDBCard>
               {profile.map((data, i) => {
                
@@ -109,15 +110,18 @@ const [medications ,setMedications]=useState("")
                       </div>
                     </div>
 
-                    <MDBCardBody className="text-black p-4">
-                      <div className="mb-5">
+                    <MDBCardBody className="text-black p-4 ">
+                      <div className="mb-5 text-left">
                         <p className="lead fw-normal mb-1">About</p>
                         <div
                           className="p-4"
-                          style={{ backgroundColor: "#f8f9fa" }}
+                          style={{ backgroundColor: "#DCDCDC" }}
                         >
                           <MDBCardText className="font-italic mb-1">
-                            Birthdate :{data.birthdate}
+                            Age :{data.age.years}
+                          </MDBCardText>
+                          <MDBCardText className="font-italic mb-1">
+                            Birthdate :{today}
                           </MDBCardText>
                           <MDBCardText className="font-italic mb-1">
                             Lives in {data.city}
