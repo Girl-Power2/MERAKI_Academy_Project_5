@@ -18,8 +18,8 @@ import Information_UserSide from "../components/information/Information_UserSide
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
 
 import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
+import MySchedule from "../pages/ProviderUI/mySchedule/MySchedule"
 
-import Schedule from "../pages/ProviderUI/mySchedule/Schedule";
 import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
 
 import UserProfile from "../components/UserProfile/UserProfile";
@@ -67,14 +67,7 @@ export const router = createBrowserRouter([
       ,{path:"/providerMain",
     element:<ProviderMain/>,
     },
-//       {
-//         path: "/info",
-//         element: <Info />,
 
-   
-//   },
-//   {path:"/service",
-// element:<Service/>},
   {path:"/services",
 element:<MyServices/>},
 
@@ -91,8 +84,8 @@ element:<MyServices/>},
         element:<Feadback_reviwes/>
       },
 
-      {path:"/schedule",
-    element:<Schedule/>},
+      {path:"/mySchedule",
+    element:<MySchedule/>},
 
       {
         path:"/myProfile",

@@ -95,16 +95,17 @@ const Info = () => {
       <div className="welcome">
         Welcome to our team . Please follow the steps to setup your account
       </div>
-      <div className="input_container">
+      
         {/* ============================start of first modal==================================================*/}
-
+        <div className="step"> 
          <label>
           1.
           <Button variant="primary" onClick={handleShow}>
             Insert info
           </Button>
         </label>
-
+</div>
+<div className="input_container">
         <Modal show={show} onHide={handleClose}>
           <div className="inputs">
           <Modal.Body>

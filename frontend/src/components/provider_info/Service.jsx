@@ -8,6 +8,7 @@ import { useDispatch,useSelector } from "react-redux";
 import "./style.css";
 import { addService} from '../../service/redux/reducers/services';
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const Service = () => {
     const handleClose = () => setShow(false);
@@ -58,16 +59,19 @@ const Service = () => {
     <div>
 
  {/* ============================start of second modal==================================================} */}
-
+<div className="step"> 
  <label>
           2.
           <Button variant="primary" onClick={handleShow}>
             Add services
           </Button>
         </label>
+</div>
 
         <Modal show={show} onHide={handleClose}>
+          
           <div className="inputs" >
+            <p>You can add more from <Link to="/services">My services</Link></p>
             <Form.Control
               placeholder="Service"
               aria-label="Service"
