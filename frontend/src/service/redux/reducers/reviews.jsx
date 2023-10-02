@@ -16,9 +16,10 @@ export const reveiwSlice =createSlice({
            state.reviews= state.reviews.map((review ,i) => {
             console.log(action.payload);
               if (review.review_id == action.payload.review_id) {
-               return review.review = action.payload.review;
+                review.review = action.payload.review;
                
               }
+              return review
             });
           },
           deleteReviewById: (state, action) => {

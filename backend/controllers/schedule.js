@@ -4,10 +4,14 @@ const schedule = {};
 
 // =====================CREAT NEW SCHEDULE==================
 schedule.createNewSchedule = async (req, res) => {
+
   const providerId=req.token.providerId
   const {time_from, time_to} = req.body;
   const values = [providerId, time_from, time_to];
-  const query = `INSERT INTO schedules (provider_id,time_from,time_to) VALUES ($1,$2,$3) RETURNING *;`;
+  const query = `INSERT INTO schedules (provider_id,time_from,time_to) VALUES ($1,$2,$3) RETURNING *;`
+ 
+
+
   try {
     console.log(providerId);
 
