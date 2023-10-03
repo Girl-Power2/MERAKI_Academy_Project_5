@@ -5,7 +5,7 @@ import { MDBSpinner } from "mdb-react-ui-kit";
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
-import { addSchedule } from "../../../service/redux/reducers/schedule";
+import { addSchedule, deleteSchedule } from "../../../service/redux/reducers/schedule";
 import React from "react";
 import Table from 'react-bootstrap/Table';
 
@@ -100,7 +100,6 @@ const incNum=()=>{
         }
       )
       .then((result) => {
-        console.log(result.data);
         dispatch(
           addSchedule({ time_from: timeFrom, time_to: timeTo, DATE: date })
         );
@@ -140,7 +139,7 @@ const incNum=()=>{
               min="08:00"
               max="23:00"
               step="3600"
-              value="08:00"
+              placeholder="08:00"
               name="time_from"
               required
               pattern="[0-9]{2}:[0-9]{2}"
@@ -157,7 +156,7 @@ const incNum=()=>{
               max="00"
               step="3600"
               name="time_to"
-              value="09:00"
+              placeholder="09:00"
               pattern="[0-9]{2}:[0-9]{2}"
               required
               onChange={(e) => {
@@ -173,13 +172,14 @@ const incNum=()=>{
             onClick={() => {
               addSchedules();
               handleClose();
+              window.location.reload(false)
             }}
           />
         </div>
       </Modal>
  
  {mySchedule?<>
- <Table striped="columns">
+ <Table striped="columns" responsive="md" bordered="true" hover="true" variant="light">
     <thead>
       <tr>
         <th>#</th>
@@ -189,20 +189,37 @@ const incNum=()=>{
       </tr>
     </thead>
     </Table>
+    
  {mySchedule.map((sc,i)=>{
   return(
-    <Table striped="columns">
+    <Table striped="columns" responsive="md" bordered="true" hover="true" variant="ligth">
    
     <tbody>
       <tr>
         <td>{incNum()}</td>
         <td>{myDates}</td>
         <td>{sc.time_from}</td>
-        <td>{sc.time_To} </td>
+        <td>{sc.time_to} </td>
+        <button autoFocus onClick={()=>{
+          axios.delete(`http://localhost:5000/schedules/ById/${sc.schedule_id}`,{
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((result)=>{
+            console.log(result.data);
+            dispatch(deleteSchedule({id:sc.schedule_id}))
+            setMsg(result.data.message)
+          })
+          .catch((error)=>{
+            setMsg(error.result.data.message)
+          })
+        }}>❌</button>
       </tr>
+      
     </tbody>
   </Table>
   )
+
  })}
  </> : <MDBSpinner color="danger">
           <span className="visually-hidden">Loading...</span>

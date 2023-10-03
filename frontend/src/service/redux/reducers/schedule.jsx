@@ -14,7 +14,7 @@ export const schedule = createSlice({
     },
     deleteSchedule: (state, action) => {
       state.schedule = state.schedule.filter((sched) => {
-        return sched.provider_id !== action.payload;
+        return sched.schedule_id !== action.payload.id;
       });
     },
   },
