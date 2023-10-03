@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import { addSchedule } from "../../../service/redux/reducers/schedule";
 import React from "react";
+import Table from 'react-bootstrap/Table';
+
 //====================component function=============================
 const AddSchedule = () => {
   const [timeFrom, setTimeFrom] = useState("24:00");
@@ -69,6 +71,19 @@ useEffect(() => {
 
 
   //====================use effect end=============================
+
+  //====================function to add 1 to nubmer of cols=============================
+let num=0
+const incNum=()=>{
+  if(myDates){
+    num ++
+  }
+  return num
+}
+
+
+  //====================function to add 1 to nubmer of cols=============================
+  
 
 
   //====================add schedules start=============================
@@ -164,13 +179,29 @@ useEffect(() => {
       </Modal>
  
  {mySchedule?<>
+ <Table striped="columns">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Date</th>
+        <th>Time From</th>
+        <th>Time To</th>
+      </tr>
+    </thead>
+    </Table>
  {mySchedule.map((sc,i)=>{
   return(
-    <div className="tableContainer" key={i} >
-      <label className="col2">From:{sc.time_from}</label> <br/>
-      <label className="col3">to:{sc.time_To} </label> <br/>
-      <label className="col1">Date:{myDates} </label> <br/>
-    </div>
+    <Table striped="columns">
+   
+    <tbody>
+      <tr>
+        <td>{incNum()}</td>
+        <td>{myDates}</td>
+        <td>{sc.time_from}</td>
+        <td>{sc.time_To} </td>
+      </tr>
+    </tbody>
+  </Table>
   )
  })}
  </> : <MDBSpinner color="danger">
