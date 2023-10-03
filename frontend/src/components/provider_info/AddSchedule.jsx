@@ -1,4 +1,3 @@
-import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
@@ -9,23 +8,6 @@ import { setSchedule } from "../../service/redux/reducers/schedule";
 
 import React from "react";
 import { Link } from "react-router-dom";
-
-  //   const today=new Date()
-  //  today.setDate(today.getDate())
-  //   console.log("today:",today);
-//===============================================================================//
-
-
-
-
-
-
-
-
-
-
-//===============================================================================//
-
 
 
 
@@ -43,9 +25,8 @@ const AddSchedule = () => {
   const { schedule } = useSelector((state) => {
     return { schedule: state.schedule.schedule };
   });
-  const { providerId, token } = useSelector((state) => {
+  const { token } = useSelector((state) => {
     return {
-      providerId: state.auth.providerId,
       token: state.auth.token,
     };
   });
@@ -110,10 +91,11 @@ const AddSchedule = () => {
               min="08:00"
               max="23:00"
               step="3600"
-              value="08:00"
+              placeholder="08:00"
               name="time_from"
               required
               pattern="[0-9]{2}:[0-9]{2}"
+             
 
               onChange={(e) => {
                 setTimeFrom(e.target.value);
@@ -128,7 +110,7 @@ const AddSchedule = () => {
               max="00"
               step="3600"
               name="time_to"
-              value="09:00"
+              placeholder="09:00"
               pattern="[0-9]{2}:[0-9]{2}"
 
               required
@@ -144,7 +126,9 @@ const AddSchedule = () => {
             value="Submit"
             onClick={() => {
               setSchedules();
+             
               handleClose();
+              window.location.reload(false)
             }}
           />
         </div>

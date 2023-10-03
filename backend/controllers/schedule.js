@@ -130,7 +130,7 @@ schedule.UpdateIs_viewedIfBooked = async (req, res) => {
 schedule.getNotDeleted = async (req, res) => {
   const { provider_id } = req.query;
   const values = [provider_id];
-  const query = `SELECT * FROM schedules WHERE is_viewed=0 AND provider_id=$1`;
+  const query = `SELECT * FROM schedules WHERE is_viewed=0 AND  provider_id=$1`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -155,9 +155,9 @@ schedule.getNotDeleted = async (req, res) => {
 };
 // =====================get schedule by provider Id=============
 schedule.getByProviderId = async (req, res) => {
-  const { provider_id } = req.query;
+  const { provider_id } = req.params;
   const values = [provider_id];
-  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.is_deleted,schedules.booked,schedules.chosen FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1`;
+  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.date,schedules.is_deleted,schedules.booked,schedules.chosen,schedules.schedule_id FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1 AND schedules.is_deleted=0`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -211,23 +211,24 @@ schedule.getBookedCountByProviderId = async (req, res) => {
   }
 };
 // =====================delete schedule by provider Id=============
-schedule.deleteByProviderId = async (req, res) => {
-  const { provider_id } = req.params;
-  const values = [provider_id];
+// sch id
+schedule.deleteByScheduleId = async (req, res) => {
+  const { schedule_id } = req.params;
+  const values = [schedule_id];
   const query = `UPDATE schedules SET is_deleted=1 
-    SELECT providers.fName FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE provider_id=$1 Returning * `;
+     WHERE schedule_id=$1 Returning * `;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
       res.status(200).json({
         status: true,
-        message: "All  schedules for the provider are deleted successfully",
+        message: "schedule deleted successfully",
         data: response.rows,
       });
     } else {
       res.status(404).json({
         status: false,
-        message: "This provider has no appointments",
+        message: "This provider has no schedules",
       });
     }
   } catch (error) {
