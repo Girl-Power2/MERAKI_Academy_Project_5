@@ -1,7 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import { useState } from "react";
+import { MDBSpinner } from "mdb-react-ui-kit";
+import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import { addSchedule } from "../../../service/redux/reducers/schedule";
@@ -12,8 +13,9 @@ const AddSchedule = () => {
   const [timeTo, setTimeTo] = useState("24:00");
   const [msg, setMsg] = useState("");
   const [date, setDate] = useState("");
+  const[myDates,setMyDates]=useState("")
   const [today, setToday] = useState("");
-
+const[mySchedule,setMySchedule]=useState("")
   const [show, setShow] = useState(false);
 
   const { schedule } = useSelector((state) => {
@@ -42,9 +44,32 @@ const AddSchedule = () => {
   //====================get schedules start=============================
 
   const getSchedules = () => {
-    axios.get(`http://localhost:5000/schedules/ByProvider/${providerId}`);
+    axios.get(`http://localhost:5000/schedules/ByProvider/${providerId}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((result)=>{
+      console.log(result.data.data);
+setMySchedule(result.data.data)
+setMyDates(new Date().toISOString().split("T")[0]);
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
   };
   //====================get schedules end=============================
+
+  //====================use effect start=============================
+useEffect(() => {
+ getSchedules()
+
+ 
+}, [])
+
+
+  //====================use effect end=============================
+
 
   //====================add schedules start=============================
 
@@ -137,6 +162,23 @@ const AddSchedule = () => {
           />
         </div>
       </Modal>
+ 
+ {mySchedule?<>
+ {mySchedule.map((sc,i)=>{
+  return(
+    <div className="tableContainer" key={i} >
+      <label className="col2">From:{sc.time_from}</label> <br/>
+      <label className="col3">to:{sc.time_To} </label> <br/>
+      <label className="col1">Date:{myDates} </label> <br/>
+    </div>
+  )
+ })}
+ </> : <MDBSpinner color="danger">
+          <span className="visually-hidden">Loading...</span>
+        </MDBSpinner>
+      }
+ 
+
     </>
   );
 };

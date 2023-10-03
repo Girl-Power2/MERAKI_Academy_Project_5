@@ -157,7 +157,7 @@ schedule.getNotDeleted = async (req, res) => {
 schedule.getByProviderId = async (req, res) => {
   const { provider_id } = req.params;
   const values = [provider_id];
-  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.is_deleted,schedules.booked,schedules.chosen FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1`;
+  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.date,schedules.is_deleted,schedules.booked,schedules.chosen FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
