@@ -19,6 +19,7 @@ const AddSchedule = () => {
   const [today, setToday] = useState("");
 const[mySchedule,setMySchedule]=useState("")
   const [show, setShow] = useState(false);
+  const[isBooked,setIsBooked]=useState("")
 
   const { schedule } = useSelector((state) => {
     return { schedule: state.schedule.schedule };
@@ -55,6 +56,7 @@ const[mySchedule,setMySchedule]=useState("")
       console.log(result.data.data);
 setMySchedule(result.data.data)
 setMyDates(new Date().toISOString().split("T")[0]);
+setIsBooked(result.data.data.booked)
     })
     .catch((err)=>{
       console.log(err);
@@ -67,7 +69,7 @@ useEffect(() => {
  getSchedules()
 
  
-}, [])
+}, [schedule])
 
 
   //====================use effect end=============================
@@ -83,6 +85,22 @@ const incNum=()=>{
 
 
   //====================function to add 1 to nubmer of cols=============================
+  //====================function display booked if booked=============================
+  let app=""
+const veiwBooked=()=>{
+  if(isBooked){
+app="Booked"
+  }
+  else{
+    app="Not Booked"
+  }
+  return app
+}
+
+
+  //====================function display booked if booked=============================
+
+
   
 
 
@@ -172,7 +190,6 @@ const incNum=()=>{
             onClick={() => {
               addSchedules();
               handleClose();
-              window.location.reload(false)
             }}
           />
         </div>
@@ -186,13 +203,15 @@ const incNum=()=>{
         <th>Date</th>
         <th>Time From</th>
         <th>Time To</th>
+        <th>Booked</th>
+        <th>Delete</th>
       </tr>
     </thead>
-    </Table>
+    {/* </Table> */}
     
  {mySchedule.map((sc,i)=>{
   return(
-    <Table striped="columns" responsive="md" bordered="true" hover="true" variant="ligth">
+    // <Table striped="columns" responsive="md" bordered="true" hover="true" variant="ligth">
    
     <tbody>
       <tr>
@@ -200,6 +219,8 @@ const incNum=()=>{
         <td>{myDates}</td>
         <td>{sc.time_from}</td>
         <td>{sc.time_to} </td>
+        
+        <td>{sc.booked==true?"Booked":"Not Booked"}</td>
         <button autoFocus onClick={()=>{
           axios.delete(`http://localhost:5000/schedules/ById/${sc.schedule_id}`,{
             headers: {
@@ -207,21 +228,22 @@ const incNum=()=>{
             },
           }).then((result)=>{
             console.log("from component:",sc.schedule_id);
-            console.log(result.data);
-            dispatch(deleteSchedule({id:sc.schedule_id}))
+           console.log(result.data);
+            dispatch(deleteSchedule(sc.schedule_id))
             setMsg(result.data.message)
           })
           .catch((error)=>{
-            setMsg(error.result.data.message)
+            console.log(error);
+            // setMsg(error)
           })
         }}>❌</button>
       </tr>
       
     </tbody>
-  </Table>
+  
   )
 
- })}
+ })}</Table>
  </> : <MDBSpinner color="danger">
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
