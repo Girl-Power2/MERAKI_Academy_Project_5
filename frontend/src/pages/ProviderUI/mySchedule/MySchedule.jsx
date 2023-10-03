@@ -206,6 +206,7 @@ const incNum=()=>{
               Authorization: `Bearer ${token}`,
             },
           }).then((result)=>{
+            console.log("from component:",sc.schedule_id);
             console.log(result.data);
             dispatch(deleteSchedule({id:sc.schedule_id}))
             setMsg(result.data.message)
