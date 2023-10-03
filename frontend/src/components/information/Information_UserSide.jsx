@@ -31,6 +31,7 @@ import MakeOrder from "./MakeOrder";
 
 export default function Information_UserSide() {
   const [info, setInfo] = useState([]);
+  const [today ,setToday]=useState()
   const history = useNavigate();
   const [centredModal, setCentredModal] = useState(false);
    const toggleShow = () => setCentredModal(!centredModal);
@@ -50,6 +51,8 @@ export default function Information_UserSide() {
       .then((result) => {
         console.log(result.data.result);
         setInfo(result.data.result);
+        setToday(result.data.result[0].birthdate.toString().split('T')[0])
+
       })
       .catch((err) => {
         console.log(err);
@@ -85,10 +88,12 @@ export default function Information_UserSide() {
                       <p className="text-muted mb-1">
                         Name : {data.fname} {data.lname}
                       </p>
+                      <p className="text-muted mb-4">Gender : {data.gender}</p>
                       <p className="text-muted mb-4">City : {data.city}</p>
+                      
                       <div className="d-flex justify-content-center mb-2">
-                        {/* <MDBBtn>Follow</MDBBtn>
-                  <MDBBtn outline className="ms-1">Message</MDBBtn> */}
+                       
+                       
                       </div>
                     </MDBCardBody>
                   </MDBCard>
@@ -131,7 +136,7 @@ export default function Information_UserSide() {
               <MDBBtn color='secondary' onClick={toggleShow}>
                 Close
               </MDBBtn>
-              <MDBBtn>Save changes</MDBBtn>
+           
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
@@ -199,23 +204,24 @@ export default function Information_UserSide() {
                       <hr />
                       <MDBRow>
                         <MDBCol sm="3">
-                          <MDBCardText>Gender</MDBCardText>
-                        </MDBCol>
-                        <MDBCol sm="9">
-                          <MDBCardText className="text-muted">
-                            {data.gender}
-                          </MDBCardText>
-                        </MDBCol>
-                      </MDBRow>
-                      <hr />
-                      <MDBRow>
-                        <MDBCol sm="3">
                           <MDBCardText>BrithDate</MDBCardText>
                         </MDBCol>
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
                             {" "}
-                            {data.birthdate}
+                            {today}
+                          </MDBCardText>
+                        </MDBCol>
+                        </MDBRow>
+                        <hr/>
+                        <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Age</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {" "}
+                            {data.age.years}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>

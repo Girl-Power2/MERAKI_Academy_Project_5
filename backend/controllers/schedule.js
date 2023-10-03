@@ -64,9 +64,9 @@ schedule.UpdateChosen = async (req, res) => {
 };
 // =====================Update booked in schedule by id =============
 schedule.UpdateBooked = async (req, res) => {
-  const { id } = req.params;
-  const values = [id];
-  const query = `UPDATE schedules SET booked= NOT booked, is_viewed=0 WHERE schedule_id=$1 AND is_viewed=1 RETURNING *`;
+  const { schedule_id} = req.body;
+  const values = [schedule_id];
+  const query = `UPDATE schedules SET booked='true', is_viewed=0 WHERE schedule_id=$1 RETURNING *`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -155,9 +155,12 @@ schedule.getNotDeleted = async (req, res) => {
 };
 // =====================get schedule by provider Id=============
 schedule.getByProviderId = async (req, res) => {
-  const { provider_id } = req.params;
+
+  const provider_id  = req.params.id;
   const values = [provider_id];
-  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.date,schedules.is_deleted,schedules.booked,schedules.chosen,schedules.schedule_id FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1 AND schedules.is_deleted=0`;
+  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.is_deleted,schedules.booked,schedules.chosen,schedules.schedule_id FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1 AND schedules.booked = 'false' AND schedules.is_viewed =1 `;
+
+ 
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

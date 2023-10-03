@@ -23,8 +23,9 @@ import MySchedule from "../pages/ProviderUI/mySchedule/MySchedule"
 import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
 
 import UserProfile from "../components/UserProfile/UserProfile";
-import Orders from "../components/orders/Orders";
+
 import ProviderProfile from "../pages/ProviderUI/provider_profile/ProviderProfile";
+import NewOrders from "../components/orders/NewOrders";
 
 
 
@@ -96,7 +97,7 @@ element:<MyServices/>},
     element:<ProviderProfile/>},
        {
         path:"/orders" ,
-        element:<Orders/>
+        element:<NewOrders/>
        }
     ],
   },

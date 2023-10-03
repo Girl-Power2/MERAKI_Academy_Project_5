@@ -21,7 +21,7 @@ orderRouter.post(
   authorization("CREATE_CATEGORY"),
   creatNewOrder
 );
-orderRouter.get("/", authentication, getAllOrders);
+// orderRouter.get("/", authentication, getAllOrders);
 orderRouter.get("/:id", authentication, getOrderById);
 orderRouter.get("/user/:id", authentication, getOrderByUserId);
 orderRouter.get("/provider/:id", authentication, getOrderByProviderId);
@@ -39,5 +39,5 @@ orderRouter.put(
   updateOrederById
 );
 orderRouter.get("/done",authentication,getAllOrderDone)
-orderRouter.get("/pending",authentication,getAllOrderPending)
+orderRouter.get("/",authentication,getAllOrderPending)
 module.exports = orderRouter;

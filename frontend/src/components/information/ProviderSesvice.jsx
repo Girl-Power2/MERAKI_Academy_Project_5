@@ -63,7 +63,7 @@ const ProviderSesvice = () => {
     );
   }
   return (
-    <div>
+    <div >
       
                 <MDBRow>
               <MDBCol md="12">
@@ -72,7 +72,7 @@ const ProviderSesvice = () => {
                     <MDBCardText className="mb-4">Services</MDBCardText>
                     {/* <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText> */}
                   {service.map((data, i) => {
-        return <div>
+        return <div key={i}>
             <hr />
                 <MDBRow>
                   <MDBCol sm="3">
