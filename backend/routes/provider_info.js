@@ -17,7 +17,6 @@ infoRouter.get("/:id", authentication, getInfoByProviderId);
 infoRouter.put(
   "/:id",
   authentication,
-  authorization("ADD_SERVICES"),
   updateInfoById
 );
 infoRouter.delete(

@@ -10,7 +10,7 @@ scheduleRouter.put("/Booked/:id",schedule.UpdateIs_viewedIfBooked)
 scheduleRouter.get("/NotBooked/",schedule.getNotDeleted)
 scheduleRouter.get("/ByProvider/:id",authentication,schedule.getByProviderId)
 scheduleRouter.get("/CountBookedByProvider/",schedule.getBookedCountByProviderId)
-scheduleRouter.delete("/ByProvider/",schedule.deleteByProviderId)
+scheduleRouter.delete("/ById/:schedule_id",authentication,schedule.deleteByScheduleId)
 scheduleRouter.get("/all",schedule.getAllSchedules)
 
 

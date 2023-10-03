@@ -189,13 +189,11 @@ const MyServices = () => {
                   Edit Service
                 </Button>
                 <Button variant="primary" onClick={()=>{
-                      console.log(ser.service_id);
                       axios.delete(`http://localhost:5000/services/${ser.service_id}`,{
                         headers: {
                           Authorization: `Bearer ${token}`,
                         },
                       }).then((result)=>{
-                        console.log(result);
 dispatch(deleteService(ser.service_id))
                       }).catch((err)=>{
                         console.log(err);

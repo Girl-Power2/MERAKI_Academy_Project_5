@@ -13,9 +13,11 @@ export const schedule = createSlice({
       state.schedule.push(action.payload);
     },
     deleteSchedule: (state, action) => {
+      console.log("from slice",action.payload);
       state.schedule = state.schedule.filter((sched) => {
-        return sched.provider_id !== action.payload;
+        return sched.schedule_id !== action.payload;
       });
+      
     },
     updateSchedule: (state, action) => {
       state.schedule= state.schedule.map((sched ,i) => {
