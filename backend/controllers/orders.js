@@ -2,10 +2,10 @@ const { query } = require("express");
 const pool = require("../models/db");
 
 const creatNewOrder = (req, res) => {
-  const { service_id, provider_id,schedule_id } = req.body;
+  const { service_id, provider_id,schedule_id,adress } = req.body;
 const user_id = req.token.userId
-  const query = `INSERT INTO orders  (service_id, provider_id,user_id,schedule_id) VALUES ($1,$2,$3,$4) RETURNING *`;
-  const value = [service_id, provider_id, user_id,schedule_id];
+  const query = `INSERT INTO orders  (service_id, provider_id,user_id,schedule_id,adress) VALUES ($1,$2,$3,$4,$5) RETURNING *`;
+  const value = [service_id, provider_id, user_id,schedule_id,adress];
 
   pool
     .query(query, value)
@@ -139,9 +139,9 @@ const getAllOrderDone= (req, res) => {
 };
 
 const getAllOrderPending= (req, res) => {
-
+const id = req.token.userId
   const query = `SELECT * FROM orders INNER JOIN users
-  ON orders.user_id = users.user_id WHERE orders.status='pending'`;
+  ON orders.user_id = users.user_id  INNER JOIN providers ON orders.provider_id= providers.provider_id WHERE orders.status ='pending' AND  users.user_id=${id}`;
   pool
     .query(query)
     .then((result) => {
