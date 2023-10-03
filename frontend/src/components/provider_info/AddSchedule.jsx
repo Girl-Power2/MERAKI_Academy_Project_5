@@ -1,4 +1,3 @@
-import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
@@ -9,23 +8,6 @@ import { setSchedule } from "../../service/redux/reducers/schedule";
 
 import React from "react";
 import { Link } from "react-router-dom";
-
-  //   const today=new Date()
-  //  today.setDate(today.getDate())
-  //   console.log("today:",today);
-//===============================================================================//
-
-
-
-
-
-
-
-
-
-
-//===============================================================================//
-
 
 
 
