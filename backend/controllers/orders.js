@@ -117,9 +117,9 @@ const getOrderByProviderId = (req, res) => {
 };
 
 const getAllOrderDone= (req, res) => {
-
-  const query = `SELECT * FROM orders INNER JOIN users
-  ON orders.user_id = users.user_id WHERE orders.status='Done'`;
+const id =req.token.userId
+  const query = `SELECT users.firstname , users.lastname , users.city,users.email
+  ,providers.fname ,providers.lname , providers.phonenumber , services.service , schedules.time_from ,schedules.time_to , services.price_per_hour ,schedules.date , orders.adress,orders.order_id  FROM orders INNER JOIN users ON orders.user_id = users.user_id  INNER JOIN providers ON orders.provider_id= providers.provider_id INNER JOIN services ON orders.service_id= services.service_id INNER JOIN schedules ON orders.schedule_id =schedules.schedule_id WHERE orders.status='Done' AND  users.user_id=${id}`;
   pool
     .query(query)
     .then((result) => {
@@ -140,8 +140,8 @@ const getAllOrderDone= (req, res) => {
 
 const getAllOrderPending= (req, res) => {
 const id = req.token.userId
-  const query = `SELECT * FROM orders INNER JOIN users
-  ON orders.user_id = users.user_id  INNER JOIN providers ON orders.provider_id= providers.provider_id WHERE orders.status ='pending' AND  users.user_id=${id}`;
+  const query = `SELECT users.firstname , users.lastname , users.city,users.email
+  ,providers.fname ,providers.lname , providers.phonenumber , services.service , schedules.time_from ,schedules.time_to , services.price_per_hour ,schedules.date , orders.adress,orders.order_id  FROM orders INNER JOIN users ON orders.user_id = users.user_id  INNER JOIN providers ON orders.provider_id= providers.provider_id INNER JOIN services ON orders.service_id= services.service_id INNER JOIN schedules ON orders.schedule_id =schedules.schedule_id  WHERE orders.status ='pending' AND  users.user_id=${id}`;
   pool
     .query(query)
     .then((result) => {
@@ -165,7 +165,7 @@ const id = req.token.userId
 
 
 const updateOrederById = (req, res) => {
-  const id = req.params.id;
+  const {id} = req.body;
   const query = `UPDATE orders
     SET status = 'Done'
     WHERE order_id=${id} RETURNING *;`;

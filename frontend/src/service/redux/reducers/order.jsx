@@ -21,13 +21,23 @@ export const orderSlice =createSlice({
             );
            
           },
+          updateOrder: (state, action) => {
+            state.orders= state.orders.map((order ,i) => {
+             
+               if (order.order_id == action.payload.order_id) {
+                 order.status = action.payload.status;
+                
+               }
+               return order
+             });
+           }
     }
 })
 
 
 
 export const {
-    setOrder,addOrder,deleteOrderById
+    setOrder,addOrder,deleteOrderById,updateOrder
 }=orderSlice.actions
 
 export default orderSlice.reducer
