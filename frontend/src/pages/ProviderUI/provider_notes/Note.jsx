@@ -1,26 +1,44 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "./style.css"
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { useDispatch,useSelector } from 'react-redux';
-import {setNotes,addNotes,updateNotes,deleteNotesById} from "../../../service/redux/reducers/notes"
+import  {setNotes,addNotes,updateNotes,deleteNotesById} from "../../../service/redux/reducers/notes"
 const Note = () => {
  const dispatch=useDispatch()
   const [show, setShow] = useState(false);
 const[note,setNote]=useState("")
 const[ptId,setPtId]=useState("")
 const{token}=useSelector(state=>state.auth)
+const{providerId}=useSelector(state=>state.auth)
 
+const{notes}=useSelector(state=>state.notes)
   const handleClose = () => setShow(false);
 
 
   function handleShow() {
-    // setFullscreen(breakpoint);
     setShow(true);
   }
+  // ==========get notes===================
+  const getNotes=()=>{
+   axios.get(`http://localhost:5000/notes/byProvider/`,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(result=>console.log(result.data))
+  .catch((err)=>{
+    console.log(err);
+  })
+   
+  }
+  useEffect(() => {
+   getNotes()
+  }, [])
+  
   return (
     <>
     <div className='notesContainer'>
