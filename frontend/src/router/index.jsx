@@ -8,24 +8,17 @@ import RegisterUser from "../pages/Register/register_users/RegisterUser";
 import Register from "../pages/Register/Register";
 import About from "../pages/AboutUs/About";
 import Login from "../pages/login/Login"
-
-// import Info from "../components/provider_info/Info";
-// import Service from "../components/provider_info/service";
 import Categories from "../components/categories/Categories";
 import Provider from "../components/providers/Provider";
 import Information_UserSide from "../components/information/Information_UserSide";
-
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
-
 import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
 import MySchedule from "../pages/ProviderUI/mySchedule/MySchedule"
-
 import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
-
 import UserProfile from "../components/UserProfile/UserProfile";
-
 import ProviderProfile from "../pages/ProviderUI/provider_profile/ProviderProfile";
 import NewOrders from "../components/orders/NewOrders";
+import OldOrder from "../components/orders/OldOrder";
 
 
 
@@ -98,6 +91,10 @@ element:<MyServices/>},
        {
         path:"/orders" ,
         element:<NewOrders/>
+       }
+       ,{
+        path:"/previousOrder",
+        element:<OldOrder/>
        }
     ],
   },
