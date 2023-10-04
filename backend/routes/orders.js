@@ -22,22 +22,21 @@ orderRouter.post(
   creatNewOrder
 );
 // orderRouter.get("/", authentication, getAllOrders);
-orderRouter.get("/:id", authentication, getOrderById);
-orderRouter.get("/user/:id", authentication, getOrderByUserId);
-orderRouter.get("/provider/:id", authentication, getOrderByProviderId);
-orderRouter.delete(
-  "/:id",
-  authentication,
-  authorization("CREATE_CATEGORY"),
-  deleteOrederById
-);
+orderRouter.get("/byId/:id", authentication, getOrderById);
+// orderRouter.get("/user/:id", authentication, getOrderByUserId);
+// orderRouter.get("/provider/:id", authentication, getOrderByProviderId);
+// orderRouter.delete(
+//   "/:id",
+//   authentication,
+//   authorization("CREATE_CATEGORY"),
+//   deleteOrederById
+// );
 
 orderRouter.put(
-  "/:id",
+  "/ByOrder/:orderId",
   authentication,
-  authorization("CREATE_CATEGORY"),
   updateOrederById
 );
-orderRouter.get("/done",authentication,getAllOrderDone)
+orderRouter.get("/done/",authentication,getAllOrderDone)
 orderRouter.get("/",authentication,getAllOrderPending)
 module.exports = orderRouter;
