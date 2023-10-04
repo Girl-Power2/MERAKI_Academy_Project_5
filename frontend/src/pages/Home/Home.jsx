@@ -91,7 +91,7 @@ function Home() {
               and more.Which are provided by experienced and highly qualified
               providers.
             </MDBCardText>
-            <NavLink to="/aboutUs"> Contact Us</NavLink>
+            <NavLink to="/contactUs"> Contact Us</NavLink>
           </MDBCardBody>
         </MDBCard>
 

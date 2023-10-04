@@ -18,6 +18,9 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import { setLogout } from "../../service/redux/reducers/auth";
+import { googleLogout } from '@react-oauth/google';
+
+
 // import RegisterProvider from "../../pages/register_provider/RegisterProvider"
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -121,6 +124,7 @@ const Navbar = () => {
                       href="/"
                       onClick={() => {
                         setLogout();
+                        googleLogout();
                       }}
                     >
                       <NavLink

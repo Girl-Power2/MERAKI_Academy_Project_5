@@ -51,7 +51,7 @@ const getAllOrders = (req, res) => {
 const getOrderById = (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM orders INNER JOIN users
-  ON orders.user_id = users.user_id WHERE orders.order_id=${id}`;
+  ON orders.user_id = users.user_id INNER JOIN services ON orders.service_id= services.service_id WHERE orders.order_id=${id}`;
   pool
     .query(query)
     .then((result) => {
@@ -118,10 +118,14 @@ const getOrderByProviderId = (req, res) => {
 
 const getAllOrderDone= (req, res) => {
 const id =req.token.userId
+const {pageNumber} = req.query
+const limit=5
+const OFFSET=(pageNumber-1)*limit
+const value = [OFFSET,limit]
   const query = `SELECT users.firstname , users.lastname , users.city,users.email
-  ,providers.fname ,providers.lname , providers.phonenumber , services.service , schedules.time_from ,schedules.time_to , services.price_per_hour ,schedules.date , orders.adress,orders.order_id  FROM orders INNER JOIN users ON orders.user_id = users.user_id  INNER JOIN providers ON orders.provider_id= providers.provider_id INNER JOIN services ON orders.service_id= services.service_id INNER JOIN schedules ON orders.schedule_id =schedules.schedule_id WHERE orders.status='Done' AND  users.user_id=${id}`;
+  ,providers.fname ,providers.lname , providers.phonenumber , services.service , schedules.time_from ,schedules.time_to , services.price_per_hour ,schedules.date , orders.adress,orders.order_id  FROM orders INNER JOIN users ON orders.user_id = users.user_id  INNER JOIN providers ON orders.provider_id= providers.provider_id INNER JOIN services ON orders.service_id= services.service_id INNER JOIN schedules ON orders.schedule_id =schedules.schedule_id  WHERE orders.status='Done' AND  users.user_id=${id} ORDER BY orders.order_id ASC LIMIT $2 OFFSET $1 `;
   pool
-    .query(query)
+    .query(query,value)
     .then((result) => {
       res.status(201).json({
         success: true,
@@ -165,10 +169,10 @@ const id = req.token.userId
 
 
 const updateOrederById = (req, res) => {
-  const {id} = req.body;
+  const order_id = req.params.orderId;
   const query = `UPDATE orders
     SET status = 'Done'
-    WHERE order_id=${id} RETURNING *;`;
+    WHERE order_id=${order_id} RETURNING *;`;
 
   pool
     .query(query)

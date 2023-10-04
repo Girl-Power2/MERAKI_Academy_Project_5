@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { MDBSpinner } from "mdb-react-ui-kit";
+import Pagination from 'react-bootstrap/Pagination';
 import {
     MDBBtn,
     MDBCard,
@@ -12,19 +13,35 @@ import {
     MDBIcon,
     MDBRow,
   MDBTableHead,
-  MDBTable
+  MDBTable,MDBPagination, MDBPaginationItem, MDBPaginationLink
   } from "mdb-react-ui-kit";
 
+
+ 
+  
+
 const OldOrder = () => {
+   let active =1;
+  let items = [];
+  for (let count = 1;count <= 5; count++) {
+    items.push(
+      <Pagination.Item key={count} active={count === active}>
+        {count}
+      </Pagination.Item>,
+    );
+  }
     const [previous ,setPrevious]=useState([])
     const [today,setToday]=useState("")
+
+
     const { token } = useSelector((state) => {
         return {
           token: state.auth.token,
         };
       });
+      const [count ,setCount]=useState(1)
     useEffect(()=>{
-axios.get(`http://localhost:5000/orders/done/`,{ headers: {
+axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
     console.log(result.data);
@@ -33,7 +50,7 @@ axios.get(`http://localhost:5000/orders/done/`,{ headers: {
   }).catch((err)=>{
     console.log(err);
   })
-    },[])
+    },[count])
     if(previous.length ===0){
         return (
           <MDBSpinner color="danger">
@@ -72,7 +89,7 @@ axios.get(`http://localhost:5000/orders/done/`,{ headers: {
                
                <MDBCol md="2" className="d-flex justify-content-center" >
                  <div>
-                   <p className="small text-muted mb-4 pb-2">Name</p>
+                   <p className="small text-muted mb-4 pb-2">Name of provider</p>
                    <p className="lead fw-normal mb-0">{item.fname} {item.lname}</p>
                  </div>
                </MDBCol>
@@ -122,13 +139,15 @@ axios.get(`http://localhost:5000/orders/done/`,{ headers: {
           </MDBCard>
  </div>)
  })}
- 
-          <div className="d-flex justify-content-end">
-            <MDBBtn color="light" size="lg" className="me-2">
-              Continue shopping
-            </MDBBtn>
-            <MDBBtn size="lg">Add to cart</MDBBtn>
-          </div>
+  <div>
+    <Pagination size="lg" onClick={()=>{
+    setCount(count+1)
+    }}>{items}</Pagination>
+    <br />
+
+
+  </div>
+        
         </MDBCol>
       </MDBRow>
  
