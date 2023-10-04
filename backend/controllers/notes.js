@@ -4,7 +4,6 @@ const notes = {};
 // ===============ADD NOTE=============
 notes.AddNote = async (req, res) => {
   const provider_id = req.token.providerId;
-  console.log(provider_id);
   const { user_id, note } = req.body;
   const values = [provider_id, user_id, note];
   const query = `INSERT INTO provider_notes (provider_id, user_id,note) VALUES ($1,$2,$3) RETURNING *;`;

@@ -8,10 +8,48 @@
     line-height: 0%
     ;
 }
-.tableContainer{
-    display:grid;
-    grid-template-areas: 'col1 col1' 'col2' 'col3';
+#green{
+    --mdb-table-striped-bg:#41a821ce;
+    font-size: 20px;
+   
+ 
 }
-.col1{
-    grid-area: 'col1';
+#red{
+    --mdb-table-striped-bg:#f33434c8;
+    font-size: 20px;
+
+}
+
+
+.table th {
+    font-weight: 530;
+    font-size: larger;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+.table {
+    --mdb-table-font-size: 1.2rem;
+    --mdb-table-divider-color: rgba(0, 0, 0, 0.1);
+    font-size: var(--mdb-table-font-size);
+}
+.table-light {
+    --mdb-table-color: #000;
+    --mdb-table-bg: #2dc18d88;
+    --mdb-table-border-color: #04440d;
+    --mdb-table-striped-bg: #2dc18d88;
+    --mdb-table-striped-color: #000;
+    --mdb-table-active-bg: #999696;
+    --mdb-table-active-color: #0f7237;
+    --mdb-table-hover-bg: #f0f5dc;
+    --mdb-table-hover-color: #0a0101;
+    color: var(--mdb-table-color);
+    border-color: var(--mdb-table-border-color);
+}
+.btn1{
+   
+    font-size: 26px;
+
+}
+.tableContainer{
+    padding-left: 7rem;
+    padding-right: 7rem;
 }
