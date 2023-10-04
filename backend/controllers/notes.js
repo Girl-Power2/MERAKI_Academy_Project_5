@@ -4,7 +4,6 @@ const notes = {};
 // ===============ADD NOTE=============
 notes.AddNote = async (req, res) => {
   const provider_id = req.token.providerId;
-  console.log(provider_id);
   const { user_id, note } = req.body;
   const values = [provider_id, user_id, note];
   const query = `INSERT INTO provider_notes (provider_id, user_id,note) VALUES ($1,$2,$3) RETURNING *;`;
@@ -57,10 +56,10 @@ notes.DeleteNote = async (req, res) => {
 // ===============GET NOTE=============
 notes.GetNotebyProviderId = async (req, res) => {
   const provider_id = req.token.providerId;
-  const { id } = req.params;
-  const values = [provider_id, id];
-  const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1 AND provider_notes.user_id=$2 ;`;
-
+  // const { id } = req.params;
+  const values = [provider_id];
+  const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1  ;`;
+// AND provider_notes.user_id=$2
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

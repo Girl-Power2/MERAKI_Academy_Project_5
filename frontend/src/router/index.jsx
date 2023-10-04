@@ -18,8 +18,10 @@ import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
 import UserProfile from "../components/UserProfile/UserProfile";
 import ProviderProfile from "../pages/ProviderUI/provider_profile/ProviderProfile";
 import NewOrders from "../components/orders/NewOrders";
+import Note from "../pages/ProviderUI/provider_notes/Note"
 import OldOrder from "../components/orders/OldOrder";
 import ContactUs from "../pages/ContactUs/ContactUs";
+
 
 
 
@@ -92,6 +94,11 @@ element:<MyServices/>},
        {
         path:"/orders" ,
         element:<NewOrders/>
+
+       },
+       {path:"/notes",
+      element:<Note/>}
+
        }
        ,{
         path:"/previousOrder",
@@ -101,6 +108,7 @@ element:<MyServices/>},
         path:"/contactUs",
         element:<ContactUs/>
        }
+
     ],
   },
 ]);

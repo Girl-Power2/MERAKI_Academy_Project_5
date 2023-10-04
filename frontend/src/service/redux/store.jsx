@@ -8,6 +8,8 @@ import scheduleReducer from "./reducers/schedule";
 
 import historyReducer from "./reducers/history"
 import orderReducer from "./reducers/order"
+import notesReducer from "./reducers/notes"
+
 export default configureStore({
   reducer: {
    auth:authReducer,
@@ -18,6 +20,7 @@ export default configureStore({
    schedule:scheduleReducer,
 
   history:historyReducer,
- orders:orderReducer
+ orders:orderReducer,
+ notes:notesReducer
   },
 });

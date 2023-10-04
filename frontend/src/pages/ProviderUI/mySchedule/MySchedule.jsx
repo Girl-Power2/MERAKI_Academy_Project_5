@@ -85,24 +85,6 @@ const incNum=()=>{
 
 
   //====================function to add 1 to nubmer of cols=============================
-  //====================function display booked if booked=============================
-  let app=""
-const veiwBooked=()=>{
-  if(isBooked){
-app="Booked"
-  }
-  else{
-    app="Not Booked"
-  }
-  return app
-}
-
-
-  //====================function display booked if booked=============================
-
-
-  
-
 
   //====================add schedules start=============================
 
@@ -132,6 +114,7 @@ app="Booked"
   //====================outer functions end=============================
   return (
     <>
+    <p> Welcome {mySchedule[0]?.fname[0].toUpperCase() }{mySchedule[0]?.fname.slice(1)} {mySchedule[0]?.lname[0].toUpperCase() }{mySchedule[0]?.lname.slice(1)}  your schedule is:</p>
       <div className="step">
         <Button variant="primary" onClick={handleShow}>
           Add schedule
@@ -196,32 +179,33 @@ app="Booked"
       </Modal>
  
  {mySchedule?<>
- <Table striped="columns" responsive="md" bordered="true" hover="true" variant="light">
+<div className="tableContainer">
+ <Table striped="columns" responsive="lg" bordered="true" hover="true" variant="light">
     <thead>
       <tr>
         <th>#</th>
         <th>Date</th>
         <th>Time From</th>
         <th>Time To</th>
-        <th>Booked</th>
         <th>Delete</th>
+        <th>Status</th>
+        <th>Accept</th>
+        <th>Reject</th>
+
+        
       </tr>
     </thead>
-    {/* </Table> */}
     
  {mySchedule.map((sc,i)=>{
   return(
-    // <Table striped="columns" responsive="md" bordered="true" hover="true" variant="ligth">
    
-    <tbody>
+    <tbody >
       <tr>
         <td>{incNum()}</td>
         <td>{myDates}</td>
         <td>{sc.time_from}</td>
         <td>{sc.time_to} </td>
-        
-        <td>{sc.booked==true?"Booked":"Not Booked"}</td>
-        <button autoFocus onClick={()=>{
+        <td autoFocus className="btn1" onClick={()=>{
           axios.delete(`http://localhost:5000/schedules/ById/${sc.schedule_id}`,{
             headers: {
               Authorization: `Bearer ${token}`,
@@ -234,16 +218,19 @@ app="Booked"
           })
           .catch((error)=>{
             console.log(error);
-            // setMsg(error)
           })
-        }}>❌</button>
+        }}>❌</td>
+        <td id={sc.booked==true?"green":"red"}>{sc.booked==true?"Booked":"Not Booked"}</td>
+        <td className="btn1">👍</td>
+        <td className="btn1">👎</td>
+       
       </tr>
       
     </tbody>
   
   )
 
- })}</Table>
+ })}</Table></div>
  </> : <MDBSpinner color="danger">
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
