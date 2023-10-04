@@ -19,6 +19,7 @@ import UserProfile from "../components/UserProfile/UserProfile";
 import ProviderProfile from "../pages/ProviderUI/provider_profile/ProviderProfile";
 import NewOrders from "../components/orders/NewOrders";
 import OldOrder from "../components/orders/OldOrder";
+import ContactUs from "../pages/ContactUs/ContactUs";
 
 
 
@@ -95,6 +96,10 @@ element:<MyServices/>},
        ,{
         path:"/previousOrder",
         element:<OldOrder/>
+       },
+       {
+        path:"/contactUs",
+        element:<ContactUs/>
        }
     ],
   },
