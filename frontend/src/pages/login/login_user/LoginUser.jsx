@@ -18,25 +18,25 @@ import {
 }
 from 'mdb-react-ui-kit';
 
-import { useGoogleOneTapLogin } from '@react-oauth/google';
-import { useGoogleLogin } from '@react-oauth/google';
+// import { useGoogleOneTapLogin } from '@react-oauth/google';
+// import { useGoogleLogin } from '@react-oauth/google';
 
 
 
 const LoginUser = () => {
-  useGoogleOneTapLogin({
-  onSuccess: credentialResponse => {
-    console.log(credentialResponse);
-  },
-  onError: () => {
-    console.log('Login Failed');
-  },
-});
+//   useGoogleOneTapLogin({
+//   onSuccess: credentialResponse => {
+//     console.log(credentialResponse);
+//   },
+//   onError: () => {
+//     console.log('Login Failed');
+//   },
+// });
 
-const login = useGoogleLogin({
-  onSuccess: codeResponse => console.log(codeResponse),
-  flow: 'auth-code',
-});
+// const login = useGoogleLogin({
+//   onSuccess: codeResponse => console.log(codeResponse),
+//   flow: 'auth-code',
+// });
     const dispatch =useDispatch()
     const history =useNavigate()
       const [email, setEmail] = useState("");
