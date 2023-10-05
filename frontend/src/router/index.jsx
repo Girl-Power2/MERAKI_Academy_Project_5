@@ -21,6 +21,7 @@ import NewOrders from "../components/orders/NewOrders";
 import Note from "../pages/ProviderUI/provider_notes/Note"
 import OldOrder from "../components/orders/OldOrder";
 import ContactUs from "../pages/ContactUs/ContactUs";
+import Map from "../components/Map/Map";
 
 
 
@@ -75,7 +76,7 @@ element:<MyServices/>},
       {
         path: "/provider_Information/:id",
         element: <Information_UserSide />,
-        
+      
       },
       {
         path:"/reveiws/:id",
@@ -107,6 +108,10 @@ element:<MyServices/>},
        {
         path:"/contactUs",
         element:<ContactUs/>
+       }
+       ,{
+        path:"/map",
+        element:<Map/>
        }
 
     ],

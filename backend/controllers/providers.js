@@ -3,7 +3,6 @@ const providers_functions = {};
 const bcrypt = require("bcrypt");
 //=============== CREATE NEW PROVIDER ================
 providers_functions.CreateNewProvider = async (req, res) => {
-
   const {
     fName,
     lName,
@@ -14,12 +13,10 @@ providers_functions.CreateNewProvider = async (req, res) => {
     city,
     phoneNumber,
     category_id,
-
   } = req.body;
 
   const role_id = 3;
   const Hashed_password = await bcrypt.hash(password, 7);
-
 
   const values = [
     fName,
@@ -32,7 +29,6 @@ providers_functions.CreateNewProvider = async (req, res) => {
     phoneNumber,
     role_id,
     category_id,
-
   ];
   const query = `INSERT INTO providers  (fName,
   lName,
@@ -50,7 +46,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
       res.status(201).json({
         success: true,
         message: "Provider account created successfully",
-        response:response.rows
+        response: response.rows,
       });
     }
   } catch (error) {
@@ -94,7 +90,36 @@ providers_functions.getProviderById = async (req, res) => {
     });
   }
 };
-
+// ===============Countprovider by id================
+providers_functions.countProviderById = async (req, res) => {
+  const query = `
+  SELECT 
+    COUNT(*) AS numberOfProviders
+  FROM providers
+  
+  WHERE 
+     IS_DELETED = 0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    } else {
+      res.status(404).json({
+        status: false,
+        message: "Providers not found",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
 // ===============delete provider by id================
 providers_functions.deleteProviderById = async (req, res) => {
   const id = req.params.id;

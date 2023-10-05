@@ -11,6 +11,7 @@ import {
   MDBCardImage
  
 } from 'mdb-react-ui-kit';
+
 import "./style.css"
 const Login = () => {
   return (
@@ -28,6 +29,7 @@ const Login = () => {
               With supporting text below as a natural lead-in to additional content.
             </MDBCardText> */}
             <MDBBtn href='/loginUser'>LOGIN </MDBBtn>
+
           </MDBCardBody>
         </MDBCard>
       </MDBCol>

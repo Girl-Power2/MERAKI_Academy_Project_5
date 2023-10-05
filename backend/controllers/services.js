@@ -87,6 +87,36 @@ services.getServiceByPriceAsc = async (req, res) => {
     });
   }
 };
+// ===============Countprovider by id================
+services.countServiceById = async (req, res) => {
+  const query = `
+  SELECT 
+    COUNT(*) AS numberOfservices
+  FROM services
+  
+  WHERE 
+     IS_DELETED = 0`;
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        data: response.rows,
+      });
+    } else {
+      res.status(404).json({
+        status: false,
+        message: "Services not found",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      error: error.message,
+    });
+  }
+};
 // =========get service by name===========
 services.getServiceByName = async (req, res) => {
   const { name } = req.query;
