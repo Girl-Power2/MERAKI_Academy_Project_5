@@ -92,4 +92,22 @@ categories.getAllCategories = async (req, res) => {
   }
 };
 
+categories.countAllCategories =(req,res)=>{
+  const query =`SELECT COUNT(category_id) 
+  FROM categories;`
+  client.query(query).then((result)=>{
+    res.status(201).json({
+        success: true,
+        message: "Count All Categories",
+        result: result.rows,
+      });
+}).catch((err)=>{
+    res.status(500).json({
+        success: false,
+        message: `Server error`,
+        err: err,
+      });
+})
+}
+
 module.exports = { categories };

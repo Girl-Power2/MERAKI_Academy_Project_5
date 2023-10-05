@@ -10,53 +10,48 @@ const register = async (req, res) => {
     city,
     email,
     password,
-    phoneNumber,
+    phonenumber,
     gender,
     role_id,
   } = req.body;
   const encryptedPassword = await bcrypt.hash(password, 10);
 
-  const query = `INSERT INTO users  (firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;
+  const query = `INSERT INTO users  (firstname ,lastname ,birthdate ,city ,email,password ,phonenumber ,gender,role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;
   const value = [
-    firstName,
-    lastName,
-    birthDate,
+    firstname,
+    lastname,
+    birthdate,
     city,
     email.toLowerCase(),
     encryptedPassword,
-    phoneNumber,
+    phonenumber,
     gender,
     role_id,
   ];
-try {
-   const response = await client.query(query,value)
+
+
+  try {
+    const response = await client.query(query, value);
     if (response.rowCount) {
-        console.log("ok")
-        res.status(201).json({
-          success: true,
-          message: "Account created successfully",
-          result: result.rows,
-        });
-      }
-      else{
-        res.status(404).json({
-          success: true,
-          message: "account already exists",
-        });
-      }
-   
-} catch (error) {
-  res.status(500).json({
-    success: false,
-    message: "Server error",
-    error:error.message,
-  });
-}
-}
- 
-   
-     
-   
+      res.status(201).json({
+        success: true,
+        message: "User account created successfully",
+        response:response.rows
+      });
+    }
+  } catch (error) {
+    if (error.constraint === "providers_email_key") {
+      res.status(409).json({
+        success: false,
+        message: "The email already exists",
+      });
+    } else {
+      res.status(500).json({
+        message: "Server Error",
+        error: error.message,
+      });
+    }
+  }}
 
 
 const login = (req, res) => {
@@ -198,10 +193,29 @@ const Provider_login = (req, res) => {
 
     });
 };
+
+const countUser =(req,res)=>{
+  const query =`SELECT COUNT(user_id) 
+  FROM users ;`
+  client.query(query).then((result)=>{
+    res.status(201).json({
+        success: true,
+        message: "Count of users",
+        result: result.rows,
+      });
+}).catch((err)=>{
+    res.status(500).json({
+        success: false,
+        message: `Server error`,
+        err: err,
+      });
+})
+}
 module.exports = {
   register,
   login,
   Provider_login ,
-  getUserById
+  getUserById,
+  countUser
 };
 

@@ -9,6 +9,7 @@ const {
   updateOrederById,
   getAllOrderDone,
   getAllOrderPending,
+  countAllOrdersForProvider,
 } = require("../controllers/orders");
 
 const authentication = require("../middlewares/authentication");
@@ -39,4 +40,5 @@ orderRouter.put(
 );
 orderRouter.get("/done/",authentication,getAllOrderDone)
 orderRouter.get("/",authentication,getAllOrderPending)
+orderRouter.get("/countOrderProvier/:id",authentication , countAllOrdersForProvider)
 module.exports = orderRouter;

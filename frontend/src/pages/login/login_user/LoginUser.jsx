@@ -23,6 +23,18 @@ import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 }
 const LoginUser = () => {
 
+    const dispatch =useDispatch()
+    const history =useNavigate()
+      const [email, setEmail] = useState("");
+      const [message, setMessage] = useState("");
+      const [password, setPassword] = useState("");
+      const {isLoggedIn} =useSelector((state)=>{
+        return {
+          isLoggedIn : state.auth.isLoggedIn
+        }
+      })
+
+
     const[google,setGoogle]=useState("")
     const responseMessage = (response) => {
       console.log(response);
@@ -33,27 +45,12 @@ const LoginUser = () => {
     const errorMessage = (error) => {
       console.log(error);
     };
-  function onSignIn(googleUser) {
-    console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log("Name: " + profile.getName());
-    console.log("Image URL: " + profile.getImageUrl());
-    console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
-  }
- ;
-  const dispatch = useDispatch();
-  const history = useNavigate();
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
-  const { isLoggedIn } = useSelector((state) => {
-    return {
-      isLoggedIn: state.auth.isLoggedIn,
-    };
-  });
+
 
 
   return (
     <div>
+
       <MDBBtn onClick={()=>{
       console.log(google);
                         axios
@@ -211,3 +208,4 @@ const LoginUser = () => {
 };
 
 export default LoginUser;
+

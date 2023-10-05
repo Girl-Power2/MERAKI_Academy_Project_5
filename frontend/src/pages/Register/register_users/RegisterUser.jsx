@@ -67,7 +67,7 @@ export default function RegisterUser() {
     lName: "",
     birthDate: "",
     city: "",
-    role_id: 3,
+    role_id:2,
     gender:"female"
   });
   const [msg, setMsg] = useState("");
@@ -114,23 +114,7 @@ export default function RegisterUser() {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-        {/* <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage:
-              "url(https://source.unsplash.com/random?wallpapers)",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        /> */}
+      
          <Grid
           item
           xs={false}
@@ -299,16 +283,19 @@ setData({...data,fName:e.target.value})
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{
-                  axios.post("http://localhost:5000/users/register",{fName:data.fName,
-                  lName:data.lName,
-                  birthDate:data.birthDate,
+
+                  //firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id
+                  axios.post("http://localhost:5000/users/register",{firstname:data.fName,
+                  lastname:data.lName,
+                  birthdate:data.birthDate,
+
                   gender:data.gender,
                   email:data.email,
                   password:data.password,
                   city:data.city,
-                  phoneNumber:data.phoneNumber,
+                  phonenumber:data.phoneNumber,
                   role_id:data.role_id,
-                  category_id:data.category_id})
+                  })
                   .then((result) => {
                     console.log(result.data);
                     setMsg({

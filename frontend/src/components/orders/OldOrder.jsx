@@ -21,25 +21,15 @@ import {
   
 
 const OldOrder = () => {
-   let active =1;
-  let items = [];
-  for (let count = 1;count <= 5; count++) {
-    items.push(
-      <Pagination.Item key={count} active={count === active}>
-        {count}
-      </Pagination.Item>,
-    );
-  }
-    const [previous ,setPrevious]=useState([])
-    const [today,setToday]=useState("")
-
-
-    const { token } = useSelector((state) => {
+const [count ,setCount]=useState(1)
+const [previous ,setPrevious]=useState([])
+const [today,setToday]=useState("")
+const { token } = useSelector((state) => {
         return {
           token: state.auth.token,
         };
       });
-      const [count ,setCount]=useState(1)
+     
     useEffect(()=>{
 axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
     Authorization: `Bearer ${token}`,
@@ -140,9 +130,28 @@ axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
  </div>)
  })}
   <div>
-    <Pagination size="lg" onClick={()=>{
+  
+   <MDBBtn outline onClick={()=>{
+    setCount(count-1)
+   }}>Previous</MDBBtn>
+    <MDBBtn outline onClick={()=>{
+    setCount(1)
+   }}>1</MDBBtn> 
+   <MDBBtn outline onClick={()=>{
+    setCount(2)
+   }}>2</MDBBtn> 
+   <MDBBtn outline onClick={()=>{
+    setCount(3)
+   }}>3</MDBBtn> 
+   <MDBBtn outline onClick={()=>{
+    setCount(4)
+   }}>4</MDBBtn> 
+   <MDBBtn outline onClick={()=>{
+    setCount(5)
+   }}>5</MDBBtn> 
+     <MDBBtn outline onClick={()=>{
     setCount(count+1)
-    }}>{items}</Pagination>
+   }}>Next</MDBBtn>
     <br />
 
 
