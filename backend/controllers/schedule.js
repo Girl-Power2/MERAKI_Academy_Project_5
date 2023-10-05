@@ -185,10 +185,10 @@ schedule.getByProviderId = async (req, res) => {
 };
 // =====================get booked count by provider Id=============
 schedule.getBookedCountByProviderId = async (req, res) => {
-  const { provider_id } = req.query;
+  const { provider_id } = req.params;
   const values = [provider_id];
   const query = `
-    SELECT providers.fName,providers.lName,providers.provider_id ,COUNT(schedules.schedule_id) AS bookedCount FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE booked=true AND schedules.provider_id=$1
+    SELECT providers.fName,providers.lName,providers.provider_id ,COUNT(schedules.schedule_id) AS bookedCount FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE booked=true AND schedules.is_deleted=0 AND schedules.provider_id=$1
     group by providers.fName,providers.lName,providers.provider_id ;
     `;
   try {

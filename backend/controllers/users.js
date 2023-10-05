@@ -4,9 +4,9 @@ const bcrypt = require("bcrypt");
 
 const register = async (req, res) => {
   const {
-    firstName,
-    lastName,
-    birthDate,
+    firstname,
+    lastname,
+    birthdate,
     city,
     email,
     password,
@@ -28,26 +28,36 @@ const register = async (req, res) => {
     gender,
     role_id,
   ];
-
-  const response = await client
-    .query(query, value)
-    .then((result) => {
-      if (response.rowCount) {
-        res.status(200).json({
+try {
+   const response = await client.query(query,value)
+    if (response.rowCount) {
+        console.log("ok")
+        res.status(201).json({
           success: true,
           message: "Account created successfully",
           result: result.rows,
         });
       }
-    })
-    .catch((err) => {
-      res.status(409).json({
-        success: false,
-        message: "The email already exists",
-        err,
-      });
-    });
-};
+      else{
+        res.status(404).json({
+          success: true,
+          message: "account already exists",
+        });
+      }
+   
+} catch (error) {
+  res.status(500).json({
+    success: false,
+    message: "Server error",
+    error:error.message,
+  });
+}
+}
+ 
+   
+     
+   
+
 
 const login = (req, res) => {
   const password = req.body.password;
