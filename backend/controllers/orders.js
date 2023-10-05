@@ -216,6 +216,30 @@ const deleteOrederById = (req, res) => {
     });
 };
 
+const countAllOrdersForProvider=(req,res)=>{
+  const id = req.params.id;
+  const query = `SELECT COUNT(order_id) 
+  FROM orders WHERE provider_id=$1 AND status = 'Done'`;
+const value=[id]
+
+  pool
+    .query(query,value)
+    .then((result) => {
+      res.status(201).json({
+        success: true,
+        message: `Count All Order For Provider = ${id}`,
+        result: result.rows,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "server error",
+        error: err.message,
+      });
+    });
+}
+
 module.exports = {
   creatNewOrder,
   getAllOrders,
@@ -225,5 +249,6 @@ module.exports = {
   deleteOrederById,
   updateOrederById,
   getAllOrderDone,
-  getAllOrderPending
+  getAllOrderPending,
+  countAllOrdersForProvider
 };

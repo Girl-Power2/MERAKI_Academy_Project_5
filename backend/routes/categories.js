@@ -18,5 +18,5 @@ categoriesRouter.delete(
  categories.DeleteCategorybyId
 );
 categoriesRouter.get("/",categories.getAllCategories);
-
+categoriesRouter.get("/countAllCategories",authentication ,categories.countAllCategories)
 module.exports = categoriesRouter;
