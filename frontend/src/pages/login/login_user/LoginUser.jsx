@@ -18,25 +18,9 @@ import {
 }
 from 'mdb-react-ui-kit';
 
-import { useGoogleOneTapLogin } from '@react-oauth/google';
-import { useGoogleLogin } from '@react-oauth/google';
-
 
 
 const LoginUser = () => {
-  useGoogleOneTapLogin({
-  onSuccess: credentialResponse => {
-    console.log(credentialResponse);
-  },
-  onError: () => {
-    console.log('Login Failed');
-  },
-});
-
-const login = useGoogleLogin({
-  onSuccess: codeResponse => console.log(codeResponse),
-  flow: 'auth-code',
-});
     const dispatch =useDispatch()
     const history =useNavigate()
       const [email, setEmail] = useState("");
@@ -106,9 +90,7 @@ const login = useGoogleLogin({
                 // setMessage({success:false,message:"Error happened while Login, please try again"});
               })
             }}>Login</MDBBtn>
-            <MyCustomButton onClick={() => login()}>
-  Sign in with Google 🚀{' '}
-</MyCustomButton>;
+           
              <p className={`${message.success ? "pass" : "fail"}`}>
             {message.success && (
               <span>

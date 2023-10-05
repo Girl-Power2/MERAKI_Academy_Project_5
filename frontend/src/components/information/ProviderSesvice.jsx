@@ -7,25 +7,16 @@ import { setService } from "../../service/redux/reducers/services";
 import "./style.css";
 import {
     MDBCol,
-    MDBContainer,
     MDBRow,
     MDBCard,
     MDBCardText,
     MDBCardBody,
-    MDBCardImage,
     MDBBtn,
-    MDBBreadcrumb,
-    MDBBreadcrumbItem,
-    MDBProgress,
-    MDBProgressBar,
-    MDBIcon,
-    MDBListGroup,
-    MDBListGroupItem
+   
   } from 'mdb-react-ui-kit';
 
 const ProviderSesvice = () => {
   const history = useNavigate();
-  // const [service, setService]=useState([])
   const { service } = useSelector((state) => {
     return {
       service: state.services.service,
@@ -64,13 +55,12 @@ const ProviderSesvice = () => {
   }
   return (
     <div >
-      
+      <MDBBtn className="justefy item left"></MDBBtn>
                 <MDBRow>
               <MDBCol md="12">
                 <MDBCard className="mb-4 mb-md-0">
                   <MDBCardBody>
                     <MDBCardText className="mb-4">Services</MDBCardText>
-                    {/* <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText> */}
                   {service.map((data, i) => {
         return <div key={i}>
             <hr />

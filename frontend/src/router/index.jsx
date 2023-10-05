@@ -99,7 +99,7 @@ element:<MyServices/>},
        {path:"/notes",
       element:<Note/>}
 
-       }
+      
        ,{
         path:"/previousOrder",
         element:<OldOrder/>
@@ -108,7 +108,7 @@ element:<MyServices/>},
         path:"/contactUs",
         element:<ContactUs/>
        }
-
+      
     ],
   },
 ]);
