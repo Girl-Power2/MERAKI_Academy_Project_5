@@ -5,7 +5,7 @@ import { MDBSpinner } from "mdb-react-ui-kit";
 import { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
-import { addSchedule, deleteSchedule } from "../../../service/redux/reducers/schedule";
+import { addSchedule, deleteSchedule,setBookedCounter } from "../../../service/redux/reducers/schedule";
 import React from "react";
 import Table from 'react-bootstrap/Table';
 
@@ -23,6 +23,9 @@ const[mySchedule,setMySchedule]=useState("")
 
   const { schedule } = useSelector((state) => {
     return { schedule: state.schedule.schedule };
+  });
+  const {BookedCounter } = useSelector((state) => {
+    return { BookedCounter: state.schedule.BookedCounter };
   });
   const { providerId } = useSelector((state) => {
     return {
@@ -44,6 +47,24 @@ const[mySchedule,setMySchedule]=useState("")
     setShow(true);
   };
   const dispatch = useDispatch();
+  //====================get booked schedules count start=============================
+const getBookedCount=()=>{
+  axios.get(`http://localhost:5000/schedules/CountBookedByProvider/${providerId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  .then(result=>
+    // console.log(result.data)
+    dispatch(setBookedCounter(result.data.data[0].bookedcount))
+    )
+  .catch(err=>console.log(err))
+}
+
+
+
+  //====================get booked schedules count end=============================
+
   //====================get schedules start=============================
 
   const getSchedules = () => {
@@ -53,7 +74,6 @@ const[mySchedule,setMySchedule]=useState("")
       },
     })
     .then((result)=>{
-      console.log(result.data.data);
 setMySchedule(result.data.data)
 setMyDates(new Date().toISOString().split("T")[0]);
 setIsBooked(result.data.data.booked)
@@ -67,9 +87,9 @@ setIsBooked(result.data.data.booked)
   //====================use effect start=============================
 useEffect(() => {
  getSchedules()
-
+ getBookedCount()
  
-}, [schedule])
+}, [schedule,BookedCounter])
 
 
   //====================use effect end=============================
@@ -115,7 +135,8 @@ const incNum=()=>{
   return (
     <>
     <p> Welcome {mySchedule[0]?.fname[0].toUpperCase() }{mySchedule[0]?.fname.slice(1)} {mySchedule[0]?.lname[0].toUpperCase() }{mySchedule[0]?.lname.slice(1)}  your schedule is:</p>
-      <div className="step">
+       <div>Number of booked appointments:{BookedCounter}</div>
+       <div className="step">
         <Button variant="primary" onClick={handleShow}>
           Add schedule
         </Button>
@@ -179,6 +200,7 @@ const incNum=()=>{
       </Modal>
  
  {mySchedule?<>
+
 <div className="tableContainer">
  <Table striped="columns" responsive="lg" bordered="true" hover="true" variant="light">
     <thead>
@@ -189,8 +211,8 @@ const incNum=()=>{
         <th>Time To</th>
         <th>Delete</th>
         <th>Status</th>
-        <th>Accept</th>
-        <th>Reject</th>
+        {/* <th>Accept</th>
+        <th>Reject</th> */}
 
         
       </tr>
@@ -221,8 +243,8 @@ const incNum=()=>{
           })
         }}>❌</td>
         <td id={sc.booked==true?"green":"red"}>{sc.booked==true?"Booked":"Not Booked"}</td>
-        <td className="btn1">👍</td>
-        <td className="btn1">👎</td>
+        {/* <td className="btn1">👍</td>
+        <td className="btn1">👎</td> */}
        
       </tr>
       

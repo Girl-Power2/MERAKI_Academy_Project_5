@@ -19,7 +19,7 @@
   overflow-x: hidden;
 }
 .inline{
-position: absolute;
+position: fixed;
 z-index: 1;
 margin-left: 20%;
 margin-top: 15%;
@@ -81,7 +81,8 @@ background-color: #69a3cd;
   border: #69a3cd 2px solid;
   margin-bottom: .2rem;
   padding-left: 1rem;
-  width: 70%;
+  width: 20rem;
+  font-size: 1rem;
 }
 .myNotesContainer{
   display: flex;
@@ -89,4 +90,7 @@ background-color: #69a3cd;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+span{
+  font-weight: bolder;
 }

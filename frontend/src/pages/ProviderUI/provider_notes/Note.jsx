@@ -141,8 +141,12 @@ const{notes}=useSelector(state=>state.notes)
       }}>Search</button>
 {notes?notes.map((note,i)=>{
   return( <div key={i} className='pNote'><div> 
-   <p><span>Client Id</span>{note.user_id}</p> 
-   <p><span>Note</span> {note.note}</p> 
+   <span >Client Id:{note.user_id}</span>
+   <p><span>Client's name:<br/></span>{note.firstname} {note.lastname}</p> 
+   <p><span>Client's contact info:<br/></span><span>Phone number:</span><br/>{note.phonenumber}<br/>
+   <span>Email:</span><br/>{note.email}</p> 
+
+   <p><span>Note: <br/></span> {note.note}</p> 
    <p><span>Visitied on</span> {today}</p> 
 
 
