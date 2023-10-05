@@ -5,8 +5,9 @@ import Modal from 'react-bootstrap/Modal';
 import "./style.css"
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import { MDBSpinner } from "mdb-react-ui-kit";
 import { useDispatch,useSelector } from 'react-redux';
-import  {setNotes,addNotes,updateNotes,deleteNotesById} from "../../../service/redux/reducers/notes"
+import  {setNotes,addNotes,updateNotes,deleteNotesById, notes} from "../../../service/redux/reducers/notes"
 const Note = () => {
  const dispatch=useDispatch()
   const [show, setShow] = useState(false);
@@ -14,6 +15,10 @@ const[note,setNote]=useState("")
 const[ptId,setPtId]=useState("")
 const{token}=useSelector(state=>state.auth)
 const{providerId}=useSelector(state=>state.auth)
+const [today, setToday] = useState("");
+const [query, setQuery] = useState("");
+
+
 
 const{notes}=useSelector(state=>state.notes)
   const handleClose = () => setShow(false);
@@ -22,25 +27,60 @@ const{notes}=useSelector(state=>state.notes)
   function handleShow() {
     setShow(true);
   }
-  // ==========get notes===================
+  // ==========get all notes===================
   const getNotes=()=>{
    axios.get(`http://localhost:5000/notes/byProvider/`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },
   })
-  .then(result=>console.log(result.data))
+  .then((result)=>{dispatch(setNotes(result.data.data))
+  setToday(result.data.data[0].visitied_on.toString().split("T")[0])
+  })
+  
   .catch((err)=>{
     console.log(err);
   })
    
   }
+  // ==========get all notes===================
+
   useEffect(() => {
    getNotes()
   }, [])
-  
+  // ==========get user notes===================
+
+  const getUserNotes=()=>{
+    axios.get(`http://localhost:5000/notes/byUser/usernotes/?id=${parseInt(query)}`,{
+     headers: {
+       Authorization: `Bearer ${token}`,
+     },
+   })
+   .then((result)=>{
+  console.log(result.data.data);
+    dispatch(setNotes(result.data.data))
+   setToday(result.data.data[0].visitied_on.toString().split("T")[0])
+   })
+   
+   .catch((err)=>{
+     console.log(err);
+   })
+    
+   }
+
+
+
+
+
+
+
+
+  // ==========get user notes===================
+
+
   return (
     <>
+    <div className='pageContainer'>
     <div className='notesContainer'>
       <img className='noteimg' src='./assets\Lifesavers - Bust.png'/>
       <button className='inline' onClick={() => handleShow()}>add note</button>
@@ -93,10 +133,34 @@ const{notes}=useSelector(state=>state.notes)
         </Button>
       </Modal.Footer>
     </Modal>
-    
+    <div className='myNotesContainer'>
+      <input type="text" placeholder='Search for note by client Id' onChange={(e)=>{
+        setQuery(e.target.value)
+      }}/><button onClick={()=>{
+        getUserNotes()
+      }}>Search</button>
+{notes?notes.map((note,i)=>{
+  return( <div key={i} className='pNote'><div> 
+   <span >Client Id:{note.user_id}</span>
+   <p><span>Client's name:<br/></span>{note.firstname} {note.lastname}</p> 
+   <p><span>Client's contact info:<br/></span><span>Phone number:</span><br/>{note.phonenumber}<br/>
+   <span>Email:</span><br/>{note.email}</p> 
+
+   <p><span>Note: <br/></span> {note.note}</p> 
+   <p><span>Visitied on</span> {today}</p> 
+
+
+   
+   
+   
+    </div></div>)
+}):<MDBSpinner color="danger">
+<span className="visually-hidden">Loading...</span>
+</MDBSpinner>}
+    </div>
+    </div>
   
   </>
   )
 }
-
 export default Note

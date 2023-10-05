@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
@@ -11,6 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import Map from "../Map/Map";
 const MakeOrder = () => {
   const [serv, setServ] = useState();
   const [adress, setAdress] = useState("");
@@ -165,7 +166,9 @@ dispatch(updateSchedule(id))
       >
         Creat Order
       </Button>
+      {/* <Map/> */}
     </div>
+    
   );
 };
 

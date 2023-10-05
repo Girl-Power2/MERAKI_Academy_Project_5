@@ -4,10 +4,14 @@ export const schedule = createSlice({
   name: "schedule",
   initialState: {
     schedule: [],
+    BookedCounter:0
   },
   reducers: {
     setSchedule: (state, action) => {
       state.schedule = action.payload;
+    },
+    setBookedCounter: (state, action) => {
+      state.BookedCounter = action.payload;
     },
     addSchedule: (state, action) => {
       state.schedule.push(action.payload);
@@ -32,5 +36,5 @@ export const schedule = createSlice({
   },
 });
 
-export const { setSchedule, addSchedule, deleteSchedule,updateSchedule } = schedule.actions;
+export const { setSchedule, addSchedule, deleteSchedule,updateSchedule,setBookedCounter } = schedule.actions;
 export default schedule.reducer;

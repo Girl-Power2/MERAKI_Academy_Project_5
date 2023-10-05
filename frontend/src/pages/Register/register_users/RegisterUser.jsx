@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { NavLink, useLoaderData, Await } from "react-router-dom";
 import { useState, useEffect, Suspense } from "react";
-
+import { decodeToken } from "react-jwt";
 import "../register_provider/app.css";
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
@@ -22,6 +22,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 function Copyright(props) {
   return (
@@ -46,6 +48,17 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function RegisterUser() {
+  const[google,setGoogle]=useState("")
+  const responseMessage = (response) => {
+    console.log(response);
+    const a = decodeToken(response.credential);
+    console.log(a);
+    setGoogle(a);
+  };
+  const errorMessage = (error) => {
+    console.log(error);
+  };
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -63,16 +76,41 @@ export default function RegisterUser() {
     setData({...data,category_id:e.target.value} );
   };
   const result = useLoaderData;
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   });
-  // };
+ 
+
 
   return (
+    <>
+    <MDBBtn onClick={()=>{
+                        axios
+                        .post("http://localhost:5000/users/register", {
+                          firstName: google.given_name,
+                          lastName: google.family_name,
+                          email: google.email,
+                          password: google.azp
+                          ,
+                          role_id:2,
+                          city: google.jti,
+                          gender:"female",
+                          
+                        })
+                        .then((response) => {
+                          navigate("/users/login");
+                         
+                          console.log(response)
+                        })
+                        .catch((err) => {
+                      
+                          console.log(err)
+                      })}}>
+    <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
+    <GoogleLogin 
+
+     onSuccess={responseMessage}
+ onError={errorMessage} 
+ 
+   />
+    </GoogleOAuthProvider></MDBBtn>
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
@@ -245,10 +283,12 @@ setData({...data,fName:e.target.value})
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{
+
                   //firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id
                   axios.post("http://localhost:5000/users/register",{firstname:data.fName,
                   lastname:data.lName,
                   birthdate:data.birthDate,
+
                   gender:data.gender,
                   email:data.email,
                   password:data.password,
@@ -297,6 +337,7 @@ setData({...data,fName:e.target.value})
         </Grid>
       </Grid>
     </ThemeProvider>
+    </>
   );
 }
 

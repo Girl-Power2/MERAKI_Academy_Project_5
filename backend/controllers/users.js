@@ -29,6 +29,7 @@ const register = async (req, res) => {
     role_id,
   ];
 
+
   try {
     const response = await client.query(query, value);
     if (response.rowCount) {
@@ -51,6 +52,7 @@ const register = async (req, res) => {
       });
     }
   }}
+
 
 const login = (req, res) => {
   const password = req.body.password;

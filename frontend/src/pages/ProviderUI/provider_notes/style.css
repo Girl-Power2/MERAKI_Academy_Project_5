@@ -19,9 +19,9 @@
   overflow-x: hidden;
 }
 .inline{
-position: absolute;
+position: fixed;
 z-index: 1;
-margin-left: 35%;
+margin-left: 20%;
 margin-top: 15%;
 width: 10%;
 background-color: #69a3cd;
@@ -68,3 +68,29 @@ background-color: #69a3cd;
   100% { background-color: #0a9d4fcc; box-shadow: 0 0 3px #40e68e; }
 }
 
+.pageContainer{
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+}
+.pNote{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-items: center;
+  text-align: start;
+  border: #69a3cd 2px solid;
+  margin-bottom: .2rem;
+  padding-left: 1rem;
+  width: 20rem;
+  font-size: 1rem;
+}
+.myNotesContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+span{
+  font-weight: bolder;
+}
