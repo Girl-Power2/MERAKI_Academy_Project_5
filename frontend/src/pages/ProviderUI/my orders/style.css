@@ -1,0 +1,20 @@
+.ordersContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border:1px solid black;
+    gap:.5rem;
+    padding: .5rem;
+    align-items: center;
+    justify-items: center;
+  
+  }
+  .pOrder{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    border: #69a3cd 2px solid;
+    margin-bottom: .2rem;
+    padding-left: 1rem;
+    width: 20rem;
+    font-size: 1rem;
+  }

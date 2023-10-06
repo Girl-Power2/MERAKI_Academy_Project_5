@@ -98,11 +98,15 @@ const getOrderByUserId = (req, res) => {
 
 const getOrderByProviderId = (req, res) => {
   const id = req.params.id;
+  const {skip} = req.query
   const query = `SELECT *
   FROM ORDERS
   INNER JOIN SCHEDULES ON SCHEDULEs.PROVIDER_ID = ORDERS.PROVIDER_ID
+  INNER JOIN users ON orders.user_id =users.user_id
+  INNER JOIN services ON orders.service_id =services.service_id
   WHERE orders.PROVIDER_ID = 5
-    AND ORDERS.STATUS = 'Done'`
+    AND ORDERS.STATUS = 'Done' order by orders.created_at DESC
+    limit 3 Offset ${skip}`
   pool
     .query(query)
     .then((result) => {
