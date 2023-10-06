@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { NavLink, useLoaderData, Await } from "react-router-dom";
 import { useState, useEffect, Suspense } from "react";
+import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import "../register_provider/app.css";
 import * as React from "react";
@@ -49,6 +50,7 @@ const defaultTheme = createTheme();
 
 export default function RegisterUser() {
   const[google,setGoogle]=useState("")
+  const history=useNavigate()
   const responseMessage = (response) => {
     console.log(response);
     const a = decodeToken(response.credential);
@@ -84,18 +86,19 @@ export default function RegisterUser() {
     <MDBBtn onClick={()=>{
                         axios
                         .post("http://localhost:5000/users/register", {
-                          firstName: google.given_name,
-                          lastName: google.family_name,
+                          firstname: google.given_name,
+                          lastname: google.family_name,
                           email: google.email,
-                          password: google.azp
-                          ,
+                          password: google.azp,
+                          birthdate:"2000-7-7",
+                          phonenumber:google.aud,
                           role_id:2,
                           city: google.jti,
-                          gender:"female",
+                          gender:google.iss,
                           
                         })
                         .then((response) => {
-                          navigate("/users/login");
+                          history("/loginUser");
                          
                           console.log(response)
                         })

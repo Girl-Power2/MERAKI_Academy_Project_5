@@ -199,6 +199,7 @@ const Navbar = () => {
                       </NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
+                  
                 </>
               )}
 

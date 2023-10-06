@@ -51,7 +51,8 @@ services.getServiceByProviderId = async (req, res) => {
 };
 // =========get service by price desc===========
 services.getServiceByPriceDes = async (req, res) => {
-  const query = `SELECT * FROM services ORDER BY price_per_hour DESC;`;
+  const id =req.params.provider_id
+  const query = `SELECT * FROM services WHERE provider_id=${id} ORDER BY price_per_hour DESC;`;
   try {
     const response = await client.query(query);
     if (response.rowCount) {
@@ -70,7 +71,8 @@ services.getServiceByPriceDes = async (req, res) => {
 };
 // =========get service by price asc===========
 services.getServiceByPriceAsc = async (req, res) => {
-  const query = `SELECT * FROM services ORDER BY price_per_hour ASC;`;
+  const id = req.params.providerId
+  const query = `SELECT * FROM services WHERE provider_id=${id} ORDER BY price_per_hour ASC ;`;
   try {
     const response = await client.query(query);
     if (response.rowCount) {
