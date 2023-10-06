@@ -283,7 +283,7 @@ setData({...data,fName:e.target.value})
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{
-
+console.log(data);
                   //firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id
                   axios.post("http://localhost:5000/users/register",{firstname:data.fName,
                   lastname:data.lName,

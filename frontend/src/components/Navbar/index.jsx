@@ -122,7 +122,7 @@ const Navbar = () => {
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/services">
+                    <MDBNavbarLink active aria-current="page" href="/notes">
                       <NavLink to="/notes">My Notes</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -224,6 +224,7 @@ const Navbar = () => {
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
+    
     </div>
   );
 };

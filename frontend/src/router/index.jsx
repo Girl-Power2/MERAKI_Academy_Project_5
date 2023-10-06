@@ -22,11 +22,28 @@ import Note from "../pages/ProviderUI/provider_notes/Note"
 import OldOrder from "../components/orders/OldOrder";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Map from "../components/Map/Map";
+import Admin from "../components/AdminPanel/Admin";
+import LoginAdmin from "../components/AdminPanel/LoginAdmin";
+import AdminNavBar from "../components/AdminPanel/AdminNavBar";
+import Addcategory from "../components/AdminPanel/addcategory";
 
 
 
 
 export const router = createBrowserRouter([
+  {
+path:"/cureApp/login",
+element:<LoginAdmin/>
+  },
+  {
+    path:"/cureApp/admin",
+    element:<Admin/>,
+  
+
+  },
+  {path:"/addCategory",
+  element:<Addcategory/>},
+  
   {
     path: "/",
     element: <Main />,
