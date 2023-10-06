@@ -17,76 +17,63 @@ import {
 } from "mdb-react-ui-kit";
 import { decodeToken } from "react-jwt";
 
-
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 {
 }
 const LoginUser = () => {
-
-    const dispatch =useDispatch()
-    const history =useNavigate()
-      const [email, setEmail] = useState("");
-      const [message, setMessage] = useState("");
-      const [password, setPassword] = useState("");
-      const {isLoggedIn} =useSelector((state)=>{
-        return {
-          isLoggedIn : state.auth.isLoggedIn
-        }
-      })
-
-
-    const[google,setGoogle]=useState("")
-    const responseMessage = (response) => {
-      console.log(response);
-      const a = decodeToken(response.credential);
-      console.log(a);
-      setGoogle(a);
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [password, setPassword] = useState("");
+  const { isLoggedIn } = useSelector((state) => {
+    return {
+      isLoggedIn: state.auth.isLoggedIn,
     };
-    const errorMessage = (error) => {
-      console.log(error);
-    };
+  });
 
-
+  const [google, setGoogle] = useState("");
+  const responseMessage = (response) => {
+    console.log(response);
+    const a = decodeToken(response.credential);
+    console.log(a);
+    setGoogle(a);
+  };
+  const errorMessage = (error) => {
+    console.log(error);
+  };
 
   return (
     <div>
+      <MDBBtn
+        onClick={() => {
+          axios
+            .post("http://localhost:5000/users/login", {
+              email: google.email,
+              password: google.azp,
+            })
+            .then((result) => {
+              dispatch(setLogin(result.data.token));
 
-      <MDBBtn onClick={()=>{
-      console.log(google);
-                        axios
-                        .post("http://localhost:5000/users/login", {
-                       
-                          email: google.email,
-                          password: google.azp,
-                        
+              dispatch(setUserId(result.data.userId));
+              localStorage.setItem("token", result.data.token);
+              localStorage.setItem("userId", result.data.userId);
+              history("/category");
 
-                        
-                          
-                        })
-                        .then((response) => {
-                      dispatch(setLogin(result.data.token));
-
-                      dispatch(setUserId(result.data.userId));
-                      localStorage.setItem("token", result.data.token);
-                      localStorage.setItem("userId", result.data.userId);
-                      history("/category");
-                         
-                          console.log("ok")
-                        })
-                        .catch((err) => {
-                      
-                          console.log(err)
-                      })}}>
-      <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
-      </GoogleOAuthProvider></MDBBtn>
+            
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      >
+        <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
+          <GoogleLogin
+              onSuccess={responseMessage}
+              onError={errorMessage} 
+          />
+        </GoogleOAuthProvider>
+      </MDBBtn>
 
       <MDBCard>
         <MDBRow className="g-0">
@@ -173,7 +160,6 @@ const LoginUser = () => {
               >
                 Login
               </MDBBtn>
-             
               ;
               <p className={`${message.success ? "pass" : "fail"}`}>
                 {message.success && <span>{message.message}</span>}
@@ -202,10 +188,8 @@ const LoginUser = () => {
           </MDBCol>
         </MDBRow>
       </MDBCard>
-
     </div>
   );
 };
 
 export default LoginUser;
-

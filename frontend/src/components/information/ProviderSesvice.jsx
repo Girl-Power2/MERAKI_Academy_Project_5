@@ -6,17 +6,21 @@ import { MDBSpinner } from "mdb-react-ui-kit";
 import { setService } from "../../service/redux/reducers/services";
 import "./style.css";
 import {
-    MDBCol,
-    MDBRow,
-    MDBCard,
-    MDBCardText,
-    MDBCardBody,
-    MDBBtn,
-   
-  } from 'mdb-react-ui-kit';
+  MDBCol,
+  MDBRow,
+  MDBCard,
+  MDBCardText,
+  MDBCardBody,
+  MDBBtn,
+} from "mdb-react-ui-kit";
 
 const ProviderSesvice = () => {
   const history = useNavigate();
+  const [sort, setSort] = useState(true);
+  const [asc, setAsc] = useState(false);
+  const [desc, setDesc] = useState(false);
+  const [dataAsc ,setDataAsc]=useState([])
+  const[dataDesc ,setDataDesc]=useState([])
   const { service } = useSelector((state) => {
     return {
       service: state.services.service,
@@ -54,40 +58,174 @@ const ProviderSesvice = () => {
     );
   }
   return (
-    <div >
-      <MDBBtn className="justefy item left"></MDBBtn>
-                <MDBRow>
-              <MDBCol md="12">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4">Services</MDBCardText>
-                  {service.map((data, i) => {
-        return <div key={i}>
-            <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Services</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{data.service}</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Price_Per_Hour</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">{data.price_per_hour} JD</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                {/* <hr /> */}
-        </div>;
-      })}
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-              </MDBRow>
-        
+    <div>
+      <MDBBtn outline
+      className="ms-1"
+        onClick={() => {
+          axios
+            .get(`http://localhost:5000/services/price_ASC/${id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((result) => {
+              setSort(false);
+              setAsc(true);
+              setDesc(false)
+              console.log(result.data);
+              setDataAsc(result.data.data)
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      >
+       Sort ASC ↗️
+      </MDBBtn>
+      <MDBBtn className="ms-1"
+        outline
+        onClick={() => {
+          axios
+            .get(`http://localhost:5000/services/price_DESC/${id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            })
+            .then((result) => {
+              setSort(false);
+              setDesc(true);
+              setAsc(false)
+              console.log(result.data);
+              setDataDesc(result.data.data)
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      >
+       Sort DESC ↘️
+      </MDBBtn>
+      {asc ? (
+        <MDBRow>
+          <MDBCol md="12">
+            <MDBCard className="mb-4 mb-md-0">
+              <MDBCardBody>
+                <MDBCardText className="mb-4">Services</MDBCardText>
+                {dataAsc.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <hr />
+                      <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Services</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {data.service}
+                          </MDBCardText>
+                        </MDBCol>
+                      </MDBRow>
+                      <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Price_Per_Hour</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {data.price_per_hour} JD
+                          </MDBCardText>
+                        </MDBCol>
+                      </MDBRow>
+                    </div>
+                  );
+                })}
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      ) : (
+        <></>
+      )}
+      {sort ? (
+        <MDBRow>
+          <MDBCol md="12">
+            <MDBCard className="mb-4 mb-md-0">
+              <MDBCardBody>
+                <MDBCardText className="mb-4">Services</MDBCardText>
+                {service.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <hr />
+                      <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Services</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {data.service}
+                          </MDBCardText>
+                        </MDBCol>
+                      </MDBRow>
+                      <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Price_Per_Hour</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {data.price_per_hour} JD
+                          </MDBCardText>
+                        </MDBCol>
+                      </MDBRow>
+                      {/* <hr /> */}
+                    </div>
+                  );
+                })}
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      ) : (
+        <></>
+      )}
+       {desc ? (
+        <MDBRow>
+          <MDBCol md="12">
+            <MDBCard className="mb-4 mb-md-0">
+              <MDBCardBody>
+                <MDBCardText className="mb-4">Services</MDBCardText>
+                {dataDesc.map((data, i) => {
+                  return (
+                    <div key={i}>
+                      <hr />
+                      <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Services</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {data.service}
+                          </MDBCardText>
+                        </MDBCol>
+                      </MDBRow>
+                      <MDBRow>
+                        <MDBCol sm="3">
+                          <MDBCardText>Price_Per_Hour</MDBCardText>
+                        </MDBCol>
+                        <MDBCol sm="9">
+                          <MDBCardText className="text-muted">
+                            {data.price_per_hour} JD
+                          </MDBCardText>
+                        </MDBCol>
+                      </MDBRow>
+                    </div>
+                  );
+                })}
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
