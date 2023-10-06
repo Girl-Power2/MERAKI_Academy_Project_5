@@ -93,11 +93,16 @@ const getOrderByUserId = (req, res) => {
       });
     });
 };
+// `SELECT * FROM orders INNER JOIN users
+//   ON orders.user_id = users.user_id WHERE provider_id=${id} and orders.status='Done'`;
 
 const getOrderByProviderId = (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM orders INNER JOIN users
-  ON orders.user_id = users.user_id WHERE provider_id=${id}`;
+  const query = `SELECT *
+  FROM ORDERS
+  INNER JOIN SCHEDULES ON SCHEDULEs.PROVIDER_ID = ORDERS.PROVIDER_ID
+  WHERE orders.PROVIDER_ID = 5
+    AND ORDERS.STATUS = 'Done'`
   pool
     .query(query)
     .then((result) => {
