@@ -40,7 +40,7 @@ const register = async (req, res) => {
       });
     }
   } catch (error) {
-    if (error.constraint === "providers_email_key") {
+    if (error.constraint === "users_email_key") {
       res.status(409).json({
         success: false,
         message: "The email already exists",
