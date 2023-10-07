@@ -100,7 +100,7 @@ providers_functions.countProviderById = async (req, res) => {
   WHERE 
      IS_DELETED = 0`;
   try {
-    const response = await client.query(query, values);
+    const response = await client.query(query);
     if (response.rowCount) {
       res.status(200).json({
         status: true,
@@ -176,11 +176,11 @@ providers_functions.getProviderByCategoryId = async (req, res) => {
 
 // ===============get provider by name================
 providers_functions.getProviderByName = async (req, res) => {
-  const { fName } = req.query;
-  const { lName } = req.query;
-  const values = [fName.toLowerCase() + "%", lName.toLowerCase() + "%"];
-  // (fName LIKE '%' || $1 || '%')
-  const query = `SELECT * FROM  providers WHERE fName LIKE $1 AND lName LIKE $2 ;`;
+  const { fname } = req.query;
+  // const { lname } = req.query;
+  const values = [fname.toLowerCase() + "%"];
+  // (fName LIKE '%' || $1 || '%')(OR lname LIKE $2)(, lname.toLowerCase() + "%")
+  const query = `SELECT * FROM  providers WHERE fname LIKE $1  ;`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
