@@ -26,6 +26,7 @@ import Admin from "../components/AdminPanel/Admin";
 import LoginAdmin from "../components/AdminPanel/LoginAdmin";
 import AdminNavBar from "../components/AdminPanel/AdminNavBar";
 import Addcategory from "../components/AdminPanel/addcategory";
+import MyOrders from "../pages/ProviderUI/my orders/MyOrders";
 
 
 
@@ -86,6 +87,10 @@ element:<LoginAdmin/>
 
   {path:"/services",
 element:<MyServices/>},
+,{
+  path:"/myOrders",
+  element:<MyOrders/>
+ },
 
       
       { path: "/category", element: <Categories /> },
@@ -131,6 +136,7 @@ element:<MyServices/>},
         path:"/map",
         element:<Map/>
        }
+       
 
     ],
   },

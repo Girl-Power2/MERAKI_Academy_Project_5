@@ -25,7 +25,7 @@ orderRouter.post(
 // orderRouter.get("/", authentication, getAllOrders);
 orderRouter.get("/byId/:id", authentication, getOrderById);
 // orderRouter.get("/user/:id", authentication, getOrderByUserId);
-// orderRouter.get("/provider/:id", authentication, getOrderByProviderId);
+orderRouter.get("/provider/:id", authentication, getOrderByProviderId);
 // orderRouter.delete(
 //   "/:id",
 //   authentication,
