@@ -64,49 +64,20 @@ getCategory()
     <div className='Admincontainer'>
       <div className='aside'>
       <aside >
+        <hr/>
     <NavLink to="addCategory">Add category</NavLink>
+    <hr/>
+    <NavLink to="providerAndOrders">Provider And Order</NavLink>
+    <hr/>
+    <NavLink to="analytics">analytics</NavLink>
+
+
 
     </aside>
     </div>
-    <div className='cardsContainer'>
-    <div  className='cards' id='userCard'>
-        <h4>Number of Users</h4>
-        <p>
-           
-          <span style={{fontSize:"2rem" }}>{users}</span>
-          
-        </p>
-      </div>
-      <MDBCard background='danger' className='text-white mb-1 w-100 h-50'>
-        <MDBCardHeader>Number of Providers</MDBCardHeader>
-        <MDBCardBody>
-          <MDBCardText>
-            Number of providers currently using our app  
-          <p>{provider}</p>
-          </MDBCardText>
-        </MDBCardBody>
-      </MDBCard>
-      <MDBCard background='secondary' className='text-white mb-1 w-100 h-50'>
-        <MDBCardHeader>Number of Categories</MDBCardHeader>
-        <MDBCardBody>
-          <MDBCardText>
-            Number of categories currently in our app  
-          <p>{category}</p>
-          </MDBCardText>
-        </MDBCardBody>
-      </MDBCard>
-      <MDBCard background='secondary' className='text-white mb-1 w-100 h-50'>
-        <MDBCardHeader>Number of Categories</MDBCardHeader>
-        <MDBCardBody>
-          <MDBCardText>
-            Number of categories currently in our app  
-          <p>{category}</p>
-          </MDBCardText>
-        </MDBCardBody>
-      </MDBCard>
-      </div>
-      <Outlet/>
+   <Outlet/>
     </div>
+           
    </> 
   )
 }

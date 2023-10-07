@@ -25,8 +25,10 @@ import Map from "../components/Map/Map";
 import Admin from "../components/AdminPanel/Admin";
 import LoginAdmin from "../components/AdminPanel/LoginAdmin";
 import AdminNavBar from "../components/AdminPanel/AdminNavBar";
-import Addcategory from "../components/AdminPanel/addcategory";
+import Addcategory from "../components/AdminPanel/Addcategory";
 import MyOrders from "../pages/ProviderUI/my orders/MyOrders";
+import ProviderAndOrder from "../components/AdminPanel/ProviderAndOrder";
+import Analytics from "../components/AdminPanel/Analytics";
 
 export const router = createBrowserRouter([
   {
@@ -37,9 +39,11 @@ export const router = createBrowserRouter([
     path: "/cureApp/admin",
     element: <Admin />,
 
-    children: [{ path: "addCategory", element: <Addcategory /> }],
+    children: [{ path: "addCategory", element: <Addcategory /> },
+    {path:"providerAndOrders",element:<ProviderAndOrder/>},
+    {path:"analytics",element:<Analytics/>}],
   },
-  { path: "/addCategory", element: <Addcategory /> },
+  
 
   {
     path: "/",

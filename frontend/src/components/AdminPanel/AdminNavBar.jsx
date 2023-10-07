@@ -11,12 +11,9 @@ import {
   MDBCollapse,
   MDBIcon
 } from 'mdb-react-ui-kit';
-import Offcanvas from 'react-bootstrap/Offcanvas';
-const AdminNavBar=()=> {
-    const [show, setShow] = useState(false);
 
-    // const handleClose = () => setShow(false);
-    // const handleShow = () => setShow(true);
+const AdminNavBar=()=> {
+  
   const [showNav, setShowNav] = useState(false);
 
   return (
@@ -40,7 +37,7 @@ const AdminNavBar=()=> {
         <MDBCollapse navbar show={showNav}>
           <MDBNavbarNav>
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
+              <MDBNavbarLink active aria-current='page' >
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>

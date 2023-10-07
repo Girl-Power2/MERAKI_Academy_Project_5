@@ -1,17 +1,19 @@
 .Admincontainer{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1fr 4fr;
     
 }
 .aside{
     display: flex;
     flex-direction: column;
     height: 100vh;
+    border: 2px solid gray;
     
 }
 .cardsContainer{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin: 0.5rem;
     gap:.5rem;
     width: 100%;
     height: 50%;
@@ -21,19 +23,45 @@
 }
 .cards{
     display: flex;
-    font-display: row;
-justify-content: space-between;
+    flex-direction: column;
+justify-content: space-around;
 align-items: center;
-padding: .5rem;
+padding: 1rem;
+font-weight: bolder;
+font-size: 1.5rem ;
+font-family: Georgia, 'Times New Roman', Times, serif;
     border:2px outset grey;
     border-radius: .5rem;
-    height: 100%;
-    width:100%
+    height: 50%;
+    width:100% ;
+    
+    
 }
 #userCard{
-  background-color: aquamarine;  
-  /* background-image: url('https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvdjkzNy1hZXctMTM5LnBuZw.png?s=l21v8BeI92QVqoQNpZg9Fh75crN6sAg3YXaX5ekwSMk');
+  background-color: #6A72A3;  
+  box-shadow: 5px 5px 8px;
+ 
+  /* background-image: url('https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg');
+ opacity: 0.2;
   background-repeat: no-repeat;
 background-size:cover;
 background-blend-mode:inherit; */
+}
+
+#providerCard{
+    box-shadow: 5px 5px 8px;
+    background-color: #D9DEFF;
+}
+
+#categoryCard{
+    background-color: #B4BCF0;
+    box-shadow: 5px 5px 8px
+}
+
+span{
+    text-shadow: 5px 5px 5px rgba(85, 82, 82, 0.568);
+    border: 5px inset rgba(0, 0, 0, 0.603);
+    background-color: rgba(255, 255, 255, 0.719); 
+    border-radius: 0.5rem;
+    padding: 6px;
 }
