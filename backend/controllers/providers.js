@@ -54,8 +54,15 @@ providers_functions.CreateNewProvider = async (req, res) => {
       res.status(409).json({
         success: false,
         message: "The email already exists",
-      });
-    } else {
+      })}
+      if (error.constraint === 'chk_email') {
+
+        res.status(409).json({
+          success: false,
+          message: "The email has to be at least 2char@3char.2char example go@go.jo",
+        });
+      } 
+     else {
       res.status(500).json({
         message: "Server Error",
         error: error.message,
@@ -177,12 +184,15 @@ providers_functions.getProviderByCategoryId = async (req, res) => {
 // ===============get provider by name================
 providers_functions.getProviderByName = async (req, res) => {
   const { fname } = req.query;
+
   // const { lname } = req.query;
   const values = [fname.toLowerCase() + "%"];
   // (fName LIKE '%' || $1 || '%')(OR lname LIKE $2)(, lname.toLowerCase() + "%")
   const query = `SELECT * FROM  providers WHERE fname LIKE $1  ;`;
+
   try {
     const response = await client.query(query, values);
+    console.log(response);
     if (response.rowCount) {
       res.status(200).json({
         status: true,
