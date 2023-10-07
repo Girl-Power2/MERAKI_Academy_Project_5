@@ -1,6 +1,7 @@
 import React ,{useEffect, useState}from 'react'
 import AdminNavBar from './AdminNavBar'
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink,Outlet } from 'react-router-dom';
 
 import {
   MDBCard,
@@ -10,7 +11,7 @@ import {
   MDBCardHeader
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
-
+import "./style.css"
 const Admin = () => {
 const [users ,setUsers]=useState(0)
 const [provider ,setProvider]=useState(0)
@@ -58,18 +59,25 @@ getCategory()
 },[])
 
   return (
-    <div>
-      <AdminNavBar/>
-      <MDBCard background='primary' className='text-white mb-1 w-25 h-50'>
-        <MDBCardHeader>Number of Users</MDBCardHeader>
-        <MDBCardBody>
-          <MDBCardText>
-            Number of users currently using our app  
-          <p>{users}</p>
-          </MDBCardText>
-        </MDBCardBody>
-      </MDBCard>
-      <MDBCard background='danger' className='text-white mb-1 w-25 h-50'>
+    <>
+   <AdminNavBar/>
+    <div className='Admincontainer'>
+      <div className='aside'>
+      <aside >
+    <NavLink to="addCategory">Add category</NavLink>
+
+    </aside>
+    </div>
+    <div className='cardsContainer'>
+    <div  className='cards' id='userCard'>
+        <h4>Number of Users</h4>
+        <p>
+           
+          <span style={{fontSize:"2rem" }}>{users}</span>
+          
+        </p>
+      </div>
+      <MDBCard background='danger' className='text-white mb-1 w-100 h-50'>
         <MDBCardHeader>Number of Providers</MDBCardHeader>
         <MDBCardBody>
           <MDBCardText>
@@ -78,7 +86,7 @@ getCategory()
           </MDBCardText>
         </MDBCardBody>
       </MDBCard>
-      <MDBCard background='secondary' className='text-white mb-1 w-25 h-50'>
+      <MDBCard background='secondary' className='text-white mb-1 w-100 h-50'>
         <MDBCardHeader>Number of Categories</MDBCardHeader>
         <MDBCardBody>
           <MDBCardText>
@@ -87,7 +95,7 @@ getCategory()
           </MDBCardText>
         </MDBCardBody>
       </MDBCard>
-      <MDBCard background='secondary' className='text-white mb-1 w-25 h-50'>
+      <MDBCard background='secondary' className='text-white mb-1 w-100 h-50'>
         <MDBCardHeader>Number of Categories</MDBCardHeader>
         <MDBCardBody>
           <MDBCardText>
@@ -96,8 +104,10 @@ getCategory()
           </MDBCardText>
         </MDBCardBody>
       </MDBCard>
+      </div>
+      <Outlet/>
     </div>
-    
+   </> 
   )
 }
 

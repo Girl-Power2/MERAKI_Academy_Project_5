@@ -50,7 +50,7 @@ export default function Information_UserSide() {
       })
       .then((result) => {
         console.log(result.data.result);
-        setInfo(result.data.result);
+        setInfo(result.data.result);//[0]
         setToday(result.data.result[0].birthdate.toString().split('T')[0])
 
       })

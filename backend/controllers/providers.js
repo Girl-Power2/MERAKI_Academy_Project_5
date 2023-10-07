@@ -59,7 +59,7 @@ providers_functions.CreateNewProvider = async (req, res) => {
 
         res.status(409).json({
           success: false,
-          message: "The email has to be at least 2char@3char.2char example go@go.jo",
+          message: "The email you entered is not correct",
         });
       } 
      else {
@@ -183,12 +183,12 @@ providers_functions.getProviderByCategoryId = async (req, res) => {
 
 // ===============get provider by name================
 providers_functions.getProviderByName = async (req, res) => {
-  const { fname } = req.query;
+  const { name } = req.query;
 
   // const { lname } = req.query;
-  const values = [fname.toLowerCase() + "%"];
+  const values = [name.toLowerCase() + "%"];
   // (fName LIKE '%' || $1 || '%')(OR lname LIKE $2)(, lname.toLowerCase() + "%")
-  const query = `SELECT * FROM  providers WHERE fname LIKE $1  ;`;
+  const query = `SELECT * FROM  providers WHERE name LIKE $1 OR name LIKE $2 ;`;
 
   try {
     const response = await client.query(query, values);
