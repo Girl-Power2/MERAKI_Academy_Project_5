@@ -44,7 +44,7 @@ const Navbar = () => {
           <NavLink to="/">
             {" "}
             <img
-              src="./assets/logo.jpg"
+              src="./assets/newlogo.png"
               height="70"
               width="90"
               alt=""
@@ -102,7 +102,7 @@ const Navbar = () => {
                 <>
                 
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/services">
+                    <MDBNavbarLink active aria-current="page" href="/My_profile">
                       <NavLink to="/My_profile">My Profile</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem> 
@@ -112,12 +112,12 @@ const Navbar = () => {
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/services">
+                    <MDBNavbarLink active aria-current="page" href="/mySchedule">
                       <NavLink to="/mySchedule">My Schedule</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/services">
+                    <MDBNavbarLink active aria-current="page" href="/myOrders">
                       <NavLink to="/myOrders">My Orders</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -174,8 +174,8 @@ const Navbar = () => {
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/myOrdersProvider">
-                      <NavLink to="/myOrdersProvider">My Orders</NavLink>
+                    <MDBNavbarLink active aria-current="page" href="/orders">
+                      <NavLink to="/orders">My Orders</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
@@ -202,13 +202,6 @@ const Navbar = () => {
                   
                 </>
               )}
-
-              {/* <MDBNavbarItem>
-            <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'
-            >
-              Disabled
-            </MDBNavbarLink>
-          </MDBNavbarItem> */}
             </MDBNavbarNav>
 
             <form className="d-flex input-group w-auto">
