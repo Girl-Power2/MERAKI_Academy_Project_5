@@ -12,7 +12,7 @@ providerRouter.get(
 providerRouter.get("/byName/", providers_functions.getProviderByName);
 providerRouter.get("/byGender/", providers_functions.getProviderByGender);
 providerRouter.get("/all", providers_functions.GetALLProviders);
-providerRouter.get("/all/count", providers_functions.GetALLProviders);
+providerRouter.get("/all/count", providers_functions.countProviderById);
 
 providerRouter.delete("/:id", providers_functions.deleteProviderById);
 
