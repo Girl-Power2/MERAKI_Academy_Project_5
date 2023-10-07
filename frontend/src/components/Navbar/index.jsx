@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import  axios from "axios" ;
 import {
   MDBContainer,
   MDBNavbar,
@@ -24,6 +25,7 @@ import { setLogout } from "../../service/redux/reducers/auth";
 // import RegisterProvider from "../../pages/register_provider/RegisterProvider"
 const Navbar = () => {
   const dispatch = useDispatch();
+  const [search ,setSearch]=useState("")
   const { isLoggedIn, role, token, userId, providerId } = useSelector(
     (state) => {
       return {
@@ -210,8 +212,18 @@ const Navbar = () => {
                 className="form-control"
                 placeholder="Type query"
                 aria-label="Search"
+onChange={(e)=>{
+  setSearch(e.target.value)
+}}
               />
-              <MDBBtn disabled="true" color="primary">
+              <MDBBtn  color="primary" onClick={()=>{
+                console.log(search);
+                axios.get(`http://localhost:5000/providers/byName/?fname=${search}`).then((result)=>{
+                  console.log(result.data);
+                }).catch((err)=>{
+                  console.log(err);
+                })
+              }} >
                 Search
               </MDBBtn>
             </form>
