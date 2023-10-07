@@ -52,6 +52,7 @@ const MyOrders = () => {
                   <p> Order created at: {created}</p>
                   <p> Schedule Id: {order.schedule_id}</p>
                   <p>Service: {order.service}</p>
+                  <p>Price: {order.price_per_hour}</p>
                   <p> Provider Id: {order.provider_id}</p>
                   <p> User Id: {order.user_id}</p>
                   <p>
