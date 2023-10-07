@@ -54,8 +54,15 @@ providers_functions.CreateNewProvider = async (req, res) => {
       res.status(409).json({
         success: false,
         message: "The email already exists",
-      });
-    } else {
+      })}
+      if (error.constraint === 'chk_email') {
+
+        res.status(409).json({
+          success: false,
+          message: "The email has to be at least 2char@3char.2char example go@go.jo",
+        });
+      } 
+     else {
       res.status(500).json({
         message: "Server Error",
         error: error.message,
