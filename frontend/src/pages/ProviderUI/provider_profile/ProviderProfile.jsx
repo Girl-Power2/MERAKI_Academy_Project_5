@@ -42,8 +42,8 @@ const ProviderProfile = () => {
       })
       .then((result) => {
         console.log(result.data.result[0]);
-        const i = result.data.result.length - 1;
-        setInformation(result.data.result[i]);
+        // const i = result.data.result.length - 1;
+        setInformation(result.data.result[0]);
         setImg(result.data.result[i].img);
         setToday(result.data.result[0].birthdate.toString().split("T")[0]);
       })

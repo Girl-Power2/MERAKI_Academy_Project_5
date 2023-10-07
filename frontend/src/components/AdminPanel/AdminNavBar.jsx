@@ -15,8 +15,8 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 const AdminNavBar=()=> {
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
   const [showNav, setShowNav] = useState(false);
 
   return (
@@ -44,21 +44,10 @@ const AdminNavBar=()=> {
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>
-            <MDBNavbarItem>
-            <MDBNavbarLink  onClick={handleShow}>
-        Settings
-      </MDBNavbarLink>
-            </MDBNavbarItem>
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <NavLink to="/addCategory">Add category</NavLink>
-        </Offcanvas.Body>
-        
-      
-      </Offcanvas>
+         
+    
+
+       
             <MDBNavbarItem>
                     <MDBNavbarLink
                       active

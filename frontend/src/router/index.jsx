@@ -7,18 +7,18 @@ import LoginUser from "../pages/login/login_user/LoginUser";
 import RegisterUser from "../pages/Register/register_users/RegisterUser";
 import Register from "../pages/Register/Register";
 import About from "../pages/AboutUs/About";
-import Login from "../pages/login/Login"
+import Login from "../pages/login/Login";
 import Categories from "../components/categories/Categories";
 import Provider from "../components/providers/Provider";
 import Information_UserSide from "../components/information/Information_UserSide";
 import MyServices from "../pages/ProviderUI/Myservices/MyServices";
 import Feadback_reviwes from "../components/feedback_review/Feadback_reviwes";
-import MySchedule from "../pages/ProviderUI/mySchedule/MySchedule"
+import MySchedule from "../pages/ProviderUI/mySchedule/MySchedule";
 import ProviderMain from "../pages/ProviderUI/providerMain/ProviderMain";
 import UserProfile from "../components/UserProfile/UserProfile";
 import ProviderProfile from "../pages/ProviderUI/provider_profile/ProviderProfile";
 import NewOrders from "../components/orders/NewOrders";
-import Note from "../pages/ProviderUI/provider_notes/Note"
+import Note from "../pages/ProviderUI/provider_notes/Note";
 import OldOrder from "../components/orders/OldOrder";
 import ContactUs from "../pages/ContactUs/ContactUs";
 import Map from "../components/Map/Map";
@@ -28,23 +28,19 @@ import AdminNavBar from "../components/AdminPanel/AdminNavBar";
 import Addcategory from "../components/AdminPanel/addcategory";
 import MyOrders from "../pages/ProviderUI/my orders/MyOrders";
 
-
-
-
 export const router = createBrowserRouter([
   {
-path:"/cureApp/login",
-element:<LoginAdmin/>
+    path: "/cureApp/login",
+    element: <LoginAdmin />,
   },
   {
-    path:"/cureApp/admin",
-    element:<Admin/>,
-  
+    path: "/cureApp/admin",
+    element: <Admin />,
 
+    children: [{ path: "addCategory", element: <Addcategory /> }],
   },
-  {path:"/addCategory",
-  element:<Addcategory/>},
-  
+  { path: "/addCategory", element: <Addcategory /> },
+
   {
     path: "/",
     element: <Main />,
@@ -81,63 +77,53 @@ element:<LoginAdmin/>
       { path: "/login", element: <Login /> },
       { path: "/loginUser", element: <LoginUser /> },
       { path: "/loginProvider", element: <LoginProvider /> },
-      ,{path:"/providerMain",
-    element:<ProviderMain/>,
-    },
+      ,
+      { path: "/providerMain", element: <ProviderMain /> },
 
-  {path:"/services",
-element:<MyServices/>},
-,{
-  path:"/myOrders",
-  element:<MyOrders/>
- },
+      { path: "/services", element: <MyServices /> },
+      ,
+      {
+        path: "/myOrders",
+        element: <MyOrders />,
+      },
 
-      
       { path: "/category", element: <Categories /> },
       { path: "/provider/:id", element: <Provider /> },
       {
         path: "/provider_Information/:id",
         element: <Information_UserSide />,
-      
       },
       {
-        path:"/reveiws/:id",
-        element:<Feadback_reviwes/>
+        path: "/reveiws/:id",
+        element: <Feadback_reviwes />,
       },
 
-      {path:"/mySchedule",
-    element:<MySchedule/>},
+      { path: "/mySchedule", element: <MySchedule /> },
 
       {
-        path:"/myProfile",
-        element:<UserProfile/>
+        path: "/myProfile",
+        element: <UserProfile />,
       },
-      {path:"/My_profile",
-    element:<ProviderProfile/>},
-       {
-        path:"/orders" ,
-        element:<NewOrders/>
+      { path: "/My_profile", element: <ProviderProfile /> },
+      {
+        path: "/orders",
+        element: <NewOrders />,
+      },
+      { path: "/notes", element: <Note /> },
 
-       },
-       {path:"/notes",
-      element:<Note/>}
+      {
+        path: "/previousOrder",
+        element: <OldOrder />,
+      },
+      {
+        path: "/contactUs",
+        element: <ContactUs />,
+      },
 
-
-       ,{
-        path:"/previousOrder",
-        element:<OldOrder/>
-       },
-       {
-        path:"/contactUs",
-        element:<ContactUs/>
-       }
-
-       ,{
-        path:"/map",
-        element:<Map/>
-       }
-       
-
+      {
+        path: "/map",
+        element: <Map />,
+      },
     ],
   },
 ]);

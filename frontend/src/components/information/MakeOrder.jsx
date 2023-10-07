@@ -13,6 +13,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import Map from "../Map/Map";
 const MakeOrder = () => {
+  const navigate=useNavigate()
   const [serv, setServ] = useState();
   const [adress, setAdress] = useState("");
   const [sched, setSched] = useState();
@@ -157,6 +158,11 @@ dispatch(updateSchedule(id))
         />
       </Box>
       <hr />
+      <Button onClick={()=>{
+        navigate("/map")
+      }}>
+Set your location
+      </Button>
       <Button
         variant="contained"
         onClick={() => {

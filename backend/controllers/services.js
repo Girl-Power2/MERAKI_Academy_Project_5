@@ -123,7 +123,7 @@ services.countServiceById = async (req, res) => {
 services.getServiceByName = async (req, res) => {
   const { name } = req.query;
   const values = ["%" + name + "%"];
-  const query = `SELECT * FROM services WHERE service ILIKE $1;`;
+  const query = `SELECT * FROM services WHERE service ILIKE $1;`;//iiner join providers with service id
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
