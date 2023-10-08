@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Doughnut, Pie } from 'react-chartjs-2';
+import { useSelector } from "react-redux";
+// import { Doughnut, Pie } from 'react-chartjs-2';
 import axios from "axios";
 const Analytics = () => {
   const [users, setUsers] = useState(0);
@@ -19,19 +19,21 @@ const Analytics = () => {
         },
       })
       .then((result) => {
-        console.log(result.data.result[0].count);
         setUsers(result.data.result[0].count);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+// ========================Get count functions start====================================
   const getProvider = () => {
     axios
-      .get(`http://localhost:5000/providers/all/count/`)
+      .get(`http://localhost:5000/providers/all/count/`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((result) => {
-        console.log(result.data);
         setProvider(result.data.data[0].numberofproviders);
       })
       .catch((err) => {
@@ -47,13 +49,27 @@ const Analytics = () => {
         },
       })
       .then((result) => {
-        console.log(result.data);
         setCategory(result.data.result[0].count);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+// ========================Get count functions end====================================
+
+
+
+
+// ========================Get all functions end====================================
+
+  // =========================use effect=============================
+  useEffect(() => {
+    getUsers();
+    getProvider();
+    getCategory();
+  }, []);
+  // =========================use effect=============================
+
   const data = {
     labels: [
       'Red',
@@ -71,11 +87,7 @@ const Analytics = () => {
       hoverOffset: 4
     }]
   };
-  useEffect(() => {
-    getUsers();
-    getProvider();
-    getCategory();
-  }, []);
+
   return (
     <div className="cardsContainer">
       <div className="cards" id="userCard">
@@ -99,12 +111,12 @@ const Analytics = () => {
         </p>
       </div>
 
-      <Pie
+      {/* <Pie
        
         data={data}
         {...data}
      
-      />
+      /> */}
     </div>
   );
 };

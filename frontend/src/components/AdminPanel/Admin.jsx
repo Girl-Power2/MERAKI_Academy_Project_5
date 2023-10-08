@@ -26,7 +26,6 @@ const getUsers=()=>{
   axios.get(`http://localhost:5000/users/conutOfUsers/`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
-    console.log(result.data.result[0].count);
     setUsers(result.data.result[0].count)
   }).catch((err)=>{
     console.log(err);
@@ -35,7 +34,6 @@ const getUsers=()=>{
 
 const getProvider=()=>{
   axios.get(`http://localhost:5000/providers/all/count/`).then((result)=>{
-    console.log(result.data);
     setProvider(result.data.data[0].numberofproviders)
   }).catch((err)=>{
     console.log(err);
@@ -46,7 +44,6 @@ const getCategory=()=>{
   axios.get(`http://localhost:5000/categories/countAllCategories`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
-    console.log(result.data);
     setCategory(result.data.result[0].count)
   }).catch((err)=>{
     console.log(err);

@@ -233,7 +233,15 @@ providers_functions.getProviderByGender = async (req, res) => {
 
 // ===============get  all providers================
 providers_functions.GetALLProviders = (req, res) => {
-  const query = `SELECT * FROM providers;`;
+  const query = `SELECT *
+
+  FROM PROVIDERS
+  INNER JOIN CATEGORIES ON PROVIDERS.CATEGORY_ID = CATEGORIES.CATEGORY_ID
+  INNER JOIN SERVICES ON SERVICES.PROVIDER_ID = PROVIDERS.PROVIDER_ID
+  group by PROVIDERS.PROVIDER_ID,CATEGORIES.CATEGORY_ID,services.service_id
+  order BY 
+    PROVIDERS.PROVIDER_ID ASC
+    ;`;
 
   client
     .query(query)
