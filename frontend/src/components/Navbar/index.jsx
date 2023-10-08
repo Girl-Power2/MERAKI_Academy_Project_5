@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import  axios from "axios" ;
+import { useNavigate } from "react-router-dom";
+import "./style.css"
+import axios from "axios";
 import {
   MDBContainer,
   MDBNavbar,
@@ -16,16 +18,17 @@ import {
   MDBDropdownToggle,
   MDBDropdownMenu,
   MDBDropdownItem,
-  MDBCollapse,
+  MDBCollapse
 } from "mdb-react-ui-kit";
+
 import { setLogout } from "../../service/redux/reducers/auth";
-// import { googleLogout } from '@react-oauth/google';
 
-
-// import RegisterProvider from "../../pages/register_provider/RegisterProvider"
 const Navbar = () => {
   const dispatch = useDispatch();
-  const [search ,setSearch]=useState("")
+const history = useNavigate()
+  const [search, setSearch] = useState("");
+  const [result, setResult] = useState([]);
+  const [showSearchAlert, setShowSearchAlert] = useState(false);
   const { isLoggedIn, role, token, userId, providerId } = useSelector(
     (state) => {
       return {
@@ -95,26 +98,33 @@ const Navbar = () => {
                     </MDBDropdown>
                   </MDBNavbarItem>
                 </>
-             )}
+              )}
               {/* ====================IF NOT LOGGED IN======================  */}
 
               {/* ====================IF LOGGED IN======================  */}
 
               {isLoggedIn && providerId && (
                 <>
-                
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/My_profile">
+                    <MDBNavbarLink
+                      active
+                      aria-current="page"
+                      href="/My_profile"
+                    >
                       <NavLink to="/My_profile">My Profile</NavLink>
                     </MDBNavbarLink>
-                  </MDBNavbarItem> 
-                   <MDBNavbarItem>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/services">
                       <NavLink to="/services">My services</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="/mySchedule">
+                    <MDBNavbarLink
+                      active
+                      aria-current="page"
+                      href="/mySchedule"
+                    >
                       <NavLink to="/mySchedule">My Schedule</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
@@ -135,7 +145,7 @@ const Navbar = () => {
                       href="/"
                       onClick={() => {
                         setLogout();
-                        // googleLogout();
+                    
                       }}
                     >
                       <NavLink
@@ -153,18 +163,18 @@ const Navbar = () => {
                 </>
               )}
 
-                {token && userId && (
+              {token && userId && (
                 <>
-                <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="/">
-                  <NavLink to=""> Home</NavLink>
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink active aria-current="page" href="/aboutUs">
-                  <NavLink to="/aboutUs">About Us</NavLink>
-                </MDBNavbarLink>
-              </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="/">
+                      <NavLink to=""> Home</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="/aboutUs">
+                      <NavLink to="/aboutUs">About Us</NavLink>
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/category">
                       <NavLink to="category">Category</NavLink>
@@ -201,36 +211,57 @@ const Navbar = () => {
                       </NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
-                  
                 </>
               )}
             </MDBNavbarNav>
+           
 
-            <form className="d-flex input-group w-auto">
-              <input
-                type="search"
-                className="form-control"
-                placeholder="Type query"
-                aria-label="Search"
-onChange={(e)=>{
-  setSearch(e.target.value)
-}}
-              />
-              <MDBBtn  color="primary" onClick={()=>{
+            <input
+              type="search"
+              className="form-control w-25"
+              placeholder="Type query"
+              aria-label="Search"
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+            <MDBBtn
+              color="primary"
+              onClick={() => {
                 console.log(search);
-                axios.get(`http://localhost:5000/providers/byName/?fname=${search}`).then((result)=>{
-                  console.log(result.data);
-                }).catch((err)=>{
-                  console.log(err);
-                })
-              }} >
-                Search
-              </MDBBtn>
-            </form>
+                axios
+                  .get(
+                    `http://localhost:5000/providers/byName/?fname=${search}`
+                  )
+                  .then((result) => {
+                    console.log(result.data);
+                    setResult(result.data.data);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              }}
+            >
+              Search
+            </MDBBtn>
+           
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
-    
+       {result
+        ?(<div className="input">{ result.map((name, i) => {
+            return (
+              <div key={i}>
+                <h6 onClick={()=>{
+                  history(`/provider_Information/${name.provider_id}`)
+                }}>
+                  {name.fname} {name.lname}
+                </h6>
+               
+              </div>
+            );
+          })}</div>)
+        : null}
     </div>
   );
 };

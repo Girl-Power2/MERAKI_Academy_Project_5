@@ -31,11 +31,11 @@ const Feadback_reviwes = () => {
   const [update, setUpdate] = useState("");
   const [data, setData] = useState(false);
   const { token, userId } = useSelector((state) => {
-    // console.log(reviews);
+  
     return {
       token: state.auth.token,
       userId: state.auth.userId,
-      // reviews:state.reveiws.reviews
+     
     };
   });
   
@@ -79,7 +79,7 @@ const Feadback_reviwes = () => {
                   <MDBCardImage
                     className="rounded-circle shadow-1-strong me-3"
                     src="https://cdn.vectorstock.com/i/1000x1000/35/72/young-woman-sick-with-fever-avatar-character-vector-31733572.webp"
-                    // alt="avatar"
+                    
                     width="65"
                     height="65"
                   />
@@ -96,7 +96,7 @@ const Feadback_reviwes = () => {
                     />
 
                     <div className="d-flex justify-content-between mt-3">
-                      {/* <MDBBtn color="success">ADD</MDBBtn> */}
+                      
                       <MDBBtn
                         color="danger"
                         onClick={() => {
@@ -116,7 +116,7 @@ const Feadback_reviwes = () => {
                             )
                             .then((result) => {
                               console.log(result.data.result);
-                              // setReveiws([...reveiws , result.data.result])
+                              
                               dispatch(addReview(result.data.result));
                             })
                             .catch((err) => {
@@ -231,7 +231,7 @@ const Feadback_reviwes = () => {
                                   color="success"
                                   onClick={() => {
                                     setToggle(comment?.review_id);
-                                    // console.log(comment);
+                                  
                                   }}
                                 >
                                   Update Review

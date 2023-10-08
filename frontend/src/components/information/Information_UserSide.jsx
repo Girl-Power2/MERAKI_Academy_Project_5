@@ -50,7 +50,7 @@ export default function Information_UserSide() {
       })
       .then((result) => {
         console.log(result.data.result);
-        setInfo(result.data.result);//[0]
+        setInfo(result.data.result[0]);//[0]
         setToday(result.data.result[0].birthdate.toString().split('T')[0])
 
       })
@@ -67,16 +67,15 @@ export default function Information_UserSide() {
   }
   return (
     <div className="tree">
-      {info.map((data, i) => {
-        return (
-          <div key={i} className="data">
+      {info &&
+          <div  className="info">
             <section style={{ backgroundColor: "#eee" }}>
               <MDBRow>
                 <MDBCol lg="4">
                   <MDBCard className="mb-4">
                     <MDBCardBody className="text-center">
                       <MDBCardImage
-                        src={data.img}
+                        src={info.img}
                         alt="avatar"
                         className="h-100 w-100"
                         style={{ width: "150px" }}
@@ -86,10 +85,10 @@ export default function Information_UserSide() {
                       />
                       <hr />
                       <p className="text-muted mb-1">
-                        Name : {data.fname} {data.lname}
+                        Name : {info.fname} {info.lname}
                       </p>
-                      <p className="text-muted mb-4">Gender : {data.gender}</p>
-                      <p className="text-muted mb-4">City : {data.city}</p>
+                      <p className="text-muted mb-4">Gender : {info.gender}</p>
+                      <p className="text-muted mb-4">City : {info.city}</p>
                       
                       <div className="d-flex justify-content-center mb-2">
                        
@@ -103,7 +102,7 @@ export default function Information_UserSide() {
                       <MDBListGroup flush className="rounded-3">
                         <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
                           <MDBIcon fas icon="globe fa-lg text-warning" />
-                          <MDBCardText>{data.email}</MDBCardText>
+                          <MDBCardText>{info.email}</MDBCardText>
                         </MDBListGroupItem>
                       </MDBListGroup>
                     </MDBCardBody>
@@ -111,7 +110,7 @@ export default function Information_UserSide() {
                   <br />
                   <MDBBtn
                     onClick={() => {
-                      history(`/reveiws/${data.provider_id}`);
+                      history(`/reveiws/${info.provider_id}`);
                     }}
                   >
                     Reveiws
@@ -162,7 +161,7 @@ export default function Information_UserSide() {
                         </MDBCol>
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
-                            {data.fname} {data.lname}
+                            {info.fname} {info.lname}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>
@@ -175,7 +174,7 @@ export default function Information_UserSide() {
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
                             {" "}
-                            {data.phonenumber}
+                            {info.phonenumber}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>
@@ -186,7 +185,7 @@ export default function Information_UserSide() {
                         </MDBCol>
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
-                            {data.bio}
+                            {info.bio}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>
@@ -197,7 +196,7 @@ export default function Information_UserSide() {
                         </MDBCol>
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
-                            {data.qualifications}
+                            {info.qualifications}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>
@@ -221,7 +220,7 @@ export default function Information_UserSide() {
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
                             {" "}
-                            {data.age.years}
+                            {info.age.years}
                           </MDBCardText>
                         </MDBCol>
                       </MDBRow>
@@ -233,10 +232,8 @@ export default function Information_UserSide() {
               </MDBRow>
             </section>
           </div>
-        );
-      })}
+}
     </div>
   );
 }
 
-// export default Information_UserSide

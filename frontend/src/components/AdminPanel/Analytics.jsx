@@ -111,12 +111,6 @@ const Analytics = () => {
         </p>
       </div>
 
-      {/* <Pie
-       
-        data={data}
-        {...data}
-     
-      /> */}
     </div>
   );
 };

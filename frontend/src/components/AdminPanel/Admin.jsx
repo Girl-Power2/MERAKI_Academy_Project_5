@@ -26,6 +26,7 @@ const getUsers=()=>{
   axios.get(`http://localhost:5000/users/conutOfUsers/`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
+
     setUsers(result.data.result[0].count)
   }).catch((err)=>{
     console.log(err);
