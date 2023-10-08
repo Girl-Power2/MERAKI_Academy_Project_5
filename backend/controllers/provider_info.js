@@ -62,6 +62,7 @@ WHERE providers.category_id=${id} `;
   pool
     .query(query)
     .then((result) => {
+    console.log(result);
       res.status(201).json({
         success: true,
         message: `Information For Category=${id}`,
