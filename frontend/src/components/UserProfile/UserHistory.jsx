@@ -1,35 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate} from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
-  MDBCol,
   MDBInput,
-  MDBCheckbox,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
+ MDBCardText,
   MDBBtn,
-  MDBTypography,
-  MDBModal,
+ MDBModal,
   MDBModalDialog,
   MDBModalContent,
   MDBModalHeader,
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
-  MDBSpinner
 } from "mdb-react-ui-kit";
 
 import {
     setHistory,
-    addHistory,
     updateHistory,
     deleteHistoryById,
   } from "../../service/redux/reducers/history";
-import RegisterUser from "../../pages/Register/register_users/RegisterUser";
 
  
   

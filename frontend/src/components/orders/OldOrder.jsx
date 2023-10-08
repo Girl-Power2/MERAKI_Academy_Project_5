@@ -1,10 +1,10 @@
 import React ,{useEffect ,useState} from 'react'
 import { useDispatch ,useSelector } from 'react-redux'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+
 import { NavLink } from 'react-router-dom'
 import { MDBSpinner } from "mdb-react-ui-kit";
-import Pagination from 'react-bootstrap/Pagination';
+
 import {
     MDBBtn,
     MDBCard,
@@ -13,7 +13,7 @@ import {
     MDBIcon,
     MDBRow,
   MDBTableHead,
-  MDBTable,MDBPagination, MDBPaginationItem, MDBPaginationLink
+  MDBTable
   } from "mdb-react-ui-kit";
 
 
