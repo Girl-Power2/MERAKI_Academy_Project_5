@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MDBSpinner } from "mdb-react-ui-kit";
-import { setOrder, updateOrder } from "../../service/redux/reducers/order";
+import { setOrder } from "../../service/redux/reducers/order";
 import { NavLink } from "react-router-dom";
 import {
   MDBBtn,

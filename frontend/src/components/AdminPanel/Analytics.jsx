@@ -98,13 +98,13 @@ const Analytics = () => {
           </span>
         </p>
       </div>
-
+{/* 
       <Pie
        
         data={data}
         {...data}
      
-      />
+      /> */}
     </div>
   );
 };
