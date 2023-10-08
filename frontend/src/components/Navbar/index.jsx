@@ -28,7 +28,7 @@ const Navbar = () => {
 const history = useNavigate()
   const [search, setSearch] = useState("");
   const [result, setResult] = useState([]);
-  const [showSearchAlert, setShowSearchAlert] = useState(false);
+const [show ,setShow]=useState(false)
   const { isLoggedIn, role, token, userId, providerId } = useSelector(
     (state) => {
       return {
@@ -211,11 +211,11 @@ const history = useNavigate()
                       </NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
-                </>
+              </>
               )}
             </MDBNavbarNav>
            
-
+            
             <input
               type="search"
               className="form-control w-25"
@@ -223,8 +223,13 @@ const history = useNavigate()
               aria-label="Search"
               onChange={(e) => {
                 setSearch(e.target.value);
+                
+              }}
+              onClick={()=>{
+                setShow(false)
               }}
             />
+            
             <MDBBtn
               color="primary"
               onClick={() => {
@@ -236,6 +241,7 @@ const history = useNavigate()
                   .then((result) => {
                     console.log(result.data);
                     setResult(result.data.data);
+                    setShow(true)
                   })
                   .catch((err) => {
                     console.log(err);
@@ -244,24 +250,31 @@ const history = useNavigate()
             >
               Search
             </MDBBtn>
-           
+         
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
-       {result
-        ?(<div className="input">{ result.map((name, i) => {
+      <div >
+            {result && show
+        ?(<div className="input">
+        
+         
+          { result.map((name, i) => {
             return (
-              <div key={i}>
+              <div key={i}  >
+              <hr/>
                 <h6 onClick={()=>{
                   history(`/provider_Information/${name.provider_id}`)
+                  setShow(false)
                 }}>
                   {name.fname} {name.lname}
                 </h6>
-               
+              
               </div>
             );
           })}</div>)
-        : null}
+        : null} 
+        </div>
     </div>
   );
 };

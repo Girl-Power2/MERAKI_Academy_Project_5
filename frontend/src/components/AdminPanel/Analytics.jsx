@@ -93,19 +93,19 @@ const Analytics = () => {
       <div className="cards" id="userCard">
         <p>Number of Users</p>
         <p>
-          <span style={{ fontSize: "2rem" }}>{users}</span>
+          <span className="result" style={{ fontSize: "2rem" }}>{users}</span>
         </p>
       </div>
       <div className="cards" id="providerCard">
         <p>Number of Providers</p>
         <p>
-          <span style={{ fontSize: "2rem" }}>{provider}</span>
+          <span className="result" style={{ fontSize: "2rem" }}>{provider}</span>
         </p>
       </div>
       <div className="cards" id="categoryCard">
         <p>Number of Categories</p>
         <p>
-          <span style={{ fontSize: "2rem", textDecoration: "" }}>
+          <span className="result" style={{ fontSize: "2rem", textDecoration: "" }}>
             {category}
           </span>
         </p>

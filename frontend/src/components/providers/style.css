@@ -1,7 +1,7 @@
 .provider{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin: 1rem;
     align-items: center;
 }

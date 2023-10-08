@@ -12,6 +12,7 @@ import {
   MDBCardText,
   MDBCardBody,
   MDBBtn,
+  MDBIcon
 } from "mdb-react-ui-kit";
 
 const ProviderSesvice = () => {
@@ -80,7 +81,7 @@ const ProviderSesvice = () => {
             });
         }}
       >
-       Sort ASC ↗️
+     <MDBIcon fas icon="sort-numeric-down" size='lg'/>
       </MDBBtn>
       <MDBBtn className="ms-1"
         outline
@@ -103,7 +104,7 @@ const ProviderSesvice = () => {
             });
         }}
       >
-       Sort DESC ↘️
+      <MDBIcon fas icon="sort-numeric-down-alt"  size='lg'/>
       </MDBBtn>
       {asc ? (
         <MDBRow>
