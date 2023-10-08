@@ -2,6 +2,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { MDBCard, MDBCardBody, MDBContainer } from "mdb-react-ui-kit";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
@@ -18,6 +19,8 @@ const Service = () => {
     const [show, setShow] = useState(false);
     const [service, setService] = useState("");
     const [price, setPrice] = useState("");
+  const[click,setClick]=useState(true)
+
   const{providerId,token}=useSelector((state)=>{
     return{
         providerId:state.auth.providerId,
@@ -56,17 +59,20 @@ const Service = () => {
       });
   };
   return (
+   
     <div>
 
  {/* ============================start of second modal==================================================} */}
-<div className="step"> 
- <label>
-          2.
-          <Button variant="primary" onClick={handleShow}>
-            Add services
-          </Button>
-        </label>
-</div>
+<MDBContainer fluid className="py-5" style={{ backgroundColor: "#94CBC6" }}>
+<div className="main-timeline">
+<div className="timeline right">
+          <MDBCard style={click?{boxShadow:"2px 3px 3px 1px black",border:"4px groove #A9CBC8"}:{boxShadow:"none"}} onClick={()=>{
+       setClick(false)
+            }}>
+            <MDBCardBody className="p-8">
+
+<h4 style={{cursor:"pointer"}} onClick={handleShow} className="mb-0">Add a service</h4>
+     
 
         <Modal show={show} onHide={handleClose}>
           
@@ -114,6 +120,12 @@ const Service = () => {
         {/* ============================end of second modal==================================================*/}
 
 
+   
+    </MDBCardBody>
+          </MDBCard>
+        </div>
+      </div>
+    </MDBContainer>
     </div>
   )
 }

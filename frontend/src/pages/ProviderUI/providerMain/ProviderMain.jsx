@@ -8,13 +8,15 @@ import AddSchedule from '../../../components/provider_info/AddSchedule';
 
 const ProviderMain = () => {
   return (
-    <>
-  
+    
+<div style={{height:"100vh"}}>
     <Info/>
     <Service/>
     <AddSchedule/>
     <Outlet/>
-    </>
+    </div>
+ 
+
   )
 }
 
