@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import { setSchedule } from "../../service/redux/reducers/schedule";
-
+import { MDBCard, MDBCardBody, MDBContainer } from "mdb-react-ui-kit";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -19,6 +19,7 @@ const AddSchedule = () => {
   const[msg,setMsg]=useState("")
   const [date, setDate] = useState('');
   const [today, setToday] = useState("")
+  const[click,setClick]=useState(true)
 
   const [show, setShow] = useState(false);
 
@@ -59,14 +60,14 @@ const AddSchedule = () => {
   };
   return (
     <>
-      <div className="step">
-        <label>
-          3.
-          <Button variant="primary" onClick={handleShow}>
-            Add schedule
-          </Button>
-        </label>
-      </div>
+       <MDBContainer fluid className="py-5" style={{ backgroundColor: "#94CBC6" }}>
+      <div className="main-timeline">
+        <div className="timeline left">
+          <MDBCard  style={click?{boxShadow:"2px 3px 3px 1px black",border:"4px groove #A9CBC8"}:{boxShadow:"none"}} onClick={()=>{
+       setClick(false)
+            }}>
+            <MDBCardBody className="p-8">
+        <h4 style={{cursor:"pointer"}} onClick={handleShow} className="mb-0">Add a schedule</h4>
       <Modal show={show} onHide={handleClose}>
         <div className="inputs">
           <p>
@@ -133,6 +134,11 @@ const AddSchedule = () => {
           />
         </div>
       </Modal>
+      </MDBCardBody>
+          </MDBCard>
+        </div>
+      </div>
+    </MDBContainer>
     </>
   );
 };

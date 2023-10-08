@@ -71,7 +71,6 @@ const ProviderProfile = () => {
             <p>📧{information.email}</p>
           </div>
           <div className="about">
-            <div className="bioContainer">
               <div className="bio">
                 bio:
                 <br />
@@ -139,7 +138,6 @@ const ProviderProfile = () => {
                   </div>
                 )}
               </div>
-            </div>
             <div className="qualifications">
               <p>
                 qualifications:

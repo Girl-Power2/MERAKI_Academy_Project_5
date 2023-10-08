@@ -233,23 +233,46 @@ providers_functions.getProviderByGender = async (req, res) => {
 
 // ===============get  all providers================
 providers_functions.GetALLProviders = (req, res) => {
-  const query = `SELECT *
+  const {skip} = req.query  
 
+  const query = `SELECT *
   FROM PROVIDERS
   INNER JOIN CATEGORIES ON PROVIDERS.CATEGORY_ID = CATEGORIES.CATEGORY_ID
-  INNER JOIN SERVICES ON SERVICES.PROVIDER_ID = PROVIDERS.PROVIDER_ID
-  group by PROVIDERS.PROVIDER_ID,CATEGORIES.CATEGORY_ID,services.service_id
+  group by PROVIDERS.PROVIDER_ID,CATEGORIES.CATEGORY_ID
+   order BY 
+    PROVIDERS.PROVIDER_ID ASC
+  limit 5 offset ${skip};
+  SELECT COUNT(order_id) ,PROVIDER_ID
+  FROM orders WHERE status = 'Done'
+  group by orders.PROVIDER_ID
+   order BY 
+    PROVIDER_ID ASC
+  limit 5 offset ${skip};
+  SELECT 
+	COUNT(SERVICE_ID) AS NUMBEROFSERVICES,providers.provider_id
+FROM PROVIDERS
+INNER JOIN SERVICES ON SERVICES.PROVIDER_ID = PROVIDERS.PROVIDER_ID
+group by PROVIDERS.PROVIDER_ID
   order BY 
     PROVIDERS.PROVIDER_ID ASC
-    ;`;
+  limit 5 offset ${skip}
+    ;`
+    
 
   client
     .query(query)
     .then((result) => {
+      console.log(result[0].rows);
+      console.log(result[1].rows);
+      console.log(result[2].rows);
+
+
       res.status(201).json({
         success: true,
         message: ` ALL providers `,
-        data: result.rows,
+        providers: result[0].rows,
+        orders:result[1].rows,
+        services:result[2].rows
       });
     })
     .catch((err) => {

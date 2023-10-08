@@ -83,8 +83,11 @@ span{
     --mdb-table-striped-color: #0c0c0c;
     --mdb-table-active-bg: #474242;
     --mdb-table-active-color: #fff;
-    --mdb-table-hover-bg: #423d3d;
+    --mdb-table-hover-bg: #423d3d6e;
     --mdb-table-hover-color: #fff;
     color: var(--mdb-table-color);
     border-color: var(--mdb-table-border-color);
+}
+.providerAnalyticsContainer{
+    padding: 2rem;
 }

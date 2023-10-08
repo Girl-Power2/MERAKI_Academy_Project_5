@@ -2,6 +2,8 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import React from "react";
+import { MDBCard, MDBCardBody, MDBContainer } from "mdb-react-ui-kit";
 import axios from "axios";
 import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
@@ -18,6 +20,8 @@ const Info = () => {
   const[img,setImg]=useState("")
   const[bio,setBio]=useState("")
   const[qua,setQua]=useState("")
+  const[click,setClick]=useState(true)
+
 
 
   const { providerId, token } = useSelector((state) => {
@@ -93,19 +97,24 @@ const Info = () => {
 
   return (
     <>
-      <div className="welcome">
+      <div className="welcome"  style={{height:"1%", backgroundColor: "#94CBC6" }}>
         Welcome to our team . Please follow the steps to setup your account
       </div>
       
         {/* ============================start of first modal==================================================*/}
-        <div className="step"> 
-         <label>
-          1.
-          <Button variant="primary" onClick={handleShow}>
-            Insert info
-          </Button>
-        </label>
-</div>
+      
+        <MDBContainer fluid className="py-5" style={{ backgroundColor: "#94CBC6" }}>
+      <div className="main-timeline"  >
+        <div className="timeline left">
+          <MDBCard style={click?{boxShadow:"2px 3px 3px 1px black",border:"4px groove #A9CBC8"}:{boxShadow:"none"}} onClick={()=>{
+       setClick(false)
+            }}>
+            <MDBCardBody className="p-8">
+        <h4 style={{cursor:"pointer"}} onClick={handleShow} className="mb-0">Insert your information</h4>
+
+         
+       
+        
 <div className="input_container">
         <Modal show={show} onHide={handleClose}>
           <div className="inputs">
@@ -172,6 +181,11 @@ const Info = () => {
         {/* ============================end of first modal==================================================*/}
 
       </div>
+      </MDBCardBody>
+          </MDBCard>
+        </div>
+      </div>
+    </MDBContainer>
     </>
   );
 };

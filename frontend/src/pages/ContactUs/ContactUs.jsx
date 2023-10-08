@@ -19,23 +19,23 @@ const ContactUs = () => {
   
     const sendEmail = (e) => {
       e.preventDefault();
-      emailjs
-      //duha
-        .sendForm(
-          "service_aesfl0b",
-          "template_lz0dgna",
-          form.current,
-          "AeudsNtPdl-qTBqqj"
-        )
+      // emailjs
+      // //duha
+      //   .sendForm(
+      //     "service_aesfl0b",
+      //     "template_lz0dgna",
+      //     form.current,
+      //     "AeudsNtPdl-qTBqqj"
+      //   )
         //duha
         //hala
-        // emailjs
-        // .sendForm(
-        //   "service_j5381wl",
-        //   "template_nm6s4nf",
-        //   form.current,
-        //   "OvNxWqM4ZNoMso80y"
-        // )
+        emailjs
+        .sendForm(
+          "service_j5381wl",
+          "template_mh4x3ik",
+          form.current,
+          "OvNxWqM4ZNoMso80y"
+        )
         //hala
         .then(
           (result) => {
