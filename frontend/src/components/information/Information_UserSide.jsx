@@ -141,14 +141,14 @@ export default function Information_UserSide() {
         </MDBModalDialog>
       </MDBModal>
     </>
-                  <MDBBtn
-                    color="danger"
+                  <MDBBtn outline
+                    color="primary"
                     className="ms-1"
                     onClick={() => {
                       history(-1);
                     }}
                   >
-                    Back
+                    <MDBIcon fas icon="arrow-circle-left"  size='lg'/>
                   </MDBBtn>
                 </MDBCol>
 

@@ -13,6 +13,7 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
+  MDBIcon
 } from "mdb-react-ui-kit";
 
 import {
@@ -64,8 +65,8 @@ import {
                             return (<div>
 
                         <div
-                          className="p-4"
-                          style={{ backgroundColor: "#DCDCDC" }}
+                          className="p-4 m-2"
+                          style={{ backgroundColor: "#B7D5E5" }}
                         >
                           <MDBCardText className="font-italic mb-1">
                             History: {data.history}
@@ -83,7 +84,7 @@ import {
                           <MDBCardText className="font-italic mb-0"></MDBCardText>
                         </div>
                         <>
-      <MDBBtn onClick={toggleShow}>Edit History</MDBBtn>
+      <MDBBtn onClick={toggleShow}><MDBIcon fas icon="edit" /></MDBBtn>
       <MDBModal show={basicModal} setShow={setBasicModal} tabIndex="-1">
         <MDBModalDialog>
           <MDBModalContent>
@@ -126,7 +127,7 @@ import {
 
             <MDBModalFooter>
               <MDBBtn color="secondary" onClick={toggleShow}>
-                Close
+              <MDBIcon fas icon="times" size="lg"/> Close
               </MDBBtn>
               <MDBBtn onClick={()=>{
                 axios.put(`http://localhost:5000/history/${data.medical_history_id}`,{history :newHistories,medications:newMedications,
@@ -141,15 +142,15 @@ import {
                 }).catch((err)=>{
                     console.log(err);
                 })
-              }}>Save changes</MDBBtn>
+              }}> <MDBIcon fas icon="plus" size="lg"/> Save changes</MDBBtn>
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
     </>
                         <MDBBtn
-                          outline
-                          color="dark"
+                         
+                          color="danger"
                           className="ms-1"
                           style={{ height: "36px", overflow: "visible" }}
                           onClick={()=>{
@@ -164,7 +165,7 @@ import {
                             })
                           }}
                         >
-                         Delete History
+                         <MDBIcon fas icon="trash" />
                         </MDBBtn>
                         
                        </div>)

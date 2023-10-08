@@ -58,7 +58,7 @@ background-blend-mode:inherit; */
     box-shadow: 5px 5px 8px
 }
 
-span{
+.result{
     text-shadow: 5px 5px 5px rgba(85, 82, 82, 0.568);
     border: 5px inset rgba(0, 0, 0, 0.603);
     background-color: rgba(255, 255, 255, 0.719); 

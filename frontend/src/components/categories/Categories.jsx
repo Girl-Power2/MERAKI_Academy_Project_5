@@ -1,13 +1,18 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./style.css"
-import { MDBSpinner} from 'mdb-react-ui-kit';
-
+import "./style.css";
+import { MDBSpinner } from "mdb-react-ui-kit";
+import {
+  MDBCard,
+  MDBCardTitle,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardHeader,
+} from "mdb-react-ui-kit";
 const Categories = () => {
-
   const [category, setCategory] = useState([]);
-  const history =useNavigate()
+  const history = useNavigate();
   useEffect(() => {
     axios
       .get(`http://localhost:5000/categories/`)
@@ -20,30 +25,48 @@ const Categories = () => {
       });
   }, []);
 
-if(category.length == 0){
- return <MDBSpinner color='danger'>
-  <span className='visually-hidden'>Loading...</span>
-</MDBSpinner>
-}
-
+  if (category.length == 0) {
+    return (
+      <MDBSpinner color="danger">
+        <span className="visually-hidden">Loading...</span>
+      </MDBSpinner>
+    );
+  }
 
   return (
-    <div className="collection">
-      
+  <section className="section" style={{ backgroundColor: "#eee"}}>
+    <div className="collection" >
       {category.map((categ, i) => {
         return (
+          
           <div key={i} className="container">
-            <img className="image" src={categ.img} height={250} width={250} onClick={()=>{
-              history(`/provider/${categ.category_id}`)
-            }} />
-            <div className="middle">
-            <h4>{categ.category}</h4>
-            </div>
+            <MDBCard
+              shadow="5-strong"
+              border="primary"
+              background="white"
+              className="mb-1"
+            >
+              <MDBCardHeader>
+                <img
+                  src={categ.img}
+                  height={250}
+                  width={250}
+                  onClick={() => {
+                    history(`/provider/${categ.category_id}`);
+                  }}
+                />
+              </MDBCardHeader>
+              <MDBCardBody>
+                <MDBCardTitle onClick={() => {
+                    history(`/provider/${categ.category_id}`);
+                  }}>{categ.category}</MDBCardTitle>
+              </MDBCardBody>
+            </MDBCard>
           </div>
         );
       })}
-      
     </div>
+    </section>
   );
 };
 

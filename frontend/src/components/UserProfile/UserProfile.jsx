@@ -18,7 +18,8 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
-  MDBSpinner
+  MDBSpinner, 
+  MDBIcon
 } from "mdb-react-ui-kit";
 
 import "./style.css";
@@ -29,6 +30,7 @@ import {
   deleteHistoryById,
 } from "../../service/redux/reducers/history";
 import UserHistory from "./UserHistory";
+import Weather from "./Weather";
 
 const UserProfile = () => {
   const [profile, setProfile] = useState([]);
@@ -75,8 +77,12 @@ const [medications ,setMedications]=useState("")
   }
   return (
     <div>
-      <div className="gradient-custom-2" style={{ backgroundColor: "#9de2ff" }}>
-        <MDBRow className="justify-content-left align-items-center h-100">
+      <div className="gradient-custom-2">
+        {/* <div>
+        <Weather/>
+        </div> */}
+        <div>
+        <MDBRow className="justify-content-left align-items-center h-100" style={{ backgroundColor: "#eee" }}>
           <MDBCol lg="9" xl="9">
             <MDBCard>
               {profile.map((data, i) => {
@@ -85,7 +91,7 @@ const [medications ,setMedications]=useState("")
                   <div key={i}>
                     <div
                       className="rounded-top text-white d-flex flex-row"
-                      style={{ backgroundColor: "#000", height: "200px" }}
+                      style={{ backgroundColor: "#203763", height: "200px" }}
                     >
                       <div
                         className="ms-4 mt-5 d-flex flex-column"
@@ -113,7 +119,7 @@ const [medications ,setMedications]=useState("")
                         <p className="lead fw-normal mb-1">About</p>
                         <div
                           className="p-4"
-                          style={{ backgroundColor: "#DCDCDC" }}
+                          style={{ backgroundColor: "#B7D5E5" }}
                         >
                           <MDBCardText className="font-italic mb-1">
                             Age :{data.age.years}
@@ -137,7 +143,7 @@ const [medications ,setMedications]=useState("")
                       </div>
                       <UserHistory/>
                       <>
-                          <MDBBtn onClick={toggleShow}>Add History</MDBBtn>
+                          <MDBBtn onClick={toggleShow} ><MDBIcon far icon="address-book"  size="lg"/>  Add History</MDBBtn>
                           <MDBModal
                             show={basicModal}
                             setShow={setBasicModal}
@@ -189,7 +195,7 @@ const [medications ,setMedications]=useState("")
                                     color="secondary"
                                     onClick={toggleShow}
                                   >
-                                    Close
+                                  <MDBIcon fas icon="times" size="lg"/>  Close
                                   </MDBBtn>
                                   <MDBBtn onClick={()=>{
                                     
@@ -206,7 +212,7 @@ const [medications ,setMedications]=useState("")
                                       }).catch((err)=>{
                                         console.log(err);
                                       })
-                                  }}>ADD</MDBBtn>
+                                  }}> <MDBIcon fas icon="plus" size="lg"/> ADD</MDBBtn>
                                 </MDBModalFooter>
                               </MDBModalContent>
                             </MDBModalDialog>
@@ -221,6 +227,7 @@ const [medications ,setMedications]=useState("")
             </MDBCard>
           </MDBCol>
         </MDBRow>
+        </div>
       </div>
     </div>
   );

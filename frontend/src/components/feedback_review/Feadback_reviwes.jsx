@@ -69,10 +69,10 @@ const Feadback_reviwes = () => {
     );
   }
   return (
-    <div>
-      <section className="vh-75" style={{ backgroundColor: "#eee" }}>
-        <MDBRow>
-          <MDBCol sm="6">
+    <div >
+      <section className="vh-75" style={{ backgroundColor: "#eee" , }}>
+        <MDBRow style={{justifyContent:"center"}}>
+          <MDBCol sm="9">
             <MDBCard>
               <MDBCardBody className="p-4">
                 <div className="d-flex flex-start w-100">
@@ -98,7 +98,7 @@ const Feadback_reviwes = () => {
                     <div className="d-flex justify-content-between mt-3">
                       
                       <MDBBtn
-                        color="danger"
+                        color="success"
                         onClick={() => {
                           axios
                             .post(
@@ -126,6 +126,9 @@ const Feadback_reviwes = () => {
                       >
                         Add <MDBIcon fas icon="long-arrow-alt-right ms-1" />
                       </MDBBtn>
+                      <MDBBtn color="success" onClick={()=>{
+                        history(-1)
+                      }}><MDBIcon fas icon="arrow-circle-left" /></MDBBtn>
                     </div>
                   </div>
                 </div>
@@ -133,7 +136,7 @@ const Feadback_reviwes = () => {
             </MDBCard>
           </MDBCol>
 
-          <MDBCol sm="6">
+          <MDBCol sm="9">
             <MDBCard className="mb-1 position-relative">
               <MDBCardBody>
                 <MDBRow>
@@ -193,10 +196,10 @@ const Feadback_reviwes = () => {
                                 }}
                               >
                                 {" "}
-                                X
+                                <MDBIcon fas icon="trash" />
                               </MDBBtn>
                               {toggle === comment?.review_id ? (
-                                <MDBBtn
+                                <MDBBtn className="ms-1"
                                   color="success"
                                   onClick={() => {
                                     axios
@@ -214,7 +217,7 @@ const Feadback_reviwes = () => {
                                         console.log(result.data.result);
                                         dispatch(
                                           updateReview({
-                                            review: update,
+                                            review: result.data.result[0].review,
                                             review_id: comment.review_id,
                                           })
                                         );
@@ -224,17 +227,17 @@ const Feadback_reviwes = () => {
                                       });
                                   }}
                                 >
-                                  Update Review
+                                  <MDBIcon far icon="edit" /> Edit
                                 </MDBBtn>
                               ) : (
-                                <MDBBtn
+                                <MDBBtn className="ms-1"
                                   color="success"
                                   onClick={() => {
                                     setToggle(comment?.review_id);
                                   
                                   }}
                                 >
-                                  Update Review
+                                 <MDBIcon far icon="edit" /> Edit
                                 </MDBBtn>
                               )}
                             </div>
@@ -263,14 +266,7 @@ const Feadback_reviwes = () => {
             </MDBCard>
           </MDBCol>
         </MDBRow>
-        <MDBBtn
-          color="danger"
-          onClick={() => {
-            history(-1);
-          }}
-        >
-          Back
-        </MDBBtn>
+       
       </section>
     </div>
   );

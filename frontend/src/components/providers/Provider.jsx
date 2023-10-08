@@ -11,7 +11,8 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBCardImage,
-  MDBBtn
+  MDBBtn,
+  MDBIcon
 } from 'mdb-react-ui-kit';
 const Provider = () => {
     const [provider ,setProvider]=useState([])
@@ -31,13 +32,13 @@ axios.get(`http://localhost:5000/provider_info/category/${id}`,{
       Authorization: `Bearer ${token}`,
     },
   }).then((result)=>{
-    console.log(result.data.result);
-    setProvider([...provider,...result.data.result])
+    console.log(result.data);
+    setProvider(result.data.result)
     setLoder(true)
 }).catch((err)=>{
     console.log(err);
 })
-},[])
+},[id])
 
 
 if(!loder){
@@ -46,8 +47,9 @@ if(!loder){
    </MDBSpinner>
    }
   return (
+    <section className="section h-100" style={{ backgroundColor: "#eee"}}>
     <div >
-        <h4 className='title'>General Medicine</h4>
+        <h4 className='title'>{provider[0].category}</h4>
         <div className='provider'>
         {provider.map((prov,i)=>{
             console.log(prov);
@@ -73,6 +75,16 @@ if(!loder){
         })}
         </div>
     </div>
+    <MDBBtn outline  
+                    color="primary"
+                    className="ms-1 position-relative"
+                    onClick={() => {
+                      history(-1);
+                    }}
+                  >
+                    <MDBIcon fas icon="arrow-circle-left"  size='lg'/>
+                  </MDBBtn>
+    </section>
   )
 }
 

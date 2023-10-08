@@ -156,13 +156,14 @@ dispatch(updateSchedule(id))
             setAdress(e.target.value);
           }}
         />
-      </Box>
-      <hr />
-      <Button onClick={()=>{
+        <Button variant="contained"  onClick={()=>{
         navigate("/map")
       }}>
 Set your location
       </Button>
+      </Box>
+      <hr />
+      
       <Button
         variant="contained"
         onClick={() => {
