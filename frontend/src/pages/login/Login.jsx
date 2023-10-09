@@ -19,7 +19,7 @@ const Login = () => {
         <MDBRow>
       <MDBCol sm='6'>
         <MDBCard>
-          <MDBCardBody style={{ backgroundColor: "#eee" }}>
+          <MDBCardBody style={{ backgroundColor: 'white' }}>
           <MDBCardImage className='cardImg h-75 w-100'
       src='https://st2.depositphotos.com/30046358/48533/v/450/depositphotos_485337076-stock-illustration-planning-child-stay-hospital-vector.jpg'
    
@@ -35,7 +35,7 @@ const Login = () => {
       </MDBCol>
       <MDBCol sm='6'>
         <MDBCard>
-          <MDBCardBody style={{ backgroundColor: "#eee" }}>
+          <MDBCardBody style={{ backgroundColor: 'white' }}>
             
           <MDBCardImage className='cardImg'
       src='https://media.istockphoto.com/id/697882726/vector/avatars-characters-doctors-and-nurses-set-medical-people-icons-of-faces-on-a-blue-background.jpg?s=170667a&w=0&k=20&c=EeJl70YYHML6F91QnnmyvhHWJw2NJVmybzdCFLdae50='
