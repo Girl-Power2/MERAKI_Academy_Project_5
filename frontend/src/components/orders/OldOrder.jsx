@@ -1,7 +1,7 @@
 import React ,{useEffect ,useState} from 'react'
 import { useDispatch ,useSelector } from 'react-redux'
 import axios from 'axios'
-
+import "./style.css"
 import { NavLink } from 'react-router-dom'
 import { MDBSpinner } from "mdb-react-ui-kit";
 
@@ -51,7 +51,7 @@ axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
   return (
     <div>
          <div > 
-    <section className="vh-75" style={{ backgroundColor: "#eee" }}>
+    <section className="vh-75" >
    
      <MDBRow className="justify-content-center align-items-center h-75 w-100" >
        <MDBCol>
@@ -60,17 +60,14 @@ axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
          </p>
          <MDBTable>
          <MDBTableHead>
-        <tr>
+        <tr >
           <th scope='col' ><NavLink to="/previousOrder">previous order</NavLink></th>
-          <th scope='col' > <NavLink to="/orders">current order</NavLink>
-          
-          </th>
-        
+          <th scope='col' > <NavLink to="/orders">current order</NavLink></th>
         </tr>
       </MDBTableHead>
       </MDBTable>
 {previous&&previous.map((item ,i)=>{
-  return(<div key={i+1}  style={{ backgroundColor: "#eee" }}>
+  return(<div key={i+1}  >
 
  
          <MDBCard className="mb-4" >

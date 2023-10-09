@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { MDBSpinner } from "mdb-react-ui-kit";
 import { setOrder } from "../../service/redux/reducers/order";
 import { NavLink } from "react-router-dom";
+import "./style.css"
 import {
   MDBBtn,
   MDBCard,
@@ -18,7 +19,6 @@ import {
   MDBModalDialog,
   MDBModalFooter,
   MDBModalHeader,
-  MDBModalTitle,
   MDBTypography,
   MDBTableHead,
   MDBTable,
@@ -67,7 +67,7 @@ const NewOrders = () => {
   }
   return (
     <div>
-      <section className="vh-75" style={{ backgroundColor: "#eee" }}>
+      <section className="vh-75" >
         <MDBRow className="justify-content-center align-items-center h-75 w-100">
           <MDBCol>
             <p>
@@ -75,12 +75,12 @@ const NewOrders = () => {
             </p>
             <MDBTable>
               <MDBTableHead>
-                <tr>
+                <tr className="heders">
                   <th scope="col">
                     <NavLink to="/previousOrder">previous order</NavLink>
                   </th>
                   <th scope="col">
-                    {" "}
+                   
                     <NavLink to="/orders">current order</NavLink>
                   </th>
                 </tr>
@@ -89,7 +89,7 @@ const NewOrders = () => {
             {orders &&
               orders.map((item, i) => {
                 return (
-                  <div key={i + 1} style={{ backgroundColor: "#eee" }}>
+                  <div key={i + 1} >
                     <MDBCard className="mb-4">
                       <MDBCardBody className="p-4">
                         <MDBRow className="align-items-center">

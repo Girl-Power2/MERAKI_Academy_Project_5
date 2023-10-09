@@ -69,7 +69,7 @@ export default function Information_UserSide() {
     <div className="tree">
       {info &&
           <div  className="info">
-            <section style={{ backgroundColor: "#eee" }}>
+            <section >
               <MDBRow>
                 <MDBCol lg="4">
                   <MDBCard className="mb-4">

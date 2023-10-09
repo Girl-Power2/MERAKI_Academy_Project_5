@@ -47,11 +47,7 @@ const [medications ,setMedications]=useState("")
       token: state.auth.token,
     };
   });
-  const { history } = useSelector((state) => {
-    return {
-      history: state.history.history,
-    };
-  });
+  
   useEffect(() => {
     axios
       .get(`http://localhost:5000/users/`, {
@@ -78,12 +74,11 @@ const [medications ,setMedications]=useState("")
   return (
     <div>
       <div className="gradient-custom-2">
-        {/* <div>
-        <Weather/>
-        </div> */}
+        
         <div>
-        <MDBRow className="justify-content-left align-items-center h-100" style={{ backgroundColor: "#eee" }}>
-          <MDBCol lg="9" xl="9">
+        
+          <MDBRow>
+          <MDBCol md="8">
             <MDBCard>
               {profile.map((data, i) => {
                
@@ -226,6 +221,7 @@ const [medications ,setMedications]=useState("")
               })}
             </MDBCard>
           </MDBCol>
+          <MDBCol  md="4"><Weather/></MDBCol>
         </MDBRow>
         </div>
       </div>

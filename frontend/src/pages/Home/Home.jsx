@@ -26,7 +26,7 @@ function Home() {
           className="p-5 text-center bg-image"
           style={{
             backgroundImage:
-              "url('https://img.freepik.com/free-vector/online-medicine-compositions-set_1284-54433.jpg?w=826&t=st=1696273172~exp=1696273772~hmac=6bf23b58eadc63c698accb800c0e6def64d7d4a385628e2b764798fa5150cba9')",
+              "url('https://www.ibanet.org/medias/Health-app-image-banner.jpg?context=bWFzdGVyfHJvb3R8MTI2MTAxfGltYWdlL2pwZWd8YURNeUwyZ3hNUzg0T1RrNE56YzFOVFUwTURjNEwwaGxZV3gwYUNCaGNIQWdhVzFoWjJVZ1ltRnVibVZ5TG1wd1p3fGMzMmQ3ZmYyZGJkMjlmNjA1ZTdkN2YwYjRkNzRlOTcyMjM1NmE4MjhkOWRjN2E5ZjViMDI1YjdjYTg2MGM3ZDk')",
             height: "350px",
           }}
         >
@@ -55,7 +55,7 @@ function Home() {
       </header>
       <div className="homeCard">
         <MDBCard
-          border="success"
+          border="dark"
           style={{ backgroundColor: "#B2DFDB" }}
           className=".shadow-2-strong mb-3 "
         >
@@ -76,14 +76,15 @@ function Home() {
 
         <MDBCard
           shadow="5"
-          border="danger"
-          background="white"
+          border="dark"
+         
+         style={{ backgroundColor: "#B2DFDB" }}
           className="mb-3 .shadow-5-strong"
         >
           <MDBCardHeader>Contact Us</MDBCardHeader>
           <MDBCardBody
             className="text-dark"
-            style={{ backgroundColor: "#B8BEF5" }}
+            style={{ backgroundColor: "#80CBC4"  }}
           >
             {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
             <MDBCardText>
@@ -92,19 +93,19 @@ function Home() {
               providers.
             </MDBCardText>
             <NavLink to="/contactUs"> Contact Us</NavLink>
-          </MDBCardBody>
+          </MDBCardBody >
         </MDBCard>
 
         <MDBCard
           shadow="5"
-          border="danger"
-          background="#F5F5F5"
+          border="dark"
+          style={{ backgroundColor: "#B2DFDB" }}
           className="mb-3 .shadow-5-strong"
         >
           <MDBCardHeader>Help</MDBCardHeader>
           <MDBCardBody
             className="text-dark"
-            style={{ backgroundColor: "#ffebcd" }}
+            style={{ backgroundColor: "#80CBC4"  }}
           >
             {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
             <MDBCardText>
@@ -119,7 +120,7 @@ function Home() {
       <Outlet />
 
       <MDBFooter
-        bgColor="#DCDCDC"
+       style={{ backgroundColor: 'white' }}
         className="text-center text-lg-start text-muted"
       >
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -137,8 +138,8 @@ function Home() {
             <a href="" className="me-4 text-reset">
               <MDBIcon fab icon="google" />
             </a>
-            <a href="" className="me-4 text-reset">
-              <MDBIcon fab icon="instagram" />
+            <a href="http://linkedin.com/in/hala-joudehabushalbak" className="me-4 text-reset">
+              <MDBIcon fab icon="linkedin" />
             </a>
             <a href="" className="me-4 text-reset">
               <MDBIcon fab icon="linkedin" />
@@ -155,7 +156,7 @@ function Home() {
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
                 <MDBIcon icon="gem" className="me-3" />
-                Company name
+                Cure App
               </h6>
               <p>
                 Here you can use rows and columns to organize your footer
@@ -168,7 +169,7 @@ function Home() {
               <h6 className="text-uppercase fw-bold mb-4">Products</h6>
               <p>
                 <a href="#!" className="text-reset">
-                  Angular
+                 Node.js
                 </a>
               </p>
               <p>
@@ -178,12 +179,22 @@ function Home() {
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Vue
+                  Redux
                 </a>
               </p>
               <p>
                 <a href="#!" className="text-reset">
-                  Laravel
+                  Css
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  HTML
+                </a>
+              </p>
+              <p>
+                <a href="#!" className="text-reset">
+                  PostgrSQL
                 </a>
               </p>
             </MDBCol>
@@ -191,18 +202,17 @@ function Home() {
             <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
               <p>
-                <a href="#!" className="text-reset">
-                  Pricing
+                <a className="text-reset" onClick={()=>{
+                  history("/aboutUs")
+                }}>
+                 About Us
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
-                  Settings
-                </a>
-              </p>
-              <p>
-                <a href="#!" className="text-reset">
-                  Orders
+                <a href="#!" className="text-reset" onClick={()=>{
+                  history("/contactUs")
+                }}>
+                  Contact Us
                 </a>
               </p>
               <p>
@@ -216,32 +226,27 @@ function Home() {
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
                 <MDBIcon icon="home" className="me-2" />
-                New York, NY 10012, US
+                Amman , NY 10012, Jordan
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />
-                info@example.com
+               <a href="duhadahamsheh@gmail.com">duhadahamsheh@gmail.com</a> 
               </p>
               <p>
-                <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88
+                <MDBIcon icon="envelope" className="me-3" />
+                <a href="halaj.abushalbak@gmail.com">halaj.abushalbak@gmail.com</a>
               </p>
               <p>
-                <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
+                <MDBIcon icon="phone" className="me-3" /> + 962 791 026 868
+              </p>
+              <p>
+                <MDBIcon icon="phone" className="me-3" /> + 962 798 967 357
               </p>
             </MDBCol>
           </MDBRow>
           {/* </MDBContainer> */}
         </section>
 
-        <div
-          className="text-center p-4"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
-        >
-          © 2021 Copyright:
-          <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-            MDBootstrap.com
-          </a>
-        </div>
       </MDBFooter>
     </>
   );
