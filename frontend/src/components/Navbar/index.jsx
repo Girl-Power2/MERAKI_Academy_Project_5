@@ -44,7 +44,7 @@ const [show ,setShow]=useState(false)
   return (
     <div>
       {/* ====================IF NOT LOGGED IN======================  */}
-      <MDBNavbar expand="md" light bgColor="" aria-current="true">
+      <MDBNavbar expand="md"  style={{backgroundColor:"white"}} aria-current="true">
         <MDBContainer fluid>
           <NavLink to="/">
             {" "}

@@ -34,7 +34,7 @@ const Categories = () => {
   }
 
   return (
-  <section className="section" style={{ backgroundColor: "#eee"}}>
+  <section className="section" >
     <div className="collection" >
       {category.map((categ, i) => {
         return (

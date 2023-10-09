@@ -4,7 +4,7 @@ const About = () => {
   return (
     <>
     <div className="vision">
-      <p className="title">Our Vision</p>
+      <p className="title" style={{ backgroundColor: "#B2DFDB" }}>Our Vision</p>
       <p>
         Cure App will provide an unparalleled experience as the most trusted
         partner for health care. Although Cure App's mission statement is short,
@@ -19,7 +19,7 @@ const About = () => {
       </p>
       
     </div>
-    <div className="vision">
+    <div className="vision" style={{ backgroundColor: "#B2DFDB" }}>
         <p className="title">Our Mission</p>
       <p>
         Inspiring hope and promoting health through harnessing the powers of providers to meet the need of the seekers at their homes.

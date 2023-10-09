@@ -47,7 +47,7 @@ if(!loder){
    </MDBSpinner>
    }
   return (
-    <section className="section h-100" style={{ backgroundColor: "#eee"}}>
+    <section className="section h-100" >
     <div >
         <h4 className='title'>{provider[0].category}</h4>
         <div className='provider'>

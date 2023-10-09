@@ -28,6 +28,7 @@ const Feadback_reviwes = () => {
   const [toggle, setToggle] = useState();
   const [post, setPost] = useState("");
   const history = useNavigate();
+  const [time ,setTime]=useState("")
   const [update, setUpdate] = useState("");
   const [data, setData] = useState(false);
   const { token, userId } = useSelector((state) => {
@@ -55,6 +56,8 @@ const Feadback_reviwes = () => {
       .then((result) => {
         setData(true);
         dispatch(setReview(result.data.result));
+        setTime(result.data.result[0].created_at.toString().split('T')[1])
+       
       })
       .catch((err) => {
         console.log(err);
@@ -70,7 +73,7 @@ const Feadback_reviwes = () => {
   }
   return (
     <div >
-      <section className="vh-75" style={{ backgroundColor: "#eee" , }}>
+      <section className="vh-75" >
         <MDBRow style={{justifyContent:"center"}}>
           <MDBCol sm="9">
             <MDBCard>
@@ -167,7 +170,7 @@ const Feadback_reviwes = () => {
                           </MDBCol>
                           <MDBCol sm="6">
                             <MDBCardText className="text-muted">
-                              Created_at :{comment?.created_at}
+                              Created_at :{time}
                             </MDBCardText>
                           </MDBCol>
 
