@@ -42,7 +42,7 @@ const ProviderProfile = () => {
       .then((result) => {
 
       setInformation(result.data.result[0])
-        setImg(result.data.result[0].img);
+        setImg(result.data.result[0]?.img);
         setToday(result.data.result[0].birthdate.toString().split("T")[0]);
       })
       .catch((err) => {
@@ -58,7 +58,7 @@ const ProviderProfile = () => {
       {information ? (
         <div className="infoContainer">
           <div className="providerImg">
-            <img className="imgMyProfile" src={information.img}></img>
+            <img className="imgMyProfile" src={information?.img}></img>
             <p>
               {information.fname}  {information.lname}<br />
           </p>
@@ -77,7 +77,7 @@ const ProviderProfile = () => {
                 {show1 ? (
                   <div>
                   
-                    <div style={{alignSelf:"flex-end"}}
+                    <div style={{zIndex:"1"}}
                       onClick={() => {
                         setShow1(!show1);
                       }}
@@ -88,7 +88,7 @@ const ProviderProfile = () => {
                       type="text"
                       autoFocus
                       placeholder="upadate your bio"
-                      style={{ borderRadius: ".5rem", width: "70%" }}
+                      style={{ borderRadius: ".5rem", width: "100%" }}
                       onChange={(e) => {
                         setBio(e.target.value);
                       }}
@@ -155,7 +155,7 @@ const ProviderProfile = () => {
                     type="text"
                     autoFocus
                     placeholder="upadate your qualifications"
-                    style={{ borderRadius: ".5rem", width: "70%" }}
+                    style={{ borderRadius: ".5rem", width: "100%" }}
                     onChange={(e) => {
                       setQualifications(e.target.value);
                     }}

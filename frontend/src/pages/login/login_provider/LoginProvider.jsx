@@ -61,6 +61,7 @@ const LoginProvider = () => {
                   Sign into your account
                 </h5>
 
+
                 <MDBInput
                   wrapperClass="mb-4"
                   label="Email address"
@@ -96,6 +97,8 @@ const LoginProvider = () => {
                         setMessage({
                           success: true,
                           message: "logged in successfully",
+
+         
                         });
                         console.log(result.data);
                         dispatch(setLogin(result.data.token));
