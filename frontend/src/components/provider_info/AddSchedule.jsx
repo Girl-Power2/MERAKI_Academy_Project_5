@@ -60,7 +60,7 @@ const AddSchedule = () => {
   };
   return (
     <>
-       <MDBContainer fluid className="py-5" style={{ backgroundColor: "#94CBC6" }}>
+       <MDBContainer fluid className="py-5" style={{ backgroundColor: "#E0F2F1" }}>
       <div className="main-timeline">
         <div className="timeline left">
           <MDBCard  style={click?{boxShadow:"2px 3px 3px 1px black",border:"4px groove #A9CBC8"}:{boxShadow:"none"}} onClick={()=>{

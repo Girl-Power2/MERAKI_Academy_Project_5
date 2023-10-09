@@ -18,10 +18,10 @@
 }
 .welcome{
   padding-top:1rem;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    background-color: "#94CBC6";
+    background-color: "#E0F2F1";
 
 }
 .step{
@@ -41,7 +41,7 @@
   content: "";
   position: absolute;
   width: 6px;
-  background-color: #939597;
+  background-color: #000000;
   top: 0;
   bottom: 0;
   left: 50%;
@@ -62,8 +62,8 @@
   width: 25px;
   height: 25px;
   right: -13px;
-  background-color: #939597;
-  border: 5px solid #f5df4d;
+  background-color: #eae5e2ca;
+  border: 5px solid #b2c7beb3;
   top: 15px;
   border-radius: 50%;
   z-index: 1;
@@ -89,7 +89,7 @@
   z-index: 1;
   right: 30px;
   border: medium solid white;
-  border-width: 10px 0 10px 10px;
+  border-width: 15px 0 15px 15px;
   border-color: transparent transparent transparent white;
 }
 
@@ -101,7 +101,7 @@
   z-index: 1;
   left: 30px;
   border: medium solid white;
-  border-width: 10px 10px 10px 0;
+  border-width: 15px 15px 15px 0;
   border-color: transparent white transparent transparent;
 }
 
@@ -146,8 +146,19 @@
   .right {
     left: 0%;
   }
+  .card-body {
+    flex: 1 1 auto;
+    padding: 0;
+    width: 100%;
+    color: var(--mdb-card-color);
 }
 .py-5 {
+padding: 0;
+width: 100vw;
+margin-top: 1.5rem;
+}
+}
+.py-5{
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
 }
