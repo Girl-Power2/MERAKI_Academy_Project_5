@@ -82,24 +82,24 @@ const LoginProvider = () => {
                 color="info"
                 size="lg"
                 onClick={() => {
+                 
                   axios
                     .post(`http://localhost:5000/users/loginProvider/`, {
                       email,
                       password,
                     })
                     .then((result) => {
+                      console.log(result.data);
                       setMessage({
                         success: true,
                         message: "logged in successfully",
                       });
-                      console.log(result.data);
                       dispatch(setLogin(result.data.token));
                       dispatch(setProviderId(result.data.providerId));
                       dispatch(setRole(result.data.role));
 
                     
                        history("/providerMain");
-                      // console.log(isLoggedIn);
                     })
                     .catch((err) => {
                       if (err.response && err.response.data) {

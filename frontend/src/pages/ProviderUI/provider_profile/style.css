@@ -7,6 +7,10 @@
     align-items: center;
     height: 95%;
     overflow: hidden;
+    
+}
+body{
+    background-color: rgba(214, 210, 210, 0.985);
 }
 .providerImg{
     width: 100%;
@@ -30,9 +34,7 @@
    padding :1rem ;
    font-size: 24px;
    border-bottom:solid 3px lightgray;
-   display: flex;
-   align-content:space-between ;
-    flex-direction: row;}
+ }
 
 
 .imgMyProfile{
