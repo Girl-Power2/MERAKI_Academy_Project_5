@@ -45,44 +45,16 @@ const LoginUser = () => {
 
   return (
     <div>
-      <MDBBtn
-        onClick={() => {
-          axios
-            .post("http://localhost:5000/users/login", {
-              email: google.email,
-              password: google.azp,
-            })
-            .then((result) => {
-              dispatch(setLogin(result.data.token));
-
-              dispatch(setUserId(result.data.userId));
-              localStorage.setItem("token", result.data.token);
-              localStorage.setItem("userId", result.data.userId);
-              history("/category");
-
-            
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }}
-      >
-        <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
-          <GoogleLogin
-              onSuccess={responseMessage}
-              onError={errorMessage} 
-          />
-        </GoogleOAuthProvider>
-      </MDBBtn>
-
+      
+      <MDBContainer className="my-4">
       <MDBCard>
         <MDBRow className="g-0">
           <MDBCol md="6">
             <MDBCardImage
-              style={{ backgroundColor: "#eee" }}
-              src=".\img\Lifesavers - One on One.png"
+              style={{borderRadius:"1"}}
+              src="https://www.appstudio.ca/blog/wp-content/uploads/2020/10/Healthcare-Mobile-App-Development.jpg"
               alt="login form"
-              className="rounded-start w-100"
+              className="rounded-start w-100 h-100"
             />
           </MDBCol>
 
@@ -90,13 +62,7 @@ const LoginUser = () => {
             <MDBCardBody className="d-flex flex-column">
               <div className="d-flex flex-row mt-2">
                 <span className="h1 fw-bold mb-0">
-                  <img
-                    src="https://scontent.famm11-1.fna.fbcdn.net/v/t39.30808-6/282161491_102079489189457_679108067387004716_n.png?stp=dst-png_s960x960&_nc_cat=103&ccb=1-7&_nc_sid=52f669&_nc_ohc=zEm817ld6EEAX_nb-cF&_nc_ht=scontent.famm11-1.fna&oh=00_AfBRUxv3m9oW4q0bEnwJELp1XJAmaHw1XH1cZsej1uie6w&oe=65182ED6"
-                    height="50"
-                    width="150"
-                    alt=""
-                    loading="lazy"
-                  />
+                 
                 </span>
               </div>
               <h5
@@ -160,6 +126,36 @@ const LoginUser = () => {
               >
                 Login
               </MDBBtn>
+<hr/>
+<MDBBtn className="w-50"
+        onClick={() => {
+          axios
+            .post("http://localhost:5000/users/login", {
+              email: google.email,
+              password: google.azp,
+            })
+            .then((result) => {
+              dispatch(setLogin(result.data.token));
+
+              dispatch(setUserId(result.data.userId));
+              localStorage.setItem("token", result.data.token);
+              localStorage.setItem("userId", result.data.userId);
+              history("/category");
+
+            
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }}
+      >
+        <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
+          <GoogleLogin
+              onSuccess={responseMessage}
+              onError={errorMessage} 
+          />
+        </GoogleOAuthProvider>
+      </MDBBtn>
               ;
               <p className={`${message.success ? "pass" : "fail"}`}>
                 {message.success && <span>{message.message}</span>}
@@ -167,27 +163,21 @@ const LoginUser = () => {
               <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                 Don't have an account?{" "}
                 <a
-                  href="#!"
+                  
                   style={{ color: "#393f81" }}
                   onClick={() => {
-                    history("/register/user");
+                    history("/user");
                   }}
                 >
                   Register here
                 </a>
               </p>
-              <div className="d-flex flex-row justify-content-start">
-                <a href="#!" className="small text-muted me-1">
-                  Terms of use.
-                </a>
-                <a href="#!" className="small text-muted">
-                  Privacy policy
-                </a>
-              </div>
+             
             </MDBCardBody>
           </MDBCol>
         </MDBRow>
       </MDBCard>
+      </MDBContainer>
     </div>
   );
 };

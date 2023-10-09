@@ -66,7 +66,7 @@ import {
 
                         <div
                           className="p-4 m-2"
-                          style={{ backgroundColor: "#B7D5E5" }}
+                          style={{ backgroundColor: "#B2DFDB" }}
                         >
                           <MDBCardText className="font-italic mb-1">
                             History: {data.history}

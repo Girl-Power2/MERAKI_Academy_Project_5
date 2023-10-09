@@ -86,7 +86,7 @@ const [medications ,setMedications]=useState("")
                   <div key={i}>
                     <div
                       className="rounded-top text-white d-flex flex-row"
-                      style={{ backgroundColor: "#203763", height: "200px" }}
+                      style={{ backgroundColor: "#00695C", height: "200px" }}
                     >
                       <div
                         className="ms-4 mt-5 d-flex flex-column"
@@ -114,7 +114,7 @@ const [medications ,setMedications]=useState("")
                         <p className="lead fw-normal mb-1">About</p>
                         <div
                           className="p-4"
-                          style={{ backgroundColor: "#B7D5E5" }}
+                          style={{ backgroundColor: "#B2DFDB" }}
                         >
                           <MDBCardText className="font-italic mb-1">
                             Age :{data.age.years}

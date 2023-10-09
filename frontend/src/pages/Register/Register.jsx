@@ -28,7 +28,7 @@ const bull = (
 export default function Register() {
   const navigate = useNavigate();
   return (
-    <div className="cards">
+    <div className="registerCards">
       <Card
         sx={{
           width: 'auto',
@@ -55,20 +55,20 @@ export default function Register() {
       >
       <CardContent>
 
-          <CardMedia
+          <CardMedia style={{marginBottom:"1rem" ,borderRadius:"0.5rem"}}
             component="img"
-            height="194"
-            image="https://bucket-thesocialtalks.s3.amazonaws.com/static/article/2021/05/27/Medical_professionals_v2.png"
+            height="300"
+            image="https://jungleworks.com/wp-content/uploads/2021/10/shutterstock_1049387201.png"
             alt="Provider"
           />
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" style={{fontFamily:"gorgea"}}>
             If you are willing to harness your powers to meet the need of care
             seekers,this is the right place to start from!
           </Typography>
         </CardContent>
         <CardActions>
 
-          <NavLink to="/provider">Join Us</NavLink>
+          <NavLink to="/provider" style={{fontSize:"larger"}}>Join Us</NavLink>
          
 
         </CardActions>
@@ -99,20 +99,20 @@ export default function Register() {
         
       >
       <CardContent>
-          <CardMedia
+          <CardMedia style={{marginBottom:"1rem" ,borderRadius:"0.5rem"}}
             component="img"
-            height="194"
-            image="https://bucket-thesocialtalks.s3.amazonaws.com/static/article/2021/05/27/Medical_professionals_v2.png"
+            height="300"
+            image="https://www.scnsoft.com/healthcare/patient-apps/patient-apps-cover-picture.svg"
             alt="Provider"
           />
-           <Typography variant="h5" component="div">
+           <Typography variant="h5" component="div" style={{fontFamily:"gorgea"}}>
             If you are seeking for the best quality of care from experienced
             providers who will come to your house.Register now!
           </Typography>
         </CardContent>
         <CardActions>
 
-          <NavLink to="/user">Register Now</NavLink>
+          <NavLink to="/user" style={{fontSize:"larger"}}>Register Now</NavLink>
          
 
         </CardActions>
