@@ -71,12 +71,12 @@ background-blend-mode:inherit; */
     padding: 6px;
 }
 
-.table {
+.analytictable {
     --mdb-table-font-size: 1.2rem;
     --mdb-table-divider-color: rgba(0, 0, 0, 0.1);
     font-size: var(--mdb-table-font-size);
 }
-.table {
+.analytictable {
     --mdb-table-color: #050505;
     --mdb-table-bg: #D9DEFF;
     --mdb-table-border-color: #474242;
@@ -91,7 +91,7 @@ background-blend-mode:inherit; */
 }
 .providerAnalyticsContainer{
     padding: 2rem;
-
+}
 
 .category{
     display: grid;

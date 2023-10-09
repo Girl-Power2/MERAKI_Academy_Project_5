@@ -76,7 +76,7 @@ const AddSchedule = () => {
           </p>
           <label>
             Date:
-            <input type="date"
+            <input type="date" style={{width:"70%", textAlign:"center"}}
             min={today}
             onChange={(e)=>{
                 console.log(e.target.value);
@@ -96,7 +96,7 @@ const AddSchedule = () => {
               name="time_from"
               required
               pattern="[0-9]{2}:[0-9]{2}"
-             
+              style={{width:"70%", textAlign:"center"}}
 
               onChange={(e) => {
                 setTimeFrom(e.target.value);
@@ -113,7 +113,7 @@ const AddSchedule = () => {
               name="time_to"
               placeholder="09:00"
               pattern="[0-9]{2}:[0-9]{2}"
-
+              style={{width:"70%", textAlign:"center"}}
               required
               onChange={(e) => {
                 setTimeTo(e.target.value);
