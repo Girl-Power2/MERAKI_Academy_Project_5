@@ -2,18 +2,17 @@
     display: grid;
     grid-template-columns: 2fr 4fr;
     padding: 1rem;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-content: center;
     align-items: center;
-    border-radius: 1rem;
-    box-shadow: 5px 3px 3px lightgreen;
-    border: 3px solid lightgray;
-    height: 100vh;
+    height: 95%;
+    overflow: hidden;
 }
 .providerImg{
     width: 100%;
-    padding: 0.5rem;
-    border-radius: 5rem;
+    height: 100%;
+    margin: 0%;
+    padding: 0%;
 }
 .about{
     width:100%;
@@ -22,17 +21,41 @@
     flex-direction: column;
     gap: 1rem;
     align-items: left;
-    border-radius: 1rem;
-    box-shadow: 2px 2px 1px lightgreen;
+    border-radius: .5rem;
+    box-shadow: 2px 2px 1px #94CBC6;
     border: 1px solid lightgray;
 }
-.bio,.qualifications{
+.bio{
    text-align: left;
    padding :1rem ;
-   margin: 0.5rem;
    font-size: 24px;
-   border-bottom:groove 3px lightgray;
-   box-shadow: 0px 2px 0px rgb(201, 206, 201);
+   border-bottom:solid 3px lightgray;
+   display: flex;
+   align-content:space-between ;
+    flex-direction: row;}
 
 
+.imgMyProfile{
+    width: 80%;
+    height: 80%;
 }
+@media screen and (max-width: 700px) {
+    /* Place the timelime to the left */
+    .infoContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .about{
+        width:80vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+ justify-self: center;
+        border-radius: .5rem;
+        box-shadow: 2px 2px 1px #94CBC6;
+        border: 1px solid lightgray;
+    }
+ 
+   
+}  

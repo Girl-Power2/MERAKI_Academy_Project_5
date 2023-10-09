@@ -116,11 +116,11 @@ const Info = () => {
        
         
 <div className="input_container">
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} >
           <div className="inputs">
           <Modal.Body>
             <InputGroup>
-              <InputGroup.Text>Bio</InputGroup.Text>
+              <InputGroup.Text style={{marginBottom:"3rem"}}>Bio</InputGroup.Text>
               <Form.Control
                 as="textarea"
                 aria-label="Bio"
@@ -133,7 +133,7 @@ const Info = () => {
             </InputGroup>
 
             <InputGroup>
-              <InputGroup.Text>Qualifications</InputGroup.Text>
+              <InputGroup.Text style={{marginBottom:"2rem"}}>Qualifications</InputGroup.Text>
               <Form.Control
                 as="textarea"
                 aria-label="Qualifications"
@@ -167,6 +167,7 @@ const Info = () => {
                     uploadImage();
                   } else {
                     insert_info();
+                    handleClose()
                   }
                 }}
               />

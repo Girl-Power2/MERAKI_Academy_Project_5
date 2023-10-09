@@ -2,15 +2,14 @@ import axios from "axios";
 import { MDBSpinner } from "mdb-react-ui-kit";
 
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import "./style.css";
 import {
-  updateInfo,
   updateBio,
+  updateQualifications
 } from "../../../service/redux/reducers/provider_info";
 const ProviderProfile = () => {
-  const dispatch = useDispatch();
   const [information, setInformation] = useState("");
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
@@ -41,10 +40,9 @@ const ProviderProfile = () => {
         },
       })
       .then((result) => {
-        console.log(result.data.result[0]);
-        // const i = result.data.result.length - 1;
-        setInformation(result.data.result[0]);
-        setImg(result.data.result[i].img);
+
+      setInformation(result.data.result[0])
+        setImg(result.data.result[0].img);
         setToday(result.data.result[0].birthdate.toString().split("T")[0]);
       })
       .catch((err) => {
@@ -55,16 +53,15 @@ const ProviderProfile = () => {
   useEffect(() => {
     get_info();
   }, []);
-
   return (
     <>
       {information ? (
         <div className="infoContainer">
           <div className="providerImg">
-            <img src={information.img}></img>
+            <img className="imgMyProfile" src={information.img}></img>
             <p>
-              {information.fname} {information.lname}
-            </p>
+              {information.fname}  {information.lname}<br />
+          </p>
             contact infomarmation: <br />
             <span>📞</span>
             <span>{information.phonenumber}</span>
@@ -72,13 +69,15 @@ const ProviderProfile = () => {
           </div>
           <div className="about">
               <div className="bio">
+<div className="bioSection">
                 bio:
                 <br />
-                {information.bio}
+                
+                {information.bio}</div>
                 {show1 ? (
                   <div>
-                    {" "}
-                    <div
+                  
+                    <div style={{alignSelf:"flex-end"}}
                       onClick={() => {
                         setShow1(!show1);
                       }}
@@ -111,18 +110,16 @@ const ProviderProfile = () => {
                             }
                           )
                           .then((result) => {
-                            console.log(result.data);
-                            dispatch(
-                              updateInfo({
+                          
+                              updateBio({
                                 bio: bio,
                                 id: information.provider_info_id,
                               })
-                            );
+                              get_info()
                           })
                           .catch((err) => console.log(err));
                         setShow1(!show1);
 
-                        window.location.reload(false);
                       }}
                     >
                       ✅
@@ -138,12 +135,12 @@ const ProviderProfile = () => {
                   </div>
                 )}
               </div>
-            <div className="qualifications">
-              <p>
+            <div className="bio">
+              
                 qualifications:
                 <br />
                 {information.qualifications}
-              </p>
+           
 
               {show2 ? (
                 <div>
@@ -180,18 +177,16 @@ const ProviderProfile = () => {
                             }
                           )
                           .then((result) => {
-                            console.log(result.data);
-                            dispatch(
-                              updateInfo({
-                                bio: bio,
+                         
+                              updateQualifications({
+                                qualifications: qualifications,
                                 id: information.provider_info_id,
                               })
-                            );
+                              get_info()
                           })
                           .catch((err) => console.log(err));
                         setShow2(!show2);
 
-                        window.location.reload(false);
                       }}
                     >
                       ✅
@@ -225,7 +220,7 @@ const ProviderProfile = () => {
           </div>
         </div>
       ) : (
-        <MDBSpinner color="danger">
+        <MDBSpinner color="success">
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
       )}

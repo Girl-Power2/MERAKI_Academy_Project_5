@@ -15,12 +15,12 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
+  font-weight: 600;
+  color: #74a39f;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #000000 !important;
 }
 
 body {
@@ -67,4 +67,16 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.btn-primary {
+  --mdb-btn-bg: #80838b;
+  --mdb-btn-color: #fff;
+  --mdb-btn-box-shadow: 0 4px 9px -4px #0c0c0c;
+  --mdb-btn-hover-bg: #58595a;
+  --mdb-btn-hover-color: #fff;
+  --mdb-btn-focus-bg: #80838b;
+  --mdb-btn-focus-color: #fff;
+  --mdb-btn-active-bg: #80838b;
+  --mdb-btn-active-color: #fff;
 }
