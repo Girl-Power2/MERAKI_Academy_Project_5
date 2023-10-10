@@ -52,7 +52,6 @@ const MyServices = () => {
         },
       })
       .then((result) => {
-        console.log("before change:",result.data.data);
         dispatch(setService(result.data.data));
       })
       .catch((err) => {
@@ -74,7 +73,6 @@ const MyServices = () => {
         }
       )
       .then((result) => {
-        console.log( "from Update:",result.data.data[0]);
         dispatch(
           updateService({ service: result.data.data[0].service, price_per_hour: result.data.data[0].price_per_hour, id })
         );
@@ -102,7 +100,6 @@ const MyServices = () => {
         }
       )
       .then((result) => {
-        console.log( "from add :",result);
         dispatch(addService({
           service: result.data.data[0].service ,
           price_per_hour: result.data.data[0].price_per_hour ,

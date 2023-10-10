@@ -23,6 +23,12 @@ const Note = () => {
   const { providerId } = useSelector((state) => state.auth);
   const [today, setToday] = useState("");
   const [query, setQuery] = useState("");
+  const [edit, setEdit] = useState("");
+  const [Input, setInput] = useState(false);
+
+  const [updatedNote, setUpdatedNote] = useState("");
+
+
 
   const { notes } = useSelector((state) => state.notes);
   const handleClose = () => setShow(false);
@@ -30,6 +36,7 @@ const Note = () => {
   function handleShow() {
     setShow(true);
   }
+
   // ==========get all notes===================
   const getNotes = () => {
     axios
@@ -65,9 +72,8 @@ const Note = () => {
         }
       )
       .then((result) => {
-        console.log(result.data.data);
         dispatch(setNotes(result.data.data));
-        setToday(result.data.data[0].visitied_on.toString().split("T")[0]);
+        setToday(result.data.data.visitied_on.toString().split("T")[0]);
       })
 
       .catch((err) => {
@@ -162,7 +168,6 @@ const Note = () => {
                     }
                   )
                   .then((result) => {
-                    console.log(result.data);
                     dispatch(setNotes(result.data.data));
                   })
                   .catch((err) => console.log(err));
@@ -205,14 +210,15 @@ const Note = () => {
                         Note: <br />
                       </span>{" "}
                       {note.note}
+                     
                     </p>
+                 
                     <p>
                       <span>Visitied on</span> {today}
                     </p>
                     <div style={{ display: "flex", flexDirection: "row" ,justifyContent:"space-evenly", cursor:"pointer"}}>
                       <div
                       onClick={()=>{
-                        console.log(note.provider_note_id);
                         axios.delete( `http://localhost:5000/notes/${note.provider_note_id}`, {
                           headers: {
                             Authorization: `Bearer ${token}`,
@@ -229,8 +235,28 @@ const Note = () => {
                         ❌
                       </div>
                       <div
+                      onClick={()=>{
+                       setEdit(note.provider_note_id)
+                        console.log(note.provider_note_id);
+                        axios.put( `http://localhost:5000/notes/${note.provider_note_id}`,{note:updatedNote ,user_id:note.user_id}, {
+                          headers: {
+                            Authorization: `Bearer ${token}`,
+                          },
+                        })
+                        .then((result)=>{
+                          console.log(result);
+                          dispatch(updateNotes({note:updatedNote,id:note.provider_note_id}))
+                          setInput(!Input)
+                        })
+                        .catch((error)=>{
+                          console.log(error);
+                        })
+                      }}
                       
                       >✏️</div>
+                         {edit==note.provider_note_id&&Input&&<input type="text" placeholder="updated note" onChange={(e)=>{
+                        setUpdatedNote(e.target.value)
+                      }}></input>}
                     </div>
                   </div>
                 </div>

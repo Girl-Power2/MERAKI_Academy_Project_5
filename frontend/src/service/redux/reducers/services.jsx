@@ -10,7 +10,6 @@ export const services = createSlice({
       state.service = action.payload;
     },
     addService: (state, action) => {
-      console.log(action.payload);
       state.service.push(action.payload);
     },
     updateService: (state, action) => {

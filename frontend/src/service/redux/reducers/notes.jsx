@@ -15,7 +15,7 @@ export const notes =createSlice({
           updateNotes: (state, action) => {
            state.notes= state.notes.map((data,i) => {
             console.log(action.payload);
-              if (data.notes.provider_note_id == action.payload.id) {
+              if (data.provider_note_id == action.payload.id) {
            data.note = action.payload.note
          
                
