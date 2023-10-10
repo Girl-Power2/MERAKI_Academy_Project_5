@@ -51,13 +51,14 @@ const Categories = () => {
                   src={categ.img}
                   height={250}
                   width={250}
+                  style={{cursor:"pointer"}}
                   onClick={() => {
                     history(`/provider/${categ.category_id}`);
                   }}
                 />
               </MDBCardHeader>
               <MDBCardBody>
-                <MDBCardTitle onClick={() => {
+                <MDBCardTitle  style={{cursor:"pointer"}} onClick={() => {
                     history(`/provider/${categ.category_id}`);
                   }}>{categ.category}</MDBCardTitle>
               </MDBCardBody>

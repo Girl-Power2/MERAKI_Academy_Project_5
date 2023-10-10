@@ -91,29 +91,14 @@ export default function RegisterProvider() {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-        {/* <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: "https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v=1515074624&width=1024",
-            backgroundRepeat: "no-repeat",
-            backgroundColor: (t) =>
-              t.palette.mode === "light"
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        /> */}
+        
        <Grid
   item
-  xs={false}
+  xs={12}
   sm={4}
   md={7}
   sx={{
-    backgroundImage: 'url(https://cdn.shopify.com/s/files/1/0533/2089/files/img-url-filter.jpg?v=1515074624&width=1024)',     backgroundRepeat: 'no-repeat',
+    backgroundImage: 'url(https://www.pixelcrayons.com/blog/wp-content/uploads/2021/04/Healthcare-App-Development.jpg)',     backgroundRepeat: 'no-repeat',
     backgroundColor: (t) =>
       t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
     backgroundSize: 'cover',

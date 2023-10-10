@@ -1,7 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-// import { Doughnut, Pie } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend ,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 import axios from "axios";
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+
+import {
+  MDBCard,
+  MDBCardTitle,
+  MDBCardBody,
+  MDBCardHeader,
+  MDBCardText
+} from 'mdb-react-ui-kit';
+
+
 const Analytics = () => {
   const [users, setUsers] = useState(0);
   const [provider, setProvider] = useState(0);
@@ -69,49 +88,65 @@ const Analytics = () => {
     getCategory();
   }, []);
   // =========================use effect=============================
-
   const data = {
-    labels: [
-      'Red',
-      'Blue',
-      'Yellow'
-    ],
-    datasets: [{
-      label: 'My First Dataset',
-      data: [300, 50, 100],
+  labels: ['female', 'male'],
+  datasets: [
+    {
+      label: '# of Votes',
+      data: [12, 19],
       backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+       
       ],
-      hoverOffset: 4
-    }]
-  };
+      borderColor: [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+      
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+
 
   return (
     <div className="cardsContainer">
-      <div className="cards" id="userCard">
-        <p>Number of Users</p>
-        <p>
-          <span className="result" style={{ fontSize: "2rem" }}>{users}</span>
-        </p>
-      </div>
-      <div className="cards" id="providerCard">
-        <p>Number of Providers</p>
-        <p>
-          <span className="result" style={{ fontSize: "2rem" }}>{provider}</span>
-        </p>
-      </div>
-      <div className="cards" id="categoryCard">
-        <p>Number of Categories</p>
-        <p>
-          <span className="result" style={{ fontSize: "2rem", textDecoration: "" }}>
-            {category}
-          </span>
-        </p>
-      </div>
-
+       <MDBCard background='secondary' className='text-white mb-3' id="userCard" style={{backgroundColor:"#6a72a3fa"}}>
+        <MDBCardHeader>Number of Users</MDBCardHeader>
+        <MDBCardBody>
+          <MDBCardTitle className="result" style={{ fontSize: "2rem" }}>{users}</MDBCardTitle>
+         
+        </MDBCardBody>
+      </MDBCard>
+      <MDBCard background='secondary' className='text-white mb-3' id="providerCard">
+        <MDBCardHeader>Number of Providers</MDBCardHeader>
+        <MDBCardBody>
+          <MDBCardTitle className="result" style={{ fontSize: "2rem" }}>{provider}</MDBCardTitle>
+         
+        </MDBCardBody>
+      </MDBCard>
+      <MDBCard background='secondary' className='text-white mb-3'  id="categoryCard">
+        <MDBCardHeader>Number of Categories</MDBCardHeader>
+        <MDBCardBody>
+          <MDBCardTitle className="result" style={{ fontSize: "2rem" }}>{category}</MDBCardTitle>
+         
+        </MDBCardBody>
+      </MDBCard>
+     
+     
+     <MDBCard background='white' id="pieCard" >
+     <MDBCardHeader style={{fontFamily:"gorgea" ,fontWeight:"bolder"}}>Male vs Female Provider</MDBCardHeader>
+        <MDBCardBody>
+        
+     <MDBCardText><Pie data={data} /></MDBCardText>
+        </MDBCardBody>
+      </MDBCard>
+      
+     
     </div>
+    
   );
 };
 

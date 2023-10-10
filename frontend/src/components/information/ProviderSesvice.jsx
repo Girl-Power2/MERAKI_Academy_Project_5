@@ -53,7 +53,7 @@ const ProviderSesvice = () => {
 
   if (service.length == 0) {
     return (
-      <MDBSpinner color="danger">
+      <MDBSpinner color="success">
         <span className="visually-hidden">Loading...</span>
       </MDBSpinner>
     );
