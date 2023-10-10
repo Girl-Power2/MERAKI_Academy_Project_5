@@ -202,6 +202,8 @@ const AddSchedule = () => {
         {mySchedule ? (
           <>
             <div className="tableContainer">
+              <Table>
+              <thead>
               <tr>
                 <th>
                   {" "}
@@ -210,8 +212,10 @@ const AddSchedule = () => {
                   {mySchedule[0]?.lname[0].toUpperCase()}
                   {mySchedule[0]?.lname.slice(1)}'s schedule{" "}
                 </th>
-                <th>Number of booked appointments:{BookedCounter}</th>
-              </tr>
+                
+              </tr></thead>
+              <tr>
+              <th>Number of booked appointments:{BookedCounter}</th></tr></Table>
               <Table
                 responsive="md"
                 bordered="true"
