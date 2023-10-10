@@ -68,7 +68,7 @@ getCategory()
     <hr/>
     <NavLink to="providerAndOrders">Providers Analytics</NavLink>
     <hr/>
-    <NavLink to="analytics">analytics</NavLink>
+    <NavLink to="">analytics</NavLink>
 <hr/>
 
 

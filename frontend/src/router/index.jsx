@@ -39,9 +39,9 @@ export const router = createBrowserRouter([
     path: "/cureApp/admin",
     element: <Admin />,
 
-    children: [{ path: "addCategory", element: <Addcategory /> },
+    children: [ {path:"",element:<Analytics/>},{ path: "addCategory", element: <Addcategory /> },
     {path:"providerAndOrders",element:<ProviderAndOrder/>},
-    {path:"analytics",element:<Analytics/>}],
+   ],
   },
   
 
@@ -126,7 +126,7 @@ export const router = createBrowserRouter([
 
       {
         path: "/map",
-        element: <Map />,
+        element: <Map  />,
       },
     ],
   },

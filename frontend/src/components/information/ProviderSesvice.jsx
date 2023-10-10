@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
 import { setService } from "../../service/redux/reducers/services";
+import Button from "react-bootstrap/Button";
 import "./style.css";
 import {
   MDBCol,
@@ -60,7 +61,7 @@ const ProviderSesvice = () => {
   }
   return (
     <div>
-      <MDBBtn outline
+      <Button outline
       className="ms-1"
         onClick={() => {
           axios
@@ -81,9 +82,9 @@ const ProviderSesvice = () => {
             });
         }}
       >
-     <MDBIcon fas icon="sort-numeric-down" size='lg'/>
-      </MDBBtn>
-      <MDBBtn className="ms-1"
+     <MDBIcon fas icon="sort-numeric-down" size='2x'/>
+      </Button>
+      <Button className="ms-1"
         outline
         onClick={() => {
           axios
@@ -104,8 +105,8 @@ const ProviderSesvice = () => {
             });
         }}
       >
-      <MDBIcon fas icon="sort-numeric-down-alt"  size='lg'/>
-      </MDBBtn>
+      <MDBIcon fas icon="sort-numeric-down-alt"  size='2x'/>
+      </Button>
       {asc ? (
         <MDBRow>
           <MDBCol md="12">

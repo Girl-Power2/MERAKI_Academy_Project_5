@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
+import Button from "react-bootstrap/Button";
 
 import "./style.css";
 import {
@@ -132,16 +133,16 @@ export default function Information_UserSide() {
               </p>
             </MDBModalBody>
             <MDBModalFooter>
-              <MDBBtn color='secondary' onClick={toggleShow}>
+              <Button color='secondary' onClick={toggleShow}>
                 Close
-              </MDBBtn>
+              </Button>
            
             </MDBModalFooter>
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
     </>
-                  <MDBBtn outline
+                  <Button outline
                     color="primary"
                     className="ms-1"
                     onClick={() => {
@@ -149,7 +150,7 @@ export default function Information_UserSide() {
                     }}
                   >
                     <MDBIcon fas icon="arrow-circle-left"  size='lg'/>
-                  </MDBBtn>
+                  </Button>
                 </MDBCol>
 
                 <MDBCol lg="8">
