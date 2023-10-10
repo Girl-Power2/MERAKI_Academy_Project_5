@@ -84,6 +84,7 @@ const [show ,setShow]=useState(false)
                         tag="a"
                         className="nav-link"
                         role="button"
+                        style={{fontWeight:"bolder"}}
                       >
                         Join Us
                       </MDBDropdownToggle>
@@ -148,6 +149,7 @@ const [show ,setShow]=useState(false)
                     
                       }}
                     >
+                      
                       <NavLink
                         to="/"
                         onClick={() => {
@@ -211,12 +213,7 @@ const [show ,setShow]=useState(false)
                       </NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
-              </>
-              )}
-            </MDBNavbarNav>
-           
-            
-            <input
+                  <input
               type="search"
               className="form-control w-25"
               placeholder="Type query"
@@ -250,6 +247,12 @@ const [show ,setShow]=useState(false)
             >
               Search
             </MDBBtn>
+              </>
+              )}
+            </MDBNavbarNav>
+           
+            
+         
          
           </MDBCollapse>
         </MDBContainer>

@@ -9,13 +9,13 @@
     ;
 }
 #green{
-    --mdb-table-striped-bg:#66dc42c0;
+    --mdb-table-bg:#29ba49c0;
     font-size: 20px;
    
  
 }
 #red{
-    --mdb-table-striped-bg:#f33434b0;
+    --mdb-table-bg:#f22323b0;
     font-size: 20px;
 
 }
@@ -24,7 +24,7 @@
 .table th {
     font-weight: 530;
     font-size: larger;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: Georgia, Times, 'Times New Roman', serif
 }
 .table {
     --mdb-table-font-size: 1.2rem;
@@ -33,10 +33,9 @@
 }
 .table-light {
     --mdb-table-color: #000;
-    --mdb-table-bg: #c0e7d8a1;
+    --mdb-table-bg: #c5e3d8a1;
     --mdb-table-border-color: #04440d;
-    --mdb-table-striped-bg: #dee3e188;
-    --mdb-table-striped-color: #000;
+   
     --mdb-table-active-bg: #abefce;
     --mdb-table-active-color: #0f7237;
     --mdb-table-hover-bg: #94dbb1;
@@ -53,3 +52,13 @@
     padding-left: 7rem;
     padding-right: 7rem;
 }
+.myScheduleContainer{
+    padding: 1rem;
+}
+/* @media (orientation: landscape) {
+    .tableContainer {
+      flex-direction: row;
+     
+    } 
+   
+  } */

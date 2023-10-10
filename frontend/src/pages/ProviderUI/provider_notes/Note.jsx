@@ -81,10 +81,14 @@ const{notes}=useSelector(state=>state.notes)
   return (
     <>
     <div className='pageContainer'>
-    <div className='notesContainer'>
-      <img className='noteimg' src='./assets\Lifesavers - Bust.png'/>
-      <button className='inline' onClick={() => handleShow()}>add note</button>
-    </div>
+      <div  className="headerOfPNotes">
+      <Button onClick={() => handleShow()}>add note</Button>
+      <div  className="searchNotes" style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+      <input type="text"    className="form-control w-75" placeholder='Search for note by client Id' onChange={(e)=>{
+        setQuery(e.target.value)
+      }}/><Button onClick={()=>{
+        getUserNotes()
+      }}>Search</Button>,</div></div>
     <Modal show={show}  onHide={() => setShow(false)}>
       <Modal.Header closeButton>
         <Modal.Title>Note</Modal.Title>
@@ -134,11 +138,7 @@ const{notes}=useSelector(state=>state.notes)
       </Modal.Footer>
     </Modal>
     <div className='myNotesContainer'>
-      <input type="text" placeholder='Search for note by client Id' onChange={(e)=>{
-        setQuery(e.target.value)
-      }}/><button onClick={()=>{
-        getUserNotes()
-      }}>Search</button>
+     
 {notes?notes.map((note,i)=>{
   return( <div key={i} className='pNote'><div> 
    <span >Client Id:{note.user_id}</span>

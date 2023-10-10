@@ -59,13 +59,14 @@ const ProviderProfile = () => {
         <div className="infoContainer">
           <div className="providerImg">
             <img className="imgMyProfile" src={information?.img}></img>
+            <div className="fontOfProviderProvile">
             <p>
               {information.fname}  {information.lname}<br />
           </p>
             contact infomarmation: <br />
-            <span>📞</span>
-            <span>{information.phonenumber}</span>
-            <p>📧{information.email}</p>
+            
+            <p><span>📞</span>{information.phonenumber}</p>
+            <p>📧{information.email}</p></div>
           </div>
           <div className="about">
               <div className="bio">

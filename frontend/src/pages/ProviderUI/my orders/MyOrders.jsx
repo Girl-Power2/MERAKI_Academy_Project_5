@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
+import Button from "react-bootstrap/Button";
 import "./style.css";
 
 const MyOrders = () => {
@@ -49,22 +50,22 @@ const MyOrders = () => {
             return (
               <>
                 <div key={i} className="pOrder">
-                  <p> Order created at: {created}</p>
-                  <p> Schedule Id: {order.schedule_id}</p>
-                  <p>Service: {order.service}</p>
-                  <p>Price: {order.price_per_hour}</p>
-                  <p> Provider Id: {order.provider_id}</p>
-                  <p> User Id: {order.user_id}</p>
+                  <p><span> Order created at:</span> {created}</p>
+                  <p> <span>Schedule Id:</span> {order.schedule_id}</p>
+                  <p><span>Service:</span> {order.service}</p>
+                  <p><span>Price: </span>{order.price_per_hour}</p>
+                  <p> <span>Provider Id:</span> {order.provider_id}</p>
+                  <p> <span>User Id:</span> {order.user_id}</p>
                   <p>
-                    {" "}
-                    User Name: {order.firstname}
+                 
+                    <span>User Name:</span> {order.firstname}
                     {order.lastname}
                   </p>
-                  <p> User Contact number: {order.phonenumber}</p>
-                  <p>Address: {order.address}</p>
-                  <p>Appointment date: {today}</p>
-                  <p> Time from: {order.time_from}</p>
-                  <p>Time to: {order.time_to}</p>
+                  <p><span> User Contact number:</span> {order.phonenumber}</p>
+                  <p><span>Address: </span>{order.address}</p>
+                  <p><span>Appointment date:</span> {today}</p>
+                  <p><span> Time from:</span> {order.time_from}</p>
+                  <p><span>Time to:</span> {order.time_to}</p>
                 </div>
               </>
             );
@@ -84,14 +85,7 @@ const MyOrders = () => {
           padding: "2rem",
         }}
       >
-        <button
-          style={{
-            backgroundColor: "#3CB371",
-            color: "#F5FFFA",
-            textAlign: "center",
-            fontSize: "1.3rem",
-            width: "18%",
-          }}
+        <Button
           onClick={() => {
             if (count >= 3 && count > 0) {
               setCount(count - 3);
@@ -114,15 +108,9 @@ const MyOrders = () => {
             />
           </svg>
           Previous
-        </button>
-        <button
-          style={{
-            backgroundColor: "#3CB371",
-            color: "#F5FFFA",
-            textAlign: "center",
-            fontSize: "1.3rem",
-            width: "18%",
-          }}
+        </Button>
+        <Button
+        
           onClick={() => {
             setCount(count + 3);
           }}
@@ -141,7 +129,7 @@ const MyOrders = () => {
               d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
             />
           </svg>
-        </button>
+        </Button>
       </div>
     </>
   );
