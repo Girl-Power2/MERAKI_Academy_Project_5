@@ -213,7 +213,11 @@ const [show ,setShow]=useState(false)
                       </NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
-                  <input
+                
+              </>
+              )}
+            </MDBNavbarNav>
+            <input
               type="search"
               className="form-control w-25"
               placeholder="Type query"
@@ -247,10 +251,6 @@ const [show ,setShow]=useState(false)
             >
               Search
             </MDBBtn>
-              </>
-              )}
-            </MDBNavbarNav>
-           
             
          
          

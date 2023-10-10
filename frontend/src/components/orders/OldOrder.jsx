@@ -4,6 +4,7 @@ import axios from 'axios'
 import "./style.css"
 import { NavLink } from 'react-router-dom'
 import { MDBSpinner } from "mdb-react-ui-kit";
+import Button from "react-bootstrap/Button";
 
 import {
     MDBBtn,
@@ -15,6 +16,7 @@ import {
   MDBTableHead,
   MDBTable
   } from "mdb-react-ui-kit";
+
 
 
  
@@ -55,9 +57,7 @@ axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
    
      <MDBRow className="justify-content-center align-items-center h-75 w-100" >
        <MDBCol>
-         <p>
-           <span className="h2">Orders</span>
-         </p>
+        
          <MDBTable>
          <MDBTableHead>
         <tr >
@@ -128,10 +128,10 @@ axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
  })}
   <div>
   
-   <MDBBtn outline onClick={()=>{
+   <Button style={{margin:"1rem"}} onClick={()=>{
     setCount(count-1)
-   }}>Previous</MDBBtn>
-    <MDBBtn outline onClick={()=>{
+   }}>Previous</Button>
+    {/* <MDBBtn outline onClick={()=>{
     setCount(1)
    }}>1</MDBBtn> 
    <MDBBtn outline onClick={()=>{
@@ -145,10 +145,10 @@ axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
    }}>4</MDBBtn> 
    <MDBBtn outline onClick={()=>{
     setCount(5)
-   }}>5</MDBBtn> 
-     <MDBBtn outline onClick={()=>{
+   }}>5</MDBBtn>  */}
+     <Button  style={{margin:"1rem"}}  onClick={()=>{
     setCount(count+1)
-   }}>Next</MDBBtn>
+   }}>Next</Button>
     <br />
 
 

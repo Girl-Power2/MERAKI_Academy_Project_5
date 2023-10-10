@@ -70,9 +70,7 @@ const NewOrders = () => {
       <section className="vh-75" >
         <MDBRow className="justify-content-center align-items-center h-75 w-100">
           <MDBCol>
-            <p>
-              <span className="h2">Orders</span>
-            </p>
+           
             <MDBTable>
               <MDBTableHead>
                 <tr className="heders">

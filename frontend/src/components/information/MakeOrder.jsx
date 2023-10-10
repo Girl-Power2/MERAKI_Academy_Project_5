@@ -4,7 +4,6 @@ import { useParams, useNavigate, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import { addOrder } from "../../service/redux/reducers/order";
 import { setSchedule,updateSchedule } from "../../service/redux/reducers/schedule";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,6 +11,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import Map from "../Map/Map";
+import Button from "react-bootstrap/Button";
+
 const MakeOrder = () => {
   const navigate=useNavigate()
   const [serv, setServ] = useState();
@@ -48,6 +49,12 @@ const MakeOrder = () => {
       service: state.services.service,
     };
   });
+  const { location } = useSelector((state) => {
+    return {
+      location: state.orders.location,
+    };
+  });
+  console.log(location);
   const { token } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -156,7 +163,7 @@ dispatch(updateSchedule(id))
             setAdress(e.target.value);
           }}
         />
-        <Button variant="contained"  onClick={()=>{
+        <Button   onClick={()=>{
         navigate("/map")
       }}>
 Set your location
@@ -165,7 +172,7 @@ Set your location
       <hr />
       
       <Button
-        variant="contained"
+       
         onClick={() => {
          makeOrders()
          update(sched)

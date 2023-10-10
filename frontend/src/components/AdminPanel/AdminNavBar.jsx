@@ -37,7 +37,7 @@ const AdminNavBar=()=> {
         <MDBCollapse navbar show={showNav}>
           <MDBNavbarNav>
             <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' >
+              <MDBNavbarLink href='/cureApp/admin' active aria-current='page' >
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>

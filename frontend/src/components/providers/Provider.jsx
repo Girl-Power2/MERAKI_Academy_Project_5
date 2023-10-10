@@ -5,6 +5,7 @@ import "./style.css"
 import { MDBSpinner } from 'mdb-react-ui-kit';
 import { useDispatch, useSelector } from "react-redux";
 ;
+import Button from "react-bootstrap/Button";
 import {
   MDBCard,
   MDBCardBody,
@@ -75,7 +76,7 @@ if(!loder){
         })}
         </div>
     </div>
-    <MDBBtn outline  
+    <Button outline  
                     color="primary"
                     className="ms-1 position-relative"
                     onClick={() => {
@@ -83,7 +84,7 @@ if(!loder){
                     }}
                   >
                     <MDBIcon fas icon="arrow-circle-left"  size='lg'/>
-                  </MDBBtn>
+                  </Button>
     </section>
   )
 }

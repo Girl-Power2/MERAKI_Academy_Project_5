@@ -1,18 +1,27 @@
 import GoogleMapReact from "google-map-react";
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
+import { useState  } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch ,useSelector} from "react-redux";
+  import { setLocation } from "../../service/redux/reducers/order";
 const Marker = ({ text }) => <div style={{ fontSize: "24px" }}>{text}</div>;
 const Map = () => {
   const [myLon, setmyLon] = useState("");
-  const [location, setLocation] = useState(null);
-
+const dispatch =useDispatch() 
+const history = useNavigate()
+const { location } = useSelector((state) => {
+  return {
+    location: state.orders.location,
+  };
+});
   useEffect(() => {
+
     navigator.geolocation.getCurrentPosition((position) => {
-      setLocation({
+      dispatch(setLocation({
         lat: position.coords.latitude,
         lng: position.coords.longitude,
-      });
+      }));
     });
   }, []);
 
@@ -32,15 +41,16 @@ const Map = () => {
         yesIWantToUseGoogleMapApiInternals={true}
           onClick={(e) => {
             const { lat, lng } = e;
-            setLocation({ lat, lng });
+            dispatch(setLocation({ lat, lng }));
+            history(-1)
           }}
           bootstrapURLKeys={{ key: "AIzaSyBW1nDKAK6Pttb8-Hwxqi28KxCjGlIUxTc" }}
-          center={location}
+          // center={location}
           defaultCenter={defaultProps.center}
           
           defaultZoom={11}
         >
-          <Marker lat={location.lat} lng={location.lng} text="📍" />
+          <Marker lat={location.lat} lng={location.lng}  text="📍" />
         </GoogleMapReact>
       )}
     </div>
