@@ -5,7 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-
+import "./style.css"
 import { useDispatch, useSelector } from "react-redux";
 import {
   setService,
@@ -52,6 +52,7 @@ const MyServices = () => {
         },
       })
       .then((result) => {
+        console.log("before change:",result.data.data);
         dispatch(setService(result.data.data));
       })
       .catch((err) => {
@@ -62,11 +63,10 @@ const MyServices = () => {
     getservices();
   }, []);
   const update_service = (id) => {
-    console.log(id);
     axios
       .put(
-        `http://localhost:5000/services/${id}`,
-        { service: serviceNew, price_per_hour: price },
+        `http://localhost:5000/services/byId/${id}`,
+        { service:serviceNew, price_per_hour:price||null},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -74,8 +74,9 @@ const MyServices = () => {
         }
       )
       .then((result) => {
+        console.log( "from Update:",result.data.data[0]);
         dispatch(
-          updateService({ service: serviceNew, price_per_hour: price, id: id })
+          updateService({ service: result.data.data[0].service, price_per_hour: result.data.data[0].price_per_hour, id: id })
         );
       })
       .catch((error) => {
@@ -87,8 +88,8 @@ const MyServices = () => {
     axios
       .post(
         `http://localhost:5000/services`,{
-          service: newService ,
-          price_per_hour: price ,
+          service: newService ||null,
+          price_per_hour: newPrice ||null,
           provider_id: providerId,
         },
         
@@ -99,29 +100,27 @@ const MyServices = () => {
         }
       )
       .then((result) => {
-        console.log(result.data);
-        setMsgs({ success: true, msg: result.data.message });
+        console.log( "from add :",result);
         dispatch(addService({
-          service: newService ,
-          price_per_hour: newPrice ,
+          service: result.data.data[0].service ,
+          price_per_hour: result.data.data[0].price_per_hour ,
           provider_id: providerId,
         }))
       })
       .catch((err) => {
         console.log(err);
-        // setMsg({ success: false, msg: err.result.data.message });
       });
   };
   // ====================functions==============================
 
   return (
-    <>
-            <button
+    <div className="myServicesContainer">
+            <Button style={{width:"30vw",marginTop:"1rem"}}
             onClick={()=>{
               handleOpen()
          
             }}
-            >add service</button>
+            >add service</Button>
             <Modal show={open} onHide={handleClose}>
                   <div className="inputs">
                     <Modal.Body>
@@ -157,33 +156,27 @@ const MyServices = () => {
                           add_service();
                           handleClose()
                           getservices()
-                          setTimeout(() => {
-                            setMsgs("")
-                          }, 2000);
+                         
                         }}
                       />
                     </div>
                     
                     </Modal>
-                    {msgs && (
-                        <p className={`${msgs.success ? "pass" : "fail"}`}>
-                          {msgs.msg}
-                        </p>
-                      )}
-
+                 
+<div className="servicesontainer" > 
       {service ? (
+        
         service.map((ser, i) => {
           return (
-            <>
+           
               <div key={i} className="service">
-                <h3>{ser.service_id}</h3>
-                <h5>{ser.service}</h5>
-                <h5>{ser.price_per_hour} JD</h5>
+                
+                <p>Service name:{ser.service}</p>
+                <p>Price-per-hour:{ser.price_per_hour} JD</p>
                 <Button
                   variant="primary"
                   onClick={() => {
                     handleShow(ser.service_id);
-                    console.log(ser.service_id);
                   }}
                 >
                   Edit Service
@@ -236,16 +229,11 @@ dispatch(deleteService(ser.service_id))
                         type="submit"
                         value="Submit"
                         onClick={(e) => {
-                          // console.log(ser.service_id);
                           update_service(show);
                           handleClose()
                         }}
                       />
-                      {msg && (
-                        <p className={`${msg.success ? "pass" : "fail"}`}>
-                          {msg.msg}
-                        </p>
-                      )}
+                    
                       <Button variant="primary" onClick={handleClose}>
                         Close
                       </Button>
@@ -253,15 +241,15 @@ dispatch(deleteService(ser.service_id))
                   </div>
                 </Modal>
               </div>
-            </>
+            
           );
         })
-      ) : (
-        <MDBSpinner color="danger">
+) : (
+        <MDBSpinner color="success">
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
       )}
-    </>
+    </div></div>
   );
 };
 

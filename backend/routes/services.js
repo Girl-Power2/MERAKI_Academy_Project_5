@@ -11,7 +11,7 @@ serviceRouter.get("/price_ASC/:providerId",authentication,services.getServiceByP
 serviceRouter.get("/all",services.GetALLServices)
 serviceRouter.get("/all/count",services.countServiceById)
 
-serviceRouter.put("/:id",authentication,services.UpdateService)
+serviceRouter.put("/byId/:id",authentication,services.UpdateService)
 serviceRouter.delete("/:id",authentication,services.deleteServiceById)
 
 

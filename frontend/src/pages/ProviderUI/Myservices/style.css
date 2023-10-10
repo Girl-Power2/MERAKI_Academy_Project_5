@@ -1,0 +1,34 @@
+
+.service{
+    border: 2px black solid;
+    padding: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    font-family: Georgia, 'Times New Roman', Times, serif, 'Times New Roman', Times, serif;
+text-align: center;
+font-size: 1.3rem;
+width: 80%;
+height: 100%;
+border: outset 5px #94CBC6;
+    border-radius: .5rem;
+    box-shadow:  6px 5px 5px black;
+background-color: #fff;
+
+}
+.servicesontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap :1.5rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+   
+}
+@media (max-width: 700px){
+    .servicesontainer{
+        display: grid;
+        grid-template-columns: 1fr ;
+    }   
+}

@@ -37,6 +37,7 @@ h1 {
   line-height: 1.1;
 }
 
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -49,7 +50,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #000000;
 }
 button:focus,
 button:focus-visible {
@@ -77,6 +78,13 @@ button:focus-visible {
   --mdb-btn-hover-color: #fff;
   --mdb-btn-focus-bg: #80838b;
   --mdb-btn-focus-color: #fff;
-  --mdb-btn-active-bg: #80838b;
+  --mdb-btn-active-bg: #80838b ;
   --mdb-btn-active-color: #fff;
+}
+.btn.btn-primary:focus {
+  box-shadow: 0 8px 9px -4px rgba(59,113,202,.3), 0 4px 18px 0 rgba(59,113,202,.2);
+  background-color: #176c59;
+}
+.primary:active{
+background-color: #176c59;;
 }

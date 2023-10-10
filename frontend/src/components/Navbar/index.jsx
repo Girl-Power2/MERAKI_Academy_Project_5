@@ -84,6 +84,7 @@ const [show ,setShow]=useState(false)
                         tag="a"
                         className="nav-link"
                         role="button"
+                        style={{fontWeight:"bolder"}}
                       >
                         Join Us
                       </MDBDropdownToggle>
