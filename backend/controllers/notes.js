@@ -30,10 +30,10 @@ notes.AddNote = async (req, res) => {
 // ===============DELETE NOTE=============
 notes.DeleteNote = async (req, res) => {
   const provider_id = req.token.providerId;
-  const { user_id } = req.body;
+
   const { id } = req.params;
-  const values = [provider_id, user_id, id];
-  const query = `UPDATE provider_notes SET is_deleted=1 WHERE provider_id=$1 AND user_id=$2 AND provider_note_id=$3 RETURNING *;`;
+  const values = [provider_id, id];
+  const query = `UPDATE provider_notes SET is_deleted=1 WHERE provider_id=$1  AND provider_note_id=$2 RETURNING *;`;
 
   try {
     const response = await client.query(query, values);
@@ -57,7 +57,7 @@ notes.DeleteNote = async (req, res) => {
 notes.GetNotebyProviderId = async (req, res) => {
   const provider_id = req.token.providerId;
   const values = [provider_id];
-  const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1  ;`;
+  const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1 AND provider_notes.is_deleted=0  ;`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
@@ -85,7 +85,7 @@ notes.GetNotebyProviderId = async (req, res) => {
 notes.GetNotebyUserId = async (req, res) => {
   const provider_id = req.token.providerId;
   const { id } = req.query;
-  const values = [provider_id,id];
+  const values = [provider_id, id];
   const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1 and provider_notes.user_id=$2 ;`;
   try {
     const response = await client.query(query, values);

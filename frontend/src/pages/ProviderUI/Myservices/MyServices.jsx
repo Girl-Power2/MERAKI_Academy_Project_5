@@ -66,7 +66,7 @@ const MyServices = () => {
     axios
       .put(
         `http://localhost:5000/services/byId/${id}`,
-        { service:serviceNew, price_per_hour:price||null},
+        { service:serviceNew, price_per_hour:price},
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,8 +76,10 @@ const MyServices = () => {
       .then((result) => {
         console.log( "from Update:",result.data.data[0]);
         dispatch(
-          updateService({ service: result.data.data[0].service, price_per_hour: result.data.data[0].price_per_hour, id: id })
+          updateService({ service: result.data.data[0].service, price_per_hour: result.data.data[0].price_per_hour, id })
         );
+        setServiceNew("")
+        setPrice("")
       })
       .catch((error) => {
         console.log(error);

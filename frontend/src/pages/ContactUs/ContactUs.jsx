@@ -19,16 +19,6 @@ const ContactUs = () => {
   
     const sendEmail = (e) => {
       e.preventDefault();
-      // emailjs
-      // //duha
-      //   .sendForm(
-      //     "service_aesfl0b",
-      //     "template_lz0dgna",
-      //     form.current,
-      //     "AeudsNtPdl-qTBqqj"
-      //   )
-        //duha
-        //hala
         emailjs
         .sendForm(
           "service_j5381wl",
@@ -36,17 +26,13 @@ const ContactUs = () => {
           form.current,
           "OvNxWqM4ZNoMso80y"
         )
-        //hala
         .then(
           (result) => {
-            console.log("SUCCESS!", result, result.text);
             setMessg("SUCCESS!");
-            setSuccess(true);
           },
           (error) => {
             console.log("FAILED...", error.text);
             setMessg("FAILED...");
-            setSuccess(false);
           }
         );
     };

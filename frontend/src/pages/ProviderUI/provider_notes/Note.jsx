@@ -154,7 +154,7 @@ const Note = () => {
                 axios
                   .post(
                     `http://localhost:5000/notes/`,
-                    { user_id: ptId, note: note },
+                    { user_id: ptId, note },
                     {
                       headers: {
                         Authorization: `Bearer ${token}`,
@@ -210,10 +210,27 @@ const Note = () => {
                       <span>Visitied on</span> {today}
                     </p>
                     <div style={{ display: "flex", flexDirection: "row" ,justifyContent:"space-evenly", cursor:"pointer"}}>
-                      <div >
+                      <div
+                      onClick={()=>{
+                        console.log(note.provider_note_id);
+                        axios.delete( `http://localhost:5000/notes/${note.provider_note_id}`, {
+                          headers: {
+                            Authorization: `Bearer ${token}`,
+                          },
+                        })
+                        .then((result)=>{
+                          dispatch(deleteNotesById(note.provider_note_id))
+                        })
+                        .catch((error)=>{
+                          console.log(error);
+                        })
+                      }}
+                      >
                         ❌
                       </div>
-                      <div>✏️</div>
+                      <div
+                      
+                      >✏️</div>
                     </div>
                   </div>
                 </div>

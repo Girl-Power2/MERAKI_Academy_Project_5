@@ -25,11 +25,12 @@ export const notes =createSlice({
            
           },
           deleteNotesById: (state, action) => {
-            state.notes=state.notes.filter((data) => {
-            return data.provider_note_id !== action.payload;
-            }
+            console.log("payload",action.payload);
+            state.notes=state.notes.filter(data => 
+         data.provider_note_id !== action.payload
             
-            );
+            
+            )
           },
     }
 })

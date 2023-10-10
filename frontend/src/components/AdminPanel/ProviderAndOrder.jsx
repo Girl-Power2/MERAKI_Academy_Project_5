@@ -4,6 +4,7 @@ import Table from 'react-bootstrap/Table';
 import { useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
 import { services } from "../../service/redux/reducers/services";
+import Button from "react-bootstrap/Button";
 
 
 const ProviderAndOrder = () => {
@@ -65,7 +66,7 @@ const incNum = () => {
 };
   return (
     <div className="providerAnalyticsContainer">
-     <Table bordered hover striped="columns" size="sm">
+     <Table bordered hover size="sm">
       <thead>
         <tr>
         <th>#</th>
@@ -75,8 +76,8 @@ const incNum = () => {
           <th>Email</th>
           <th>Phone Number</th>
           <th>Category</th>
-          <th>Number of Services</th>
-          <th>Number of Orders</th>
+          {/* <th>Number of Services</th>
+          <th>Number of Orders</th> */}
           </tr>
       </thead>
     {providers?(providers.map((provider,i)=>{
@@ -92,12 +93,12 @@ const incNum = () => {
           <td>{provider.lname}</td>
           <td>{provider.email}</td>
           <td>{provider.phonenumber}</td>
-          <td>{provider.category}</td>
-          <td>{service.map((service,i)=>{
+          <td>{provider.category}</td> </tr>
+          {/* <td>{service.map((service,i)=>{
           return(<p>{provider.provider_id===service.provider_id?service.numberofservices:"0"}</p>)          
           })}</td>
-          <td></td>
-        </tr>
+          <td></td> */}
+       
       
       </tbody>
         
@@ -118,14 +119,8 @@ const incNum = () => {
           gap:"3rem"
         }}
       >
-        <button
-          style={{
-            backgroundColor: "SlateBlue",
-            color: "#F5FFFA",
-            textAlign: "center",
-            fontSize: "1.3rem",
-            width: "18%",
-          }}
+        <Button
+       
           onClick={() => {
             if (count >= 5 && count > 0) {
               setCount(count - 5);
@@ -148,15 +143,9 @@ const incNum = () => {
             />
           </svg>
           Previous{" "}
-        </button>
-        <button
-          style={{
-            backgroundColor: "SlateBlue",
-            color: "#F5FFFA",
-            textAlign: "center",
-            fontSize: "1.3rem",
-            width: "18%",
-          }}
+        </Button>
+        <Button
+         
           onClick={() => {
             setCount(count + 5);
           }}
@@ -175,7 +164,7 @@ const incNum = () => {
               d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
             />
           </svg>
-        </button>
+        </Button>
       </div>
   </div>
   
