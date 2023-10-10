@@ -149,6 +149,7 @@ const [show ,setShow]=useState(false)
                     
                       }}
                     >
+                      
                       <NavLink
                         to="/"
                         onClick={() => {
@@ -212,12 +213,7 @@ const [show ,setShow]=useState(false)
                       </NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
-              </>
-              )}
-            </MDBNavbarNav>
-           
-            
-            <input
+                  <input
               type="search"
               className="form-control w-25"
               placeholder="Type query"
@@ -251,6 +247,12 @@ const [show ,setShow]=useState(false)
             >
               Search
             </MDBBtn>
+              </>
+              )}
+            </MDBNavbarNav>
+           
+            
+         
          
           </MDBCollapse>
         </MDBContainer>
