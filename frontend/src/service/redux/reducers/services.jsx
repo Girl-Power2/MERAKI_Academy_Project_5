@@ -10,14 +10,13 @@ export const services = createSlice({
       state.service = action.payload;
     },
     addService: (state, action) => {
-      console.log(action.payload);
       state.service.push(action.payload);
     },
     updateService: (state, action) => {
-      console.log("from redure:",action.payload);
+      console.log("from reducer:",action.payload);
       state.service = state.service.map((ser,i) => {
 
-        if (ser.service_id === action.payload.id) {
+        if (ser.service_id == action.payload.id) {
           ser.service = action.payload.service;
           ser.price_per_hour = action.payload.price_per_hour;
         }

@@ -97,10 +97,9 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .analytictable {
     --mdb-table-color: #050505;
-    --mdb-table-bg: #D9DEFF;
+    --mdb-table-bg: #bebfc0;
     --mdb-table-border-color: #474242;
-    --mdb-table-striped-bg: #bbc3f87d;
-    --mdb-table-striped-color: #0c0c0c;
+
     --mdb-table-active-bg: #474242;
     --mdb-table-active-color: #fff;
     --mdb-table-hover-bg: #423d3d6e;

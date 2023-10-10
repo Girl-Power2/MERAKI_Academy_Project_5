@@ -62,7 +62,6 @@ const login = (req, res) => {
   client
     .query(query, data)
     .then((result) => {
-      console.log(result.rows[0].user_id);
       if (result.rows.length) {
         bcrypt.compare(password, result.rows[0].password, (err, response) => {
           if (err) res.json(err);
@@ -72,7 +71,6 @@ const login = (req, res) => {
               city: result.rows[0].city,
               role: result.rows[0].role_id,
             };
-            console.log(payload);
             const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);

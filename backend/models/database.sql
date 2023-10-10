@@ -46,7 +46,9 @@ ON DELETE CASCADE,
 gender VARCHAR (100) ,
 is_deleted SMALLINT DEFAULT 0,
  
-PRIMARY KEY (user_id)
+PRIMARY KEY (user_id),
+CHECK users_email_key (email like '%_@__%.__%') 
+
 
 );
 
@@ -75,10 +77,6 @@ ON UPDATE CASCADE
 FOREIGN KEY (category_id) REFERENCES categories(category_id)
 ON UPDATE CASCADE
  ON DELETE CASCADE,
--- info_id Int,
--- FOREIGN KEY (info_id) REFERENCES provider_info(provider_info_id)
--- ON UPDATE CASCADE
---  ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0
 
 );
@@ -86,7 +84,7 @@ is_deleted SMALLINT DEFAULT 0
 CREATE TABLE services(
 service_id SERIAL PRIMARY KEY NOT NULL ,
 service VARCHAR(1000) NOT NULL ,
-price_per_hour VARCHAR(255),
+price_per_hour INT,
 provider_id INT,
 FOREIGN KEY (provider_id) REFERENCES providers(provider_id)
 ON UPDATE CASCADE

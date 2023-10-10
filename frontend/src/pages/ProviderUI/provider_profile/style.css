@@ -7,12 +7,9 @@
     align-items: center;
     height: 95%;
     overflow: hidden;
-    background-color: "#E0F2F1"
-    
+    /* background-color:  rgba(255, 247, 247, 0.985); */
 }
-body{
-    background-color: rgba(214, 210, 210, 0.985);
-}
+
 .providerImg{
     width: 100%;
     height: 100%;
@@ -29,6 +26,7 @@ body{
     border-radius: .5rem;
     box-shadow: 2px 2px 1px #94CBC6;
     border: 1px solid lightgray;
+    background-color: white
 }
 .bio{
    text-align: left;
@@ -39,10 +37,14 @@ body{
 
 .fontOfProviderProvile, .bio{
     font-size: 1.2rem;
+
 }
 .imgMyProfile{
     width: 80%;
     height: 60%;
+    background-color: white
+
+   
 }
 @media screen and (max-width: 700px) {
     /* Place the timelime to the left */
