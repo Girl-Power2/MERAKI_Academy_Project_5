@@ -59,10 +59,10 @@ function Home() {
           style={{ backgroundColor: "#B2DFDB" }}
           className=".shadow-2-strong mb-3 "
         >
-          <MDBCardHeader>About Us</MDBCardHeader>
+          <MDBCardHeader style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>About Us</MDBCardHeader>
           <MDBCardBody
             className="text-dark"
-            style={{ backgroundColor: "#80CBC4" }}
+            style={{ backgroundColor: "rgba(128,203,196,.5)"}}
           >
             {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
             <MDBCardText>
@@ -70,30 +70,8 @@ function Home() {
               and more.Which are provided by experienced and highly qualified
               providers.
             </MDBCardText>
-            <NavLink to="/aboutUs"> More About Us</NavLink>
+            <NavLink style={{color:"#2F4F4F"}} to="/aboutUs"> More About Us</NavLink>
           </MDBCardBody>
-        </MDBCard>
-
-        <MDBCard
-          shadow="5"
-          border="dark"
-         
-         style={{ backgroundColor: "#B2DFDB" }}
-          className="mb-3 .shadow-5-strong"
-        >
-          <MDBCardHeader>Contact Us</MDBCardHeader>
-          <MDBCardBody
-            className="text-dark"
-            style={{ backgroundColor: "#80CBC4"  }}
-          >
-            {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
-            <MDBCardText>
-              We are Cure app for home services, that include health services
-              and more.Which are provided by experienced and highly qualified
-              providers.
-            </MDBCardText>
-            <NavLink to="/contactUs"> Contact Us</NavLink>
-          </MDBCardBody >
         </MDBCard>
 
         <MDBCard
@@ -102,10 +80,10 @@ function Home() {
           style={{ backgroundColor: "#B2DFDB" }}
           className="mb-3 .shadow-5-strong"
         >
-          <MDBCardHeader>Help</MDBCardHeader>
+          <MDBCardHeader style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>Contact Us</MDBCardHeader>
           <MDBCardBody
             className="text-dark"
-            style={{ backgroundColor: "#80CBC4"  }}
+            style={{backgroundColor: "rgba(128,203,196,.5)" }}
           >
             {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
             <MDBCardText>
@@ -113,14 +91,35 @@ function Home() {
               and more.Which are provided by experienced and highly qualified
               providers.
             </MDBCardText>
-            <NavLink to="/aboutUs"> Help</NavLink>
+            <NavLink  style={{color:"#2F4F4F"}} to="/contactUs"> Contact Us</NavLink>
+          </MDBCardBody>
+        </MDBCard>
+
+        <MDBCard
+          shadow="5"
+          border="dark"
+          style={{ backgroundColor: "#B2DFDB" }}
+          className="mb-3 .shadow-5-strong"
+        >
+          <MDBCardHeader style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>Help</MDBCardHeader>
+          <MDBCardBody
+            className="text-dark"
+            style={{ backgroundColor: "rgba(128,203,196,.5)" }}
+          >
+            {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
+            <MDBCardText>
+              We are Cure app for home services, that include health services
+              and more.Which are provided by experienced and highly qualified
+              providers.
+            </MDBCardText>
+            <NavLink style={{color:"#2F4F4F"}} to="/aboutUs"> Help</NavLink>
           </MDBCardBody>
         </MDBCard>
       </div>
       <Outlet />
 
       <MDBFooter
-       style={{ backgroundColor: 'white' }}
+        style={{ backgroundColor: "white" }}
         className="text-center text-lg-start text-muted"
       >
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -138,7 +137,10 @@ function Home() {
             <a href="" className="me-4 text-reset">
               <MDBIcon fab icon="google" />
             </a>
-            <a href="http://linkedin.com/in/hala-joudehabushalbak" className="me-4 text-reset">
+            <a
+              href="http://linkedin.com/in/hala-joudehabushalbak"
+              className="me-4 text-reset"
+            >
               <MDBIcon fab icon="linkedin" />
             </a>
             <a href="" className="me-4 text-reset">
@@ -167,7 +169,7 @@ function Home() {
               <h6 className="text-uppercase fw-bold mb-4">Products</h6>
               <p>
                 <a href="#!" className="text-reset">
-                 Node.js
+                  Node.js
                 </a>
               </p>
               <p>
@@ -200,16 +202,23 @@ function Home() {
             <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Useful links</h6>
               <p>
-                <a className="text-reset" onClick={()=>{
-                  history("/aboutUs")
-                }}>
-                 About Us
+                <a
+                  className="text-reset"
+                  onClick={() => {
+                    history("/aboutUs");
+                  }}
+                >
+                  About Us
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset" onClick={()=>{
-                  history("/contactUs")
-                }}>
+                <a
+                  href="#!"
+                  className="text-reset"
+                  onClick={() => {
+                    history("/contactUs");
+                  }}
+                >
                   Contact Us
                 </a>
               </p>
@@ -228,11 +237,13 @@ function Home() {
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />
-               <a href="duhadahamsheh@gmail.com">duhadahamsheh@gmail.com</a> 
+                <a href="duhadahamsheh@gmail.com">duhadahamsheh@gmail.com</a>
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />
-                <a href="halaj.abushalbak@gmail.com">halaj.abushalbak@gmail.com</a>
+                <a href="halaj.abushalbak@gmail.com">
+                  halaj.abushalbak@gmail.com
+                </a>
               </p>
               <p>
                 <MDBIcon icon="phone" className="me-3" /> + 962 791 026 868
@@ -244,7 +255,6 @@ function Home() {
           </MDBRow>
           {/* </MDBContainer> */}
         </section>
-
       </MDBFooter>
     </>
   );

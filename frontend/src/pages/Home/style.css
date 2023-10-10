@@ -11,3 +11,9 @@
         grid-template-rows: 1fr 1fr 1fr;
       }
     }
+    .navlink {
+      color:"black" ;
+     }
+     .navlink:hover {
+       color: #74a39f;
+     }

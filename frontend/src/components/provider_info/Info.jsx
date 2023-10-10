@@ -122,7 +122,7 @@ const Info = () => {
                 setClick(false);
               }}
             >
-              <MDBCardBody className="p-4">
+              <MDBCardBody className="p-8">
                 <h4
                   style={{ cursor: "pointer" }}
                   onClick={handleShow}

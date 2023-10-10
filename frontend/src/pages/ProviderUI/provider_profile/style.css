@@ -7,6 +7,7 @@
     align-items: center;
     height: 95%;
     overflow: hidden;
+    background-color: "#E0F2F1"
     
 }
 body{
@@ -32,14 +33,16 @@ body{
 .bio{
    text-align: left;
    padding :1rem ;
-   font-size: 24px;
+ 
    border-bottom:solid 3px lightgray;
  }
 
-
+.fontOfProviderProvile, .bio{
+    font-size: 1.2rem;
+}
 .imgMyProfile{
     width: 80%;
-    height: 80%;
+    height: 60%;
 }
 @media screen and (max-width: 700px) {
     /* Place the timelime to the left */
@@ -59,5 +62,8 @@ body{
         border: 1px solid lightgray;
     }
  
-   
+    .imgMyProfile{
+        width: 70%;
+        height: 50%;
+    }
 }  
