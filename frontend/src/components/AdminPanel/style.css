@@ -7,7 +7,9 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-
+border: 1px solid gray ;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+background-color: white;
     
 }
 .cardsContainer{
@@ -21,42 +23,43 @@
     align-items: center;
 
 }
-.cards{
-    display: flex;
-    flex-direction: column;
-justify-content: space-around;
-align-items: center;
+.text-white{
+
 padding: 1rem;
 font-weight: bolder;
-font-size: 1.5rem ;
+font-size:1rem ;
 font-family: Georgia, 'Times New Roman', Times, serif;
     border:2px outset grey;
     border-radius: .5rem;
-    height: 50%;
-    width:100% ;
+    height: 75%;
+    width:75% ;
     
     
 }
 #userCard{
-  background-color: #6a72a3fa;  
+  background-color: #6a72a3a6 !important;  
   box-shadow: 5px 5px 8px;
-  color: black;
+  color: black !important;
  
 
 }
 
 #providerCard{
     box-shadow: 5px 5px 8px;
-    background-color: #D9DEFF;
-  color: black;
+    background-color: #bcc5ff !important;
+  color: black !important;
 
 }
 
 #categoryCard{
-    background-color: #B4BCF0;
+    background-color: #B4BCF0 !important;
     box-shadow: 5px 5px 8px;
-  color: black;
+  color: black !important;
 
+}
+
+#pieCard{
+    box-shadow: 5px 5px 8px;  
 }
 
 .result{

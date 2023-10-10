@@ -161,9 +161,7 @@ function Home() {
                 Cure App
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer
-                content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                elit.
+              App of Health care  services  which are provided by providers of different specialities to  a wide range of care seekers at their homes ,which makes it easier  for the patients to get help.
               </p>
             </MDBCol>
 

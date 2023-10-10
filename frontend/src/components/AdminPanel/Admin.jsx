@@ -62,13 +62,14 @@ getCategory()
     <div className='Admincontainer'>
       <div className='aside'>
       <aside >
-        <hr/>
-    <NavLink to="addCategory">Add category</NavLink>
+        <h1></h1>
+    <h1></h1>
+    <NavLink to="addCategory" >Add category</NavLink>
     <hr/>
     <NavLink to="providerAndOrders">Providers Analytics</NavLink>
     <hr/>
     <NavLink to="analytics">analytics</NavLink>
-
+<hr/>
 
 
     </aside>

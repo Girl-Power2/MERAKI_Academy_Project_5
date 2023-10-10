@@ -17,12 +17,12 @@ const AdminNavBar=()=> {
   const [showNav, setShowNav] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' light bgColor='light'>
+    <MDBNavbar expand='lg' style={{backgroundColor:"white"}}>
       <MDBContainer fluid>
         <MDBNavbarBrand href='/'><img
               src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1696596722/3_plgdu0.png"
-              height="100"
-              width="100"
+              height="75"
+              width="90"
               alt=""
               loading="lazy"
             /></MDBNavbarBrand>

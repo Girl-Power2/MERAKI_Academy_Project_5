@@ -86,7 +86,7 @@ const [medications ,setMedications]=useState("")
                   <div key={i}>
                     <div
                       className="rounded-top text-white d-flex flex-row"
-                      style={{ backgroundColor: "#00695C", height: "200px" }}
+                      style={{ backgroundColor: "#262626", height: "200px" }}
                     >
                       <div
                         className="ms-4 mt-5 d-flex flex-column"

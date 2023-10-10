@@ -83,37 +83,7 @@ export default function RegisterUser() {
 
   return (
     <>
-    <MDBBtn onClick={()=>{
-                        axios
-                        .post("http://localhost:5000/users/register", {
-                          firstname: google.given_name,
-                          lastname: google.family_name,
-                          email: google.email,
-                          password: google.azp,
-                          birthdate:"2000-7-7",
-                          phonenumber:google.aud,
-                          role_id:2,
-                          city: google.jti,
-                          gender:google.iss,
-                          
-                        })
-                        .then((response) => {
-                          history("/loginUser");
-                         
-                          console.log(response)
-                        })
-                        .catch((err) => {
-                      
-                          console.log(err)
-                      })}}>
-    <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
-    <GoogleLogin 
-
-     onSuccess={responseMessage}
- onError={errorMessage} 
- 
-   />
-    </GoogleOAuthProvider></MDBBtn>
+    
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
@@ -125,12 +95,8 @@ export default function RegisterUser() {
           md={7}
           sx={{
             backgroundImage:
-              "url(public\img\Lifesavers - One on One.png)",
+              "url(https://www.appstudio.ca/blog/wp-content/uploads/2020/10/Healthcare-Mobile-App-Development.jpg)",
             backgroundRepeat: "no-repeat",
-            // backgroundColor: (t) =>
-            //   t.palette.mode === "light"
-            //     ? t.palette.grey[50]
-            //     : t.palette.grey[900],
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -318,6 +284,38 @@ console.log(data);
               >
                 Register
               </Button>
+
+              <MDBBtn onClick={()=>{
+                        axios
+                        .post("http://localhost:5000/users/register", {
+                          firstname: google.given_name,
+                          lastname: google.family_name,
+                          email: google.email,
+                          password: google.azp,
+                          birthdate:"2000-7-7",
+                          phonenumber:google.aud,
+                          role_id:2,
+                          city: google.jti,
+                          gender:google.iss,
+                          
+                        })
+                        .then((response) => {
+                          history("/loginUser");
+                         
+                          console.log(response)
+                        })
+                        .catch((err) => {
+                      
+                          console.log(err)
+                      })}}>
+    <GoogleOAuthProvider clientId="244732940096-98vg905q4amiojtd94ikgdh12rh7p20d.apps.googleusercontent.com">
+    <GoogleLogin 
+
+     onSuccess={responseMessage}
+ onError={errorMessage} 
+ 
+   />
+    </GoogleOAuthProvider></MDBBtn>
               <p className={`${msg.success ? "pass" : "fail"}`}>{msg.msg}</p>
               <p className={`${msg.success ? "pass" : "fail"}`}>
             {msg.success && (
