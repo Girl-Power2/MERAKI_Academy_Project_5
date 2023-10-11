@@ -49,7 +49,7 @@ const [show ,setShow]=useState(false)
           <NavLink to="/">
             {" "}
             <img
-              src="./assets/newlogo.png"
+              src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1697044117/3_ynsxmp.png"
               height="70"
               width="90"
               alt=""

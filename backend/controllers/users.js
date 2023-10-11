@@ -45,7 +45,15 @@ const register = async (req, res) => {
         success: false,
         message: "The email already exists",
       });
-    } else {
+    } 
+    if (error.constraint === 'chk_email') {
+
+      res.status(409).json({
+        success: false,
+        message: "The email you entered is not correct",
+      });
+    } 
+    else {
       res.status(500).json({
         message: "Server Error",
         error: error.message,
@@ -143,7 +151,6 @@ const Provider_login = (req, res) => {
   client
     .query(query, data)
     .then((result) => {
-      // console.log(result.rows[0]);
       if (result.rows.length) {
         bcrypt.compare(password, result.rows[0].password, (err, response) => {
           if (err) res.json(err);
@@ -153,11 +160,9 @@ const Provider_login = (req, res) => {
               city: result.rows[0].city,
               role: result.rows[0].role_id,
             };
-            // console.log(payload);
             const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
-            // console.log(token);
             if (token) {
               return res.status(200).json({
                 token,

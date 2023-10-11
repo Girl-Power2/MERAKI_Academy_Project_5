@@ -11,6 +11,7 @@ export const notes =createSlice({
           },
           addNotes: (state, action) => {
            state.notes.push(action.payload);
+
           },
           updateNotes: (state, action) => {
            state.notes= state.notes.map((data,i) => {

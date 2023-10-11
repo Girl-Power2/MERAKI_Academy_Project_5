@@ -47,7 +47,7 @@ gender VARCHAR (100) ,
 is_deleted SMALLINT DEFAULT 0,
  
 PRIMARY KEY (user_id),
-CHECK users_email_key (email like '%_@__%.__%') 
+users_email_key CHECK  (email like '%_@__%.__%') 
 
 
 );
@@ -104,7 +104,6 @@ ON UPDATE CASCADE
 ON DELETE CASCADE,
 is_deleted SMALLINT DEFAULT 0,
 
-user_id INT, --to be removed
 FOREIGN KEY (user_id) REFERENCES users(user_id)
 ON UPDATE CASCADE
 ON DELETE CASCADE,
@@ -163,7 +162,7 @@ ON DELETE CASCADE
 
 CREATE TABLE provider_info(
 provider_info_id SERIAL PRIMARY KEY NOT NULL,
-img TEXT DEFAULT 'http://res.cloudinary.com/drzcyo3sv/image/upload/v1696194434/tlkwzcr0pyidz3g2125d.png',
+img TEXT DEFAULT 'https://res.cloudinary.com/drzcyo3sv/image/upload/v1697044081/Provider_fobelh.jpg',
 bio TEXT NOT NULL,
 qualifications TEXT NOT NULL,
 provider_id INT NOT NULL,
@@ -1008,12 +1007,7 @@ INSERT INTO permissions (permission) VALUES ('ADD_SCHDEUAL') RETURNING *;
 
 INSERT INTO users (firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id) VALUES ('Duha','Jehad','2000-7-7','amman','duhauser@gmail.com','123456','0785221564','female','2')
 
--- CREATE TABLE categories(
--- category_id SERIAL PRIMARY KEY NOT NULL ,
--- category VARCHAR(255) UNIQUE,
--- is_deleted SMALLINT DEFAULT 0
 
--- );
 
 
 
