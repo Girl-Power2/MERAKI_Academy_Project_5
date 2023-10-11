@@ -3,7 +3,13 @@ import emailjs from "@emailjs/browser";
 import "./style.css";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-import { MDBInput, MDBCheckbox, MDBContainer } from "mdb-react-ui-kit";
+import { MDBInput, MDBCheckbox,  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
+  MDBRow,
+  MDBCol,
+  MDBBtn } from "mdb-react-ui-kit";
 
 
 const ContactUs = () => {
@@ -38,9 +44,35 @@ const ContactUs = () => {
     };
   
     return (
-        <div className="formContact">
-   
-        <form ref={form} onSubmit={sendEmail} className="contact">
+        <div className="formContact" style={{backgroundColor:'#0097A7'}}>
+          
+      
+         
+       
+        <MDBRow>
+        <MDBCol sm='6'>
+        <MDBCard>
+          <MDBCardBody>
+            <MDBCardTitle>Contact Us</MDBCardTitle>
+            <MDBCardText>
+          
+       
+If you have any questions about us, our reviews, or just want to say hello, please feel free to reach out to us using the contact form below!
+If you have specific comments about our reviews, we'd encourage you to leave the comment in the comment section below each of our articles so we can share / exchange ideas for everybody to see and participate!
+If you have any technical questions about how to use specific elements of a website
+builder, to get the best and most accurate answer, we suggest you reach out to the website builder's dedicated support team or support center - since they know their product the best!
+
+            </MDBCardText>
+            
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+      <MDBCol sm='6'>
+        <MDBCard >
+          <MDBCardBody>
+            <MDBCardTitle>Contact Us Form</MDBCardTitle>
+            <MDBCardText>
+            <form ref={form} onSubmit={sendEmail} >
           <MDBInput
             id="form4Example1"
             className="w-100"
@@ -91,7 +123,15 @@ const ContactUs = () => {
            
           />
         </form>
-      </div>
+            </MDBCardText>
+           
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+     
+    </MDBRow>
+     </div>
+     
     );
   };
   
