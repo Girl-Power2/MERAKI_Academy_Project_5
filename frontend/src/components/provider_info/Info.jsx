@@ -75,7 +75,6 @@ const Info = () => {
     axios
       .post("https:api.cloudinary.com/v1_1/drzcyo3sv/image/upload", data)
       .then((res) => {
-        console.log("url:", res.data.url);
         insert_info(res.data.url);
         setUrl(res.data.url);
       })
@@ -167,7 +166,6 @@ const Info = () => {
                           <Form.Control
                             type="file"
                             onChange={(e) => {
-                              console.log(e.target.files[0]);
                               setImg(e.target.files[0]);
                             }}
                           />

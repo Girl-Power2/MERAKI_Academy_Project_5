@@ -168,7 +168,8 @@ const Note = () => {
                     }
                   )
                   .then((result) => {
-                    dispatch(setNotes(result.data.data));
+                    console.log(result.data.data[0]);
+                    dispatch(addNotes(result.data.data[0]));
                   })
                   .catch((err) => console.log(err));
               }}
