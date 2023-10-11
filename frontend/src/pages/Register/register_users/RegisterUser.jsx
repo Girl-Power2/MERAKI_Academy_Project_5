@@ -85,10 +85,10 @@ export default function RegisterUser() {
     <>
     
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <div style={{maxHeight:'50vh'}}>
+      <Grid container component="main" sx={{ maxHeight: "50vh" }}>
         <CssBaseline />
-      
-         <Grid
+     <Grid
           item
           xs={false}
           sm={4}
@@ -99,193 +99,11 @@ export default function RegisterUser() {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "center",
+            maxHeight:"90vh"
           }}
         />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              Register
-            </Typography>
-            <Box
-              component="form"
-              noValidate
-              // onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="First Name"
-                label="First Name"
-                name="First Name"
-                autoFocus
-                onChange={(e)=>{
-                
-setData({...data,fName:e.target.value})
-               }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="Last Name"
-                label="Last Name"
-                name="Last Name"
-                autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,lName:e.target.value})
-                                 }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="City"
-                label="City"
-                name="City"
-                autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,city:e.target.value})
-                                 }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="Birth Date"
-                label="Birth Date 1995-5-25 "
-                name="Birth Date"
-                autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,birthDate:e.target.value})
-                                 }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="Phone Number"
-                label="Phone Number"
-                name="Phone Number"
-                autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,phoneNumber:e.target.value})
-                                 }}
-              />
-              
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                onChange={(e)=>{
-                
-                  setData({...data,email:e.target.value})
-                                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(e)=>{
-                
-                  setData({...data,password:e.target.value})
-                                }}
-              />
-                               <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Gender
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                   value={data.gender}
-                    label="Gender"
-                    name="Gender"
-                    onChange={(e)=>{
-                
-                      setData({...data,gender:e.target.value})
-                                    }}
-                  >
-
-                    <MenuItem value="male" >Male</MenuItem>
-                    <MenuItem value="female">Female</MenuItem>
-                    
-
-
-                  </Select>
-                </FormControl>
-                              </Box>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
-              <Button
-                // type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                onClick={()=>{
-console.log(data);
-                  //firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id
-                  axios.post("http://localhost:5000/users/register",{firstname:data.fName,
-                  lastname:data.lName,
-                  birthdate:data.birthDate,
-
-                  gender:data.gender,
-                  email:data.email,
-                  password:data.password,
-                  city:data.city,
-                  phonenumber:data.phoneNumber,
-                  role_id:data.role_id,
-                  })
-                  .then((result) => {
-                    console.log(result.data);
-                    setMsg({
-                      success: true,
-                      msg: result.data?.message,
-                    });
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                    // setMsg(error.response.data.message);
-                    setMsg({
-                      success: false,
-                      msg: error?.response?.data.message,
-                    });
-                  });
-                }}
-              >
-                Register
-              </Button>
-
-              <MDBBtn onClick={()=>{
+        <MDBBtn onClick={()=>{
                         axios
                         .post("http://localhost:5000/users/register", {
                           firstname: google.given_name,
@@ -316,6 +134,195 @@ console.log(data);
  
    />
     </GoogleOAuthProvider></MDBBtn>
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              maxHeight: "60vh" 
+            }}
+          >
+            
+            <Avatar sx={{ m:0, bgcolor: "secondary.main" }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            
+            <Typography component="h1" variant="h5">
+              Register
+            </Typography>
+
+            <Box
+              component="form"
+              noValidate
+              
+              sx={{ mt: 1 ,maxHeight:'70vh'}}
+            >
+              <TextField
+                margin="normal"
+                required
+               
+                id="First Name"
+                label="First Name"
+                name="First Name"
+                autoFocus 
+                style={{marginRight:'0.5rem'}}
+                onChange={(e)=>{
+                  
+setData({...data,fName:e.target.value})
+               }}
+              />
+              <TextField
+                margin="normal"
+                required
+                style={{marginLeft:'0.5rem'}}
+                id="Last Name"
+                label="Last Name"
+                name="Last Name"
+                autoFocus
+                onChange={(e)=>{
+                
+                  setData({...data,lName:e.target.value})
+                                 }}
+              />
+              <TextField
+                margin="normal"
+                style={{marginRight:'0.5rem'}}
+                required
+                id="City"
+                label="City"
+                name="City"
+                autoFocus
+                onChange={(e)=>{
+                
+                  setData({...data,city:e.target.value})
+                                 }}
+              />
+              <TextField
+                margin="normal"
+                required
+                style={{marginLeft:'0.5rem'}}
+                id="Birth Date"
+                label="Birth Date 1995-5-25 "
+                name="Birth Date"
+                autoFocus
+                onChange={(e)=>{
+                
+                  setData({...data,birthDate:e.target.value})
+                                 }}
+              />
+              <TextField
+                margin="normal"
+                required
+                style={{marginRight:'0.5rem'}}
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+                onChange={(e)=>{
+                
+                  setData({...data,email:e.target.value})
+                                }}
+              />
+              <TextField
+                margin="normal"
+                required
+                style={{marginLeft:'0.5rem'}}
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={(e)=>{
+                
+                  setData({...data,password:e.target.value})
+                                }}
+              />
+              <div className="select_container">
+              <TextField
+                margin="normal"
+                required
+                style={{marginRight:'0.5rem'}}
+                id="Phone Number"
+                label="Phone Number"
+                name="Phone Number"
+                autoFocus
+                onChange={(e)=>{
+                
+                  setData({...data,phoneNumber:e.target.value})
+                                 }}
+              />
+               <Box sx={{ minWidth: 120 }}>
+                <FormControl style={{marginRight:'0.5rem' ,width:'100%' ,paddingTop:'1rem' ,paddingLeft:'1rem'}}  >
+                  <InputLabel id="demo-simple-select-label">
+                    Gender
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                   value={data.gender}
+                    label="Gender"
+                    name="Gender"
+                    onChange={(e)=>{
+                
+                      setData({...data,gender:e.target.value})
+                                    }}
+                  >
+
+                    <MenuItem value="male" >Male</MenuItem>
+                    <MenuItem value="female">Female</MenuItem>
+                    
+
+
+                  </Select>
+                </FormControl>
+                              </Box>
+                              </div>
+              
+             
+              <Button
+                
+            
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+                onClick={()=>{
+console.log(data);
+                  
+                  axios.post("http://localhost:5000/users/register",{firstname:data.fName,
+                  lastname:data.lName,
+                  birthdate:data.birthDate,
+
+                  gender:data.gender,
+                  email:data.email,
+                  password:data.password,
+                  city:data.city,
+                  phonenumber:data.phoneNumber,
+                  role_id:data.role_id,
+                  })
+                  .then((result) => {
+                    console.log(result.data);
+                    setMsg({
+                      success: true,
+                      msg: result.data?.message,
+                    });
+                    history('/loginUser')
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                    
+                    setMsg({
+                      success: false,
+                      msg: error?.response?.data.message,
+                    });
+                  });
+                }}
+              >
+                Register
+              </Button>
+
+             
               <p className={`${msg.success ? "pass" : "fail"}`}>{msg.msg}</p>
               <p className={`${msg.success ? "pass" : "fail"}`}>
             {msg.success && (
@@ -324,19 +331,12 @@ console.log(data);
               </span>
             )}
           </p>
-              <Grid container>
-    
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Have an account? Login"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              
             </Box>
           </Box>
         </Grid>
       </Grid>
+      </div>
     </ThemeProvider>
     </>
   );

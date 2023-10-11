@@ -4,11 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink,Outlet } from 'react-router-dom';
 
 import {
-  MDBCard,
-  MDBCardTitle,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardHeader
+ MDBCol,MDBIcon
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import "./style.css"
@@ -59,8 +55,8 @@ getCategory()
   return (
     <>
    <AdminNavBar/>
-    <div className='Admincontainer'>
-      <div className='aside'>
+    <div className='Admincontainer' >
+      <div className='aside' style={{height:'100%'}}>
       <aside >
         <h1></h1>
     <h1></h1>
@@ -72,7 +68,16 @@ getCategory()
 <hr/>
 
 
+           
+           
     </aside>
+ <h6 className="text-uppercase fw-bold mb-4" style={{marginTop:'25rem'}}>
+                <MDBIcon icon="gem" className="me-3" />
+                Cure App
+              </h6>
+              <p>
+              App of Health care  services  which are provided by providers of different specialities to  a wide range of care seekers at their homes ,which makes it easier  for the patients to get help.
+              </p>  
     </div>
    <Outlet/>
     </div>

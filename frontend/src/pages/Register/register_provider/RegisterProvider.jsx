@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import axios from "axios";
-import { NavLink, useLoaderData, Await } from "react-router-dom";
-import { useState, useEffect, Suspense } from "react";
+import { useLoaderData } from "react-router-dom";
+import { useState, useEffect} from "react";
 
 import "../register_provider/app.css";
 import * as React from "react";
@@ -9,8 +9,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -88,8 +86,12 @@ export default function RegisterProvider() {
   }, []);
 
   return (
+
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: "100vh" }}>
+      <div style={{maxHeight:'50vh'}}  xs={12}
+  sm={4}
+  md={7}> 
+      <Grid container component="main" sx={{ maxHeight: "50vh"  }}>
         <CssBaseline />
         
        <Grid
@@ -97,12 +99,14 @@ export default function RegisterProvider() {
   xs={12}
   sm={4}
   md={7}
+ 
   sx={{
     backgroundImage: 'url(https://www.pixelcrayons.com/blog/wp-content/uploads/2021/04/Healthcare-App-Development.jpg)',     backgroundRepeat: 'no-repeat',
     backgroundColor: (t) =>
       t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    maxHeight: "90vh" 
   }}
 />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -113,6 +117,7 @@ export default function RegisterProvider() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              maxHeight:"70vh"
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
@@ -125,27 +130,28 @@ export default function RegisterProvider() {
               component="form"
               noValidate
               // onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ mt: 1 ,maxHeight:"90vh"}}
             >
               <TextField
                 margin="normal"
                 required
-                fullWidth
                 id="First Name"
                 label="First Name"
                 name="First Name"
+                style={{marginRight:'0.5rem'}}
                 autoFocus
                 onChange={(e) => {
                   setData({ ...data, fName: e.target.value });
                 }}
               />
               <TextField
-                margin="normal"
+               
                 required
-                fullWidth
+                margin="normal"
                 id="Last Name"
                 label="Last Name"
                 name="Last Name"
+                style={{marginLeft:'0.5rem'}}
                 autoFocus
                 onChange={(e) => {
                   setData({ ...data, lName: e.target.value });
@@ -154,11 +160,11 @@ export default function RegisterProvider() {
               <TextField
                 margin="normal"
                 required
-                fullWidth
                 id="City"
                 label="City"
                 name="City"
                 autoFocus
+                style={{marginRight:'0.5rem'}}
                 onChange={(e) => {
                   setData({ ...data, city: e.target.value });
                 }}
@@ -166,19 +172,49 @@ export default function RegisterProvider() {
               <TextField
                 margin="normal"
                 required
-                fullWidth
                 id="Birth Date"
                 label="Birth Date 1995-5-25 "
                 name="Birth Date"
+                style={{marginLeft:'0.5rem'}}
                 autoFocus
                 onChange={(e) => {
                   setData({ ...data, birthDate: e.target.value });
                 }}
               />
+
+<TextField
+                margin="normal"
+                required
+              
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                style={{marginRight:'0.5rem'}}
+                autoFocus
+                onChange={(e) => {
+                  setData({ ...data, email: e.target.value });
+                }}
+              />
               <TextField
                 margin="normal"
                 required
-                fullWidth
+               
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                style={{marginLeft:'0.5rem'}}
+                onChange={(e) => {
+                  setData({ ...data, password: e.target.value });
+                  console.log(data);
+                }}
+              />
+              <TextField
+                margin="normal"
+                required
+               style={{width:'83%'}}
                 id="Phone Number"
                 label="Phone Number"
                 name="Phone Number"
@@ -187,8 +223,28 @@ export default function RegisterProvider() {
                   setData({ ...data, phoneNumber: e.target.value });
                 }}
               />
+<div className="select_container">
               <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
+                <FormControl  style={{marginRight:'0.5rem' ,width:'100%'}} >
+                  <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={data.gender}
+                    label="Gender"
+                    name="Gender"
+                    onChange={(e) => {
+                      setData({ ...data, gender: e.target.value });
+                      console.log(data);
+                    }}
+                  >
+                    <MenuItem value="male">Female</MenuItem>
+                    <MenuItem value="female">Male</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl  fullWidth  style={{marginLeft:'0.5rem'}}>
                   <InputLabel id="demo-simple-select-label">
                     Category
                   </InputLabel>
@@ -219,60 +275,11 @@ export default function RegisterProvider() {
                   </Select>
                 </FormControl>
               </Box>
-
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                onChange={(e) => {
-                  setData({ ...data, email: e.target.value });
-                }}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(e) => {
-                  setData({ ...data, password: e.target.value });
-                  console.log(data);
-                }}
-              />
-              <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">Gender</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={data.gender}
-                    label="Gender"
-                    name="Gender"
-                    onChange={(e) => {
-                      setData({ ...data, gender: e.target.value });
-                      console.log(data);
-                    }}
-                  >
-                    <MenuItem value="male">Male</MenuItem>
-                    <MenuItem value="female">Female</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+</div>
+              
               <Button
                 // type="submit"
-                fullWidth
+             
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={() => {
@@ -296,10 +303,11 @@ export default function RegisterProvider() {
                         success: true,
                         msg: result.data?.message,
                       });
+                      history('/loginProvider')
                     })
                     .catch((error) => {
                       console.log(error);
-                      // setMsg(error.response.data.message);
+                  
                       setMsg({
                         success: false,
                         msg: error?.response?.data.message,
@@ -313,18 +321,12 @@ export default function RegisterProvider() {
               <p className={`${msg.success ? "pass" : "fail"}`}>
                 {msg.success && <span>{msg.msg}</span>}
               </p>
-              <Grid container>
-                <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Have an account? Login"}
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              
             </Box>
           </Box>
         </Grid>
       </Grid>
+      </div>
     </ThemeProvider>
   );
 }

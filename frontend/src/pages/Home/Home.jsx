@@ -11,16 +11,18 @@ import {
   MDBCol,
   MDBIcon,
   MDBCard,
-  MDBCardTitle,
   MDBCardText,
   MDBCardBody,
   MDBCardHeader,
+  MDBCarousel,
+  MDBCarouselItem,
 } from "mdb-react-ui-kit";
 
 function Home() {
   const history = useNavigate();
   return (
-    <>
+    
+    <div style={{overflowX:"hidden"}}>
       <header>
         <div
           className="p-5 text-center bg-image"
@@ -28,6 +30,7 @@ function Home() {
             backgroundImage:
               "url('https://www.ibanet.org/medias/Health-app-image-banner.jpg?context=bWFzdGVyfHJvb3R8MTI2MTAxfGltYWdlL2pwZWd8YURNeUwyZ3hNUzg0T1RrNE56YzFOVFUwTURjNEwwaGxZV3gwYUNCaGNIQWdhVzFoWjJVZ1ltRnVibVZ5TG1wd1p3fGMzMmQ3ZmYyZGJkMjlmNjA1ZTdkN2YwYjRkNzRlOTcyMjM1NmE4MjhkOWRjN2E5ZjViMDI1YjdjYTg2MGM3ZDk')",
             height: "350px",
+            width:'100%'
           }}
         >
           <div
@@ -52,6 +55,38 @@ function Home() {
             </div>
           </div>
         </div>
+
+{/* <MDBCarousel showIndicators showControls fade>
+      <MDBCarouselItem
+        className='w-100 d-block'
+        itemId={1}
+        src='https://img.freepik.com/free-vector/telemedicine-isometric-concept-distance-online-medicine-app-mobile-phone-smartphone-with-doctor-medical-recipe-insurance-policy-tablets-thermometer-glass-flasks-3d-vector-banner_107791-8636.jpg?w=826&t=st=1697063763~exp=1697064363~hmac=0054fc9f5efbe96f6faec1638584c4b206f4be233c063fc9404124bca2c4c254'
+        height={500}
+      >
+        <h5>First slide label</h5>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </MDBCarouselItem>
+
+      <MDBCarouselItem
+        className='w-100 d-block'
+        itemId={2}
+        src='https://img.freepik.com/free-vector/medicine-composition-set_1284-71053.jpg?w=900&t=st=1697064346~exp=1697064946~hmac=87a21da14bc28105776411b7e744648ea70aeef612e777a2d64bf8dfb4d93ff2'
+        height={500}
+      >
+        <h5>Second slide label</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </MDBCarouselItem>
+
+      <MDBCarouselItem
+        className='w-100 d-block'
+        itemId={3}
+        src='https://img.freepik.com/free-vector/time-coronavirus-vaccination-concept-people-can-register-online-receive-vaccine-against-coronavirus_1150-48956.jpg?w=826&t=st=1697064528~exp=1697065128~hmac=77095b2d0a049baca5623fc07d9d091fcfe379bf177f36da9eace439cb6ebc13'
+        height={500}
+      >
+        <h5>Third slide label</h5>
+        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+      </MDBCarouselItem>
+    </MDBCarousel> */}
       </header>
       <div className="homeCard">
         <MDBCard
@@ -87,9 +122,9 @@ function Home() {
           >
             {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
             <MDBCardText>
-              We are Cure app for home services, that include health services
-              and more.Which are provided by experienced and highly qualified
-              providers.
+            
+If you have any questions about us, our reviews, or just want to say hello, please feel free to reach out to us using the contact form below!
+
             </MDBCardText>
             <NavLink  style={{color:"#2F4F4F"}} to="/contactUs"> Contact Us</NavLink>
           </MDBCardBody>
@@ -119,7 +154,7 @@ function Home() {
       <Outlet />
 
       <MDBFooter
-        style={{ backgroundColor: "white" }}
+        style={{ backgroundColor: "white"}}
         className="text-center text-lg-start text-muted"
       >
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -153,7 +188,7 @@ function Home() {
         </section>
 
         <section className="">
-          {/* <MDBContainer className='text-center text-md-start mt-5'> */}
+         
           <MDBRow className="mt-5">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
@@ -256,7 +291,8 @@ function Home() {
           {/* </MDBContainer> */}
         </section>
       </MDBFooter>
-    </>
+      </div>
+   
   );
 }
 
