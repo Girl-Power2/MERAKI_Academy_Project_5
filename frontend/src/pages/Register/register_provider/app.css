@@ -125,6 +125,16 @@
     }
   
   }
+
+  .select_container{
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+    
+    padding-right: 3.5rem;
+    padding-left: 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
   .pass { 
     text-align: center;
     font-weight: normal;

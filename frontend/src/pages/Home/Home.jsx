@@ -1,125 +1,235 @@
-import Card from "react-bootstrap/Card";
 import "./style.css";
 import { Outlet } from "react-router";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import Carousel from 'react-bootstrap/Carousel';
+import React from "react";
 import {
-  MDBBtn,
   MDBFooter,
   MDBRow,
   MDBCol,
   MDBIcon,
   MDBCard,
-  MDBCardTitle,
   MDBCardText,
   MDBCardBody,
-  MDBCardHeader,
+  MDBCardTitle,
+  MDBCardSubTitle,
+  MDBContainer,
+  MDBTypography,
 } from "mdb-react-ui-kit";
 
 function Home() {
   const history = useNavigate();
   return (
-    <>
+    
+    <div style={{overflowX:"hidden"}}>
       <header>
-        <div
-          className="p-5 text-center bg-image"
-          style={{
-            backgroundImage:
-              "url('https://www.ibanet.org/medias/Health-app-image-banner.jpg?context=bWFzdGVyfHJvb3R8MTI2MTAxfGltYWdlL2pwZWd8YURNeUwyZ3hNUzg0T1RrNE56YzFOVFUwTURjNEwwaGxZV3gwYUNCaGNIQWdhVzFoWjJVZ1ltRnVibVZ5TG1wd1p3fGMzMmQ3ZmYyZGJkMjlmNjA1ZTdkN2YwYjRkNzRlOTcyMjM1NmE4MjhkOWRjN2E5ZjViMDI1YjdjYTg2MGM3ZDk')",
-            height: "350px",
-          }}
-        >
-          <div
-            className="mask"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
-          >
-            <div className="d-flex justify-content-center align-items-center h-100">
-              <div className="text-white">
-                <h1 className="mb-3">Welcome To Our App</h1>
-                <h4 className="mb-3"></h4>
-                <MDBBtn
-                  tag="a"
-                  outline
-                  size="lg"
-                  onClick={() => {
-                    history("/register");
-                  }}
-                >
-                  Welcome
-                </MDBBtn>
-              </div>
-            </div>
-          </div>
-        </div>
+      <Carousel fade indicators={false}>
+      <Carousel.Item  >
+        <img className="carouselItem"
+          // className="d-block w-100"
+          src="https://images.pexels.com/photos/954585/pexels-photo-954585.jpeg?auto=compress&cs=tinysrgb"
+          alt="What we do"
+          
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Home Laboratory Testing</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+         className="carouselItem"
+          src="https://images.pexels.com/photos/5998445/pexels-photo-5998445.jpeg?auto=compress&cs=tinysrgb"
+          alt="What we do"
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p >General Medicine</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+        className="carouselItem"
+          src="https://images.pexels.com/photos/6111618/pexels-photo-6111618.jpeg?auto=compress&cs=tinysrgb"
+          alt="What we do"
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Physiotherapy</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+        className="carouselItem"
+          src="https://www.uaa.alaska.edu/academics/college-of-health/departments/occupational-therapy/_images/header-occupational-therapy-2.jpg"
+          alt="What we do"
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Occupational Therapy</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+        className="carouselItem"
+          src="https://www.uaa.alaska.edu/academics/college-of-health/departments/occupational-therapy/_images/header-occupational-therapy-2.jpg"
+          alt="What we do"
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Occupational Therapy</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+        className="carouselItem"
+          src="https://lirp.cdn-website.com/83ac98e3/dms3rep/multi/opt/Benefits+Of+Speech+Therapy+For+Both+Adults+And+Children-1920w.png"
+          alt="What we do"
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Speech Therapy</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+        className="carouselItem"
+          src="https://images.pexels.com/photos/4492065/pexels-photo-4492065.jpeg?auto=compress&cs=tinysrgb"
+          alt="What we do"
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Nursing</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      </Carousel>
+      
+      
+  
       </header>
-      <div className="homeCard">
-        <MDBCard
-          border="dark"
-          style={{ backgroundColor: "#B2DFDB" }}
-          className=".shadow-2-strong mb-3 "
-        >
-          <MDBCardHeader style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>About Us</MDBCardHeader>
-          <MDBCardBody
-            className="text-dark"
-            style={{ backgroundColor: "rgba(128,203,196,.5)"}}
-          >
-            {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
-            <MDBCardText>
-              We are Cure app for home services, that include health services
-              and more.Which are provided by experienced and highly qualified
-              providers.
-            </MDBCardText>
-            <NavLink style={{color:"#2F4F4F"}} to="/aboutUs"> More About Us</NavLink>
-          </MDBCardBody>
-        </MDBCard>
+     
+     
 
-        <MDBCard
-          shadow="5"
-          border="dark"
-          style={{ backgroundColor: "#B2DFDB" }}
-          className="mb-3 .shadow-5-strong"
-        >
-          <MDBCardHeader style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>Contact Us</MDBCardHeader>
-          <MDBCardBody
-            className="text-dark"
-            style={{backgroundColor: "rgba(128,203,196,.5)" }}
-          >
-            {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
-            <MDBCardText>
-              We are Cure app for home services, that include health services
-              and more.Which are provided by experienced and highly qualified
-              providers.
-            </MDBCardText>
-            <NavLink  style={{color:"#2F4F4F"}} to="/contactUs"> Contact Us</NavLink>
-          </MDBCardBody>
-        </MDBCard>
+      <MDBContainer  className="py-5 " style={{backgroundColor:"white" ,marginTop:"1rem" ,borderRadius:"0.5rem"}}>
+      <MDBRow >
+        <MDBCol lg="12">
+          <div className="horizontal-timeline">
+            <MDBTypography listInLine className="items">
+              <li className="items-list">
+                <div className="px-4">
+                  <div className="event-date badge bg-info">1</div>
+                  <MDBIcon fas icon="sign-in-alt" size="3x" color="info"/>
+                  
+                  <p className="text-muted">
+                   In order to use the application, please log in or create a new account for new users or service providers.
+                   Click on the Join Us rice in the navbar to be able to login
+                   <div style={{color:"white"}}>ddddddddddddddddddddd</div>
+                  </p>
+                 <h5 className="pt-2"> <MDBIcon far icon="dot-circle" /> Step One</h5>
+                </div>
+              </li>
+              <li className="items-list">
+                <div className="px-4">
+                  <div className="event-date badge bg-success">2</div>
+                  <MDBIcon fas icon="info" size="3x" color="success" />
+                  
+                  <p className="text-muted">
+                  After logging in, if you are a user, please enter your Hisory in(my profile)to be able to make orders. If you are a service provider, please follow the steps as shown in your profile.
+                  </p>
+                  <h5 className="pt-2"> <MDBIcon far icon="dot-circle" />  Step Two</h5>
+                </div>
+              </li>
+              <li className="items-list">
+                <div className="px-4">
+                  <div className="event-date badge bg-danger">3</div>
+                  <MDBIcon fas icon="chalkboard-teacher" size="3x" color="danger" />
+                  
+                  <p className="text-muted">
+                  As a user to be able to make order, you must first choose the service provider and you can search for his name in the search in the navbar. After that press the make order button
+                  </p>
+                  <div>
+                   <h5 className="pt-2"><MDBIcon far icon="dot-circle" /> Step Three</h5>
+                  </div>
+                </div>
+              </li>
+              <li className="items-list">
+                <div className="px-4">
+                  <div className="event-date badge bg-warning">4</div>
+                  <MDBIcon far icon="calendar-check" size="3x" color="warning"/>
+                  
+                  <p className="text-muted">
+                  Finally, after the order process is confirmed, your order will go to the list of orders. After the end of the service, please make sure to press the CheckdOut button.
+                  <div style={{color:"white"}}>ddddddddddddddddddddd</div>
+                  </p>
+                  <div>
+                  <h5 className="pt-2"><MDBIcon far icon="dot-circle" />Step Four</h5> 
+                  </div>
+                </div>
+              </li>
+            </MDBTypography>
+          </div>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
 
-        <MDBCard
-          shadow="5"
-          border="dark"
-          style={{ backgroundColor: "#B2DFDB" }}
-          className="mb-3 .shadow-5-strong"
-        >
-          <MDBCardHeader style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>Help</MDBCardHeader>
-          <MDBCardBody
-            className="text-dark"
-            style={{ backgroundColor: "rgba(128,203,196,.5)" }}
-          >
-            {/* <MDBCardTitle>Danger card title</MDBCardTitle> */}
-            <MDBCardText>
-              We are Cure app for home services, that include health services
+<div alignment="center" style={{padding:"0 0.5rem"}} >
+    <MDBCard  alignment="center" style={{borderRadius:"0.5rem" }}  >
+       
+      <MDBCardBody  style={{backgroundColor:"teal" ,backgroundSize:"100% 100%",backgroundRepeat:"no-repeat" ,color:"white" ,opacity:"0.9",borderRadius:"0.5rem"}}>
+       
+        <MDBCardTitle style={{fontSize:"2.5rem" ,fontFamily:"gorgea"}} >HOW CAN CURE APP HELP PEPOLE?</MDBCardTitle>
+        <div className="detailCardBody">
+         <img src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1697135018/Provider_2_iaqlbc.jpg"/>
+        <MDBCardText style={{textAlign:"left",fontSize:"1.3rem"}}>Many people who suffer from some diseases may not be able to leave the house for some reason or may need medical service urgently and cannot go to the care centers and they may have been fedy of many to go to these centers and it is easier and faster for the caregiver comes to them instead of going to them. Therefore, you have provided the ability to book appointments for a number of caregivers who will come to your home instead of going to them, so Cure App is an application to facilitate life for people.</MDBCardText>
+        </div>
+      </MDBCardBody>
+     
+    </MDBCard>
+</div>
+
+
+      <div className="homeCard"> 
+      <MDBCard border="dark"
+         className=".shadow-2-strong mb-3 ">
+      <MDBCardBody>
+        <MDBCardTitle><MDBIcon fas icon="clinic-medical" size="3x" style={{ color: "#4DB6AC" }}/></MDBCardTitle>
+        <MDBCardSubTitle style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>About Us</MDBCardSubTitle>
+       <MDBCardText style={{fontSize:"1.1rem",fontFamily:"gorgea"}}>
+        We are Cure app for home services, that include health services
               and more.Which are provided by experienced and highly qualified
               providers.
-            </MDBCardText>
-            <NavLink style={{color:"#2F4F4F"}} to="/aboutUs"> Help</NavLink>
-          </MDBCardBody>
-        </MDBCard>
-      </div>
+        </MDBCardText>
+        <NavLink style={{color:"#2F4F4F"}} to="/aboutUs"> More About Us</NavLink>
+      </MDBCardBody>
+    </MDBCard>
+        
+
+    <MDBCard border="dark" shadow="5"
+         className=".shadow-2-strong mb-3 ">
+      <MDBCardBody>
+        <MDBCardTitle><MDBIcon fas icon="phone-volume" size="3x" style={{ color: "#4DB6AC" }}/></MDBCardTitle>
+        <MDBCardSubTitle style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>Contact Us</MDBCardSubTitle>
+       <MDBCardText style={{fontSize:"1.2rem",fontFamily:"gorgea"}}>
+       If you have any questions about us, our reviews, or just want to say hello, please feel free to reach out to us using the contact form below!
+        </MDBCardText>
+        <NavLink  style={{color:"#2F4F4F"}} to="/contactUs"> Contact Us</NavLink>
+      </MDBCardBody>
+    </MDBCard>
+
+    
+    <MDBCard border="dark" shadow="5"
+         className=".shadow-2-strong mb-3 ">
+      <MDBCardBody>
+        <MDBCardTitle><MDBIcon fas icon="info-circle" size="3x" style={{ color: "#4DB6AC" }}/></MDBCardTitle>
+        <MDBCardSubTitle style={{fontSize:"1.5rem",fontFamily:"gorgea"}}>Help</MDBCardSubTitle>
+       <MDBCardText style={{fontSize:"1.1rem",fontFamily:"gorgea"}}>
+       We are Cure app for home services, that include health services
+              and more.Which are provided by experienced and highly qualified
+              providers.
+        </MDBCardText>
+        <NavLink style={{color:"#2F4F4F"}} to="/aboutUs"> Help</NavLink>
+      </MDBCardBody>
+    </MDBCard>
+
+</div>
       <Outlet />
 
-      <MDBFooter
-        style={{ backgroundColor: "white" }}
+    <MDBFooter
+        style={{ backgroundColor: "white"}}
         className="text-center text-lg-start text-muted"
       >
         <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -153,7 +263,7 @@ function Home() {
         </section>
 
         <section className="">
-          {/* <MDBContainer className='text-center text-md-start mt-5'> */}
+         
           <MDBRow className="mt-5">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
               <h6 className="text-uppercase fw-bold mb-4">
@@ -256,7 +366,8 @@ function Home() {
           {/* </MDBContainer> */}
         </section>
       </MDBFooter>
-    </>
+      </div>
+   
   );
 }
 

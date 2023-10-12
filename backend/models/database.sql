@@ -986,8 +986,11 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https:
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
-temporarily caring for a child',25,8) RETURNING *
- 
+Day Babysitting',25,8) RETURNING *
+ INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
+Night Babysitting',40,8) RETURNING *
+INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
+OverNight Babysitting',50,8) RETURNING *
 --===============================================================
 INSERT INTO providers  (fname,
   lname,
@@ -1000,8 +1003,18 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Ghofran','Mamoun','2000-6-2','female','ghofran@gmail.com','12369874','Az-zarqa','9631486451',3, 'Babysitting') RETURNING *
 
+
 INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/8504299/pexels-photo-8504299.jpeg?auto=compress&cs=tinysrgb&w=600','Loving children is not enough for raising them , we need to understand them,their exploratory thoughts and behaviors and offcourse their needs 
  ','Bachelors in Education / Early Childhood Education from Al-Balqaa Applied University',21) RETURNING *
+
+
+ INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
+Day Babysitting',25,8) RETURNING *
+ INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
+Night Babysitting',40,8) RETURNING *
+INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
+OverNight Babysitting',50,8) RETURNING *
+
 --==========================================================
 INSERT INTO providers  (fname,
   lname,
