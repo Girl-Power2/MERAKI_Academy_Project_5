@@ -1072,7 +1072,6 @@ INSERT INTO permissions (permission) VALUES ('ADD_SERVICE') RETURNING *;
 INSERT INTO permissions (permission) VALUES ('ADD_SCHDEUAL') RETURNING *;
 
 
-INSERT INTO users (firstName ,lastName ,birthDate ,city ,email,password ,phoneNumber ,gender,role_id) VALUES ('Duha','Jehad','2000-7-7','amman','duhauser@gmail.com','123456','0785221564','female','2')
 
 
 
