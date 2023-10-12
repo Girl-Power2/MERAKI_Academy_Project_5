@@ -230,18 +230,17 @@ INSERT INTO providers  (fname,
   category_id) VALUES('khaled','tarawneh','1995-8-20','male','khaled@gmail.com','12369874','Amman','962791486451',3, 'general medicine') RETURNING *
 
 
-  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/6129104/pexels-photo-6129104.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am Khalid a passionate doctor who swore to save lives,I finished my bachelors degree from University Of Jordan with an excellent degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 3 years of experience in emergency of Al-Basheer Goverment Hospital ',"Khaled") RETURNING *
 
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',20,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',60,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',30,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',50,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',40,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',10,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',15,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Consultaion',25,"Khaled") RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Wound Dressing',30,"Khaled") RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Minor Wounds Suturing',40,"Khaled") RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypoglycemia First Aid',15,"Khaled") RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypertension First Aid',15,"Khaled") RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('diabetic foot ulcer care education',10,"Khaled") RETURNING *
 
 
---=====================================================
+--====================================================Khaled
 INSERT INTO providers  (fname,
   lname,
   birthdate,
@@ -251,17 +250,20 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Ahmed','Alajloni','1990-8-2','male','Ahmed@gmail.com','258741369','Ajlone','962789412656',3, 'general medicine') RETURNING *
+  category_id) VALUES('Ahmad','Alajloni','1990-8-2','male','Ahmed@gmail.com','258741369','Ajlone','962789412656',3, 'general medicine') RETURNING *
 
-  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/4270371/pexels-photo-4270371.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am Ahmad a passionate doctor who swore to save lives,I finished my bachelors degree from Mutah University with an excellent degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 2 years of experience in Jordan Hospital',21) RETURNING *
 
-   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',20,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',40,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',30,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',35,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',25,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',10,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',15,8) RETURNING *
+   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Consultaion',25,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Wound Dressing',30,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Minor Wounds Suturing',40,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypoglycemia First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypertension First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('diabetic foot ulcer care education',10
+,8) RETURNING *
+
 --====================================================
 INSERT INTO providers  (fname,
   lname,
@@ -272,17 +274,19 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Husam','Tarawneh','1993-2-20','male','husam@gmail.com','12369874','Al-Karak','96316974151',3, 'general medicine') RETURNING *
+  category_id) VALUES('Husam','Tarawneh','1993-2-20','male','husam@gmail.com','12369874','Al-Karak','0798642631',3, 'general medicine') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/3779702/pexels-photo-3779702.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am Husam a passionate doctor who swore to save lives,I finished my bachelors degree from Mutah University with a very good degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 1 year of experience in Al-Kendi Hospital',21) RETURNING *
 
- INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',20,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',60,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',30,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',50,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',40,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',10,8) RETURNING *
-  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('test',15,8) RETURNING *
+   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Consultaion',25,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Wound Dressing',30,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Minor Wounds Suturing',40,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypoglycemia First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypertension First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('diabetic foot ulcer care education',10
+,8) RETURNING *
 --=====================================================
 INSERT INTO providers  (fname,
   lname,
@@ -293,9 +297,19 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Nawal','Mousa','1986-4-7','female','nawal@gmail.com','12369874','Irbid','9631486451',3, 'general medicine') RETURNING *
+  category_id) VALUES('Nawal','Mousa','1986-4-7','female','nawal@gmail.com','12369874','Irbid','0785654562',3, 'general medicine') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/5206931/pexels-photo-5206931.jpeg?auto=compress&cs=tinysrgb&w=600
+','I am Nawal a passionate doctor who swore to save lives,I finished my bachelors degree from Mutah University with a very good degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 10 year of experience in King Hussein Medical City','-Bachelors in Doctor Of Medicine - 1 year of experience in Al-Kendi Hospital'21) RETURNING *
+ INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Consultaion',25,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Wound Dressing',30,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Minor Wounds Suturing',40,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypoglycemia First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypertension First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('diabetic foot ulcer care education',10
+,8) RETURNING *
 --==================================================
   INSERT INTO providers  (fname,
   lname,
@@ -307,8 +321,17 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   phonenumber,
   role_id,
   category_id) VALUES('Malak','Mansor','1990-7-20','female','malak@gmail.com','12369874','Zarqa','9631486451',3, 'general medicine') RETURNING *
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
-
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load
+','I am Nawal a passionate doctor who swore to save lives,I finished my bachelors degree from University Of Jordan with a very good degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 1 year of experience in Al-Kendi Hospital',21) RETURNING *
+ INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Consultaion',25,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Wound Dressing',30,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Minor Wounds Suturing',40,,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypoglycemia First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Hypertension First Aid',15,
+,8) RETURNING *
+  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('diabetic foot ulcer care education',10
+,8) RETURNING *
 --===================================================
 INSERT INTO providers  (fname,
   lname,
@@ -319,8 +342,8 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Naya','Al-zoubi','1991-6-20','female','naya@gmail.com','12369874','As-salt','9631486451',3, 'general medicine') RETURNING *
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+  category_id) VALUES('Naya','Al-zoubi','1991-6-20','female','naya@gmail.com','12369874','As-salt','0789865654',3, 'general medicine') RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/4173248/pexels-photo-4173248.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load','I am Naya a passionate doctor who swore to save lives,I finished my bachelors degree from Mutah University with a very good degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 1 year of experience in Al-Kendi Hospital',21) RETURNING *
 --===================== nurse============================
 INSERT INTO providers  (fname,
   lname,
@@ -332,7 +355,8 @@ INSERT INTO providers  (fname,
   phonenumber,
   role_id,
   category_id) VALUES('Muhamad','Hasan','1995-8-20','male','muhamad@gmail.com','12369874','Amman','9631486451',3, 'Nurse') RETURNING *
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/6303564/pexels-photo-6303564.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am Hussam ,called as mercy angel and hoping always to deserve this title'
+ ,'-Bachelors in Nursing - 1 year of experience in Al-Kendi Hospital',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Intravenous (IV) care, including injections, IV hydration and IV feeding',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Medication management and supervision',25,8) RETURNING *
@@ -354,7 +378,8 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   category_id) VALUES('Yazan','Abdullah','1996-3-20','male','yazan@gmail.com','12369874','Mafraq',
   '9631486451',3, 'nurse') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/7584492/pexels-photo-7584492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am Hussam ,called as mercy angel and hoping always to deserve this title 
+ ','-Bachelors in test- 1 year of experience in Al-Kendi Hospital',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Intravenous (IV) care, including injections, IV hydration and IV feeding',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Medication management and supervision',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Respiratory care and therapy',20,8) RETURNING *
@@ -373,7 +398,8 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Obada','Ahmed','1995-9-7','male','obada@gmail.com','12369874','Zarqa','9631486451',3, 'nurse') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/6235010/pexels-photo-6235010.jpeg?auto=compress&cs=tinysrgb&w=600','I am Hussam ,called as mercy angel and hoping always to deserve this title 
+ ','-Bachelors in test- 1 year of experience in Al-Kendi Hospital',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Intravenous (IV) care, including injections, IV hydration and IV feeding',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Medication management and supervision',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Respiratory care and therapy',20,8) RETURNING *
@@ -394,7 +420,7 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Othman','Awawdeh','1998-5-20','male','othman@gmail.com','12369874','As-salat','9631486451',3, 'nurse') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/5888144/pexels-photo-5888144.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am Hussam ,called as mercy angel and hoping always to deserve this title','-Bachelors in test- 1 year of experience in Al-Kendi Hospital',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Intravenous (IV) care, including injections, IV hydration and IV feeding',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Medication management and supervision',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Respiratory care and therapy',20,8) RETURNING *
@@ -414,7 +440,7 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   category_id) VALUES('Dema','Alshami','2000-9-4','female','dema@gmail.com','12369874','Az-zarqa','9631486451',3, 'nurse') RETURNING *
 
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/4482887/pexels-photo-4482887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','test ','test',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Intravenous (IV) care, including injections, IV hydration and IV feeding',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Medication management and supervision',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Respiratory care and therapy',20,8) RETURNING *
@@ -431,9 +457,10 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Rahaf','Mahmud','1999-3-20','female','rahaf@gmail.com','12369874','Ajlone','9631486451',3, 'nurse') RETURNING *
+  category_id) VALUES('Rahaf','Mahmud','1999-3-20','female','rahaf@gmail.com','12369874','Ajloun','9631486451',3, 'nurse') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/5207087/pexels-photo-5207087.jpeg?auto=compress&cs=tinysrgb&w=600','I am Rahaf ,called as mercy angel and hoping always to deserve this title 
+ ','-Bachelors degree in Nursing- 1 year of experience in Al-Kendi Hospital',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Intravenous (IV) care, including injections, IV hydration and IV feeding',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Medication management and supervision',25,8) RETURNING *
@@ -453,7 +480,8 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Mazen','Abdullah','1996-3-20','male','mazen@gmail.com','12369874','Amman','9631486451',3, 'laboratory') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING 
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/7407050/pexels-photo-7407050.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I love my job and I hope that we as medical teams find the cure for every disease  
+','-Bachelors in Medical Laboratory Sciences from University of Jordan- 1 year of experience in Al-Esraa Hospital',21) RETURNING 
 *
 --======================================================
 
@@ -466,9 +494,10 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Mariam','Khalilah','1997-5-20','female','mariam@gmail.com','12369874','Az-zarqa','9631486451',3, 'laboratory') RETURNING *
+  category_id) VALUES('Mariam','Khalilah','1997-5-20','female','mariam@gmail.com','12369874','Al-Zarqa','9631486451',3, 'laboratory') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/4492048/pexels-photo-4492048.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I love my job and I hope that we as medical teams find the cure for every disease  
+','-Bachelors in Medical Laboratory Sciences from Hashemite University- 1 year of experience in Al-Esraa Hospital',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('CBC (Complete Blood Count),ESR (Erythrocyte Sedimentation Rate)Test',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('TSH (Thyroid Stimulating Hormone),FT3 (Free Triiodothyronine),FT4 (Free Thyroxine)',20,8) RETURNING *
@@ -488,7 +517,8 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Shahed','Muhamad','1996-3-20','female','shahed@gmail.com','12369874','Maan','9631486451',3, 'laboratory') RETURNING *
 
-  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/3938022/pexels-photo-3938022.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I love my job and I hope that we as medical teams find the cure for every disease  
+','-Bachelors in Medical Laboratory Sciences from Hashemite University- 1 year of experience in Al-Esraa Hospital',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('CBC (Complete Blood Count),ESR (Erythrocyte Sedimentation Rate)Test',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('TSH (Thyroid Stimulating Hormone),FT3 (Free Triiodothyronine),FT4 (Free Thyroxine)',20,8) RETURNING *
@@ -509,7 +539,8 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Duha','Jehad','2000-7-7','female','duha@gmail.com','12369874','Amman','9631486451',3, 'laboratory') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/3735780/pexels-photo-3735780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I love my job and I hope that we as medical teams find the cure for every disease  
+','-Bachelors in Medical Laboratory Sciences from Hashemite University- 1 year of experience in Al-Esraa Hospital',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('CBC (Complete Blood Count),ESR (Erythrocyte Sedimentation Rate)Test',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('TSH (Thyroid Stimulating Hormone),FT3 (Free Triiodothyronine),FT4 (Free Thyroxine)',20,8) RETURNING *
@@ -552,7 +583,8 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Mustafa','Khaled','1998-5-20','male','mustafa@gmail.com','12369874','Amman','9631486451',3, 'laboratory') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/6129868/pexels-photo-6129868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I love my job and I hope that we as medical teams find the cure for every disease  
+','-Bachelors in Medical Laboratory Sciences- 1 year of experience in Al-Esraa Hospital',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('CBC (Complete Blood Count),ESR (Erythrocyte Sedimentation Rate)Test',15,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('TSH (Thyroid Stimulating Hormone),FT3 (Free Triiodothyronine),FT4 (Free Thyroxine)',20,8) RETURNING *
@@ -570,9 +602,12 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Mustafa','Khaled','1998-5-20','male','mustafa22@gmail.com','12369874','Amman','9631486451',3, 'Physiotherapy') RETURNING *
+  category_id) VALUES('Mustafa','Ayman','1998-5-20','male','mustafa22@gmail.com','12369874','Amman','9631486451',3, 'Physiotherapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://www.canva.com/design/DAFxC4ecPac/C1ptl_fkkooJ_o8nH3Ch6Q/view?utm_content=DAFxC4ecPac&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink','I am always proud of being part of recovering someones life and leading them to their full capacity of stregnth and independency step by step 
+','Bachelors in Physiotherapy from Hashemite University
+- 1 year of experience in Al-Esraa Hospital
+',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Sports Physiotherapy',10,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Geriatric Physiotherapy',20,8) RETURNING *
@@ -592,7 +627,10 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Khaldon','Marar','1998-5-20','male','khaldon@gmail.com','12369874','Az-zarqa','9631486451',3, 'Physiotherapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/3777575/pexels-photo-3777575.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load','I am always proud of being part of recovering someones life and leading them to their full capacity of stregnth and independency step by step','
+-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Al-Esraa Hospital
+',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Sports Physiotherapy',10,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Geriatric Physiotherapy',20,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Orthopedic Physiotherapy',15,8) RETURNING *
@@ -609,9 +647,12 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Ammer','Mohsen','1995-8-10','male','Ammer@gmail.com','12369874','Mafraq','9631486451',3, 'Physiotherapy') RETURNING *
+  category_id) VALUES('Amer','Mohsen','1995-8-10','male','Amer@gmail.com','12369874','Mafraq','9631486451',3, 'Physiotherapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/5039639/pexels-photo-5039639.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','I am always proud of being part of recovering someones life and leading them to their full capacity of stregnth and independency step by step 
+','-Bachelors in Physiotherapy from Hashemite University
+- 3 year of experience in Physio One center
+',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Sports Physiotherapy',10,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Geriatric Physiotherapy',20,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Orthopedic Physiotherapy',15,8) RETURNING *
@@ -630,7 +671,9 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   role_id,
   category_id) VALUES('Zaid','Ammar','1999-5-20','male','zaid@gmail.com','12369874','As-salt','9631486451',3, 'Physiotherapy') RETURNING *
 
-  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+  INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/3768901/pexels-photo-3768901.jpeg?auto=compress&cs=tinysrgb&w=600','I am always proud of being part of recovering someones life and leading them to their full capacity of stregnth and independency step by step','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in physio Joint center
+',21) RETURNING *
 
    INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Sports Physiotherapy',10,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Geriatric Physiotherapy',20,8) RETURNING *
@@ -649,9 +692,12 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Mrah','Khaled','1995-5-5','female','marah@gmail.com','12369874','Al-karak','9631486451',3, 'Physiotherapy') RETURNING *
+  category_id) VALUES('Marah','Khaled','1995-5-5','female','marah@gmail.com','12369874','Al-karak','9631486451',3, 'Physiotherapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://www.parker.edu/wp-content/uploads/2020/06/Parker-University_Chiropractic-Career.jpg','I am always proud of being part of recovering someones life and leading them to their full capacity of stregnth and independency step by step 
+','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in physio Joint center
+',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Sports Physiotherapy',10,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Geriatric Physiotherapy',20,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Orthopedic Physiotherapy',15,8) RETURNING *
@@ -668,7 +714,7 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','tes
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Sabren','Mohamad','2000-9-20','female','sabren@gmail.com','12369874','Jarash','9631486451',3, 'Physiotherapy') RETURNING *
+  category_id) VALUES('Sabreen','Mohamad','2000-9-20','female','sabren@gmail.com','12369874','Jarash','9631486451',3, 'Physiotherapy') RETURNING *
 
 INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Sports Physiotherapy',10,8) RETURNING *
@@ -691,7 +737,10 @@ INSERT INTO providers  (fname,
   category_id) VALUES('Amal','Gazi','2000-9-20','female','amal@gmail.com','12369874','Az-zarqa','9631486451',3, 'Occupational Therapy') RETURNING *
 
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/7176317/pexels-photo-7176317.jpeg?auto=compress&cs=tinysrgb&w=600','I am always proud of being part of recovering someones life and leading them to their independency in activities of daily living step by step 
+ ','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Jordan Specialized Center For Autism center
+',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('working at a job',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('getting together with friends',20,8) RETURNING *
@@ -710,7 +759,10 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Afnan','Mohamad','2000-2-20','female','afnan@gmail.com','12369874','Amman','9631486451',3, 'Occupational Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://www.therapyland.net/content/uploads/2023/02/occupational-therapy.jpg','I am always proud of being part of recovering someones life and leading them to their independency in activities of daily living step by step 
+ ','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Jordan Specialized Center For Autism center
+',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('working at a job',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('getting together with friends',20,8) RETURNING *
@@ -728,7 +780,10 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Aya','Abdulhaq','1997-7-20','female','aya@gmail.com','12369874','Mafraq','9631486451',3, 'Occupational Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://www.nystromcounseling.com/wp-content/uploads/occupational-therapist-w-child.jpg','I am always proud of being part of recovering someones life and leading them to their independency in activities of daily living step by step 
+ ','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Jordan Specialized Center For Autism center
+',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('working at a job',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('getting together with friends',20,8) RETURNING *
@@ -746,7 +801,10 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Mutaz','Mansour','1992-9-20','male','mutaz@gmail.com','12369874','Jarash','9631486451',3, 'Occupational Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://i0.wp.com/post.healthline.com/wp-content/uploads/2020/03/senior-man-lift-a-dumbbell-he-doing-treatment-exercise-with-his-physiotherapist-1296x728-header.jpg?w=1155&h=1528','I am always proud of being part of recovering someones life and leading them to their independency in activities of daily living step by step 
+ ','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Jordan Specialized Center For Autism center
+',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('working at a job',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('getting together with friends',20,8) RETURNING *
@@ -764,7 +822,10 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Wael','Hakem','1996-9-20','male','wael@gmail.com','12369874','Ajlone','9631486451',3, 'Occupational Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCJb1ozycLhIta5lOXijDVI4NxhvrWPmgKw&usqp=CAU','I am always proud of being part of recovering someones life and leading them to their independency in activities of daily living step by step 
+ ','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Jordan Specialized Center For Autism center
+',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('working at a job',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('getting together with friends',20,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('taking a class, cooking a meal',15,8) RETURNING *
@@ -781,7 +842,10 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Adel','Gazi','2000-9-20','male','adel@gmail.com','12369874','Amman','9631486451',3, 'Occupational Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgBhFf9a3H8AeUrNPIMvTm0xXwyBgLY6EX2g&usqp=CAU','I am always proud of being part of recovering someones life and leading them to their independency in activities of daily living step by step 
+ ','-Bachelors in Physiotherapy from University Of Jordan
+- 1 year of experience in Jordan Specialized Center For Autism center
+',21) RETURNING *
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('working at a job',25,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('getting together with friends',20,8) RETURNING *
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('taking a class, cooking a meal',15,8) RETURNING *
@@ -799,7 +863,7 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Ahmed','Hejazi','1996-6-2','male','ahmed11@gmail.com','12369874','Az-zarqa','9631486451',3, 'Speech Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://res.cloudinary.com/drzcyo3sv/image/upload/v1697111941/iStock-848262700-1_iphdhw.jpg','I am always proud of being part of recovering someones life and leading them to expressing themselves and comunicate step by step','-Bachelors in Speech and Auditory Sciences from University Of Jordan',21) RETURNING *
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
 Perception exercises, for example to differentiate between individual sounds and syllables.',25,8) RETURNING *
@@ -817,8 +881,7 @@ INSERT INTO providers  (fname,
   phonenumber,
   role_id,
   category_id) VALUES('Alia','Yousef','2000-2-15','female','Alia@gmail.com','12369874','Az-zarqa','9631486451',3, 'Speech Therapy') RETURNING *
-
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLwAiemY04_nGrwh-au8dtvtLvbUSL9pua_A&usqp=CAU','I am always proud of being part of recovering someones life and leading them to expressing themselves and comunicate step by step','-Bachelors in Speech and Auditory Sciences from University Of Jordan',21) RETURNING *
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
@@ -836,9 +899,9 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Omer','Nafeth','1996-6-2','male','omer@gmail.com','12369874','Amman','9631486451',3, 'Speech Therapy') RETURNING *
+  category_id) VALUES('Omar','Nafeth','1996-6-2','male','omer@gmail.com','12369874','Amman','9631486451',3, 'Speech Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSa63fnKN7s0-ks_vokghb2_v89rrz1KJ47G7dKLWuxt7hwp41CXJHv8FBeM-NC2HzbRco&usqp=CAU','I am always proud of being part of recovering someones life and leading them to expressing themselves and comunicate step by step','-Bachelors in Speech and Auditory Sciences from University Of Jordan',21) RETURNING *
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
@@ -858,7 +921,7 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Subhi','Hamed','1996-6-30','male','subhi@gmail.com','12369874','As-salt','9631486451',3, 'Speech Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','I am always proud of being part of recovering someones life and leading them to expressing themselves and comunicate step by step','-Bachelors in Speech and Auditory Sciences from University Of Jordan',21) RETURNING *
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
@@ -878,7 +941,7 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Sara','Abdullah','1996-6-2','female','sara@gmail.com','12369874','Amman','9631486451',3, 'Speech Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyEpa4JdahRbJxYnOerI-B-CmJHH6f7wXXQg&usqp=CAU','I am always proud of being part of recovering someones life and leading them to expressing themselves and comunicate step by step','-Bachelors in Speech and Auditory Sciences from University Of Jordan',21) RETURNING *
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
@@ -898,7 +961,7 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Amera','Adel','2001-6-2','female','amera@gmail.com','12369874','Ajlone','9631486451',3, 'Speech Therapy') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','I am always proud of being part of recovering someones life and leading them to expressing themselves and comunicate step by step','-Bachelors in Speech and Auditory Sciences from University Of Jordan',21) RETURNING *
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
@@ -918,7 +981,8 @@ Perception exercises, for example to differentiate between individual sounds and
   role_id,
   category_id) VALUES('Malak','Mohamad','1996-6-2','female','malak@gmail.com','12369874','Amman','9631486451',3, 'Babysitting') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/755049/pexels-photo-755049.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1','Loving children is not enough for raising them , we need to understand them,their exploratory thoughts and behaviors and offcourse their needs 
+ ','Bachelors in Education / Early Childhood Education from Al-Balqaa Applied University',21) RETURNING *
 
 
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('
@@ -936,7 +1000,8 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Ghofran','Mamoun','2000-6-2','female','ghofran@gmail.com','12369874','Az-zarqa','9631486451',3, 'Babysitting') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/8504299/pexels-photo-8504299.jpeg?auto=compress&cs=tinysrgb&w=600','Loving children is not enough for raising them , we need to understand them,their exploratory thoughts and behaviors and offcourse their needs 
+ ','Bachelors in Education / Early Childhood Education from Al-Balqaa Applied University',21) RETURNING *
 --==========================================================
 INSERT INTO providers  (fname,
   lname,
@@ -949,7 +1014,8 @@ INSERT INTO providers  (fname,
   role_id,
   category_id) VALUES('Alaa','Salem','1995-2-2','female','alaa@gmail.com','12369874','As-salt','9631486451',3, 'Babysitting') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://www.unicef.org/jordan/sites/unicef.org.jordan/files/styles/media_large_image/public/MicrosoftTeams-image%20%281%29_4.png?itok=iI1t9FGG','Loving children is not enough for raising them , we need to understand them,their exploratory thoughts and behaviors and offcourse their needs 
+ ','Bachelors in Education / Early Childhood Education from Al-Balqaa Applied University',21) RETURNING *
 --======================================================
 INSERT INTO providers  (fname,
   lname,
@@ -960,9 +1026,9 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('ayat','Mohamad','2000-7-2','female','ayat@gmail.com','12369874','Ajlone','9631486451',3, 'Babysitting') RETURNING *
-
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+  category_id) VALUES('Ayat','Mohamad','2000-7-2','female','ayat@gmail.com','12369874','Ajlone','9631486451',3, 'Babysitting') RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://cdnewmums.expatwoman.com/s3fs-public/styles/width_429/public/dubari.jpg?itok=AektvAJf','Loving children is not enough for raising them , we need to understand them,their exploratory thoughts and behaviors and offcourse their needs 
+ ','Bachelors in Education / Early Childhood Education from Al-Balqaa Applied University',21) RETURNING *
 
 --=======================================================
 INSERT INTO providers  (fname,
@@ -974,9 +1040,10 @@ INSERT INTO providers  (fname,
   city,
   phonenumber,
   role_id,
-  category_id) VALUES('Mnar','Ali','1999-4-2','female','mnar@gmail.com','12369874','Mafraq','9631486451',3, 'Babysitting') RETURNING *
+  category_id) VALUES('Manar','Ali','1999-4-2','female','mnar@gmail.com','12369874','Mafraq','9631486451',3, 'Babysitting') RETURNING *
 
-INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('','test ','test',21) RETURNING *
+INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://www-static.apta-advice.com/wp-content/uploads/2018/03/31-Baby-development-Month-11.jpg','Loving children is not enough for raising them , we need to understand them,their exploratory thoughts and behaviors and offcourse their needs 
+ ','Bachelors in Education / Early Childhood Education from Al-Balqaa Applied University',21) RETURNING *
 
 
 
