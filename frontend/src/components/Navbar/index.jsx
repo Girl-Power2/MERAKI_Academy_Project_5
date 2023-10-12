@@ -49,9 +49,9 @@ const [show ,setShow]=useState(false)
           <NavLink to="/">
             {" "}
             <img
-              src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1697044117/3_ynsxmp.png"
-              height="70"
-              width="90"
+              src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1697135018/Provider_2_iaqlbc.jpg"
+              height="90"
+              width="100"
               alt=""
               loading="lazy"
             />

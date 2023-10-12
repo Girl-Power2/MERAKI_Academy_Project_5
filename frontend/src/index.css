@@ -15,9 +15,10 @@
 }
 
 a {
-  font-weight: 600;
-  color: #74a39f;
+  font-weight: 500;
+  color: #0A8A7F;
   text-decoration: inherit;
+  font-size:larger;
 }
 a:hover {
   color: #000000 !important;
