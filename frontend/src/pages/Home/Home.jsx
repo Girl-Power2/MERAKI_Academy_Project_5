@@ -23,12 +23,25 @@ function Home() {
   return (
     
     <div style={{overflowX:"hidden"}}>
-      <header>
+      <header className="HeaderHome">
       <Carousel fade indicators={false}>
       <Carousel.Item  >
         <img className="carouselItem"
           // className="d-block w-100"
-          src="https://images.pexels.com/photos/954585/pexels-photo-954585.jpeg?auto=compress&cs=tinysrgb"
+          src="https://blog.servicemarket.com/wp-content/uploads/2022/04/blood-test-at-home-450x250-1.jpg"
+          alt="What we do"
+          
+        />
+        <Carousel.Caption  className="carousel-caption">
+          <p>Cure App</p>
+          <p> Medical and personal home service application.
+            Stay at home ,our providers will come to help! </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item  >
+        <img className="carouselItem"
+          // className="d-block w-100"
+          src="https://blog.servicemarket.com/wp-content/uploads/2022/04/blood-test-at-home-450x250-1.jpg"
           alt="What we do"
           
         />
@@ -89,7 +102,7 @@ function Home() {
       <Carousel.Item>
         <img
         className="carouselItem"
-          src="https://images.pexels.com/photos/4492065/pexels-photo-4492065.jpeg?auto=compress&cs=tinysrgb"
+          src="https://www.portea.com/static/ad63fb57468502f3461ef225393b7652/43fa5/Nursing-service-in-City-page-big.png"
           alt="What we do"
         />
         <Carousel.Caption  className="carousel-caption">
