@@ -109,6 +109,7 @@ function Home() {
           backgroundColor: "white",
           marginTop: "1rem",
           borderRadius: "0.5rem",
+          height:"100"
         }}
       >
         <MDBRow>
@@ -158,8 +159,11 @@ function Home() {
                       fas
                       icon="chalkboard-teacher"
                       size="3x"
-                      color="danger"
-/>
+
+                      color="danger"/>
+
+
+
 
 
                     <p className="text-muted">
@@ -175,8 +179,7 @@ function Home() {
                     </div>
                   </div>
                 </li>
-             
-                
+
                 <li className="items-list">
                   <div className="px-4">
                     <div className="event-date badge bg-warning">4</div>
@@ -212,7 +215,6 @@ function Home() {
 
       
 
-               
 
 
         <div className="containerOfContent">
@@ -472,6 +474,6 @@ function Home() {
     
   );
 }
-// pull 
+
 
 export default Home;
