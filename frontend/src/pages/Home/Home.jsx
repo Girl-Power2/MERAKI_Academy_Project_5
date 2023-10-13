@@ -110,6 +110,7 @@ function Home() {
           backgroundColor: "white",
           marginTop: "1rem",
           borderRadius: "0.5rem",
+          height:"100"
         }}
       >
         <MDBRow>
@@ -159,7 +160,7 @@ function Home() {
                       fas
                       icon="chalkboard-teacher"
                       size="3x"
-                      color="danger"
+                      color="danger"/>
 
 
 
@@ -177,30 +178,7 @@ function Home() {
                     </div>
                   </div>
                 </li>
-                <li className="items-list">
-                  <div className="px-4">
-                    <div className="event-date badge bg-warning">4</div>
-                    <MDBIcon
-                      far
-                      icon="calendar-check"
-                      size="3x"
-                      color="warning"
-                    />
-
-
-                    <p className="text-muted">
-                      As a user to be able to make order, you must first choose
-                      the service provider and you can search for his name in
-                      the search in the navbar. After that press the make order
-                      button
-                    </p>
-                    <div>
-                      <h5 className="pt-2">
-                        <MDBIcon far icon="dot-circle" /> Step Three
-                      </h5>
-                    </div>
-                  </div>
-                </li>
+               
                 <li className="items-list">
                   <div className="px-4">
                     <div className="event-date badge bg-warning">4</div>
@@ -236,27 +214,7 @@ function Home() {
 
       
 
-                    <p className="text-muted">
-                      Finally, after the order process is confirmed, your order
-                      will go to the list of orders. After the end of the
-                      service, please make sure to press the CheckdOut button.
-                      <div style={{ color: "white" }}>
-                        ddddddddddddddddddddd
-                      </div>
-                    </p>
-                    <div>
-                      <h5 className="pt-2">
-                        <MDBIcon far icon="dot-circle" />
-                        Step Four
-                      </h5>
-                    </div>
-                  </div>
-                </li>
-              </MDBTypography>
-            </div>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
+                   
 
 
         <div className="containerOfContent">
