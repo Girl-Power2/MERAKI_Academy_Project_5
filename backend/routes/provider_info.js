@@ -22,7 +22,7 @@ infoRouter.put(
 infoRouter.delete(
   "/:id",
   authentication,
-  authorization("ADD_SERVICES"), deleteInfoByProviderId)
+  authorization("ADD_SERVICE"), deleteInfoByProviderId)
 
 infoRouter.get("/category/:id",authentication,getInfoByCategory)
 
