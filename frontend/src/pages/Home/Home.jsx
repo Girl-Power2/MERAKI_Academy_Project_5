@@ -454,7 +454,6 @@ function Home() {
               </p>
             </MDBCol>
           </MDBRow>
-          {/* </MDBContainer> */}
         </section>
       </MDBFooter>
     </div>
