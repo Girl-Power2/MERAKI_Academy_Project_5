@@ -86,7 +86,7 @@ notes.GetNotebyUserId = async (req, res) => {
   const provider_id = req.token.providerId;
   const { id } = req.query;
   const values = [provider_id, id];
-  const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1 and provider_notes.user_id=$2 ;`;
+  const query = `SELECT * from provider_notes INNER JOIN providers ON provider_notes.provider_id=providers.provider_id INNER JOIN users ON provider_notes.user_id=users.user_id WHERE provider_notes.provider_id=$1 and provider_notes.user_id=$2 and provider_notes.is_deleted=0;`;
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {

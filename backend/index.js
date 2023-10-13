@@ -3,6 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 require("./models/db");
 
+
 //routers
 
 const role_permissionsRouter = require("./routes/role_permissions");
@@ -47,7 +48,9 @@ app.use("/notes",noteRouter)
 // const PORT = 5000;
 
 // Handles any other endpoints [unassigned - endpoints]
-app.use("*", (req, res) => res.status(404).json("NO content at this path"));
+app.use("*", (req, res) =>{<PageNotFound/>
+  res.status(404).json("NO content at this path")
+} );
 
 
 
