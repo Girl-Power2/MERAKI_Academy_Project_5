@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const PageNotFound = () => {
 const navigate=useNavigate()
   return (
-    <div className='container'>
+    <div className='containerOFNOTFOUND'>
    <div className='NotFound'>
     <div>
       

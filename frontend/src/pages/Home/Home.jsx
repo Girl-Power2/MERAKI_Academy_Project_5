@@ -109,7 +109,7 @@ function Home() {
           backgroundColor: "white",
           marginTop: "1rem",
           borderRadius: "0.5rem",
-          height:"100"
+          height:"60vh"
         }}
       >
         <MDBRow>
