@@ -41,8 +41,8 @@ const ProviderProfile = () => {
         },
       })
       .then((result) => {
-
-      setInformation(result.data.result[0])
+const i=result.data.result.length-1
+      setInformation(result.data.result[i])
         setImg(result.data.result[0]?.img);
         setToday(result.data.result[0].birthdate.toString().split("T")[0]);
       })
@@ -113,8 +113,8 @@ const ProviderProfile = () => {
                           .put(
                             `http://localhost:5000/provider_info/${information.provider_info_id}`,
                             {
-                              bio: bio,
-                              qualifications: qualifications,
+                              bio,
+                              qualifications,
                               img: img || null,
                             },
                             {
@@ -124,9 +124,8 @@ const ProviderProfile = () => {
                             }
                           )
                           .then((result) => {
-                          
                               updateBio({
-                                bio: bio,
+                                bio:result.data.result[0].bio,
                                 id: information.provider_info_id,
                               })
                               notifyUpdat()
@@ -182,8 +181,8 @@ const ProviderProfile = () => {
                           .put(
                             `http://localhost:5000/provider_info/${information.provider_info_id}`,
                             {
-                              bio: bio,
-                              qualifications: qualifications,
+                              bio,
+                              qualifications,
                               img: img || null,
                             },
                             {
@@ -195,7 +194,7 @@ const ProviderProfile = () => {
                           .then((result) => {
                          
                               updateQualifications({
-                                qualifications: qualifications,
+                                qualifications: result.data.result[0].qualifications,
                                 id: information.provider_info_id,
                               })
                               notifyUpdat()

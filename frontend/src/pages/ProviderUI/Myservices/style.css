@@ -1,18 +1,18 @@
 
 .service{
     border: 2px black solid;
-    padding: .5rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: .6rem;
+    gap: 1rem;
     font-family: Georgia, 'Times New Roman', Times, serif, 'Times New Roman', Times, serif;
 text-align: center;
 font-size: 1.3rem;
-width: 80%;
+width: 100%;
 height: 100%;
-border: outset 5px #94CBC6;
+border: outset 5px teal;
     border-radius: .5rem;
-    box-shadow:  6px 5px 5px rgba(0, 0, 0, 0.612);
+    box-shadow:  6px 5px 5px rgba(0, 0, 0, 0.389);
 background-color: #fff;
 
 }
@@ -20,7 +20,7 @@ background-color: #fff;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap :1.5rem;
-    padding: 1rem;
+    padding: 2rem;
     justify-content: center;
     align-items: center;
     justify-items: center;

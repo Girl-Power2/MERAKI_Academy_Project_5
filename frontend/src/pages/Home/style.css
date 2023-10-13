@@ -5,7 +5,10 @@
 
 }
 
-
+.HomeContainer{
+  align-items: center;
+  justify-content: center;
+}
 .horizontal-timeline .items {
   border-top: 3px solid #e9ecef;
 }
@@ -56,8 +59,8 @@
   bottom: 0%;
   display: flex;
   flex-direction: column;
-color: rgba(243, 245, 244, 0.632);
-background-color: rgba(0, 0, 0, 0.386);
+color: rgba(254, 255, 254, 0.727);
+background-color: rgba(0, 0, 0, 0.458);
 height: 100%;
 width: 100%;
 text-align: center;
@@ -69,18 +72,24 @@ align-self: center;
 z-index: 1;
 margin: 0%;
 padding: 0%;
+/* border-radius: 1rem; */
+
 }
 .carouselItem{
   width: 100%;
   height: 85vh;
-zoom: -1;
+  /* border-radius: 1rem; */
 }
-.HeaderHome{
-  height: 5%;
-}
+/* .HeaderHome{
+  /* padding: 0 2rem; */
+  /* border-radius: 1rem; */
+
+
 .carousel-control-next{
-  color: black;
-  opacity:0.296
+  color: rgb(246, 246, 246);
+  opacity:0.7;
+  /* border-radius: 1rem; */
+
 }
 .cardBody{
   display: grid;
@@ -91,11 +100,66 @@ zoom: -1;
   display: grid;
   grid-template-columns: 1fr 3fr  
 }
+.containerOfcard{
+  display: grid;
+ grid-template-columns: 1fr 2fr;
+  padding:2rem;
 
-@media (max-width: 700px) {
+  border-radius: .5rem;
+  background-color:teal;
+margin-top: .5rem ;
+ width:84vw;
+ justify-self: center;
+justify-content: center;
+align-content: center;
+align-items: center;
+
+
+
+ 
+}
+
+
+#logohome{
+height: 35rem;
+/* zoom: 1fr; */
+/* z-index: 1; */
+/* opacity: black 70% ; */
+
+}
+.containerOfContent{
+  display: grid;
+  grid-template-columns: 1fr ;
+  justify-self: center;
+
+}
+article{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  text-align: left;
+  padding: 1rem;
+  background-color: #fffffff9;
+  height: fit-content;
+  border-radius:0 3rem; 
+  color: rgb(0, 0, 0);
+
+}
+@media (max-width: 1105px) and (min-width: 280px) {
     .homeCard {
-        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr ;
       }
+      .containerOfcard{
+        background-color:inherit;
+      display: grid;
+      grid-template-columns: 1fr ;
+    }
+    #logohome{
+      display: none;
+    }
+    article{
+      width: 85vw;
+      border-radius:.5rem; 
+    }
     }
     .navlink {
       color:"black" ;
@@ -103,3 +167,5 @@ zoom: -1;
      .navlink:hover {
        color: #74a39f;
      }
+     
+  

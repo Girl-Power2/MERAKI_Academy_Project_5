@@ -210,8 +210,8 @@ const notifyErr = () =>
            
               <div key={i} className="service">
                 
-                <p>Service name:{ser.service}</p>
-                <p>Price-per-hour:{ser.price_per_hour} JD</p>
+                <p><span>Service name:</span>{ser.service}</p>
+                <p><span>Price-per-hour:</span>{ser.price_per_hour} JD</p>
                 <Button
                   variant="primary"
                   onClick={() => {
