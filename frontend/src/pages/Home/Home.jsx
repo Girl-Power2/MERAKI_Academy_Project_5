@@ -38,7 +38,6 @@ function Home() {
           <Carousel.Item>
             <img
               className="carouselItem"
-              // className="d-block w-100"
               src="https://blog.servicemarket.com/wp-content/uploads/2022/04/blood-test-at-home-450x250-1.jpg"
               alt="What we do"
             />
@@ -160,7 +159,9 @@ function Home() {
                       fas
                       icon="chalkboard-teacher"
                       size="3x"
+
                       color="danger"/>
+
 
 
 
@@ -178,7 +179,7 @@ function Home() {
                     </div>
                   </div>
                 </li>
-               
+
                 <li className="items-list">
                   <div className="px-4">
                     <div className="event-date badge bg-warning">4</div>
@@ -214,7 +215,6 @@ function Home() {
 
       
 
-                   
 
 
         <div className="containerOfContent">
@@ -471,8 +471,9 @@ function Home() {
         </section>
       </MDBFooter>
     </div>
+    
   );
 }
-// pull 
+
 
 export default Home;
