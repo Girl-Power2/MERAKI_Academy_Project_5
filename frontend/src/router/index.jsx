@@ -29,8 +29,13 @@ import Addcategory from "../components/AdminPanel/Addcategory";
 import MyOrders from "../pages/ProviderUI/my orders/MyOrders";
 import ProviderAndOrder from "../components/AdminPanel/ProviderAndOrder";
 import Analytics from "../components/AdminPanel/Analytics";
+import PageNotFound from "../pages/not found/PageNotFound";
 
 export const router = createBrowserRouter([
+  {
+    path:"*",
+element:<PageNotFound/>
+  },
   {
     path: "/cureApp/login",
     element: <LoginAdmin />,
