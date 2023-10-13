@@ -17,7 +17,6 @@ export const schedule = createSlice({
       state.schedule.push(action.payload);
     },
     deleteSchedule: (state, action) => {
-      console.log("from slice",action.payload);
       state.schedule = state.schedule.filter((sched) => {
         return sched.schedule_id !== action.payload;
       });
@@ -25,7 +24,6 @@ export const schedule = createSlice({
     },
     updateSchedule: (state, action) => {
       state.schedule= state.schedule.map((sched ,i) => {
-       console.log(action.payload);
          if (schedule.schedule_id == action.payload.schedule_id) {
           sched.is_booked = action.payload.is_booked;
           

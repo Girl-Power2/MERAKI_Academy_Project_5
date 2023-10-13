@@ -9,6 +9,7 @@ import {
   addSchedule,
   deleteSchedule,
   setBookedCounter,
+  setSchedule
 } from "../../../service/redux/reducers/schedule";
 import React from "react";
 import Table from "react-bootstrap/Table";
@@ -21,7 +22,7 @@ const AddSchedule = () => {
   const [date, setDate] = useState("");
   const [myDates, setMyDates] = useState("");
   const [today, setToday] = useState("");
-  const [mySchedule, setMySchedule] = useState("");
+  // const [mySchedule, setMySchedule] = useState("");
   const [show, setShow] = useState(false);
   const [isBooked, setIsBooked] = useState("");
 
@@ -80,8 +81,9 @@ const AddSchedule = () => {
         },
       })
       .then((result) => {
-        setMySchedule(result.data.data);
-        setMyDates(new Date().toISOString().split("T")[0]);
+
+        dispatch(setSchedule(result.data.data))
+        setMyDates(new Date().toISOString().split("T")[0])
         setIsBooked(result.data.data.booked);
       })
       .catch((err) => {
@@ -92,6 +94,7 @@ const AddSchedule = () => {
 
   //====================use effect start=============================
   useEffect(() => {
+    
     getSchedules();
     getBookedCount();
   }, [schedule, BookedCounter]);
@@ -122,9 +125,11 @@ const AddSchedule = () => {
           },
         }
       )
+
       .then((result) => {
+        console.log(result);
         dispatch(
-          addSchedule({ time_from: timeFrom, time_to: timeTo, DATE: date })
+          addSchedule({ time_from: result.data.data[0].time_from, time_to: result.data.data[0].time_to, DATE: result.data.data[0].date })
         );
       })
       .catch((err) => {
@@ -136,6 +141,7 @@ const AddSchedule = () => {
   //====================outer functions end=============================
   return (
     <>
+
       <div className="myScheduleContainer">
         <div className="step">
           <Button variant="primary" onClick={handleShow}>
@@ -199,7 +205,7 @@ const AddSchedule = () => {
           </div>
         </Modal>
 
-        {mySchedule ? (
+        {schedule ? (
           <>
             <div className="tableContainer">
               <Table>
@@ -207,10 +213,10 @@ const AddSchedule = () => {
               <tr>
                 <th>
                   {" "}
-                  {mySchedule[0]?.fname[0].toUpperCase()}
-                  {mySchedule[0]?.fname.slice(1)}{" "}
-                  {mySchedule[0]?.lname[0].toUpperCase()}
-                  {mySchedule[0]?.lname.slice(1)}'s schedule{" "}
+                  {schedule[0]?.fname[0].toUpperCase()}
+                  {schedule[0]?.fname.slice(1)}{" "}
+                  {schedule[0]?.lname[0].toUpperCase()}
+                  {schedule[0]?.lname.slice(1)}'s schedule{" "}
                 </th>
                 
               </tr></thead>
@@ -232,13 +238,13 @@ const AddSchedule = () => {
                     <th>Status</th>
                   </tr>
                 </thead>
-
-                {mySchedule.map((sc, i) => {
+                {schedule.map((sc, i) => {
+                 
                   return (
                     <tbody>
                       <tr>
                         <td>{incNum()}</td>
-                        <td>{myDates}</td>
+                        <td>{sc.date&&sc.date?.toString().split("T")[0]}</td>
                         <td>{sc.time_from}</td>
                         <td>{sc.time_to} </td>
                         <td

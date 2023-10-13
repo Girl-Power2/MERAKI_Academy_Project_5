@@ -1,7 +1,7 @@
 .infoContainer{
     display: grid;
     grid-template-columns: 2fr 4fr;
-    padding: 1rem;
+    padding: 2rem;
     justify-content: space-around;
     align-content: center;
     align-items: center;
