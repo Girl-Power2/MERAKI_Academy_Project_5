@@ -179,7 +179,7 @@ const [show ,setShow]=useState(false)
                   </MDBNavbarItem>
                   <MDBNavbarItem>
                     <MDBNavbarLink active aria-current="page" href="/category">
-                      <NavLink to="category">Category</NavLink>
+                      <NavLink to="category">Categoreis</NavLink>
                     </MDBNavbarLink>
                   </MDBNavbarItem>
                   <MDBNavbarItem>
