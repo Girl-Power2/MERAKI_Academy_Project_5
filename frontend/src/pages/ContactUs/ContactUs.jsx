@@ -54,7 +54,7 @@ const ContactUs = () => {
         <MDBCard>
           <MDBCardBody>
             <MDBCardTitle>Contact Us</MDBCardTitle>
-            <MDBCardText>
+            <MDBCardText style={{textAlign:"left"}}>
           
        
 If you have any questions about us, our reviews, or just want to say hello, please feel free to reach out to us using the contact form below!
@@ -116,10 +116,10 @@ builder, to get the best and most accurate answer, we suggest you reach out to t
           />
          
   
-          <MDBInput
+          <MDBInput 
             type="submit"
             value="Send"
-            className="send w-25"
+            style={{backgroundColor:"teal",color:"white"}}
            
           />
         </form>

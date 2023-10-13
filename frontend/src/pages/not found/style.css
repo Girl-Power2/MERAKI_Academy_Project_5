@@ -57,7 +57,7 @@ border: 3px black solid;
 .Four04img{
 width: 60%
 }
-@media (max-width: 850px) {
+@media (max-width: 1200px) {
     .NotFound{
         display: grid;
         grid-template-columns: 1fr;
