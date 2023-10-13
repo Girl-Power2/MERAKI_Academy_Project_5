@@ -5,6 +5,8 @@ import { useState  } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch ,useSelector} from "react-redux";
   import { setLocation } from "../../service/redux/reducers/order";
+  import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Marker = ({ text }) => <div style={{ fontSize: "24px" }}>{text}</div>;
 const Map = () => {
   const [myLon, setmyLon] = useState("");
@@ -33,6 +35,17 @@ const { location } = useSelector((state) => {
     zoom: 7,
   };
   console.log(location);
+  const notifySucc = () =>
+  toast.success("Order Created Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: "70vh", width: "70%" }}>
@@ -42,7 +55,7 @@ const { location } = useSelector((state) => {
           onClick={(e) => {
             const { lat, lng } = e;
             dispatch(setLocation({ lat, lng }));
-            history(-1)
+        notifySucc()
           }}
           bootstrapURLKeys={{ key: "AIzaSyBW1nDKAK6Pttb8-Hwxqi28KxCjGlIUxTc" }}
           // center={location}
@@ -53,6 +66,7 @@ const { location } = useSelector((state) => {
           <Marker lat={location.lat} lng={location.lng}  text="📍" />
         </GoogleMapReact>
       )}
+      <ToastContainer/>
     </div>
   );
 };

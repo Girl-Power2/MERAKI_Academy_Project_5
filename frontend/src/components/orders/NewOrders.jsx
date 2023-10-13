@@ -6,6 +6,8 @@ import { MDBSpinner } from "mdb-react-ui-kit";
 import { setOrder } from "../../service/redux/reducers/order";
 import { NavLink } from "react-router-dom";
 import "./style.css"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   MDBBtn,
   MDBCard,
@@ -57,6 +59,19 @@ const NewOrders = () => {
         console.log(err);
       });
   }, []);
+
+
+  const notifySucc = () =>
+  toast.success("Your Order Was Completed", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
 
   if (orders.length === 0) {
     return (
@@ -188,6 +203,8 @@ const NewOrders = () => {
                                     .then((result) => {
                                       console.log(result.data);
                                       setValue(result.data.result);
+                                    
+                                    
                                     })
                                     .catch((err) => {
                                       console.log(err);
@@ -319,6 +336,10 @@ const NewOrders = () => {
                                               },
                                             }).then((result)=>{
                                               console.log(result.data);
+                                              notifySucc()
+                                              setTimeout(()=>{
+                                             history("/previousOrder")
+                                              },2000)
                                               
                                             }).catch((err)=>{
                                               console.log(err);
@@ -350,6 +371,7 @@ const NewOrders = () => {
               })}
           </MDBCol>
         </MDBRow>
+        <ToastContainer/>
       </section>
     </div>
   );

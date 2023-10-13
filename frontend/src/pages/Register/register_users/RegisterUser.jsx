@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
+
 import axios from "axios";
-import { NavLink, useLoaderData, Await } from "react-router-dom";
-import { useState, useEffect, Suspense } from "react";
+import {  useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { decodeToken } from "react-jwt";
 import "../register_provider/app.css";
@@ -10,8 +10,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
@@ -25,6 +23,8 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { MDBBtn } from "mdb-react-ui-kit";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Copyright(props) {
   return (
@@ -72,14 +72,38 @@ export default function RegisterUser() {
     role_id:2,
     gender:"female"
   });
-  const [msg, setMsg] = useState("");
-
+  const [msgSucc, setMsgSucc] = useState("");
+  const [msgErr,setMsgErr]=useState("")
   const handleChange = (e) => {
     setData({...data,category_id:e.target.value} );
   };
   const result = useLoaderData;
  
+  const successNotify = () => toast.success('Your Account Created successfully', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
 
+    const notifyErr = () =>
+    toast.error(
+      'You Have An Error',
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      }
+    );
 
   return (
     <>
@@ -303,41 +327,46 @@ console.log(data);
                   })
                   .then((result) => {
                     console.log(result.data);
-                    setMsg({
-                      success: true,
-                      msg: result.data?.message,
-                    });
+                   setMsgSucc(result.data.message)
+                  
+                    
+                     successNotify()
+                     setTimeout(()=>{
                     history('/loginUser')
+                     },2000)
                   })
                   .catch((error) => {
                     console.log(error);
-                    
-                    setMsg({
-                      success: false,
-                      msg: error?.response?.data.message,
-                    });
+                    setMsgErr(error.response.data.message)
+                    notifyErr()
                   });
                 }}
               >
                 Register
               </Button>
-
-             
-              <p className={`${msg.success ? "pass" : "fail"}`}>{msg.msg}</p>
-              <p className={`${msg.success ? "pass" : "fail"}`}>
-            {msg.success && (
-              <span>
-                {msg.msg}
-              </span>
-            )}
-          </p>
               
+              <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss={false}
+draggable
+pauseOnHover
+theme="colored"/>
+              {/* <h3>{msgSucc}</h3>
+              <h3>{msgErr}</h3> */}
+             
             </Box>
           </Box>
         </Grid>
       </Grid>
+      
       </div>
+      
     </ThemeProvider>
+    
     </>
   );
 }

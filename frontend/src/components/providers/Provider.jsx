@@ -50,14 +50,14 @@ if(!loder){
   return (
     <section className="section h-100" >
     <div >
-        <h4 className='title'>{provider[0].category}</h4>
+        {/* <h4 className='title' >{provider[0].category}</h4> */}
         <div className='provider'>
         {provider.map((prov,i)=>{
             console.log(prov);
             return (
                 <div key={i} >
                     <MDBCard className='card'>
-      <MDBCardImage src={prov.img} height={250} width={250}  position='top' alt='...' />
+      <MDBCardImage src={prov.img} height={350}  position='top' alt='...' />
       <MDBCardBody>
         <MDBCardTitle>Name : {prov.fname} {prov.lname}</MDBCardTitle>
         <MDBCardText>

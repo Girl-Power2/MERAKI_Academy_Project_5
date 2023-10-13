@@ -14,7 +14,7 @@ const authorization = require("../middlewares/authorization");
 reviewsRouter.post(
   "/",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   addNewReviews
 );
 reviewsRouter.get("/", authentication, getAllReview);
@@ -22,13 +22,13 @@ reviewsRouter.get("/provider/:id", authentication, getReviewByProviderId);
 reviewsRouter.put(
   "/user/:id",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   updateReviewByUserId
 );
 reviewsRouter.delete(
   "/:id",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   deleteReviewById
 );
 
