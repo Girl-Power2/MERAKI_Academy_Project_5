@@ -182,22 +182,6 @@ function Home() {
                       color="warning"
                     />
 
-<div alignment="center" style={{padding:"0 0.5rem"}} >
-    <MDBCard  alignment="center" style={{borderRadius:"0.5rem" }}  >
-       
-      <MDBCardBody  style={{backgroundColor:"teal" ,backgroundSize:"100% 100%",backgroundRepeat:"no-repeat" ,color:"white" ,opacity:"0.9",borderRadius:"0.5rem"}}>
-       
-        <MDBCardTitle style={{fontSize:"2.5rem" ,fontFamily:"gorgea"}} >HOW CAN CURE APP HELP PEPOLE?</MDBCardTitle>
-        <div className="detailCardBody">
-         <img src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1697135018/Provider_2_iaqlbc.jpg" style={{backgroundColor:"white"}}/>
-        <MDBCardText style={{textAlign:"left",fontSize:"1.3rem"}}>Many people who suffer from some diseases may not be able to leave the house for some reason or may need medical service urgently and cannot go to the care centers and they may have been fedy of many to go to these centers and it is easier and faster for the caregiver comes to them instead of going to them. Therefore, you have provided the ability to book appointments for a number of caregivers who will come to your home instead of going to them, so Cure App is an application to facilitate life for people.</MDBCardText>
-        </div>
-      </MDBCardBody>
-     
-    </MDBCard>
-</div>
-
-
                     <p className="text-muted">
                       Finally, after the order process is confirmed, your order
                       will go to the list of orders. After the end of the
