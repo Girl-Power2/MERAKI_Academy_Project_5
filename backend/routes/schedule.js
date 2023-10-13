@@ -12,7 +12,7 @@ scheduleRouter.get("/ByProvider/:id",authentication,schedule.getByProviderId)
 scheduleRouter.get("/CountBookedByProvider/:provider_id",authentication,schedule.getBookedCountByProviderId)
 scheduleRouter.delete("/ById/:schedule_id",authentication,schedule.deleteByScheduleId)
 scheduleRouter.get("/all",schedule.getAllSchedules)
-
+scheduleRouter.get("/notchosen/:id",authentication,schedule.getNotBookedSchdual)
 
 
 

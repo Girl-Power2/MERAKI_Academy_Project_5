@@ -183,6 +183,65 @@ schedule.getByProviderId = async (req, res) => {
     });
   }
 };
+
+//=======================getNotBookedSchdual=================
+
+schedule.getNotBookedSchdual = async (req, res) => {
+
+  const provider_id  = req.params.id;
+  const values = [provider_id];
+  const query = `SELECT providers.fName,providers.lName,providers.provider_id,schedules.time_from,schedules.time_to,schedules.date,schedules.is_deleted,schedules.booked,schedules.chosen,schedules.schedule_id FROM schedules INNER JOIN providers ON schedules.provider_id=providers.provider_id WHERE schedules.provider_id=$1 AND schedules.is_deleted=0 AND booked='false'`
+
+ 
+  try {
+    const response = await client.query(query, values);
+    if (response.rowCount) {
+      res.status(200).json({
+        status: true,
+        message: "All available appointments for the provider",
+        data: response.rows,
+      });
+    } else {
+      res.status(404).json({
+        status: false,
+        message: " This provider has no appointments",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: " Server Error",
+      error: error.message,
+    });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // =====================get booked count by provider Id=============
 schedule.getBookedCountByProviderId = async (req, res) => {
   const { provider_id } = req.params;

@@ -9,7 +9,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import { setInfo } from "../../service/redux/reducers/provider_info";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Info = () => {
   // ============================common states=================================
   const handleClose = () => setShow(false);
@@ -80,6 +81,19 @@ const Info = () => {
       })
       .catch((err) => console.log(err));
   };
+
+
+  const notifySucc = () =>
+  toast.success("Info Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
   // ======================first modal states and functions================
 
   // ======================second modal states and functions================
@@ -182,15 +196,20 @@ const Info = () => {
                               uploadImage();
                             } else {
                               insert_info();
-                              handleClose();
+                              notifySucc()
+                              setTimeout(() => {
+                               handleClose() 
+                              }, 2000);
+                              
                             }
                           }}
                         />
-                        {msg && (
+                        <ToastContainer />
+                        {/* {msg && (
                           <p className={`${msg.success ? "pass" : "fail"}`}>
                             {msg.msg}
                           </p>
-                        )}
+                        )} */}
                         <Button variant="primary" onClick={handleClose}>
                           Close
                         </Button>

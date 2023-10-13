@@ -70,11 +70,15 @@ function Home() {
           <Carousel.Item>
             <img
               className="carouselItem"
-              src="https://www.uaa.alaska.edu/academics/college-of-health/departments/occupational-therapy/_images/header-occupational-therapy-2.jpg"
+
+          
+
+              src="https://res.cloudinary.com/drzcyo3sv/image/upload/v1697215521/pexels-singkham-1116050_y9ekx3.jpg"
               alt="What we do"
             />
             <Carousel.Caption className="carousel-caption">
-              <p>Occupational Therapy</p>
+              <p>Baby Sitting</p>
+
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -156,7 +160,33 @@ function Home() {
                       icon="chalkboard-teacher"
                       size="3x"
                       color="danger"
+
+
+
+
+                    <p className="text-muted">
+                      As a user to be able to make order, you must first choose
+                      the service provider and you can search for his name in
+                      the search in the navbar. After that press the make order
+                      button
+                    </p>
+                    <div>
+                      <h5 className="pt-2">
+                        <MDBIcon far icon="dot-circle" /> Step Three
+                      </h5>
+                    </div>
+                  </div>
+                </li>
+                <li className="items-list">
+                  <div className="px-4">
+                    <div className="event-date badge bg-warning">4</div>
+                    <MDBIcon
+                      far
+                      icon="calendar-check"
+                      size="3x"
+                      color="warning"
                     />
+
 
                     <p className="text-muted">
                       As a user to be able to make order, you must first choose
@@ -203,8 +233,32 @@ function Home() {
         </MDBRow>
       </MDBContainer>
 
+
       
-      
+
+                    <p className="text-muted">
+                      Finally, after the order process is confirmed, your order
+                      will go to the list of orders. After the end of the
+                      service, please make sure to press the CheckdOut button.
+                      <div style={{ color: "white" }}>
+                        ddddddddddddddddddddd
+                      </div>
+                    </p>
+                    <div>
+                      <h5 className="pt-2">
+                        <MDBIcon far icon="dot-circle" />
+                        Step Four
+                      </h5>
+                    </div>
+                  </div>
+                </li>
+              </MDBTypography>
+            </div>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+
+
         <div className="containerOfContent">
          <div className="containerOfcard">
           <img id="logohome"
@@ -359,7 +413,9 @@ function Home() {
                 <MDBIcon icon="gem" className="me-3" />
                 Cure App
               </h6>
-              <p>
+
+              <p style={{textAlign:"left"}}>
+
                 App of Health care services which are provided by providers of
                 different specialities to a wide range of care seekers at their
                 homes ,which makes it easier for the patients to get help.

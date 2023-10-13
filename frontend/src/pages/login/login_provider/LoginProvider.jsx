@@ -2,6 +2,8 @@ import axios from "axios";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   setLogin,
   setProviderId,
@@ -31,6 +33,33 @@ const LoginProvider = () => {
       isLoggedIn: state.auth.isLoggedIn,
     };
   });
+
+  const notifySucc = () =>
+  toast.success("Login Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyErr = () =>
+  toast.error(
+    'Your Email Or Password Not Correct',
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    }
+  );
 
   return (
     <div className="loginProviderCard">
@@ -104,12 +133,17 @@ const LoginProvider = () => {
                         dispatch(setLogin(result.data.token));
                         dispatch(setProviderId(result.data.providerId));
                         dispatch(setRole(result.data.role));
-
-                        history("/providerMain");
+                        notifySucc()
+                     
+                        setTimeout(()=>{
+                          history("/providerMain");
+                        },2000)
+                       ;
                         // console.log(isLoggedIn);
                       })
                       .catch((err) => {
                         if (err.response && err.response.data) {
+                          notifyErr()
                           return setMessage({
                             success: false,
                             message: err.response.data.message,
@@ -121,9 +155,9 @@ const LoginProvider = () => {
                   Login
                 </MDBBtn>
 
-                <p className={`${message.success ? "pass" : "fail"}`}>
+                {/* <p className={`${message.success ? "pass" : "fail"}`}>
                   {message.success && <span>{message.message}</span>}
-                </p>
+                </p> */}
                 <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                   Don't have an account?{" "}
                   <a
@@ -139,6 +173,7 @@ const LoginProvider = () => {
             </MDBCol>
           </MDBRow>
         </MDBCard>
+        <ToastContainer />
       </MDBContainer>
     </div>
   );

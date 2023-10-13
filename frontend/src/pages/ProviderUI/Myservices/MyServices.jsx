@@ -7,6 +7,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import "./style.css"
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   setService,
   updateService,
@@ -18,10 +20,7 @@ const MyServices = () => {
   const [newService, setNewService] = useState("");
   const [newPrice, setNewPrice] = useState("");
   const [show, setShow] = useState(false);
-  const [msg, setMsg] = useState("");
-  const [msgs, setMsgs] = useState("");
-
-  const [serviceNew, setServiceNew] = useState("");
+ const [serviceNew, setServiceNew] = useState("");
   const [price, setPrice] = useState("");
   const[open,setOpen]=useState(false)
 
@@ -37,6 +36,44 @@ const MyServices = () => {
     };
   });
   // ====================states==============================
+  const notifySucc = () =>
+  toast.success("Service Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+  const notifyUpdat = () =>
+  toast.success("Service Updated Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyErr = () =>
+  toast.error(
+    'Service Deleted Successfully',
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    }
+  );
 
   // ====================functions==============================
   const dispatch = useDispatch();
@@ -153,7 +190,10 @@ const MyServices = () => {
                         onClick={() => {
                           // console.log(ser.service_id);
                           add_service();
-                          handleClose()
+                          notifySucc()
+                              setTimeout(() => {
+                               handleClose() 
+                              }, 2000);
                           getservices()
                          
                         }}
@@ -190,7 +230,10 @@ dispatch(deleteService(ser.service_id))
                       }).catch((err)=>{
                         console.log(err);
                       })
-                      handleClose()
+                      notifyErr()
+                      setTimeout(() => {
+                       handleClose() 
+                      }, 2000);
                     }}>
                         Delete
                       </Button>
@@ -229,7 +272,10 @@ dispatch(deleteService(ser.service_id))
                         value="Submit"
                         onClick={(e) => {
                           update_service(show);
-                          handleClose()
+                          notifyUpdat()
+                              setTimeout(() => {
+                               handleClose() 
+                              }, 2000);
                         }}
                       />
                     
@@ -248,7 +294,9 @@ dispatch(deleteService(ser.service_id))
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
       )}
-    </div></div>
+    </div>
+    <ToastContainer/>
+    </div>
   );
 };
 

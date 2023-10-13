@@ -1,8 +1,7 @@
 import {useSelector } from "react-redux";
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
 import { useState, useEffect} from "react";
-
+import { useNavigate } from "react-router-dom";
 import "../register_provider/app.css";
 import * as React from "react";
 import Avatar from "@mui/material/Avatar";
@@ -20,6 +19,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Copyright(props) {
   return (
@@ -50,6 +51,7 @@ export default function RegisterProvider() {
     }
    
   })
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -67,7 +69,7 @@ export default function RegisterProvider() {
   const handleChange = (e) => {
     setData({ ...data, category_id: e.target.value });
   };
-  const result = useLoaderData;
+  // const result = useLoaderData;
  
 
   const getCategory = () => {
@@ -85,6 +87,33 @@ export default function RegisterProvider() {
     getCategory();
   }, []);
 
+  const successNotify = () => toast.success('Your Account Created successfully', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
+
+    const notifyErr = () =>
+    toast.error(
+      'You Have An Error',
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      }
+    );
+
+ const history=useNavigate()
   return (
 
     <ThemeProvider theme={defaultTheme}>
@@ -303,11 +332,15 @@ export default function RegisterProvider() {
                         success: true,
                         msg: result.data?.message,
                       });
+                      successNotify()
+                     setTimeout(()=>{
                       history('/loginProvider')
+                     },2000)
+                     
                     })
                     .catch((error) => {
                       console.log(error);
-                  
+                      notifyErr()
                       setMsg({
                         success: false,
                         msg: error?.response?.data.message,
@@ -317,10 +350,16 @@ export default function RegisterProvider() {
               >
                 Register
               </Button>
-              <p className={`${msg.success ? "pass" : "fail"}`}>{msg.msg}</p>
-              <p className={`${msg.success ? "pass" : "fail"}`}>
-                {msg.success && <span>{msg.msg}</span>}
-              </p>
+              <ToastContainer position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss={false}
+draggable
+pauseOnHover
+theme="colored"/>
               
             </Box>
           </Box>

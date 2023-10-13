@@ -8,7 +8,8 @@ import { setSchedule } from "../../service/redux/reducers/schedule";
 import { MDBCard, MDBCardBody, MDBContainer } from "mdb-react-ui-kit";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -32,6 +33,21 @@ const AddSchedule = () => {
     };
   });
   
+  const notifySucc = () =>
+  toast.success("Schedule Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+
+
+
   const handleClose = () => setShow(false);
   const handleShow = () => {
     setToday(new Date().toISOString().split('T')[0])
@@ -127,11 +143,15 @@ const AddSchedule = () => {
             value="Submit"
             onClick={() => {
               setSchedules();
-             
-              handleClose();
+             notifySucc()
+             setTimeout(() => {
+             handleClose() 
+             }, 2000);
+              ;
               window.location.reload(false)
             }}
           />
+            <ToastContainer />
         </div>
       </Modal>
       </MDBCardBody>

@@ -14,26 +14,26 @@ const {
 historyRouter.post(
   "/",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   addHistory
 );
-historyRouter.get("/users", authentication,authorization("CREATE_CATEGORY"), getHistoryByUserId);
+historyRouter.get("/users", authentication,authorization("ADD_HISTORY"), getHistoryByUserId);
 historyRouter.get(
   "/:id",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   getHistoryById
 );
 historyRouter.put(
   "/:id",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   updateHistoryById
 );
 historyRouter.delete(
   "/:id",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_HISTORY"),
   deleteHistoryById
 );
 module.exports = historyRouter;

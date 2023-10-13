@@ -182,10 +182,10 @@ export default function Information_UserSide() {
                       <hr />
                       <MDBRow>
                         <MDBCol sm="3">
-                          <MDBCardText>Bio</MDBCardText>
+                          <MDBCardText >Bio</MDBCardText>
                         </MDBCol>
                         <MDBCol sm="9">
-                          <MDBCardText className="text-muted">
+                          <MDBCardText className="text-muted" style={{textAlign:"left"}}>
                             {info.bio}
                           </MDBCardText>
                         </MDBCol>
@@ -196,7 +196,7 @@ export default function Information_UserSide() {
                           <MDBCardText>Qualifications</MDBCardText>
                         </MDBCol>
                         <MDBCol sm="9">
-                          <MDBCardText className="text-muted">
+                          <MDBCardText className="text-muted" style={{textAlign:"left"}}>
                             {info.qualifications}
                           </MDBCardText>
                         </MDBCol>
