@@ -63,16 +63,18 @@ const register = async (req, res) => {
 
 
 const login = (req, res) => {
-  const password = req.body.password;
-  const email = req.body.email;
+  const {password} = req.body;
+  const {email} = req.body;
   const query = `SELECT * FROM users WHERE email = $1`;
   const data = [email.toLowerCase()];
   client
     .query(query, data)
     .then((result) => {
-      if (result.rows.length) {
+      if (result.rows) {
+        
         bcrypt.compare(password, result.rows[0].password, (err, response) => {
           if (err) res.json(err);
+         
           if (response) {
             const payload = {
               userId: result.rows[0].user_id,
@@ -82,6 +84,8 @@ const login = (req, res) => {
             const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
+            console.log(payload);
+            console.log(token);
             if (token) {
               return res.status(200).json({
                 token,

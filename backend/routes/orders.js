@@ -19,7 +19,7 @@ const orderRouter = express.Router();
 orderRouter.post(
   "/",
   authentication,
-  authorization("CREATE_CATEGORY"),
+  authorization("ADD_ORDER"),
   creatNewOrder
 );
 // orderRouter.get("/", authentication, getAllOrders);
