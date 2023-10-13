@@ -37,7 +37,7 @@
     background-color:rgba(118, 173, 240, 0.367) ;
 
 }
-.container{
+.containerOFNOTFOUND{
     width: 90vw;
     height: 100vh;
     display: flex;
@@ -67,7 +67,7 @@ width: 60%
         font-size: 1rem;
         
     }
-    .container{
+    .containerOFNOTFOUND{
 height: 100%;
     }
     .Four04img{
