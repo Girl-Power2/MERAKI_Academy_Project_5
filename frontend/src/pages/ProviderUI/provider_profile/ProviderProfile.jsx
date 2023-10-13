@@ -1,10 +1,11 @@
 import axios from "axios";
 import { MDBSpinner } from "mdb-react-ui-kit";
-
 import React from "react";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import "./style.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   updateBio,
   updateQualifications
@@ -53,6 +54,18 @@ const ProviderProfile = () => {
   useEffect(() => {
     get_info();
   }, []);
+
+  const notifyUpdat = () =>
+  toast.success("Your Info Updated Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
   return (
     <>
       {information ? (
@@ -116,6 +129,8 @@ const ProviderProfile = () => {
                                 bio: bio,
                                 id: information.provider_info_id,
                               })
+                              notifyUpdat()
+                              
                               get_info()
                           })
                           .catch((err) => console.log(err));
@@ -183,6 +198,7 @@ const ProviderProfile = () => {
                                 qualifications: qualifications,
                                 id: information.provider_info_id,
                               })
+                              notifyUpdat()
                               get_info()
                           })
                           .catch((err) => console.log(err));
@@ -225,6 +241,7 @@ const ProviderProfile = () => {
           <span className="visually-hidden">Loading...</span>
         </MDBSpinner>
       )}
+      <ToastContainer/>
     </>
   );
 };

@@ -7,6 +7,8 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 import { MDBSpinner } from "mdb-react-ui-kit";
 import { useDispatch, useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   setNotes,
   addNotes,
@@ -37,6 +39,44 @@ const Note = () => {
     setShow(true);
   }
 
+const notifySucc=()=>{
+  toast.success("Note Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  })}
+
+  const notifyUpdat = () =>
+  toast.success("Note Updated Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyErr = () =>
+  toast.error(
+    'Note Deleted Successfully',
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    }
+  );
   // ==========get all notes===================
   const getNotes = () => {
     axios
@@ -156,7 +196,9 @@ const Note = () => {
             <Button
               variant="primary"
               onClick={() => {
-                handleClose();
+             setTimeout(() => {
+                     handleClose() 
+                    }, 2000);
                 axios
                   .post(
                     `http://localhost:5000/notes/`,
@@ -170,6 +212,8 @@ const Note = () => {
                   .then((result) => {
                     console.log(result.data.data[0]);
                     dispatch(addNotes(result.data.data[0]));
+                 notifySucc()
+                    
                   })
                   .catch((err) => console.log(err));
               }}
@@ -227,6 +271,8 @@ const Note = () => {
                         })
                         .then((result)=>{
                           dispatch(deleteNotesById(note.provider_note_id))
+                        notifyErr()
+                         
                         })
                         .catch((error)=>{
                           console.log(error);
@@ -247,7 +293,11 @@ const Note = () => {
                         .then((result)=>{
                           console.log(result);
                           dispatch(updateNotes({note:updatedNote,id:note.provider_note_id}))
-                          setInput(!Input)
+                            setInput(!Input)
+                      //  notifyUpdat()
+                        //  setTimeout(()=>{
+                        
+                        //  },2000)
                         })
                         .catch((error)=>{
                           console.log(error);
@@ -259,8 +309,10 @@ const Note = () => {
                         setUpdatedNote(e.target.value)
                       }}></input>}
                     </div>
+                   
                   </div>
-                </div>
+                
+                </div> 
               );
             })
           ) : (
@@ -268,8 +320,11 @@ const Note = () => {
               <span className="visually-hidden">Loading...</span>
             </MDBSpinner>
           )}
-        </div>
+        </div> 
+         
       </div>
+      <ToastContainer/>
+     
     </>
   );
 };

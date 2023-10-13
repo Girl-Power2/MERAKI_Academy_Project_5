@@ -10,7 +10,8 @@ import "./style.css";
 import { addService} from '../../service/redux/reducers/services';
 import React from 'react'
 import { Link } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Service = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -58,6 +59,17 @@ const Service = () => {
         setMsg({ success: false, msg: err.result.data.message });
       });
   };
+  const notifySucc = () =>
+  toast.success("Service Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
   return (
    
     <div>
@@ -110,11 +122,15 @@ const Service = () => {
               onClick={() => {
               
                   insert_service();
-                  handleClose();
-                
+                  
+                  notifySucc()
+             setTimeout(() => {
+             handleClose() 
+             }, 2000);
                 
               }}
             />
+            <ToastContainer />
           </div>
         </Modal> 
         {/* ============================end of second modal==================================================*/}

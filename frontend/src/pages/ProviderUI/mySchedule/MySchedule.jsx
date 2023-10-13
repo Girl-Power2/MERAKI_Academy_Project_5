@@ -5,6 +5,8 @@ import { MDBSpinner } from "mdb-react-ui-kit";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   addSchedule,
   deleteSchedule,
@@ -42,7 +44,32 @@ const AddSchedule = () => {
     };
   });
   //====================end of states=============================
+  const notifySucc = () =>
+  toast.success("Schedule Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
 
+const notifyErr = () =>
+  toast.error(
+    'Schedule Deleted Successfully',
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    }
+  );
   //====================outer functions start=============================
 
   const handleClose = () => setShow(false);
@@ -193,7 +220,10 @@ const AddSchedule = () => {
               value="Submit"
               onClick={() => {
                 addSchedules();
-                handleClose();
+                notifySucc()
+                setTimeout(() => {
+                 handleClose() 
+                }, 2000);
               }}
             />
           </div>
@@ -256,7 +286,8 @@ const AddSchedule = () => {
                               )
                               .then((result) => {
                                 dispatch(deleteSchedule(sc.schedule_id));
-                              })
+                                notifyErr()
+                          })
                               .catch((error) => {
                                 console.log(error);
                               });
@@ -280,6 +311,7 @@ const AddSchedule = () => {
           </MDBSpinner>
         )}
       </div>
+      <ToastContainer/>
     </>
   );
 };

@@ -8,6 +8,8 @@ import {
   updateReview,
   deleteReviewById,
 } from "../../service/redux/reducers/reviews";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   MDBBtn,
   MDBCard,
@@ -62,7 +64,48 @@ const Feadback_reviwes = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [reviews]);
+
+
+
+  const notifySucc = () =>
+  toast.success("Your reviwe Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+  const notifyUpdat = () =>
+  toast.success("Your reviwe Updated Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
+const notifyErr = () =>
+  toast.error(
+    'Your Reviwe Was Deleted ',
+    {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    }
+  );
 
   if (!data) {
     return (
@@ -119,7 +162,7 @@ const Feadback_reviwes = () => {
                             )
                             .then((result) => {
                               console.log(result.data.result);
-                              
+                              notifySucc()
                               dispatch(addReview(result.data.result));
                             })
                             .catch((err) => {
@@ -191,7 +234,9 @@ const Feadback_reviwes = () => {
                                     .then((result) => {
                                       dispatch(
                                         deleteReviewById(comment.review_id)
+                                        
                                       );
+                                      notifyErr()
                                     })
                                     .catch((err) => {
                                       console.log(err);
@@ -224,6 +269,7 @@ const Feadback_reviwes = () => {
                                             review_id: comment.review_id,
                                           })
                                         );
+                                        notifyUpdat()
                                       })
                                       .catch((err) => {
                                         console.log(err);
@@ -271,6 +317,7 @@ const Feadback_reviwes = () => {
         </MDBRow>
        
       </section>
+      <ToastContainer/>
     </div>
   );
 };
