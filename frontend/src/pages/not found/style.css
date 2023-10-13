@@ -9,7 +9,7 @@
     align-content: center;
     align-self: center;
     justify-self: center;
-    font-size:2rem;
+    font-size:1rem;
     font-weight: bold;
 
 }
@@ -33,7 +33,7 @@
     width:100%;
     padding: 2rem;
     color: black;
-    font-size: 2rem;
+    font-size: 1rem;
     background-color:rgba(118, 173, 240, 0.367) ;
 
 }
@@ -57,7 +57,7 @@ border: 3px black solid;
 .Four04img{
 width: 60%
 }
-@media (max-width: 1200px) {
+@media (max-width:1000px) {
     .NotFound{
         display: grid;
         grid-template-columns: 1fr;
