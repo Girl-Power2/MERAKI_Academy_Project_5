@@ -185,7 +185,7 @@ dispatch(updateSchedule(id))
         </FormControl>
       </Box>
       <hr />
-      Insert Your Adress
+      Insert Your Address
       <Box
         component="form"
         sx={{
