@@ -36,7 +36,7 @@ const { location } = useSelector((state) => {
   };
   console.log(location);
   const notifySucc = () =>
-  toast.success("Order Created Successfully", {
+  toast.success("Location Added Successfully", {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,

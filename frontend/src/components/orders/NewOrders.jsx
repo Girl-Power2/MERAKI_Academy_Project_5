@@ -306,7 +306,7 @@ const NewOrders = () => {
 
                                               <div className="d-flex justify-content-between">
                                                 <p className="small mb-0">
-                                                  Shipping
+                                                  Transportaion Allowance
                                                 </p>
                                                 <p className="small mb-0">
                                                   5.00 JD
