@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   MDBCol,
@@ -48,6 +50,19 @@ const [medications ,setMedications]=useState("")
     };
   });
   
+
+  const notifySucc = () =>
+  toast.success("Your History Add Successfully", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+  });
+
   useEffect(() => {
     axios
       .get(`http://localhost:5000/users/`, {
@@ -202,7 +217,7 @@ const [medications ,setMedications]=useState("")
                                         console.log(result.data);
                                         toggleShow()
                                         dispatch(addHistory({history:histories ,medications,chronic_diseases}))
-                                        
+                                        notifySucc()
                                        
                                       }).catch((err)=>{
                                         console.log(err);
@@ -225,6 +240,7 @@ const [medications ,setMedications]=useState("")
         </MDBRow>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

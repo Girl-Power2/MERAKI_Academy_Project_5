@@ -119,7 +119,7 @@ const ProviderSesvice = () => {
                       <hr />
                       <MDBRow>
                         <MDBCol sm="3">
-                          <MDBCardText>Services</MDBCardText>
+                          <MDBCardText >Services</MDBCardText>
                         </MDBCol>
                         <MDBCol sm="9">
                           <MDBCardText className="text-muted">
