@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   MDBInput,
@@ -57,6 +58,36 @@ import {
             console.log(err);
         })
     },[history.length])
+
+    
+  
+    const notifyUpdat = () =>
+    toast.success("Your History Updated Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  
+  const notifyErr = () =>
+    toast.error(
+      'Your History Was Deleted ',
+      {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      }
+    );
+  
     return (
       <div>
           <div className="mb-5">
@@ -138,6 +169,7 @@ import {
                 }).then((result)=>{
                     console.log(result.data);
                     toggleShow()
+                    notifyUpdat()
                     dispatch(updateHistory(result.data.result[0]))
                 }).catch((err)=>{
                     console.log(err);
@@ -159,6 +191,7 @@ import {
                                   Authorization: `Bearer ${token}`,
                                 },
                             }).then((result)=>{
+                              notifyErr()
                                 dispatch(deleteHistoryById(data.medical_history_id))
                             }).catch((err)=>{
                                 console.log(err);
@@ -171,6 +204,7 @@ import {
                        </div>)
                         })}
                       </div>
+                      <ToastContainer/>
       </div>
     )
   }

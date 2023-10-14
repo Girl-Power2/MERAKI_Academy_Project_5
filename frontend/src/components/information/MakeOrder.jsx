@@ -203,7 +203,7 @@ dispatch(updateSchedule(id))
           }}
         />
 
-<Button variant="outlined" onClick={handleClickOpen}>
+<Button  onClick={handleClickOpen}>
         Set Your Location On The Map
       </Button>
       <BootstrapDialog
