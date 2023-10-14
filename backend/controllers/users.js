@@ -107,7 +107,6 @@ const login = (req, res) => {
       } else throw Error;
     })
     .catch((err) => {
-      console.log(err);
       res.status(403).json({
         success: false,
         message:
@@ -190,7 +189,6 @@ const Provider_login = (req, res) => {
       } else throw Error;
     })
     .catch((err) => {
-      console.log(err);
       res.status(403).json({
         success: false,
         message:

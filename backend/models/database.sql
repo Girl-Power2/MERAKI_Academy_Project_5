@@ -322,7 +322,7 @@ INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https:
   role_id,
   category_id) VALUES('Malak','Mansor','1990-7-20','female','malak@gmail.com','12369874','Zarqa','9631486451',3,8) RETURNING *
 INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ('https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load
-','I am Nawal a passionate doctor who swore to save lives,I finished my bachelors degree from University Of Jordan with a very good degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 1 year of experience in Al-Kendi Hospital',5) RETURNING *;
+','I am Malak a passionate doctor who swore to save lives,I finished my bachelors degree from University Of Jordan with a very good degree,proud of what I am and more for what I give people','-Bachelors in Doctor Of Medicine - 1 year of experience in Al-Kendi Hospital',5) RETURNING *;
  INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Consultaion',25,5) RETURNING *;
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Wound Dressing',30,5) RETURNING *;
   INSERT INTO services (service,price_per_hour,provider_id) VALUES ('Minor Wounds Suturing',40,5) RETURNING *;

@@ -4,7 +4,6 @@ const categories = {};
 categories.createNewCategory = async (req, res) => {
   const { category, img } = req.body;
 
-  // admin_id = req.token.userId;
   const values = [category,img];
   const query = `INSERT INTO categories (category,img) VALUES ($1,$2) RETURNING *;`;
   try {

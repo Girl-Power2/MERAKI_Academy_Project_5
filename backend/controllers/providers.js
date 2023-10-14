@@ -185,9 +185,7 @@ providers_functions.getProviderByCategoryId = async (req, res) => {
 providers_functions.getProviderByName = async (req, res) => {
   const { fname } = req.query;
 
-  // const { lname } = req.query;
   const values = [fname.toLowerCase() + "%"];
-  // (fName LIKE '%' || $1 || '%')(OR lname LIKE $2)(, lname.toLowerCase() + "%")
   const query = `SELECT * FROM  providers INNER JOIN categories ON providers.category_id = categories.category_id WHERE fname LIKE $1 OR lname LIKE $1 ;`;
 
   try {

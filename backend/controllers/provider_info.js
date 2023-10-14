@@ -6,7 +6,7 @@ const addInfo = (req, res) => {
   const query = `INSERT INTO provider_info  (img,bio,qualifications, provider_id) VALUES ($1,$2,$3,$4) RETURNING *`;
   const value = [
     img ||
-      "https://cdn2.iconfinder.com/data/icons/gaming-and-beyond-part-2-1/80/User_gray-512.png",
+      "https://res.cloudinary.com/drzcyo3sv/image/upload/v1697134070/Provider_1_cusrqz.jpg",
     bio,
     qualifications,
     provider_id,
@@ -62,7 +62,6 @@ WHERE providers.category_id=${id} `;
   pool
     .query(query)
     .then((result) => {
-    console.log(result);
       res.status(201).json({
         success: true,
         message: `Information For Category=${id}`,
@@ -138,4 +137,3 @@ module.exports = {
   getInfoByCategory,
 };
 
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImNpdHkiOiJhbW1hbiIsInJvbGUiOjMsImlhdCI6MTY5NTY0MDQ1MiwiZXhwIjoxNjk1NzI2ODUyfQ.RS3FeteJEm9lXV_yea4JJugc-WX2dBtPjU9zyJLI13w
