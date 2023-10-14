@@ -48,7 +48,7 @@ app.use("/notes",noteRouter)
 // const PORT = 5000;
 
 // Handles any other endpoints [unassigned - endpoints]
-app.use("*", (req, res) =>{<PageNotFound/>
+app.use("*", (req, res) =>{
   res.status(404).json("NO content at this path")
 } );
 

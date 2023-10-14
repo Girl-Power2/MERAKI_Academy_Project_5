@@ -50,7 +50,6 @@ const getHistoryByUserId = (req, res) => {
 
 const getHistoryById = (req, res) => {
   const id = req.params.id;
-  // const user_id = req.token.userId;
   const query = `SELECT * FROM medical_history INNER JOIN users
   ON medical_history.user_id = users.user_id WHERE medical_history.user_id=${id} `;
   pool
@@ -139,5 +138,3 @@ deleteHistoryById
 };
 
 
-
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImNpdHkiOiJ6YXJxYWEiLCJyb2xlIjoxLCJpYXQiOjE2OTU1MDcxMzEsImV4cCI6MTY5NTU5MzUzMX0.CNjyvu20CoXCQpdLQ6RiLAJ5oRzr1lYp7vbrWq3JgNo
