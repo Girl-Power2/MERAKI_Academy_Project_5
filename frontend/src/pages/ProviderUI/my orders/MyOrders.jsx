@@ -76,7 +76,7 @@ const MyOrders = () => {
           </MDBSpinner>
         )}
       </div>
-      <div
+     {orders?<div
         style={{
           display: "flex",
           justifyContent: "space-around",
@@ -130,7 +130,7 @@ const MyOrders = () => {
             />
           </svg>
         </Button>
-      </div>
+        </div>:<p>You have to orders yet</p>}
     </>
   );
 };

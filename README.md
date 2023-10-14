@@ -80,10 +80,7 @@ npm run dev
 ```
 npm run dev
 ```
-or
-```
-npm start
-```
+
 
 Now  the app is ready to use!
 
