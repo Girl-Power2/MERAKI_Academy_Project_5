@@ -197,19 +197,15 @@ const Info = () => {
                             } else {
                               insert_info();
                               notifySucc()
-                              setTimeout(() => {
+                           
                                handleClose() 
-                              }, 2000);
+                            
                               
                             }
                           }}
                         />
-                        <ToastContainer />
-                        {/* {msg && (
-                          <p className={`${msg.success ? "pass" : "fail"}`}>
-                            {msg.msg}
-                          </p>
-                        )} */}
+                       
+                      
                         <Button variant="primary" onClick={handleClose}>
                           Close
                         </Button>
@@ -222,7 +218,8 @@ const Info = () => {
               </MDBCardBody>
             </MDBCard>
           </div>
-        </div>
+        </div> 
+        <ToastContainer />
       </MDBContainer>
     </>
   );

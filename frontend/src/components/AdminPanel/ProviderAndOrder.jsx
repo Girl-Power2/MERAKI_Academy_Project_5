@@ -3,15 +3,12 @@ import axios from "axios"
 import Table from 'react-bootstrap/Table';
 import { useSelector } from "react-redux";
 import { MDBSpinner } from "mdb-react-ui-kit";
-import { services } from "../../service/redux/reducers/services";
 import Button from "react-bootstrap/Button";
 
 
 const ProviderAndOrder = () => {
 
   const [providers,setProviders]=useState("")
-  const [service,setService]=useState(0)
-  const [orderCount,setOrderCount]=useState(0)
  const [count, setCount] = useState(0);
 
   const { token } = useSelector((state) => {
@@ -30,9 +27,6 @@ const getAllProviders=()=>{
     },
   })
   .then((result) => {
-    console.log(result.data.providers);
-    console.log(result.data.services);
-    console.log(result.data.orders);
 
 
     setProviders(result.data.providers);
@@ -76,8 +70,6 @@ const incNum = () => {
           <th>Email</th>
           <th>Phone Number</th>
           <th>Category</th>
-          {/* <th>Number of Services</th>
-          <th>Number of Orders</th> */}
           </tr>
       </thead>
     {providers?(providers.map((provider,i)=>{
@@ -94,10 +86,8 @@ const incNum = () => {
           <td>{provider.email}</td>
           <td>{provider.phonenumber}</td>
           <td>{provider.category}</td> </tr>
-          {/* <td>{service.map((service,i)=>{
-          return(<p>{provider.provider_id===service.provider_id?service.numberofservices:"0"}</p>)          
-          })}</td>
-          <td></td> */}
+         
+          <td></td>
        
       
       </tbody>
