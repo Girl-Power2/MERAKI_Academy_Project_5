@@ -188,7 +188,6 @@ const notifyErr = () =>
                         type="submit"
                         value="Submit"
                         onClick={() => {
-                          // console.log(ser.service_id);
                           add_service();
                           notifySucc()
                               setTimeout(() => {

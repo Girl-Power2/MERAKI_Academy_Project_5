@@ -15,7 +15,6 @@ export const notes =createSlice({
           },
           updateNotes: (state, action) => {
            state.notes= state.notes.map((data,i) => {
-            console.log(action.payload);
               if (data.provider_note_id == action.payload.id) {
            data.note = action.payload.note
          
@@ -26,7 +25,6 @@ export const notes =createSlice({
            
           },
           deleteNotesById: (state, action) => {
-            console.log("payload",action.payload);
             state.notes=state.notes.filter(data => 
          data.provider_note_id !== action.payload
             

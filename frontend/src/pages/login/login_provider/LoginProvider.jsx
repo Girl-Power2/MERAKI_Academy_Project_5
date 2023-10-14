@@ -129,7 +129,6 @@ const notifyErr = () =>
 
          
                         });
-                        console.log(result.data);
                         dispatch(setLogin(result.data.token));
                         dispatch(setProviderId(result.data.providerId));
                         dispatch(setRole(result.data.role));
@@ -139,7 +138,6 @@ const notifyErr = () =>
                           history("/providerMain");
                         },2000)
                        ;
-                        // console.log(isLoggedIn);
                       })
                       .catch((err) => {
                         if (err.response && err.response.data) {

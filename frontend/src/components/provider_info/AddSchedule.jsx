@@ -66,7 +66,6 @@ const AddSchedule = () => {
         }
       )
       .then((result) => {
-        console.log(result.data);
         dispatch(setSchedule(result.data.data));
         setMsg(result.data.message);
       })

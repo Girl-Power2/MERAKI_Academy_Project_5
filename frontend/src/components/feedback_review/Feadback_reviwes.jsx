@@ -161,7 +161,6 @@ const notifyErr = () =>
                               }
                             )
                             .then((result) => {
-                              console.log(result.data.result);
                               notifySucc()
                               dispatch(addReview(result.data.result));
                             })
@@ -262,7 +261,6 @@ const notifyErr = () =>
                                       )
                                       .then((result) => {
                                         setToggle(false);
-                                        console.log(result.data.result);
                                         dispatch(
                                           updateReview({
                                             review: result.data.result[0].review,

@@ -53,7 +53,6 @@ const Info = () => {
         }
       )
       .then((result) => {
-        console.log(result);
         dispatch(
           setInfo({
             bio,
@@ -191,7 +190,6 @@ const Info = () => {
                           type="submit"
                           value="Submit"
                           onClick={() => {
-                            console.log(img);
                             if (img) {
                               uploadImage();
                             } else {

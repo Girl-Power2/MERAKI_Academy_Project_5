@@ -34,7 +34,6 @@ const [categ ,setCateg]=useState("")
 
 const insert_info = (urlFile) => {
   axios.post(`http://localhost:5000/categories/`,{category:categ ,img:urlFile}).then((result)=>{
-    console.log(result.data);
   }).catch((err)=>{
     console.log(err);
   })
@@ -48,7 +47,6 @@ const uploadImage = () => {
     axios
       .post("https:api.cloudinary.com/v1_1/drzcyo3sv/image/upload", data)
       .then((res) => {
-       console.log("url:",res.data.url);
         insert_info(res.data.url);
         setUrl(res.data.url);
       })
@@ -59,7 +57,6 @@ const uploadImage = () => {
     axios
       .get(`http://localhost:5000/categories/`)
       .then((result) => {
-        console.log(result.data.data);
         setCategory(result.data.data);
       })
       .catch((err) => {
@@ -97,7 +94,6 @@ if(category.length == 0){
               <Form.Control
                 type="file"
                 onChange={(e) => {
-                  console.log(e.target.files[0]);
                 setImg(e.target.files[0])
                   
                 }}
@@ -108,7 +104,6 @@ if(category.length == 0){
                 Close
               </MDBBtn>
               <MDBBtn onClick={() => {
-               console.log(img);
                   if (img) {
                     uploadImage();
                   } else {
@@ -140,7 +135,6 @@ if(category.length == 0){
         </MDBCardBody>
      <MDBBtn color='danger' onClick={()=>{
       axios.delete(`http://localhost:5000/categories//delete/${data.category_id}`).then((result)=>{
-        console.log(result);
       }).catch((err)=>{
         console.log(err);
       })

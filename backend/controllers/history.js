@@ -85,7 +85,6 @@ const updateHistoryById = (req, res) => {
   pool
     .query(query, value)
     .then((result) => {
-      console.log(result);
       if (result.rowCount) {
         res.status(201).json({
           success: true,
@@ -97,7 +96,6 @@ const updateHistoryById = (req, res) => {
       }
     })
     .catch((err) => {
-      console.log(err);
       res.status(500).json({
         success: false,
         message: "server error",

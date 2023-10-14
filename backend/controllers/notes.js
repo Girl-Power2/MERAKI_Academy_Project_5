@@ -19,7 +19,6 @@ notes.AddNote = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       status: false,
       message: "Server error",
@@ -73,7 +72,6 @@ notes.GetNotebyProviderId = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       status: false,
       message: "Server error",

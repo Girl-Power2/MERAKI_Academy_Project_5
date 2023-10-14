@@ -19,7 +19,6 @@ return Pinfo
   })
 },
 updateBio:(state,action)=>{
-  console.log(state);
   state.info=state.info.map((Pinfo,i)=>{
 if(Pinfo.provider_info_id==action.payload.id){
   Pinfo.bio=action.payload.bio
@@ -38,7 +37,6 @@ return Pinfo
   })
 },
 updateInfo:(state,action)=>{
-  console.log(action.payload);
   state.info=state.info.map((Pinfo,i)=>{
 if(Pinfo.provider_info_id==action.payload.id){
   Pinfo.bio=action.payload.bio
@@ -50,7 +48,6 @@ return Pinfo
   })
 },
 setImage:(state,action)=>{
-  console.log("payload:",action.payload);
   state.image=action.payload
 },
 }

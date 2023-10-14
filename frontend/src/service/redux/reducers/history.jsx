@@ -14,7 +14,6 @@ export const historySlice =createSlice({
           },
           updateHistory: (state, action) => {
            state.history= state.history.map((data,i) => {
-            console.log(action.payload);
               if (data.medical_history_id == action.payload.medical_history_id) {
            data.history = action.payload.history
            data.medications = action.payload.medications

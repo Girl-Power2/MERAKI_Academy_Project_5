@@ -210,7 +210,6 @@ const notifyErr = () =>
                     }
                   )
                   .then((result) => {
-                    console.log(result.data.data[0]);
                     dispatch(addNotes(result.data.data[0]));
                  notifySucc()
                     
@@ -284,20 +283,15 @@ const notifyErr = () =>
                       <div
                       onClick={()=>{
                        setEdit(note.provider_note_id)
-                        console.log(note.provider_note_id);
                         axios.put( `http://localhost:5000/notes/${note.provider_note_id}`,{note:updatedNote ,user_id:note.user_id}, {
                           headers: {
                             Authorization: `Bearer ${token}`,
                           },
                         })
                         .then((result)=>{
-                          console.log(result);
                           dispatch(updateNotes({note:updatedNote,id:note.provider_note_id}))
                             setInput(!Input)
-                      //  notifyUpdat()
-                        //  setTimeout(()=>{
-                        
-                        //  },2000)
+                     
                         })
                         .catch((error)=>{
                           console.log(error);

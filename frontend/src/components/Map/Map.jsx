@@ -34,7 +34,6 @@ const { location } = useSelector((state) => {
     },
     zoom: 7,
   };
-  console.log(location);
   const notifySucc = () =>
   toast.success("Order Created Successfully", {
     position: "top-right",
