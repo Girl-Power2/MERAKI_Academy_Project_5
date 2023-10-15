@@ -55,7 +55,7 @@ const MyOrders = () => {
                   <p><span>Service:</span> {order.service}</p>
                   <p><span>Price: </span>{order.price_per_hour}</p>
                   <p> <span>Provider Id:</span> {order.provider_id}</p>
-                  <p> <span>User Id:</span> {order.user_id}</p>
+                  <p> <span>Client Id:</span> {order.user_id}</p>
                   <p>
                  
                     <span>User Name:</span> {order.firstname}

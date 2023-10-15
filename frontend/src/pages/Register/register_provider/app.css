@@ -84,12 +84,7 @@
   
   
   }
-  /* .regMsg{
-    
-    display: flex;
-    flex-direction: column;
-    gap:.5rem
-  } */
+ 
   @media only screen and (max-width: 600px) {
     .RegisterInfo_2 ,.RegisterInfo{
       align-content: center;
