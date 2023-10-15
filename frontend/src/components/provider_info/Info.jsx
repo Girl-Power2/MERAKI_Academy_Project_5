@@ -81,18 +81,17 @@ const Info = () => {
       .catch((err) => console.log(err));
   };
 
-
   const notifySucc = () =>
-  toast.success("Info Add Successfully", {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored",
-  });
+    toast.success("Info Add Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   // ======================first modal states and functions================
 
   // ======================second modal states and functions================
@@ -192,18 +191,16 @@ const Info = () => {
                           onClick={() => {
                             if (img) {
                               uploadImage();
+                              handleClose();
+                              notifySucc();
                             } else {
                               insert_info();
-                              notifySucc()
-                           
-                               handleClose() 
-                            
-                              
+                              handleClose();
+                              notifySucc();
                             }
                           }}
                         />
-                       
-                      
+
                         <Button variant="primary" onClick={handleClose}>
                           Close
                         </Button>
@@ -216,9 +213,9 @@ const Info = () => {
               </MDBCardBody>
             </MDBCard>
           </div>
-        </div> 
-        <ToastContainer />
+        </div>
       </MDBContainer>
+      <ToastContainer />
     </>
   );
 };
