@@ -51,7 +51,6 @@ const [password, setPassword] = useState("")
                   })
                   .then((result) => {
                    
-                    console.log(result.data);
                     dispatch(setLogin(result.data.token));
                     dispatch(setUserId(result.data.userId));
                     localStorage.setItem("token", result.data.token);

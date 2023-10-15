@@ -84,8 +84,6 @@ const login = (req, res) => {
             const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
-            console.log(payload);
-            console.log(token);
             if (token) {
               return res.status(200).json({
                 token,

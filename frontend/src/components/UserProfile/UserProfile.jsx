@@ -71,7 +71,6 @@ const [medications ,setMedications]=useState("")
         },
       })
       .then((result) => {
-        console.log(result.data);
         setToday(result.data.data[0].birthdate.toString().split('T')[0])
         setProfile(result.data.data);
       })
@@ -214,7 +213,6 @@ const [medications ,setMedications]=useState("")
                                           Authorization: `Bearer ${token}`,
                                         },
                                       }).then((result)=>{
-                                        console.log(result.data);
                                         toggleShow()
                                         dispatch(addHistory({history:histories ,medications,chronic_diseases}))
                                         notifySucc()

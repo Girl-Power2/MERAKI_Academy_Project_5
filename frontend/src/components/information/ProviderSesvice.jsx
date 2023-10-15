@@ -44,7 +44,6 @@ const ProviderSesvice = () => {
         },
       })
       .then((result) => {
-        console.log(result.data);
         dispatch(setService(result.data.data));
       })
       .catch((err) => {
@@ -74,7 +73,6 @@ const ProviderSesvice = () => {
               setSort(false);
               setAsc(true);
               setDesc(false)
-              console.log(result.data);
               setDataAsc(result.data.data)
             })
             .catch((err) => {
@@ -97,7 +95,6 @@ const ProviderSesvice = () => {
               setSort(false);
               setDesc(true);
               setAsc(false)
-              console.log(result.data);
               setDataDesc(result.data.data)
             })
             .catch((err) => {

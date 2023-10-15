@@ -64,7 +64,6 @@ const MakeOrder = () => {
       }
     )
     .then((result) => {
-      console.log(result.data);
       dispatch(addOrder(result.data.result));
     })
     .catch((err) => {
@@ -81,7 +80,6 @@ const MakeOrder = () => {
       location: state.orders.location,
     };
   });
-  console.log(location);
   const { token } = useSelector((state) => {
     return {
       token: state.auth.token,
@@ -98,7 +96,6 @@ const MakeOrder = () => {
         Authorization: `Bearer ${token}`,
       },
     }).then((result)=>{
-      console.log(result.data.data);
 dispatch(updateSchedule(id))
     }).catch((err)=>{
       console.log(err);
@@ -112,7 +109,6 @@ dispatch(updateSchedule(id))
         },
       })
       .then((result) => {
-        console.log(result.data);
         dispatch(setSchedule(result.data.data));
       })
       .catch((err) => {

@@ -13,7 +13,6 @@ export const services = createSlice({
       state.service.push(action.payload);
     },
     updateService: (state, action) => {
-      console.log("from reducer:",action.payload);
       state.service = state.service.map((ser,i) => {
 
         if (ser.service_id == action.payload.id) {

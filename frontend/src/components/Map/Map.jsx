@@ -34,7 +34,6 @@ const { location } = useSelector((state) => {
     },
     zoom: 7,
   };
-  console.log(location);
   const notifySucc = () =>
   toast.success("Location Added Successfully", {
     position: "top-right",

@@ -154,7 +154,6 @@ const notifyErr = () =>
       )
 
       .then((result) => {
-        console.log(result);
         dispatch(
           addSchedule({ time_from: result.data.data[0].time_from, time_to: result.data.data[0].time_to, DATE: result.data.data[0].date })
         );

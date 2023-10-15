@@ -76,7 +76,6 @@ export default function RegisterProvider() {
     axios
       .get("http://localhost:5000/categories/")
       .then((result) => {
-        console.log(result.data);
         setCategory(result.data.data);
       })
       .catch((err) => {
@@ -237,7 +236,6 @@ export default function RegisterProvider() {
                 style={{marginLeft:'0.5rem'}}
                 onChange={(e) => {
                   setData({ ...data, password: e.target.value });
-                  console.log(data);
                 }}
               />
               <TextField
@@ -264,7 +262,6 @@ export default function RegisterProvider() {
                     name="Gender"
                     onChange={(e) => {
                       setData({ ...data, gender: e.target.value });
-                      console.log(data);
                     }}
                   >
                     <MenuItem value="male">Female</MenuItem>
@@ -327,7 +324,6 @@ export default function RegisterProvider() {
                      
                     })
                     .then((result) => {
-                      console.log(result.data);
                       setMsg({
                         success: true,
                         msg: result.data?.message,

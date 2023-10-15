@@ -52,9 +52,7 @@ export default function RegisterUser() {
   const[google,setGoogle]=useState("")
   const history=useNavigate()
   const responseMessage = (response) => {
-    console.log(response);
     const a = decodeToken(response.credential);
-    console.log(a);
     setGoogle(a);
   };
   const errorMessage = (error) => {
@@ -144,7 +142,6 @@ export default function RegisterUser() {
                         .then((response) => {
                           history("/loginUser");
                          
-                          console.log(response)
                         })
                         .catch((err) => {
                       
@@ -312,7 +309,6 @@ setData({...data,fName:e.target.value})
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{
-console.log(data);
                   
                   axios.post("http://localhost:5000/users/register",{firstname:data.fName,
                   lastname:data.lName,
@@ -326,7 +322,6 @@ console.log(data);
                   role_id:data.role_id,
                   })
                   .then((result) => {
-                    console.log(result.data);
                    setMsgSucc(result.data.message)
                   
                     

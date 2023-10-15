@@ -17,7 +17,6 @@ const Categories = () => {
     axios
       .get(`http://localhost:5000/categories/`)
       .then((result) => {
-        console.log(result.data.data);
         setCategory(result.data.data);
       })
       .catch((err) => {

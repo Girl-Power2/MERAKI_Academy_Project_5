@@ -51,7 +51,6 @@ const NewOrders = () => {
         },
       })
       .then((result) => {
-        console.log(result.data);
         dispatch(setOrder(result.data.result));
         setToday(result.data.result[0].date.toString().split("T")[0]);
       })

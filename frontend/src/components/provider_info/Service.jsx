@@ -47,7 +47,6 @@ const Service = () => {
         }
       )
       .then((result) => {
-        console.log(result.data);
         setMsg({ success: true, msg: result.data.message });
         dispatch(addService({
           service: service ,

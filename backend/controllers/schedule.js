@@ -11,11 +11,9 @@ schedule.createNewSchedule = async (req, res) => {
   const query = `INSERT INTO schedules (provider_id,time_from,time_to,DATE ) VALUES ($1,$2,$3,$4) RETURNING *;`;
 
   try {
-    console.log(providerId);
 
     const response = await client.query(query, values);
     if (response.rowCount) {
-      console.log(response);
       res.status(201).json({
         status: true,
         message: `Schedule created successfully`,
@@ -23,7 +21,6 @@ schedule.createNewSchedule = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       status: false,
       message: "Server Error",
@@ -40,7 +37,6 @@ schedule.UpdateChosen = async (req, res) => {
   try {
     const response = await client.query(query, values);
     if (response.rowCount) {
-      console.log(response);
       res.status(201).json({
         status: true,
         message: `Schedule chosen by the provider `,
@@ -53,7 +49,6 @@ schedule.UpdateChosen = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
       status: false,
@@ -82,7 +77,6 @@ schedule.UpdateBooked = async (req, res) => {
       });
     }
   } catch (error) {
-    console.log(error);
 
     res.status(500).json({
       status: false,

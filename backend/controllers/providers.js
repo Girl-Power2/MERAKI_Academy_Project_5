@@ -190,7 +190,6 @@ providers_functions.getProviderByName = async (req, res) => {
 
   try {
     const response = await client.query(query, values);
-    console.log(response);
     if (response.rowCount) {
       res.status(200).json({
         status: true,
@@ -260,9 +259,6 @@ group by PROVIDERS.PROVIDER_ID
   client
     .query(query)
     .then((result) => {
-      console.log(result[0].rows);
-      console.log(result[1].rows);
-      console.log(result[2].rows);
 
 
       res.status(201).json({

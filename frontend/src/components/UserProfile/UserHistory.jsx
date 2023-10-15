@@ -51,7 +51,6 @@ import {
               Authorization: `Bearer ${token}`,
             },
         }).then((result)=>{
-            console.log(result.data);
            
             dispatch(setHistory(result.data.result))
         }).catch((err)=>{
@@ -167,7 +166,6 @@ import {
                       Authorization: `Bearer ${token}`,
                     },
                 }).then((result)=>{
-                    console.log(result.data);
                     toggleShow()
                     notifyUpdat()
                     dispatch(updateHistory(result.data.result[0]))
