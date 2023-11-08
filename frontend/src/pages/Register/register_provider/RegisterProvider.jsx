@@ -74,7 +74,7 @@ export default function RegisterProvider() {
 
   const getCategory = () => {
     axios
-      .get("http://localhost:5000/categories/")
+      .get(`${process.env.React_URL}/categories/`)
       .then((result) => {
         setCategory(result.data.data);
       })
@@ -310,7 +310,7 @@ export default function RegisterProvider() {
                 sx={{ mt: 3, mb: 2 }}
                 onClick={() => {
                   axios
-                    .post("http://localhost:5000/providers/", {
+                    .post(`${process.env.React_URL}/providers/`, {
                       fName: data.fName,
                       lName: data.lName,
                       birthDate: data.birthDate,

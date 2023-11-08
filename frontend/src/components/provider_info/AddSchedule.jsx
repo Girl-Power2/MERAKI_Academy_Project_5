@@ -57,7 +57,7 @@ const AddSchedule = () => {
   const setSchedules = () => {
     axios
       .post(
-        `http://localhost:5000/schedules/`,
+        `${process.env.React_URL}/schedules/`,
         { time_from: timeFrom, time_to: timeTo,DATE:date },
         {
           headers: {

@@ -25,7 +25,7 @@ const MyOrders = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/orders/provider/${providerId}/?skip=${count}`,
+        `${process.env.React_URL}/orders/provider/${providerId}/?skip=${count}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -83,7 +83,7 @@ const notifyErr = () =>
   const getBookedCount = () => {
     axios
       .get(
-        `http://localhost:5000/schedules/CountBookedByProvider/${providerId}`,
+        `${process.env.React_URL}/schedules/CountBookedByProvider/${providerId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -102,7 +102,7 @@ const notifyErr = () =>
 
   const getSchedules = () => {
     axios
-      .get(`http://localhost:5000/schedules/ByProvider/${providerId}`, {
+      .get(`${process.env.React_URL}/schedules/ByProvider/${providerId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -144,7 +144,7 @@ const notifyErr = () =>
   const addSchedules = () => {
     axios
       .post(
-        `http://localhost:5000/schedules/`,
+        `${process.env.React_URL}/schedules/`,
         { time_from: timeFrom, time_to: timeTo, DATE: date },
         {
           headers: {
@@ -282,7 +282,7 @@ const notifyErr = () =>
                           onClick={() => {
                             axios
                               .delete(
-                                `http://localhost:5000/schedules/ById/${sc.schedule_id}`,
+                                `${process.env.React_URL}/schedules/ById/${sc.schedule_id}`,
                                 {
                                   headers: {
                                     Authorization: `Bearer ${token}`,

@@ -50,7 +50,7 @@ const MakeOrder = () => {
   const makeOrders =()=>{
     axios
     .post(
-      `http://localhost:5000/orders/`,
+      `${process.env.React_URL}/orders/`,
       {
         service_id: serv,
         provider_id: id,
@@ -91,7 +91,7 @@ const MakeOrder = () => {
     };
   });
   const update =(id)=>{
-    axios.put(`http://localhost:5000/schedules/updateBooked/`,{schedule_id:id},{
+    axios.put(`${process.env.React_URL}/schedules/updateBooked/`,{schedule_id:id},{
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -103,7 +103,7 @@ dispatch(updateSchedule(id))
   }
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/schedules/notchosen/${id}`, {
+      .get(`${process.env.React_URL}/schedules/notchosen/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

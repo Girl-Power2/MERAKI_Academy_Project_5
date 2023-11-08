@@ -237,7 +237,7 @@ const [show ,setShow]=useState(false)
                 console.log(search);
                 axios
                   .get(
-                    `http://localhost:5000/providers/byName/?fname=${search}`
+                    `${process.env.React_URL}/providers/byName/?fname=${search}`
                   )
                   .then((result) => {
                     console.log(result.data);

@@ -80,7 +80,7 @@ const notifyErr = () =>
   // ==========get all notes===================
   const getNotes = () => {
     axios
-      .get(`http://localhost:5000/notes/byProvider/`, {
+      .get(`${process.env.React_URL}/notes/byProvider/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -104,7 +104,7 @@ const notifyErr = () =>
   const getUserNotes = () => {
     axios
       .get(
-        `http://localhost:5000/notes/byUser/usernotes/?id=${parseInt(query)}`,
+        `${process.env.React_URL}/notes/byUser/usernotes/?id=${parseInt(query)}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -201,7 +201,7 @@ const notifyErr = () =>
                     }, 2000);
                 axios
                   .post(
-                    `http://localhost:5000/notes/`,
+                    `${process.env.React_URL}/notes/`,
                     { user_id: ptId, note },
                     {
                       headers: {
@@ -263,7 +263,7 @@ const notifyErr = () =>
                     <div style={{ display: "flex", flexDirection: "row" ,justifyContent:"space-evenly", cursor:"pointer"}}>
                       <div
                       onClick={()=>{
-                        axios.delete( `http://localhost:5000/notes/${note.provider_note_id}`, {
+                        axios.delete( `${process.env.React_URL}/notes/${note.provider_note_id}`, {
                           headers: {
                             Authorization: `Bearer ${token}`,
                           },
@@ -283,7 +283,7 @@ const notifyErr = () =>
                       <div
                       onClick={()=>{
                        setEdit(note.provider_note_id)
-                        axios.put( `http://localhost:5000/notes/${note.provider_note_id}`,{note:updatedNote ,user_id:note.user_id}, {
+                        axios.put( `${process.env.React_URL}/notes/${note.provider_note_id}`,{note:updatedNote ,user_id:note.user_id}, {
                           headers: {
                             Authorization: `Bearer ${token}`,
                           },

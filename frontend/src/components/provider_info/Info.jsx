@@ -39,7 +39,7 @@ const Info = () => {
   const insert_info = (urlFile) => {
     axios
       .post(
-        `http://localhost:5000/provider_info`,
+        `${process.env.React_URL}/provider_info`,
         {
           bio: bio || "",
           qualifications: qua || "",

@@ -65,7 +65,7 @@ const [medications ,setMedications]=useState("")
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users/`, {
+      .get(`${process.env.React_URL}/users/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -208,7 +208,7 @@ const [medications ,setMedications]=useState("")
                                   </MDBBtn>
                                   <MDBBtn onClick={()=>{
                                     
-                                    axios.post(`http://localhost:5000/history/`,{history:histories ,medications,chronic_diseases},{
+                                    axios.post(`${process.env.React_URL}/history/`,{history:histories ,medications,chronic_diseases},{
                                         headers: {
                                           Authorization: `Bearer ${token}`,
                                         },

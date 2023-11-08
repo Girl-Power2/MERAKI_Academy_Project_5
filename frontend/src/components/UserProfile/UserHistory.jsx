@@ -46,7 +46,7 @@ import {
     });
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/history/users/`,{
+        axios.get(`${process.env.React_URL}/history/users/`,{
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -160,7 +160,7 @@ import {
               <MDBIcon fas icon="times" size="lg"/> Close
               </MDBBtn>
               <MDBBtn onClick={()=>{
-                axios.put(`http://localhost:5000/history/${data.medical_history_id}`,{history :newHistories,medications:newMedications,
+                axios.put(`${process.env.React_URL}/history/${data.medical_history_id}`,{history :newHistories,medications:newMedications,
                 chronic_diseases:newChronic_diseases},{
                     headers: {
                       Authorization: `Bearer ${token}`,
@@ -184,7 +184,7 @@ import {
                           className="ms-1"
                           style={{ height: "36px", overflow: "visible" }}
                           onClick={()=>{
-                            axios.delete(`http://localhost:5000/history/${data.medical_history_id}`,{
+                            axios.delete(`${process.env.React_URL}/history/${data.medical_history_id}`,{
                                 headers: {
                                   Authorization: `Bearer ${token}`,
                                 },

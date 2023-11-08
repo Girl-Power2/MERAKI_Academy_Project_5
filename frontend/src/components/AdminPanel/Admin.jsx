@@ -19,7 +19,7 @@ const { token } = useSelector((state) => {
   };
 });
 const getUsers=()=>{
-  axios.get(`http://localhost:5000/users/conutOfUsers/`,{ headers: {
+  axios.get(`${process.env.React_URL}/users/conutOfUsers/`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
 
@@ -30,7 +30,7 @@ const getUsers=()=>{
 }
 
 const getProvider=()=>{
-  axios.get(`http://localhost:5000/providers/all/count/`).then((result)=>{
+  axios.get(`${process.env.React_URL}/providers/all/count/`).then((result)=>{
     setProvider(result.data.data[0].numberofproviders)
   }).catch((err)=>{
     console.log(err);
@@ -38,7 +38,7 @@ const getProvider=()=>{
 }
 
 const getCategory=()=>{
-  axios.get(`http://localhost:5000/categories/countAllCategories`,{ headers: {
+  axios.get(`${process.env.React_URL}/categories/countAllCategories`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
     setCategory(result.data.result[0].count)

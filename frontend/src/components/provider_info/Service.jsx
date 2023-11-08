@@ -34,7 +34,7 @@ const Service = () => {
   const insert_service = () => {
     axios
       .post(
-        `http://localhost:5000/services`,{
+        `${process.env.React_URL}/services`,{
           service: service ,
           price_per_hour: price ,
           provider_id: providerId,
