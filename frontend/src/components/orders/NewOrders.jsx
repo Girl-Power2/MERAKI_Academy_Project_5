@@ -45,7 +45,7 @@ const NewOrders = () => {
   });
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/orders/`, {
+      .get(`${process.env.React_URL}/orders/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -192,7 +192,7 @@ const NewOrders = () => {
 
                                   axios
                                     .get(
-                                      `http://localhost:5000/orders/byId/${item.order_id}`,
+                                      `${process.env.React_URL}/orders/byId/${item.order_id}`,
                                       {
                                         headers: {
                                           Authorization: `Bearer ${token}`,
@@ -330,7 +330,7 @@ const NewOrders = () => {
                                             </MDBModalBody>
                                             <MDBBtn onClick={()=>{
                                               console.log(token);
-                                              axios.put(`http://localhost:5000/orders/ByOrder/${ord.order_id}`,{},{ headers: {
+                                              axios.put(`${process.env.React_URL}/orders/ByOrder/${ord.order_id}`,{},{ headers: {
                                                 Authorization: `Bearer ${token}`,
                                               },
                                             }).then((result)=>{

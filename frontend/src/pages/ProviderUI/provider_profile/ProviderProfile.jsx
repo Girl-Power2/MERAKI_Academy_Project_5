@@ -35,7 +35,7 @@ const ProviderProfile = () => {
   });
   const get_info = () => {
     axios
-      .get(`http://localhost:5000/provider_info/${providerId}`, {
+      .get(`${process.env.React_URL}/provider_info/${providerId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -111,7 +111,7 @@ const i=result.data.result.length-1
                       onClick={() => {
                         axios
                           .put(
-                            `http://localhost:5000/provider_info/${information.provider_info_id}`,
+                            `${process.env.React_URL}/provider_info/${information.provider_info_id}`,
                             {
                               bio,
                               qualifications,
@@ -179,7 +179,7 @@ const i=result.data.result.length-1
                       onClick={() => {
                         axios
                           .put(
-                            `http://localhost:5000/provider_info/${information.provider_info_id}`,
+                            `${process.env.React_URL}/provider_info/${information.provider_info_id}`,
                             {
                               bio,
                               qualifications,

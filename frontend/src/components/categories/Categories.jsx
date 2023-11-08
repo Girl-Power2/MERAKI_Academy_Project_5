@@ -15,7 +15,7 @@ const Categories = () => {
   const history = useNavigate();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/categories/`)
+      .get(`${process.env.React_URL}/categories/`)
       .then((result) => {
         setCategory(result.data.data);
       })

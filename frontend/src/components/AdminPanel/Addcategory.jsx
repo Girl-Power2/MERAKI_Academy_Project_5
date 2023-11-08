@@ -33,7 +33,7 @@ const [url, setUrl] = useState("");
 const [categ ,setCateg]=useState("")
 
 const insert_info = (urlFile) => {
-  axios.post(`http://localhost:5000/categories/`,{category:categ ,img:urlFile}).then((result)=>{
+  axios.post(`${process.env.React_URL}/categories/`,{category:categ ,img:urlFile}).then((result)=>{
   }).catch((err)=>{
     console.log(err);
   })
@@ -55,7 +55,7 @@ const uploadImage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/categories/`)
+      .get(`${process.env.React_URL}/categories/`)
       .then((result) => {
         setCategory(result.data.data);
       })
@@ -134,7 +134,7 @@ if(category.length == 0){
         </MDBCard>  
         </MDBCardBody>
      <MDBBtn color='danger' onClick={()=>{
-      axios.delete(`http://localhost:5000/categories//delete/${data.category_id}`).then((result)=>{
+      axios.delete(`${process.env.React_URL}/categories/delete/${data.category_id}`).then((result)=>{
       }).catch((err)=>{
         console.log(err);
       })

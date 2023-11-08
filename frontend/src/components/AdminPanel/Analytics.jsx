@@ -35,7 +35,7 @@ const Analytics = () => {
   });
   const getUsers = () => {
     axios
-      .get(`http://localhost:5000/users/conutOfUsers/`, {
+      .get(`${process.env.React_URL}/users/conutOfUsers/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -65,7 +65,7 @@ const Analytics = () => {
 
   const getCategory = () => {
     axios
-      .get(`http://localhost:5000/categories/countAllCategories`, {
+      .get(`${process.env.React_URL}/categories/countAllCategories`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

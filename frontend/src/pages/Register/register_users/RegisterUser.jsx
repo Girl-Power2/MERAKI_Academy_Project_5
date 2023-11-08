@@ -127,7 +127,7 @@ export default function RegisterUser() {
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <MDBBtn onClick={()=>{
                         axios
-                        .post("http://localhost:5000/users/register", {
+                        .post(`${process.env.React_URL}/users/register`, {
                           firstname: google.given_name,
                           lastname: google.family_name,
                           email: google.email,
@@ -310,7 +310,7 @@ setData({...data,fName:e.target.value})
                 sx={{ mt: 3, mb: 2 }}
                 onClick={()=>{
                   
-                  axios.post("http://localhost:5000/users/register",{firstname:data.fName,
+                  axios.post(`${process.env.React_URL}/users/register`,{firstname:data.fName,
                   lastname:data.lName,
                   birthdate:data.birthDate,
 

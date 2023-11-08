@@ -21,7 +21,7 @@ const ProviderAndOrder = () => {
   // ========================Get all functions start====================================
 const getAllProviders=()=>{
   axios
-  .get(`http://localhost:5000/providers/all/?skip=${count}`, {
+  .get(`${process.env.React_URL}/providers/all/?skip=${count}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

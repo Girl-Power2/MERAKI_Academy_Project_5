@@ -44,7 +44,7 @@ export default function Information_UserSide() {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/provider_info/${id}`, {
+      .get(`${process.env.React_URL}/provider_info/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -50,7 +50,7 @@ const Feadback_reviwes = () => {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/reviews/provider/${id}`, {
+      .get(`${process.env.React_URL}/reviews/provider/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -148,7 +148,7 @@ const notifyErr = () =>
                         onClick={() => {
                           axios
                             .post(
-                              `http://localhost:5000/reviews/`,
+                              `${process.env.React_URL}/reviews/`,
                               {
                                 review: post,
                                 user_id: userId,
@@ -223,7 +223,7 @@ const notifyErr = () =>
                                 onClick={() => {
                                   axios
                                     .delete(
-                                      `http://localhost:5000/reviews/${comment.review_id}`,
+                                      `${process.env.React_URL}/reviews/${comment.review_id}`,
                                       {
                                         headers: {
                                           Authorization: `Bearer ${token}`,
@@ -251,7 +251,7 @@ const notifyErr = () =>
                                   onClick={() => {
                                     axios
                                       .put(
-                                        `http://localhost:5000/reviews/user/${comment.review_id}`,
+                                        `${process.env.React_URL}/reviews/user/${comment.review_id}`,
                                         { review: update },
                                         {
                                           headers: {

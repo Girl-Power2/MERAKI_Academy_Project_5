@@ -33,7 +33,7 @@ const { token } = useSelector((state) => {
       });
      
     useEffect(()=>{
-axios.get(`http://localhost:5000/orders/done/?pageNumber=${count}`,{ headers: {
+axios.get(`${process.env.React_URL}/orders/done/?pageNumber=${count}`,{ headers: {
     Authorization: `Bearer ${token}`,
   }}).then((result)=>{
     console.log(result.data);

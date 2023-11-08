@@ -28,7 +28,7 @@ const Provider = () => {
       });
 const {id}=useParams()
 useEffect(()=>{
-axios.get(`http://localhost:5000/provider_info/category/${id}`,{
+axios.get(`${process.env.React_URL}/provider_info/category/${id}`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },
